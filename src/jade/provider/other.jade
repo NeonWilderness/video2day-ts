@@ -1,0 +1,38 @@
+//- Other (MP4 file) documentation of parameters
+p.
+  Sie können auch beliebige MP4-Videodateien in einem Videoplayer abspielen. Diese müssen eine öffentlich erreichbare URL besitzen,
+  also z.B. bei einem Cloudspeicheranbieter wie Dropbox, Photobucket, Flickr oder auf eigenem Webspace liegen. Für die Anzeige wird der
+  bewährte Open Source HTML5 Videoplayer <a target="_blank" href="http://www.videojs.com/">VideoJS</a> verwendet. Die Adresse/URL des Videos
+  wird im Parameter <span class="code">id</span> übergeben. Der Befehl für die Einbindung eines MP4-Videos aus einem öffentlichen Dropbox-Ordner
+  hat dann z.B. folgendes Format:
++LiveView("other ratio-2.4", "https://dl.dropboxusercontent.com/u/16775880/movies/oceans-clip.mp4")
+h6.top20 <span class="label">poster</span> &mdash; Posterbild für MP4-Videodatei festlegen
+p.
+  Über einen weiteren Parameter weisen Sie die Videofunktion an, ein Posterbild im Videobereich anzuzeigen, solange das Video noch nicht
+  vom Anwender gestartet wurde. Das Posterbild ist ein "Standbild" in einem beliebigen Bildformat (z.B. jpg, png, gif, bmp) und muss sich
+  an gleichem Ort wie das MP4-Video befinden.
+p.
+  Wenn ein MP4-Video im Pfad <span class="code">http://www.meinewebadresse.de/videos/meinvideo.mp4</span> zu finden ist, muss ein zugehöriges
+  jpg-Standbild die Adresse <span class="code">http://www.meinewebadresse.de/videos/meinvideo.jpg</span> besitzen. Für die Anzeige eines
+  Standbilds ergänzen Sie einfach <span class="code">poster</span> als zusätzlichen Parameterwert.
++LiveView("other ratio-2.4 <b>poster</b>", "https://dl.dropboxusercontent.com/u/16775880/movies/oceans-clip.mp4")
+h6.top20 <span class="label">image</span> &mdash; Dateityp des Posterbilds festlegen
+p.
+  Ist das Standbild nicht vom Typ <em>jpg</em> (Standard), so definieren Sie je nach Dateityp ergänzend ein <span class="code">image-png</span>,
+  <span class="code">image-gif</span> oder <span class="code">image-bmp</span>.
+p <em>Beispiel</em>: Für ein MP4-Video in 500 Pixel Breite und einem gif-Standbild lautete der DIV-Befehl dann so:
++LiveView("other width-500 poster <b>image-gif</b>", "https://dl.dropboxusercontent.com/u/16775880/movies/nodejs.mp4")
+p.text-right: a(href="#", title="data-bind=click:function(){toggle('#other-id')}") Wie finde ich die ID eines MP4-Videos?
+#other-id(style="display:none")
+  h6.top20: strong ID eines MP4-Videos ermitteln
+  p.
+    Wie und wo Sie die vollständige Adresse des gewünschten MP4-Videos finden und kopieren können, hängt natürlich vom jeweiligen Anbieter ab.
+    Dafür gibt es keine allgemeingültige Vorgehensweise. Nachstehend sind zwei Beispiele für <em>Photobucket</em> und <em>Dropbox</em> aufgeführt:
+  ol
+    li
+      | <b>Photobucket</b>: Klicken Sie unter der <b>Share this video</b> auf den "Direct Link":
+      .clearfix: img.googledrive(alt="videoload/other-id1.jpg")
+    li
+      | <b>Dropbox</b>: Klicken Sie im Dateiexplorer mit rechter Maustaste auf den gewünschten MP4-Clip in Ihrer Dropbox.
+      | Klicken Sie im angezeigten Menü auf "Öffentlichen Link kopieren":
+      .clearfix: img.googledrive(alt="videoload/other-id2.jpg")

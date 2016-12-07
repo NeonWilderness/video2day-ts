@@ -1,0 +1,39 @@
+//- Giphy documentation of parameters
+p.
+  <b>Giphy</b> ist ein Anbieter von GIFs und Animationen. Eine Besonderheit bei Giphy ist, dass Videoload ein Objekt
+  sowohl als <span class="code">&lt;iframe&gt;</span> als auch als einfaches <span class="code">&lt;img&gt;</span>
+  einbinden kann. Zur Veranschaulichung sehen Sie nachstehend ein Beispiel mit beiden Einbindungstypen:
+.row
+  .small-12.medium-6.columns
+    .html5video.giphy#GBdMUGeTSseM8(style="margin-right:15px")
+      p.text-center als <span class="code">&lt;iframe&gt;</span>
+  .small-12.medium-6.columns
+    .html5video.giphy.asimage#GBdMUGeTSseM8
+      p.text-center als <span class="code">&lt;img&gt;</span>
+p Die Einbindung als Bild (img) hat leichte Geschwindigkeitsvorteile, bietet jedoch dafür keinerlei Links zur Giphy-Hauptseite.
+h6.top20 <span class="label">asimage</span> &mdash; Das Giphy-Objekt als einfaches Bild einbinden
+p.
+  Um ein Giphy-Element als einfaches Bild einzubinden, ergänzen Sie in der DIV-Klasse den Parameter
+  <span class="code">asimage</span>.
++LiveView("giphy <b>asimage</b>", "GBdMUGeTSseM8")
+h6.top20 <span class="label">alt</span> &mdash; Das <span class="code">alt</span>-Attribut bei einem Giphy-Bild setzen
+p.
+  Falls das Giphy-Element als Bild in Ihren Blogbeitrag eingefügt werden soll, können Sie zusätzlich den Inhalt des
+  ALT-Attributs des generierten Bildes festlegen (hilfreich für Google Ranking und SEO). Nutzen Sie dafür den
+  <span class="code">alt</span>-Parameter und geben Sie im Parameterwert den gewünschten Text an. Da der Parameterwert
+  keine Leerzeichen enthalten darf, können Sie Leerstellen als '_' (Unterstrich) schreiben:
++LiveView("giphy asimage <b>alt-Woman_on_red_roses</b>", "GBdMUGeTSseM8")
+p Fehlt der <span class="code">alt</span>-Parameter, füllt Videoload diesen standardmäßig mit 'Giphy-' und der Bild-ID.
+p.text-right: a(href="#", title="data-bind=click:function(){toggle('#giphy-id')}") Wie finde ich die ID eines Giphy-Elements?
+#giphy-id(style="display:none")
+  h6.top20: strong Giphy-ID manuell ermitteln
+  p.
+    Sobald Sie die Einzelansicht des gewünschten GIFs auf der Giphy-Seite aufgerufen haben, können Sie die benötigte ID
+    des Objekts aus zwei Quellen kopieren:
+  ol
+    li
+      | Oben aus der angezeigten Browser-URL:
+      .clearfix: img.googledrive(alt="videoload/giphy-id1.jpg")
+    li
+      | Unten aus dem angezeigten iframe-Einbettungscode:
+      .clearfix: img.googledrive(alt="videoload/giphy-id2.jpg")

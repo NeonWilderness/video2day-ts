@@ -1,0 +1,67 @@
+//- Jsfiddle documentation of parameters
+p.
+  <b>JsFiddle</b> ist eine Online-Entwicklungsumgebung, in der man Code-Schnipsel, bestehend aus HTML, CSS und JavaScript
+  testen bzw. Code-Beispiele als Anschauungsobjekt für andere hinterlegen kann. Folgende Parameter sind möglich:
+h6.top20 <span class="label">color</span> &mdash; Farbschema festlegen
+p JsFiddle bietet zwei Farbschemata an:
+table
+  +ParamHead
+  tbody
+    tr
+      td <span class="code">color-<b>light</b></span>
+      td Helles Farbschema: dunkle Schrift auf hellem Hintergrund.<br><img class="googledrive" alt="videoload/jsfiddle-light.jpg">
+    tr
+      td <span class="code">color-<b>dark</b></span>
+      td Dunkles Farbschema: helle Schrift auf dunklem Hintergrund.<br><img class="googledrive" alt="videoload/jsfiddle-dark.jpg">
+p Fehlt der Parameter, wird <span class="code">color-dark</span> als Standard verwendet.
+h6.top20 <span class="label">scope</span> &mdash; Umfang der Darstellung einstellen
+p.
+  Mithilfe des Parameters <span class="code">scope</span> lässt sich festlegen, welche der jsfiddle-Bereiche im Rahmen
+  der Einbettung angezeigt werden. Der Parameterwert besteht aus einer frei wählbaren Kombination der Kennungen
+  <span class="code">js</span> (für JavaScript-Code), <span class="code">html</span> (für HTML-Code),
+  <span class="code">css</span> (für CSS-Code) und <span class="code">result</span> (für die Anzeige des jeweiligen Ergebnisses),
+  jeweils getrennt durch ein Komma, jedoch ohne Leerzeichen. Die Reihenfolge ist beliebig. Einige Beispiele:
+table
+  +ParamHead
+  tbody
+    tr
+      td <span class="code">scope-<b>js,html,css,result</b></span>
+      td Der eingebettete jsfiddle-iFrame soll alle 4 Bereiche anzeigen.
+    tr
+      td <span class="code">scope-<b>js,html,result</b></span>
+      td CSS soll nicht angezeigt werden.
+    tr
+      td <span class="code">scope-<b>html,css,result</b></span>
+      td JavaScript soll nicht angezeigt werden.
+    tr
+      td <span class="code">scope-<b>html</b></span>
+      td Es soll nur der HTML-Code gezeigt werden.
+h6.top20: strong Beispiele
+p.
+  Aus einem jsfiddle soll das CSS und das HTML zusammen mit dem Ergebnis angezeigt werden (helles Farbschema).
+  Der zugehörige Videoload-Befehl hieße dann:
++LiveView("jsfiddle color-light scope-css,html,result", "tx2w4s19")
+p.
+  In einem dunklem JSFiddle soll ein Stück JavaScript-Code dargestellt werden:
++LiveView("jsfiddle color-dark scope-js", "tx2w4s19")
+cite Da <span class="code">color-dark</span> die Standardeinstellung ist, könnte der Parameter auch weggelassen werden.
+p.text-right: a(href="#", title="data-bind=click:function(){toggle('#jsfiddle-id')}") Wie finde ich die ID eines JSFiddle-Elements?
+#jsfiddle-id(style="display:none")
+  h6.top20: strong JSFiddle-ID manuell ermitteln
+  p Für die Ermittlung einer JSFiddle-ID gibt es verschiedene Möglichkeiten:
+  ol
+    li
+      | Oben aus der angezeigten Browser-URL (die einfachste Methode):
+      .clearfix: img.googledrive(alt="videoload/jsfiddle-id1.jpg")
+    li
+      | Alternativ klicken Sie oben auf den Menü-Tab <span class="label">Embed</span>
+      .clearfix: img.googledrive(alt="videoload/jsfiddle-id2.jpg")
+    li
+      | Klicken Sie auf <em>Prefer iframe?</em> und dann in das Feld <em>Embed Code</em>,
+      | welches den <span class="code">&lt;iframe&gt;</span>-Code enthält und kopieren Sie diesen mit <span class="code">Strg-C</span>
+      | (Windows) oder <span class="code">Cmd-C</span> (Mac) in die Zwischenablage.
+      .clearfix: img.googledrive(alt="videoload/jsfiddle-id3.jpg")
+    li
+      | Öffnen Sie einen Texteditor (z.B. Notepad in Windows) und fügen Sie den Text aus der Zwischenablage ein (Strg-V in Windows, Cmd-V für Mac).
+      | Der markierte Code (alles zwischen 'jsfiddle.net/' und '/embedded') entspricht der gesuchten ID.
+      .clearfix: img.googledrive(alt="videoload/jsfiddle-id4.jpg")

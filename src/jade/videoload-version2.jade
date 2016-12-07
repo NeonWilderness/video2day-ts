@@ -1,0 +1,367 @@
+//- Twoday Blog story to document videoload's version 2
+- var Stand = 'Dezember 2016'
+- var Anbieter = '16'
+- var Domain = 'neonwilderness'
+//- var CDNUrl = 'https://dl.dropboxusercontent.com/u/16775880/js/videoload2'
+- var CDNUrl = 'http://static.twoday.net/cdn/files'
+//- var CDNUrl = '.'
+- var StoryUrl = 'http://' + Domain + '.twoday.net/stories/'
+- var VideoToolUrl = StoryUrl + 'videotool2'
+mixin SimpleCopy(id)
+  - var citeID = id + 'copy'
+  cite(id="#{citeID}", style="display:none")
+    p: i.fa.fa-tag.fa-lg(style="color:#888")
+      | &ensp;Kopieren einfach gemacht
+      a.closecite(title="data-bind=click:function(){toggle('#'+'#{citeID}')}"): i.fa.fa-close
+    p.
+      Fahren Sie mit der Maus über das schwarze Codefeld oben und klicken dort auf
+      <span class="label blue">pop-up</span>. Markieren Sie den Text in dem erscheinenden Pop-Up-Fenster und kopieren Sie
+      ihn in die Zwischen&shy;ablage. Falls bei Ihnen der Link <span class="label blue">copy</span> angezeigt wird
+      (Rechner mit Adobe Flash-Installation), können Sie darauf klicken, um den Text ohne Pop-Up-Fenster sofort in
+      die Zwischen&shy;ablage zu kopieren. Gehen Sie nun in Ihren Skin Site.page und kopieren dort aus der
+      Zwischenablage an die richtige Stelle vor <span class="code">&lt;/body&gt;</span>.
+mixin ParamHead()
+  thead: tr
+    th Parameter
+    th Bedeutung/Wirkung
+mixin LiveView(classes, id, orientation)
+  - var noDummyId = id.substr(0,1)!=='{'
+  - var orientation = orientation || 'text-center'
+  p(class="#{orientation}")
+    - var code = '&lt;div class="html5video ' + classes + '" id="' + id + '"&gt;&lt;/div&gt;'
+    span.code(style="white-space:normal")!= code
+    if noDummyId
+      - var lifeviewUrl = VideoToolUrl + '?provider=' + encodeURIComponent(classes.replace(/(<b>|<\/b>)/g,'')) + '&id=' + encodeURIComponent(id)
+      a(target="_blank", href!=lifeviewUrl)
+        i.fa.fa-eye.liveview(title="Ergebnis live im Videotool ansehen") &nbsp;&hellip;
+mixin parameter-start(provider)
+  h6.top20 <span class="label">start</span> &mdash; Video an einer bestimmten Stelle starten
+  p.
+    Um ein #{provider}-Video an einer gewünschten Stelle zu starten, z.B. bei 02:15 (Minuten:Sekunden), rechnen Sie die
+    Zeitangabe in Sekunden um (im Beispiel 02:15 = 2*60+15 = 135) und fügen das Ergebnis als Parameterwert an die Kennung
+    <span class="code">start</span>. Das vollständige Kommando lautet dann folgendermaßen:
+  p.text-center: span.code &lt;div class="html5video #{provider} <b>start-135</b>" id="{eine-#{provider}-ID}"&gt;&lt;/div&gt;
+.panel.radius.callout.videoload2
+  cite.
+    Dieser Beitrag dokumentiert die nunmehr zweite, vollständig überarbeitete Version des Videoload-Werk&shy;zeugs, mit dem sich
+    in Twoday auf einfache Weise Video-, Audio- und andere Quell&shy;formate einbinden lassen, die ansonsten mangels
+    iframe-Möglich&shy;keit unter Twoday draußen bleiben müssten. Er ersetzt voll&shy;ständig die alte
+    Doku&shy;men&shy;tation in <a target="_blank" href="#{StoryUrl}twoday-tipp-8-videos-anzeigen">diesem Beitrag vom Februar 2015</a>.
+  h5.text-center(style="margin-bottom:20px") Wichtige Infos für bisherige Videoload-Nutzer
+  p.
+    <span class="redNumber">1</span>&ensp;Um die neue Videoload-Version nutzen zu können, müssen Sie den Aufruf des Scripts im Twoday-Skin <em>Site.page</em>
+    einmalig ändern. Wie das geht, wird weiter unten im Abschnitt <b>Upgrade auf Videoload Version #2</b> beschrieben.
+  p.
+    <span class="redNumber">2</span>&ensp;Die alte Tool-Version bleibt zwar weiterhin abrufbar, wird jedoch nicht mehr gepflegt. Die neue Version
+    ist um Größenordnungen schneller, beinhaltet außerdem neue Anbieter wie z.B. <span class="label yellow">Bandcamp</span>, <span class="label yellow">dctp.tv</span>,
+    <span class="label yellow">Slideshare</span> sowie <span class="label yellow">Speakerdeck</span> und ist bereinigt um mittlerweile nicht mehr
+    aktive Anbieter (z.B. myvideo.de). Ich rate wärmstens zum vertrauensvollen Umstieg auf <b>Videoload #2</b>! ;)
+p: img.googledrive(alt="videoload/videoinst.jpg")
+p.dropcaps.
+  In der IT ist das so eine Sache mit der Pflege und Wartung von Alt-Software. So schwankt man beim Wiederstudium von älteren eigenen
+  JavaScript-Codeschnipseln zwischen sehr ambivalenten Gefühlen, die sich irgendwo zwischen "Diese in einem magischen Moment entstandene brillante
+  Codestrecke verstehen nur noch Gott, Mark Zuckerberg oder mein früheres Ich!" und "War ich das? Wie schlecht ist das denn bitte programmiert?"
+  bewegen.
+p.
+  Jeder hat eben das Recht, täglich etwas schlauer zu werden. Und so ist auch <span class="label">Videoload</span> erwachsener geworden,
+  sehr viel schlanker und auch deutlich schneller. Für interessierte Techies und Nerds gibt's
+  <a href="#" title="data-bind=click:function(){toggle('#techies')}">hier</a> weitere Informationen.
+cite#techies(style="display:none")
+  p: i.fa.fa-tag.fa-lg(style="color:#888")
+    | &ensp;Infos für Techies und Nerds
+    a.closecite(title="data-bind=click:function(){toggle('#techies')}"): i.fa.fa-close
+  p.
+    Videoload 2 hat keinerlei Abhängigkeiten mehr zu anderen Bibliotheken oder unterstützenden externen Scripts, sondern nutzt nun ausschließlich
+    pures, originäres JavaScript. Frühere Versionen verwendeten noch <a target="_blank" href="https://jquery.com">jQuery</a> für die Veränderung
+    des <a target="_blank" href="https://de.wikipedia.org/wiki/Document_Object_Model">DOM</a> sowie
+    <a target="_blank" href="https://github.com/SlexAxton/yepnope.js/">yepnope</a> für das ggf. erforderliche Nachladen des
+    <a target="_blank" href="https://videojs.com">VideoJS</a>-APIs (HTML5-Videoplayer).
+  p.
+    Die Größe der zu ladenden Software hat sich damit von ursprünglich 96,9 KB auf nur noch 24,4 KB verringert (-75%). Gleichzeitig wurde das Script
+    vollständig neu und modular strukturiert sowie in klare, abgegrenzte <a target="_blank" href="https://www.typescriptlang.org/">TypeScript</a>-Klassen
+    überführt: mit jedem Plattformanbieter als eigenständige, besser wartbare Plugin-Klasse. Den zugehörigen Quellcode kann man sich bei Interesse
+    <a target="_blank" href="https://github.com/NeonWilderness/video2day_ts">hier</a> ansehen.
+h3 Warum Videoload und wozu dient es?
+p.
+  Seit die meisten Videoplattformen und Content-Anbieter den alten <span class="code">&lt;embed&gt;</span>-Befehl zugunsten des mo&shy;derneren
+  <span class="code">&lt;iframe&gt;</span>-Formats aufgegeben haben, ist eine Einbindung solcher Quellen mit Standardmitteln bei Twoday
+  nicht mehr möglich. In Twoday-Beiträgen wird jeder mutige Versuch einer direkten iframe-Nutzung beim Speichern des Beitragstextes sofort
+  wieder herausgefiltert.
+p.
+  Videoload führt einen Ausgleich zwischen Twodays berechtigtem Sicherheitsinteresse und den Content-Wünschen der Nutzer herbei, indem es
+  valide und überprüfbare iframe-Aufrufe für einen definierten Kreis von sicheren Anbietern erzeugt. Derzeit (Stand: #{Stand}) generiert
+  Videoload Verbindungen zu #{Anbieter} verschiedenen Plattformen und bindet den gewünschten Inhalt (z.B. ein YouTube-Video) auf einfache Weise in den
+  jeweiligen Blogbeitrag ein. Folgende Provider stehen zur Verfügung:
+.providerbox
+  ul.small-block-grid-4.medium-block-grid-8(title="data-bind=foreach:providerNames()")
+    li.text-center
+      .providername(title="data-bind=text:$data")
+      a(title="data-bind=attr:{href:$parent.providerUrl($data)}", target="_blank")
+        img.neonimg.th(title="data-bind=attr:{src:$parent.providerImgUrl($data)}", width="48", height="48")
+p.text-center: span.sublabel Klick auf Icon öffnet die jeweilige Anbieterseite
+p.
+  Videoload bietet nicht nur Zugriff auf die wichtigsten Videoanbieter, sondern stellt auch Audioinhalte (z.B. via Bandcamp, Soundcloud),
+  Präsentationen (z.B. via Slideshare, Speakerdeck), GIFs (via Giphy) oder Code-Snippets (via Jsfiddle) bereit.
+.accComponent.accDark.accChevron
+  h2.accHeadline: a(href="#") Erstmalige Installation
+  .accElement: .accContent
+    p Zur Installation Ihrer neuen Videoload-Möglichkeiten ist eine einmalige Anpassung des Twoday-Skins <em>Site.page</em> erforderlich:
+    ol
+      li Melden Sie sich auf Twoday mit Ihrem Account an und rufen Sie Ihr Blog auf.
+      li.
+        Wählen Sie in der Menüzeile oben <span class="label blue">Admin</span> &rarr; <span class="label blue">Layout</span> und dann
+        <span class="label blue">Skins (HTML)</span>.
+      li.
+        Klicken Sie auf die Überschrift <span class="label blue">Hauptseite (Site.page)</span>, danach in das Feld mit dem Scrollbalken
+        und wandern Sie ganz an das untere Ende der Anzeige.
+      li
+        | Kopieren Sie dort <strong>vor</strong> das abschließende <span class="code">&lt;/body&gt;</span>-Element folgende Zeilen hinein:
+        pre.html.
+          &lt;script type="text/javascript" src="&lt;% staticURL %&gt;cdn/files/videoload2-min-js.js"&gt;&lt;/script&gt;
+          &lt;script type="text/javascript"&gt;video2day.run();&lt;/script&gt;
+        p.text-right: a(href="#", title="data-bind=click:function(){toggle('#installcopy')}") Wie kopiere ich das?
+        +SimpleCopy("install")
+        p Ihr Skin <em>Site.page</em> sollte nun in etwa so aussehen:
+        p: img.googledrive(alt="videoload/install.jpg")
+        p.text-center: span.sublabel.
+          &lt;% staticURL %&gt; ist ein Twoday-Makro und steht für "http://static.twoday.net/", dem abgesicherten Blogspeicher
+          für Twoday-Bilder oder -Dateien.
+      li.
+        Klicken Sie auf "<em>Speichern und Schließen</em>" um Ihre Änderungen zu sichern. Sie können nun zu jeder Zeit in Ihren
+        Twoday-Beiträgen Video- und Audioelemente der aufgeführten Plattformanbieter einbinden. Wie das funktioniert, finden Sie
+        im übernächsten Abschnitt <span class="label">Videoload verwenden</span>.
+  h2.accHeadline: a(href="#") Upgrade auf Videoload Version #2
+  .accElement: .accContent
+    p.
+      Falls Sie bereits die Erstversion des Videoload-Scripts nutzen, sollten Sie auf die neue Version 2 umstellen. Hierzu ist der Aufruf
+      von Videoload im Skin <em>Site.page</em> anzupassen bzw. zu ergänzen.
+    p Bisher steht dort am Ende des Skins, vor dem abschließenden <span class="code">&lt;/body&gt;</span>-Befehl, folgender Eintrag:
+    p.text-center: span.code &lt;script type="text/javascript" src="&lt;% staticURL %&gt;cdn/files/videoload-min-js.js"&gt;&lt;/script&gt;
+    p Bitte ändern/erweitern Sie den Aufruf wie folgt:
+    pre.html.
+      &lt;script type="text/javascript" src="&lt;% staticURL %&gt;cdn/files/videoload2-min-js.js"&gt;&lt;/script&gt;
+      &lt;script type="text/javascript"&gt;video2day.run();&lt;/script&gt;
+    p.text-right: a(href="#", title="data-bind=click:function(){toggle('#upgradecopy')}") Wie kopiere ich das?
+    p d.h. also in Zeile 1 den Scriptnamen <b>videoload</b> in <b>videoload2</b> ändern und die zweite Zeile darunter ergänzen.
+    cite.
+      Selbstverständlich ist die Version #2 <strong>vollständig abwärtskompatibel</strong> zur Erstversion, d.h. alle bisherigen
+      Videoeinbettungen funktionieren sofort und ohne Änderung mit der neuen Version problemlos weiter.
+    +SimpleCopy("upgrade")
+  h2.accHeadline: a(href="#") Videoload verwenden
+  .accElement: .accContent
+    p Um ein Video in einem Beitrag anzuzeigen, verwenden Sie einen einfachen DIV-Befehl, der z.B. für ein YouTube-Video so aussieht:
+    +LiveView("youtube", "DyfM7oLIlp0")
+    p.
+      An der feststehenden Zeichenkette <span class="code">html5video</span> erkennt das Videoload-Script, dass es innerhalb dieses
+      <span class="code">div</span>-Elements eine Einbettung vornehmen soll. Die darauf folgende Anbieterkennung bezeichnet die Plattform,
+      von der das anzuzeigende Objekt stammt. Im Beispiel oben soll ein Youtube-Video generiert werden. Im Attribut <span class="code">id</span>
+      legen Sie fest, welches Youtube-Video angezeigt wird (jedes Anbieterelement hat eine eindeutige Identifikation).
+    p.
+      Die betreffende ID findet sich meist recht einfach im Einbettungs&shy;code des Videoanbieters (dem &lt;iframe&gt;-Befehl) und besteht i.d.R. aus
+      einer kurzen Kombination von Zahlen und Buchstaben. In der Tabelle "Individuelle Parameter je Anbieter" weiter unten finden Sie eine genaue
+      Information, wie Sie die benötigte ID bei jedem Anbieter manuell ermitteln. Außerdem stelle ich im Folgekapitel ein <strong>Tool</strong>
+      vor, das die notwendigen Daten voll&shy;automatisch aus dem kopierten iframe-Einbettungs&shy;code ermittelt und für Sie den korrekten
+      Twoday-DIV-Befehl gebrauchsfertig zusammenstellt. Damit entfällt die manchmal etwas umständliche Suche nach der richtigen ID.
+    p.
+      Die passende Kennung für einen der #{Anbieter} möglichen Anbieter finden Sie unten als Beschriftung in den blauen Tabulatoren. Um also ein
+      Vimeo-Video einzufügen, heißt der entsprechende DIV-Befehl
+    +LiveView("vimeo", "{eine-vimeo-id}")
+    p Für die Anzeige eines GIFs von <em>giphy.com</em> wäre das DIV-Element folgendermaßen zu schreiben:
+    +LiveView("giphy", "{eine-giphy-id}")
+    p.
+      Minimal benötigt eine Einbettung also stets drei Informationen: den feststehenden Bezeichner <span class="code">html5video</span>, die
+      Textkennung des gewünschten Anbieters und die eindeutige ID des anzuzeigenden Elements.
+    h3.top20 Ergänzende Einstellparameter
+    p.
+      Es gibt weitere Parameter, mit denen Sie die Breite und das Seitenverhältnis des einzubettenden Elements beeinflussen können. Diese beiden
+      Parameter sind für <strong>alle</strong> Anbieter zulässig.
+    cite.
+      Parameter bestehen mindestens aus dem Parameternamen und &mdash; soweit erforderlich &mdash; aus einem Parameterwert, verbunden durch
+      einen Bindestrich. Eine Breitenangabe kann z.B. <span class="code">width-500</span> sein; ein Parameter zum Seitenverhältnis z.B.
+      <span class="code">ratio-1.6834</span>. Kommazahlen müssen dabei stets mit Punkt geschrieben werden.
+    h6.top20 <span class="label">width</span> &mdash; Breite festlegen/begrenzen
+    p.
+      Im oben gezeigten Beispiel nimmt das Youtube-Video die volle Breite des umgebenden Containers ein, d.h. es füllt die
+      Twoday-Beitragsspalte horizontal vollkommen aus. Falls Sie das Video kleiner darstellen wollen, können Sie zusätzlich eine
+      Breitenangabe mithilfe des <span class="code">width</span>-Parameters machen. Für eine Breite von z.B. 350 Pixeln lautet der Befehl:
+    +LiveView("youtube <b>width-350</b>", "DyfM7oLIlp0")
+    h6.top20 <span class="label">ratio</span> &mdash; Seitenverhältnis einstellen/korrigieren
+    p.
+      Die meisten Videos haben ein <a target="_blank" href="http://de.wikipedia.org/wiki/Seitenverh%C3%A4ltnis">Seitenverhältnis</a> von 16:9,
+      d.h. ein Verhältnis von Breite zu Höhe von 1,77778. Manche Videos haben noch ein 4:3 Verhältnis (1,33333) und wieder andere eine sehr
+      individuelle Streckung (z.B. bei Breitbildformaten). Das Script verwendet im Standard die 16:9-Anzeige. Wenn das Video verzerrt
+      dargestellt wird, können Sie ein eigenes Seitenverhältnis einstellen. Der Befehl für ein Vine-Video mit einem Seitenverhältnis von 1,0
+      und einer Breite von 400 Pixeln lautet dann:
+    +LiveView("vine <b>ratio-1</b> width-400", "OTtQVYI2JY2")
+    p Dies bewirkt in diesem Fall, dass das Video die gleiche Höhe wie Breite erhält, d.h. 400 Pixel breit und hoch ist.
+    p.
+      Neben diesen beiden grundsätzlich verwendbaren Parametern gibt es je Plattform verschiedene individuelle Parameter, mit denen man
+      bestimmte Funktionen oder Darstellungsweisen des Anbieters aktiviert. Diese sind je Plattform in den nachstehenden Tabs beschrieben.
+    h3.top20 Individuelle Parameter je Anbieter
+    p.text-center: span.sublabel Klick auf ein Tab öffnet die Dokumentation für diesen Anbieter
+    ul#providerTabs.tabs.tabBlue(title="data-bind=foreach:providerNames()")
+      li: a(href="#", title="data-bind=attr:{name:'tab-'+$data}, text:$data")
+    #providerDocumentation.tabcontent
+      #tab-bandcamp: include ./provider/bandcamp.jade
+      #tab-dailymotion: include ./provider/dailymotion.jade
+      #tab-dctptv: include ./provider/dctptv.jade
+      #tab-funnyordie: include ./provider/funnyordie.jade
+      #tab-giphy: include ./provider/giphy.jade
+      #tab-jsfiddle: include ./provider/jsfiddle.jade
+      #tab-liveleak: include ./provider/liveleak.jade
+      #tab-metacafe: include ./provider/metacafe.jade
+      #tab-slideshare: include ./provider/slideshare.jade
+      #tab-soundcloud: include ./provider/soundcloud.jade
+      #tab-speakerdeck: include ./provider/speakerdeck.jade
+      #tab-vevo: include ./provider/vevo.jade
+      #tab-vimeo: include ./provider/vimeo.jade
+      #tab-vine: include ./provider/vine.jade
+      #tab-youtube: include ./provider/youtube.jade
+      #tab-other: include ./provider/other.jade
+      p.text-right
+        a(href="#", title="data-bind=click:function(){scrollTo('#providerTabs')} | data-!title=Zum Anfang der Anbietertabelle")
+          i.fa.fa-chevron-up.fa-lg &nbsp;
+          em zum Tabellenanfang
+  h2.accHeadline: a(href="#") Videoload-Tool nutzen
+  .accElement: .accContent
+    h3 Twoday-Videoload-Code automatisch generieren
+    p.
+      Es ist evtl. etwas mühsam, die oben beschriebenen Parameter für jeden der #{Anbieter} Anbieter im Kopf zu behalten oder erst wieder
+      nachzuschlagen, wenn man sie benötigt. Aus diesem Grund habe ich zusätzlich ein kleines Online-Tool erstellt, das den Twoday-Code
+      automatisch für Sie zusammenstellt.
+    p.
+      Sie müssen nur noch den vom jeweiligen Anbieter bereitgestellten iframe-Einbettungscode in das Formularfeld <strong>iframe-Code</strong>
+      des Tools kopieren <span class="redNumber">1</span>. Dieses erkennt die jeweilige Quellplattform, extrahiert die korrekte ID des Elements
+      sowie alle anderen erkannten Einstellparameter. Daraus generiert es den kopierfertigen HTML-Befehl für Ihren Twoday-Beitrag
+      und zeigt diesen im Feld <strong>HTML-Code</strong> an <span class="redNumber">2</span>.
+    p.clearfix: img.googledrive(alt="videoload/videoload1.jpg")
+    h3 Beispiel: Bandcamp-Audio
+    p.
+      Nehmen wir ein konkretes Beispiel: Sie möchten das Album <em>"Love & War & The Sea In Between"</em> (Josh Garrels) von der Plattform
+      <a target="_blank" href="http://bandcamp.com/">Bandcamp</a> in einen neuen Twoday-Beitrag einbetten. Sie haben den entsprechenden iframe-Befehl auf seiner
+      <a target="_blank" href="https://joshgarrels.bandcamp.com/album/love-war-the-sea-in-between">Albumseite</a> ermittelt
+      und in die Zwischenablage kopiert. Nach Aufruf des <a target="_blank" href="#{VideoToolUrl}">Videotools</a> fügen Sie den kopierten
+      iframe-Befehl in das Eingabefeld <strong>iframe-Code</strong> ein <span class="redNumber">1</span>.
+    p.
+      Das Videotool analysiert den übergebenen Befehl und stellt alle erkannten Parameter in einem speziellen DIV-Kommando<span class="redNumber">2</span>
+      zusammen, aus dem das Videoload-Script später wieder den eigentlichen Einbettungsbefehl erstellt.
+    p.clearfix: img.googledrive(alt="videoload/videoload2.jpg")
+    p.
+      Unter dem HTML-Befehl zeigt das Tool das von Ihnen gewünschte Element an, und zwar so wie es später auch beim Aufruf des Beitrags
+      zu sehen sein wird <span class="redNumber">3</span>. Sie haben nun die Möglichkeit, die Anzeige weiter zu konfi&shy;gurieren, z.B. Größe und
+      Erscheinungsbild zu ändern oder weitere Parametereinstellungen vorzunehmen, die für diesen Anbieter zulässig sind. Klicken Sie hierfür
+      auf die grüne Schaltfläche "Parameter ändern / manuell setzen...".
+    p.clearfix: img.googledrive(alt="videoload/videoload3.jpg")
+    p.
+      Statt des iframe-Code-Feldes wird nun eine Detailansicht mit allen verfügbaren Einstellparametern angezeigt. Die einzelnen Felder
+      sind bereits mit den Werten vorbelegt, die aus dem iframe-Befehl herausgelesen werden konnten. Ändern Sie eine Einstellung, wird
+      der zugehörige HTML-Befehl sofort neu generiert und als Kopiervorlage angezeigt.
+    p.clearfix: img.googledrive(alt="videoload/videoload4.jpg")
+    p.
+      Wenn Sie z.B. die Bandcamp-Linkfarbe ändern und zusätzlich eine Tracklist mit 6 Songs anzeigen wollen, stellen Sie dies in den
+      zugehörigen Feldern ein. Unmittelbar passt das Tool auch den HTML-Befehl an die veränderten Einstellwerte an.
+    p.clearfix: img.googledrive(alt="videoload/videoload5.jpg")
+    p.
+      Das tatsächliche Aussehen des Elements können Sie unterhalb des Codes kontrollieren. Entspricht alles Ihren Vorstellungen,
+      markieren Sie den fertigen HTML-Befehl und kopieren ihn in die Zwischenablage.
+    p.clearfix: img.googledrive(alt="videoload/videoload6.jpg")
+    p Navigieren Sie nun zu Ihrem Beitrag und fügen Sie den kopierten Code an der gewünschten Stelle in den Text ein:
+    p.clearfix: img.googledrive(alt="videoload/videoload7.jpg")
+    p.top20.
+      Dieser Ablauf funktioniert für jeden der #{Anbieter} Anbieter identisch. Wollen Sie also ein YouTube-Video in Ihren
+      Beitrag einfügen, kopieren Sie den entsprechenden iframe-Code des Videos und das Tool zeigt Ihnen das passende DIV-Kommando
+      für die Einbettung im Twoday-Beitrag.
+    p.
+      Das Videotool finden Sie dauerhaft unter folgender Linkadresse:
+    p.text-center: span.code: a(target="_blank", href="#{VideoToolUrl}") #{VideoToolUrl}
+    p oder per Schaltfläche hier im Beitrag sowie rechts unten in der Sidebar:
+    p.text-center: a.button.success(target="_blank", href="#{VideoToolUrl}") Videotool aufrufen...
+  h2.accHeadline: a(href="#") Videoload parametrisieren (für erfahrene Nutzer)
+  .accElement: .accContent
+    h3 Script-Verhalten über Parameter steuern
+    p.
+      Im Aufruf des Videoload-Scripts <span class="code">video2day.run();</span> (siehe Abschnitt "Installation") müssen keine
+      Parameter innerhalb der Klammer mitgegeben werden, wenn Sie die Standardeinstellungen nutzen wollen. Gleichwohl kennt das
+      Script eine Reihe von Einstellparametern, mit denen Sie sein Verhalten beeinflussen können. Diese werden nachstehend erläutert.
+      Parameter übergeben Sie stets in geschweiften Klammern, wobei die einzelnen Parameter durch Komma getrennt sind:
+    p.text-center: span.code video2day.run( {parameter1: wert, parameter2: wert, ... , parameterx: wert} );
+    p.
+      Um z.B. die Breite für alle Videoload-Elemente auf maximal 400 Pixel zu begrenzen und außerdem den Debug-Modus einzuschalten,
+      muss der Videoload-Aufruf inkl. der entsprechenden Parameter folgendermaßen aussehen:
+    p.text-center: span.code video2day.run( {maxWidth: 400, debug: true} );
+    p Die Reihenfolge der Parameter untereinander ist beliebig. Folgende Möglichkeiten stehen zur Verfügung:
+    table.aligntop
+      thead: tr
+        th Script-Parameter
+        th Standard
+        th Bedeutung/Wirkung
+      tbody
+        tr
+          td: span.code addFlexVideoClass
+          td: span.code false
+          td.
+            <span class="code">true</span> aktiviert den "responsive"-Modus, in welchem alle Anbieterelemente responsiv, d.h.
+            in Abhängigkeit einer sich verändernden Containergröße dargestellt werden. Dieser Modus wirkt sich nur innerhalb von
+            responsiven Blog-Templates aus (die Standard-Templates von <b>Twoday</b> sind leider NICHT responsiv).
+            <cite style="font-size:.9em">Dieses Blog hier basiert auf einem eigenerstellten, responsiven
+            <a target="_blank" href="http://foundation.zurb.com/sites/docs/v/5.5.3/">Foundation5</a>-Template. Bei der Ansicht
+            von Blogseiten mit Videoload-Elementen werden diese im Portrait- oder Landscape-Modus eines Tablets bzw. Mobile Phones anders
+            dargestellt. Auch bei der Verkleinerung des Browserfensters am Desktop wird die Größe der Videoelemente dynamisch
+            im richtigen Aspektverhältnis angepasst.</cite>
+        tr
+          td: span.code contentClass
+          td: span.code 'storyContent'
+          td.
+            Dies ist die <span class="code">div</span>-Klasse des Containers, der einen gesamten Blogbeitrag umfasst und seine
+            maximale Breite festlegt. Bei Twoday heißt diese Klasse <b>storyContent</b> (Standard).
+        tr
+          td: span.code debug
+          td: span.code false
+          td.
+            <span class="code">true</span> aktiviert den Debug-Modus, in welchem zusätzliche Nachrichten auf die Browser-Console
+            ausgegeben werden. Im Fehlerfall oder bei Unstimmigkeiten können hiermit wichtige Zwischenergebnisse des Scripts protokolliert
+            und kontrolliert werden.
+        tr
+          td: span.code maxWidth
+          td: span.code -1
+          td.
+            Mit <em>maxWidth</em> können Sie für alle auf Ihrem Blog angezeigten Videoload-Elemente eine maximale Breite festlegen.
+            Wenn z.B. kein Element breiter als 440 Pixel breit sein soll, geben Sie beim Scriptstart den Parameter
+            <span class="code">{ maxWidth: 440 }</span> mit. Dies erspart Ihnen in dem Fall eine Größenlimitierung in jedem einzelnen
+            Element mitzugeben (z.B. per <span class="code">width-440</span> als Videoparameter).
+        tr
+          td: span.code position
+          td: span.code 'bottom'
+          td.
+            Mit Hilfe des <em>position</em>-Parameters können Sie festlegen, wo der iframe des Anbieters eingefügt werden soll. Gültige
+            Werte sind <span class="code">bottom</span>, also am Ende des DIVs (das ist auch der Standard) oder <span class="code">top</span>
+            für den Anfang des DIVs. Text, der innerhalb des DIVs steht, wird also jeweils vor dem iframe (bei Einstellung <em>bottom</em>)
+            oder nach dem iframe (bei Einstellung <em>top</em>) ausgegeben.
+        tr
+          td: span.code posterSize
+          td: span.code 'cover'
+          td.
+            Für MP4-Videos (Videoload-Typ <span class="code">other</span>) kann ein Posterbild angezeigt werden, solange der Nutzer das
+            Video noch nicht gestartet hat. Über den Script-Parameter <em>posterSize</em> lässt sich einstellen, wie das Bild in der
+            festgelegten Größe des Videorahmens angezeigt wird: <span class="code">cover</span> streckt das gesamte Bild, so dass es
+            den Videorahmen vollständig ausfüllt. <span class="code">contain</span> skaliert das Bild auf die längste Seite (es können
+            Ränder entstehen). Die Standardeinstellung ist <span class="code">{ posterSize: 'cover' }</span>.
+        tr
+          td: span.code selector
+          td: span.code '.html5video'
+          td.
+            Mit Hilfe des Selectors findet Videoload alle Stellen, in denen eine Einbettung eines Anbieterelements vorgenommen werden
+            soll (z.B. ein YouTube-Video oder ein Bandcamp-Audio). Standardmäßig ist dafür die CSS-Klasse <span class="code">.html5video</span>
+            eingestellt.
+        tr
+          td: span.code useVideoJS
+          td: span.code true
+          td.
+            Für die Anzeige beliebiger MP4-Videos wird der bewährte Videoplayer <a target="_blank" href="http://videojs.com/">VideoJS</a>
+            genutzt. Dieser wird bei Vorliegen des Videoload-Typs <span class="code">other</span> nachgeladen und mit dem Abspielen des
+            Videos beauftragt. Allerdings beinhalten die meisten modernen Browser bereits eigene Routinen zum Abspielen von MP4-Videos
+            (z.B. Chrome, Firefox), so dass man &mdash; wenn man das Problem für Nutzer älterer Browser ignoriert &mdash; eine separate
+            Player-Lösung nicht bräuchte. Wer sich also nur auf den Browser als Abspielsoftware verlassen will, kann über die Einstellung
+            <span class="code">{ useVideoJS: false }</span> das Nachladen eines universellen Players unterbinden und so noch ein paar
+            Millisekunden Ladezeit einsparen.
+a.storyScript(href="#{CDNUrl}/videoload2-story.js")

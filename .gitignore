@@ -1,0 +1,5 @@
+.idea
+dist/test*.html
+dist/*.map
+node_modules
+typings

@@ -1,0 +1,26 @@
+//- dctptv documentation of parameters
+p.
+  <b>dctp.tv</b> ist ein unabhängiger Filmbeitragsanbieter. Folgender zusätzlicher Parameter ist möglich:
++parameter-start('dctptv')
+p.text-right: a(href="#", title="data-bind=click:function(){toggle('#dctptv-id')}") Wie finde ich die ID eines DCTPtv-Filmbeitrags?
+#dctptv-id(style="display:none")
+  h6.top20: strong DCTP-ID manuell ermitteln
+  p.
+    Sobald Sie die Einzelansicht des gewünschten Filmbeitrags auf der DCTPtv-Seite aufgerufen haben, können Sie die benötigte ID
+    des Objekts aus verschiedenen Quellen ermitteln:
+  ol
+    li
+      | Oben aus der angezeigten Browser-URL (die einfachste Methode):
+      .clearfix: img.googledrive(alt="videoload/dctptv-id1.jpg")
+    li
+      | Alternativ klicken Sie auf das Einbettungssymbol:
+      .clearfix: img.googledrive(alt="videoload/dctptv-id2.jpg")
+    li
+      | danach auf eine der beiden Schaltflächen <span class="label">von Anfang an</span> oder <span class="label">ab dieser Stelle</span>:
+      .clearfix: img.googledrive(alt="videoload/dctptv-id3.jpg")
+    li
+      | Klicken Sie nun auf die Schaltfläche <span class="label">Embedcode kopieren</span>:
+      .clearfix: img.googledrive(alt="videoload/dctptv-id4.jpg")
+    li
+      | Fügen Sie den kopierten Einbettungscode in einen geöffneten Texteditor ein. Der blau markierte Text entspricht der ID.
+      .clearfix: img.googledrive(alt="videoload/dctptv-id5.jpg")

@@ -1,0 +1,30 @@
+//- Slideshare documentation of parameters
+p <b>Slideshare</b> ist eine Plattform für Präsentationen. Folgende Parameter sind möglich:
+h6.top20 <span class="label">slide</span> &mdash; Präsentation ab einer bestimmten Seite starten
+p.
+  Falls Sie die Slideshare-Präsentation nicht von Anfang an, sondern ab einer bestimmten Seite ("Slide") starten wollen,
+  können Sie dies mit dem <span class="code">slide</span>-Parameter einstellen. Im Parameterwert wird die gewünschte Startseite
+  spezifiziert. Das Videoload-Beispiel
+p.text-center: span.code &lt;div class="html5video slideshare <b>slide-3</b>" id="{eine-slideshare-id}"&gt;&lt;/div&gt;
+p startet die Präsentation auf der dritten Seite.
+h6.top20: strong Beispiele
+p Es soll eine Slideshare-Präsentation mit der ID 'v2pxR8RN6Bl5Ve' in einem Blogbeitrag eingebunden werden:
++LiveView("slideshare", "v2pxR8RN6Bl5Ve")
+p Soll die Präsentation ab Seite 2 starten, lautet der Videoload-Befehl:
++LiveView("slideshare <b>slide-2</b>", "v2pxR8RN6Bl5Ve")
+p.text-right: a(href="#", title="data-bind=click:function(){toggle('#slideshare-id')}") Wie finde ich die ID einer Slideshare-Präsentation?
+#slideshare-id(style="display:none")
+  h6.top20: strong Slideshare-ID manuell ermitteln
+  p Sobald Sie in der Einzelansicht der Slideshare-Präsentation sind, können Sie mit folgenden Schritten die ID ermitteln:
+  ol
+    li
+      | Klicken Sie unter der Präsentation auf die Schaltfläche <span class="label blue">Share</span>:
+      .clearfix: img.googledrive(alt="videoload/slideshare-id1.jpg")
+    li
+      | Klicken Sie im angezeigten Fenster in das <em>Embed</em>-Feld und kopieren Sie dann den Einbettungscode mit <span class="code">Strg-C</span>
+      | (Windows) oder <span class="code">Cmd-C</span> (Mac) in die Zwischenablage.
+      .clearfix: img.googledrive(alt="videoload/slideshare-id2.jpg")
+    li
+      | Öffnen Sie einen Texteditor (z.B. Notepad in Windows) und fügen Sie den Text aus der Zwischenablage ein (Strg-V in Windows, Cmd-V für Mac).
+      | Der blau markierte Text hinter der Kennung "/key/" entspricht der gesuchten ID.
+      .clearfix: img.googledrive(alt="videoload/slideshare-id3.jpg")

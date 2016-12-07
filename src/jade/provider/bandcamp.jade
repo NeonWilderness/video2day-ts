@@ -1,0 +1,98 @@
+//- Bandcamp documentation of parameters
+p.
+  <b>Bandcamp</b> ist ein Anbieter von Audiostücken, der sehr umfangreiche Anpassungsmöglichkeiten für die Anzeige bietet.
+  Die maximale Anzeigebreite eines Bandcamp-Elements beträgt 700 Pixel. Mit Videoload können Sie folgende Einstellungen über
+  Parameter vornehmen:
+h6.top20 <span class="label">layout</span> &mdash; Layout festlegen
+p Bandcamp bietet drei mögliche Layouts an:
+table
+  +ParamHead
+  tbody
+    tr
+      td <span class="code">layout-<b>standard</b></span>
+      td Anzeige des Standard-Layouts. Variable Höhe (min. 120 Pixel).
+    tr
+      td <span class="code">layout-<b>slim</b></span>
+      td Schmales Layout. Höhe 42 Pixel.
+    tr
+      td <span class="code">layout-<b>artworkonly</b></span>
+      td Ausschließliche Anzeige der Artwork (Albumcover). Breite und Höhe sind gleich.
+h6.top20 <span class="label">artwork</span> &mdash; Anzeige/Größe der Artwork einstellen
+p.
+  Als <em>Artwork</em> bezeichnet Bandcamp das Coverdesign des Albums bzw. eine vom Künstler ausgewählte Grafik. Mögliche Werte
+  dieses Parameters sind:
+table
+  +ParamHead
+  tbody
+    tr
+      td <span class="code">artwork-<b>none</b></span>
+      td Die Artwork wird nicht angezeigt. Wirkt in Verbindung mit <span class="code">layout-slim</span> und <span class="code">layout-standard</span>.
+    tr
+      td <span class="code">artwork-<b>show</b></span>
+      td Die Artwork wird angezeigt. Wirkt in Verbindung mit <span class="code">layout-slim</span>.
+    tr
+      td <span class="code">artwork-<b>big</b></span>
+      td Die Artwork wird groß angezeigt. Wirkt in Verbindung mit <span class="code">layout-standard</span>.
+    tr
+      td <span class="code">artwork-<b>small</b></span>
+      td.
+        Die Artwork wird klein angezeigt. Wirkt in Verbindung mit <span class="code">layout-standard</span>.
+        Damit die Artwork angezeigt wird, muss das Element mindestens eine Breite von 400 Pixel haben.
+p Für die Einstellung <span class="code">layout-<b>artworkonly</b></span> wird der artwork-Parameter automatisch auf <b>big</b> eingestellt.
+h6.top20 <span class="label">bgcol</span> &mdash; Hintergrundfarbe festlegen
+p.
+  Mit diesem Parameter können Sie eine individuelle Hintergrundfarbe für das Bandcamp-Element festlegen. Fehlt der
+  Parameter, wird die Standardhintergrundfarbe weiß (Hexcode: #ffffff) angenommen. Möchten Sie z.B. einen dunkleren
+  Hintergrund anzeigen, wählen Sie mit <span class="code">bgcol-<b>333333</b></span> ein
+  <span style="background-color:#333;color:#fff;padding:0 5px">dunkles Grau</span> aus.
+p Derzeit erlaubt Bandcamp nur weiß (ffffff) oder dunkelgrau (333333) als Hintergrundfarbe. Andere Farbcodes werden ignoriert.
+h6.top20 <span class="label">linkcol</span> &mdash; Farbe für Links festlegen
+p.
+  Sie können auch die Farbe der Bandcamp-Links einstellen. Dies empfiehlt sich z.B., wenn Sie die Hintergrundfarbe ändern
+  und die Links nur noch schlecht lesbar sind. Wählen Sie dann eine passende Farbe aus (bei dunklem Hintergrund z.B. weiß)
+  und ergänzen diese im Parameter <span class="code">linkcol-<b>ffffff</b></span>. Fehlt der Parameter, wird standardmäßig
+  die <span style="color:#0687f5">Linkfarbe '0687f5' verwendet</span>.
+p.
+  Farbcodes werden als 6-stellige Hexadezimalzahl kodiert. Welche Farbe welchen Hexcode besitzt, können Sie z.B. auf
+  <a target="_blank" href="http://htmlcolorcodes.com/color-picker/">dieser Webseite</a> herausfinden.
+h6.top20 <span class="label">tracklist</span> &mdash; Anzeige der Tracklist aktivieren
+p.
+  In der Layoutansicht <b>standard</b> lässt sich für Bandcamp-Alben auch eine Tracklist, also eine fortlaufende Liste der einzelnen Songs,
+  anzeigen. Der <span class="code"><b>tracklist</b></span>-Parameter funktioniert wie ein Aktivierungsschalter. Wird er angegeben,
+  erscheint die Tracklist. Fehlt er, wird auch keine Tracklist generiert. Für eine Tracklist wird die Höhe des Anzeigeelements
+  automatisch vergrößert. Bei aktivierter Tracklist werden standardmäßig 2 Tracks angezeigt. Möchten Sie mehr Tracks anzeigen, können
+  Sie dem Parameter einen Wert mitgeben, also z.B. <span class="code">tracklist-6</span> für 6 Tracks.
+p In der Layoutansicht <b>slim</b> oder <b>artworkonly</b> kann keine Tracklist gezeigt werden.
+h6.top20: strong Beispiele
+p.
+  Es soll ein Bandcamp-Album im Standardlayout, mit großem Albumcover, dunklem Hintergrund, weißen Links und einer Standard-Tracklist
+  (2 Tracks) ausgegeben werden. Der zugehörige Videoload-Befehl hieße dann:
++LiveView("bandcamp layout-standard artwork-big bgcol-333333 linkcol-ffffff tracklist", "2172528119")
+p.
+  Zusätzlich soll die Tracklist 8 Songs anzeigen und die Breite soll 500 Pixel betragen:
++LiveView("bandcamp layout-standard artwork-big bgcol-333333 linkcol-ffffff tracklist-8 width-500", "2172528119")
+p.
+  Es soll ein schmales Bandcamp-Element mit Albumcover ohne Tracklist generiert werden, das exakt 400 Pixel breit ist:
++LiveView("bandcamp layout-slim artwork-show width-400", "2172528119")
+p.text-right: a(href="#", title="data-bind=click:function(){toggle('#bandcamp-id')}") Wie finde ich die ID eines Bandcamp-Elements?
+#bandcamp-id(style="display:none")
+  h6.top20: strong Bandcamp-ID manuell ermitteln
+  p Die Ermittlung einer Bandcamp-ID erfordert verschiedene Schritte:
+  ol
+    li
+      | Sobald Sie auf der Einzelseite des gewünschten Musikstücks/Albums sind, klicken Sie auf <span class="label blue">Share / Embed</span>
+      .clearfix: img.googledrive(alt="videoload/bandcamp-id1.jpg")
+    li
+      | Klicken Sie in dem erscheinenden Popup-Fenster auf <span class="label blue">Embed this album</span>
+      .clearfix: img.googledrive(alt="videoload/bandcamp-id2.jpg")
+    li
+      | Klicken Sie auf eine der drei Layout-Grafiken
+      .clearfix: img.googledrive(alt="videoload/bandcamp-id3.jpg")
+    li
+      | Klicken Sie in das Feld <span class="label blue">Embed</span>, welches den <span class="code">&lt;iframe&gt;</span>-Code enthält und
+      | kopieren Sie diesen mit <span class="code">Strg-C</span> (Windows) oder <span class="code">Cmd-C</span> (Mac) in die Zwischenablage.
+      .clearfix: img.googledrive(alt="videoload/bandcamp-id4.jpg")
+    li
+      | Öffnen Sie einen Texteditor (z.B. Notepad in Windows) und fügen Sie den Text aus der Zwischenablage ein (Strg-V in Windows, Cmd-V für Mac).
+      | Der markierte Albumcode ist die gesuchte ID.
+      .clearfix: img.googledrive(alt="videoload/bandcamp-id5.jpg")

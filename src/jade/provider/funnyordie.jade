@@ -1,0 +1,25 @@
+//- funnyordie documentation of parameters
+p.
+  <b>FunnyOrDie</b> ist ein Videoanbieter. Er verfügt über keine besonderen Parameter.
+h6.top20: strong Beispiel
+p Es soll ein FunnyOrDie-Video mit der ID '000a37c115' in einem Blogbeitrag eingebunden werden:
++LiveView("funnyordie", "000a37c115")
+p.text-right: a(href="#", title="data-bind=click:function(){toggle('#funnyordie-id')}") Wie finde ich die ID eines FunnyOrDie-Videos?
+#funnyordie-id(style="display:none")
+  h6.top20: strong FunnyOrDie-ID manuell ermitteln
+  p.
+    Sobald Sie die Einzelansicht des gewünschten Videos auf der FunnyOrDie-Seite aufgerufen haben, können Sie die benötigte ID
+    des Objekts aus verschiedenen Quellen ermitteln:
+  ol
+    li
+      | Oben aus der angezeigten Browser-URL (die einfachste Methode):
+      .clearfix: img.googledrive(alt="videoload/funnyordie-id1.jpg")
+    li
+      | Alternativ klicken Sie auf das Symbol <span class="label">MORE</span>:
+      .clearfix: img.googledrive(alt="videoload/funnyordie-id2.jpg")
+    li
+      | danach auf <span class="label">&lt;/&gt; EMBED</span>:
+      .clearfix: img.googledrive(alt="videoload/funnyordie-id3.jpg")
+    li
+      | Kopieren Sie nun den Einbettungsbefehl (am besten mithilfe einen Texteditors). Der markierte Text entspricht der ID.
+      .clearfix: img.googledrive(alt="videoload/funnyordie-id4.jpg")

@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "removeComments": true,
+    "preserveConstEnums": true,
+	"pretty": true,
+    "sourceMap": true
+  },
+    "files": [
+      "src/videoload2.ts",
+      "src/videoload2-story.ts",
+      "src/videoload2-tool.ts",
+      "test/videoload2-spec.ts",
+      "typings/index.d.ts"
+ ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}

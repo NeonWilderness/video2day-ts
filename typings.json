@@ -1,0 +1,15 @@
+{
+  "globalDependencies": {
+    "require": "registry:dt/require#2.1.20+20160316155526"
+  },
+  "devDependencies": {
+    "extend-shallow": "registry:npm/extend-shallow#2.0.1+20160723033700"
+  },
+  "globalDevDependencies": {
+    "chai": "registry:dt/chai#3.4.0+20160601211834",
+    "debounce": "registry:dt/debounce#0.0.0+20151130120024",
+    "jquery": "registry:dt/jquery#1.10.0+20160704162008",
+    "knockout": "registry:dt/knockout#0.0.0+20160512130947",
+    "mocha": "registry:env/mocha#2.2.5+20160723033700"
+  }
+}

@@ -1,0 +1,146 @@
+//- Twoday Blog story for the videotool
+mixin ColorPickerInput(id)
+  .row.collapse
+    .small-9.columns: input(id="#{id}", type="text", title="data-bind=textInput:#{id}")
+    .small-3.columns: button.postfix.jscolor(class="{valueElement:'#{id}',required:false,uppercase:false}")
+#prependStory(style="display:none")
+  div(style="position:relative")
+    a(
+      href="http://neonwilderness.twoday.net/stories/videoload2",
+      style="position:absolute;right:0;font-size:12px;z-index:1"
+    ) Videoload2-Script installiert?
+.row
+  .small-9.columns
+    p.hint
+      strong Anleitung:&ensp;
+      | Kopieren Sie den Einbettungscode der Quellplattform in das Feld <em>iframe-Code</em>, um den entsprechenden Videoload2-Befehl zu
+      | erhalten. Ergänzend können Sie die Breite anpassen oder auch alle Parameter ändern bzw. vollständig selbst einstellen.
+    p.hint.bottom0
+      | Den resultierenden <em>HTML-Code</em> kopieren Sie anschließend in Ihren Beitragstext (Videoload2-Script muss installiert sein!).
+  .small-3.columns
+    button.tiny.radius(title="data-bind=click:resetOptions", style="margin-bottom:10px") Formulardaten zurücksetzen
+    button.tiny.radius.success(title="data-bind=click:function(){toggle('#fldIframe,#fldOptions')}") Parameter ändern / manuell setzen...
+fieldset#fldIframe
+  legend
+    i.fa.fa-film
+    span iframe-Code
+  input#txtIframe(
+    title="data-bind=textInput:txtIframe | data-!placeholder=Kopieren Sie den iframe-Einbettungscode Ihres Anbieters hier hinein"
+  )
+span#errMsg.error(style="display:none;border-radius:3px", title="data-bind=text:errIframe, visible:(hasError()&&optionsVisible())")
+fieldset#fldOptions(style="display:none")
+  legend
+    i.fa.fa-youtube-play
+    span Anzeigeoptionen
+  .row
+    .small-3.columns.pad6
+      label(for="optProvider") Anbieter:
+    .small-9.columns
+      select#optProvider(
+        name="optProvider",
+        title="data-bind=options:providerOptions, optionsValue:'code', optionsText:'option', value:optProvider"
+      )
+      img.imgProvider(title="data-bind=attr:{src:providerImgUrl}")
+  .row
+    .small-3.columns.pad6
+      label Breite:
+    .small-9.columns
+      input#radFull(type="radio", name="selWidth", value="full", title="data-bind=checked:selWidth")
+      label(for="radFull") Volle Containerbreite
+      input#radPixel(type="radio", name="selWidth", value="pixel", title="data-bind=checked:selWidth")
+      label(for="radPixel")
+        input#txtPixel(type="text", title="data-bind=textInput:txtPixel, enable:txtPixelEnabled, hasFocus:txtPixelEnabled")
+        span Pixel
+  .row(title="data-bind=if:showAspectRow()")
+      .small-3.columns.pad6
+        label Aspektverhältnis:
+      .small-9.columns
+        input#rad169(type="radio", name="selRatio", value="1.77778", title="data-bind=checked:selRatio, click:setRatio")
+        label(for="rad169") 16:9
+        input#rad43(type="radio", name="selRatio", value="1.33333", title="data-bind=checked:selRatio, click:setRatio")
+        label(for="rad43") 4:3
+        input#radCustomRatio(type="radio", name="selRatio", value="custom", title="data-bind=checked:selRatio, click:setRatio")
+        label(for="radCustomRatio"): input#txtRatio(type="text", title="data-bind=textInput:txtRatio, enable:txtRatioEnabled")
+  .row
+      .small-3.columns.pad6: label(for="txtElement", title="data-bind=text:labelProvider")
+      .small-9.columns: input#txtElement(type="text", title="data-bind=textInput:txtElementID")
+  .row(title="data-bind=if:providerTemplate()==='TmplVideoStart'")
+    .small-3.columns.pad6: label(for="txtStart") Start (ab Sekunde):
+    .small-3.columns.end: input.bottom0#txtStart(type="text", title="data-bind=textInput:txtStart")
+  .row(title="data-bind=if:providerTemplate()==='TmplVideoStartEndat'")
+    .small-3.columns.pad6: label(for="txtStart") Start (ab Sekunde):
+    .small-3.columns: input.bottom0#txtStart(type="text", title="data-bind=textInput:txtStart")
+    .small-3.columns.pad6: label(for="txtEndat") Ende (bei Sekunde):
+    .small-3.columns: input.bottom0#txtEndat(type="text", title="data-bind=textInput:txtEndat")
+  .row(title="data-bind=if:providerTemplate()==='TmplGiphy'")
+    .small-3.columns.pad6
+      input.bottom0#chkAsImage(type="checkbox", title="data-bind=checked:chkAsImage")
+      label(for="chkAsImage", style="margin-right:0") als Bild einbinden
+    .small-9.columns: input#txtAlt(type="text", title="data-bind=textInput:txtAlt, visible:chkAsImage | data-!placeholder=Bildtext für alt-Parameter")
+  .row(title="data-bind=if:providerTemplate()==='TmplSlide'")
+    .small-3.columns.pad6: label(for="txtSlide") Startseite:
+    .small-3.columns.end: input.bottom0#txtSlide(type="text", title="data-bind=textInput:txtSlide")
+  .row(title="data-bind=if:providerTemplate()==='TmplSoundcloud'")
+    .small-6.columns.pad6
+        input.bottom0#chkStripe(type="checkbox", title="data-bind=checked:chkStripe")
+        label(for="chkStripe") schmales Anzeigeformat (stripe)
+    .small-3.columns.pad6(title="data-bind=visible:chkStripe"): label(for="txtColor") Farbe Playbutton:
+    .small-3.columns(title="data-bind=visible:chkStripe"): +ColorPickerInput('txtColor')
+  .row(title="data-bind=if:providerTemplate()==='TmplFiddle'")
+    .small-3.columns.pad6: label Umfang:
+    .small-9.columns.pad6
+      .row
+        .small-3.columns
+          input#chkHtml(type="checkbox", title="data-bind=checked:chkHtml")
+          label(for="chkHtml") html
+        .small-3.columns
+          input#chkCss(type="checkbox", title="data-bind=checked:chkCss")
+          label(for="chkCss") css
+        .small-3.columns
+          input#chkJs(type="checkbox", title="data-bind=checked:chkJs")
+          label(for="chkJs") js
+        .small-3.columns
+          input#chkResult(type="checkbox", title="data-bind=checked:chkResult")
+          label(for="chkResult") result
+  .row(title="data-bind=if:providerTemplate()==='TmplFiddle'")
+    .small-3.columns.pad6: label(for="optColor") Farbschema:
+    .small-3.columns.end
+      select#optColor(name="optColor", title="data-bind=options:colorOptions, optionsText:'colorText', optionsValue:'colorValue', value:optColor")
+  .row(title="data-bind=if:providerTemplate()==='TmplBandcamp'")
+    .small-3.columns.pad6: label Layout:
+    .small-3.columns: select#optLayout(name="optLayout", title="data-bind=options:layoutOptions, value:optLayout")
+    .small-3.columns.pad6: label Artwork:
+    .small-3.columns: select#optArtwork(name="optArtwork", title="data-bind=options:artworkOptions, value:optArtwork")
+  .row(title="data-bind=if:providerTemplate()==='TmplBandcamp'")
+    .small-3.columns.pad6: label(for="txtBgColor") Hintergrundfarbe:
+    .small-3.columns: select#txtBgColor(title="data-bind=options:colorOptions, optionsText:'colorText', optionsValue:'colorValue', value:txtBgColor")
+    .small-3.columns.pad6: label(for="txtLinks") Linkfarbe:
+    .small-3.columns: +ColorPickerInput('txtLinks')
+  .row(title="data-bind=if:(providerTemplate()==='TmplBandcamp' && optLayout()==='standard')")
+    .small-6.columns.pad6
+      input#chkTracklist(type="checkbox", title="data-bind=checked:chkTracklist")
+      label(for="chkTracklist") Tracklist anzeigen
+    .small-3.columns.pad6: label(for="txtTracks", title="data-bind=visible:chkTracklist") Anzahl Tracks:
+    .small-3.columns: input#txtTracks(type="text", title="data-bind=textInput:txtTracks, visible:chkTracklist | data-!placeholder=Standard=2")
+  .row(title="data-bind=if:providerTemplate()==='TmplOther'")
+    .small-3.columns: label Poster:
+    .small-9.columns
+      input#chkPoster(type="checkbox", title="data-bind=checked:chkPoster")
+      label(for="chkPoster") Standbild anzeigen
+  .row(title="data-bind=if:providerTemplate()==='TmplOther', visible:chkPoster")
+    .small-3.columns.pad6: label Dateityp:
+    .small-9.columns.pad6
+      input#radJpg(type="radio", name="selPoster", value="jpg", title="data-bind=checked:selPoster")
+      label(for="radJpg") jpg
+      input#radGif(type="radio", name="selPoster", value="gif", title="data-bind=checked:selPoster")
+      label(for="radGif") gif
+      input#radPng(type="radio", name="selPoster", value="png", title="data-bind=checked:selPoster")
+      label(for="radPng") png
+      input#radBmp(type="radio", name="selPoster", value="bmp", title="data-bind=checked:selPoster")
+      label(for="radBmp") bmp
+fieldset
+  legend
+    i.fa.fa-code
+    span HTML-Code für Twoday
+  #fldElementCode
+#fldElementDisplay

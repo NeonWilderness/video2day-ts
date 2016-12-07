@@ -1,0 +1,24 @@
+doctype xml
+table(xmlns="http://query.yahooapis.com/v1/schema/table.xsd")
+  meta
+    author NeonWilderness
+    description HTML page that needs post data
+    sampleQuery <![CDATA[select * from {table} where url='http://urlex.org' and postdata="s={vevourl}" and xpath="//td/a"]]>
+    documentationURL
+  bindings
+    select(itemPath="", produces="XML")
+      urls: url {url}
+      inputs
+        key(id="url", type="xs:string", required="true", paramType="variable")
+        key(id="postdata", type="xs:string", required="true", paramType="variable")
+        key(id="xpath", type="xs:string", required="true", paramType="variable")
+      execute.
+        <![CDATA[
+        var myRequest = y.rest(url);
+        var data = myRequest.accept('text/html')
+            .contentType("application/x-www-form-urlencoded")
+            .post(postdata)
+            .response;
+        var xdata = y.xpath(data,xpath);
+        response.object = <postresult>{xdata}</postresult>;
+        ]]>

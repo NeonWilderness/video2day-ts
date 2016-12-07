@@ -1,0 +1,20 @@
+//- Dailymotion documentation of parameters
+p.
+  <b>Dailymotion</b> ist ein Videoanbieter. Folgender zusätzlicher Parameter ist möglich:
++parameter-start('dailymotion')
+p.text-right: a(href="#", title="data-bind=click:function(){toggle('#dailymotion-id')}") Wie finde ich die ID eines Dailymotion-Videos?
+#dailymotion-id(style="display:none")
+  h6.top20: strong Dailymotion-ID manuell ermitteln
+  p.
+    Sobald Sie die Einzelansicht des gewünschten Videos auf der Dailymotion-Seite aufgerufen haben, können Sie die benötigte ID
+    des Objekts aus mehreren Quellen ablesen/kopieren:
+  ol
+    li
+      | Oben aus der angezeigten Browser-URL:
+      .clearfix: img.googledrive(alt="videoload/dailymotion-id1.jpg")
+    li
+      | Weiter unten aus der angezeigten Kurz-URL:
+      .clearfix: img.googledrive(alt="videoload/dailymotion-id2.jpg")
+    li
+      | Unten aus der angezeigten iframe-Einbettungscode (diesen dazu am besten in einen Texteditor kopieren):
+      .clearfix: img.googledrive(alt="videoload/dailymotion-id3.jpg")

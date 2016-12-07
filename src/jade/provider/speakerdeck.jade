@@ -1,0 +1,30 @@
+//- Speakerdeck documentation of parameters
+p <b>Speakerdeck</b> ist eine Plattform für Präsentationen. Folgende Parameter sind möglich:
+h6.top20 <span class="label">slide</span> &mdash; Präsentation ab einer bestimmten Seite starten
+p.
+  Falls Sie die Speakerdeck-Präsentation nicht von Anfang an, sondern ab einer bestimmten Seite ("Slide") starten wollen,
+  können Sie dies mit dem <span class="code">slide</span>-Parameter einstellen. Im Parameterwert wird die gewünschte Startseite
+  spezifiziert. Das Videoload-Beispiel
++LiveView("speakerdeck <b>slide-3</b>", "{eine-speakerdeck-id}")
+p startet die Präsentation auf der dritten Seite.
+h6.top20: strong Beispiele
+p Es soll eine Speakerdeck-Präsentation mit der ID '23e87b703e9c0132341052932d7daf42' in einem Blogbeitrag eingebunden werden:
++LiveView("speakerdeck", "23e87b703e9c0132341052932d7daf42")
+p Soll die Präsentation ab Seite 2 starten, lautet der Videoload-Befehl:
++LiveView("speakerdeck slide-2", "23e87b703e9c0132341052932d7daf42")
+p.text-right: a(href="#", title="data-bind=click:function(){toggle('#speakerdeck-id')}") Wie finde ich die ID einer Speakerdeck-Präsentation?
+#speakerdeck-id(style="display:none")
+  h6.top20: strong Speakerdeck-ID manuell ermitteln
+  p Sobald Sie in der Einzelansicht der Speakerdeck-Präsentation sind, können Sie mit folgenden Schritten die ID ermitteln:
+  ol
+    li
+      | Klicken Sie im Bereich Share auf <span class="label">&lt; /&gt;Embed</span>:
+      .clearfix: img.googledrive(alt="videoload/speakerdeck-id1.jpg")
+    li
+      | Klicken Sie im angezeigten Popup-Fenster oben auf <em>Embed</em> und kopieren Sie dann den Embed-Code mit <span class="code">Strg-C</span>
+      | (Windows) oder <span class="code">Cmd-C</span> (Mac) in die Zwischenablage.
+      .clearfix: img.googledrive(alt="videoload/speakerdeck-id2.jpg")
+    li
+      | Öffnen Sie einen Texteditor (z.B. Notepad in Windows) und fügen Sie den Text aus der Zwischenablage ein (Strg-V in Windows, Cmd-V für Mac).
+      | Der blau markierte Text im Feld <em>data-id</em> entspricht der gesuchten ID.
+      .clearfix: img.googledrive(alt="videoload/speakerdeck-id3.jpg")

@@ -1,0 +1,22 @@
+//- vimeo documentation of parameters
+p.
+  <b>Vimeo</b> ist ein Videoanbieter. Er verfügt über keine besonderen Parameter.
+h6.top20: strong Beispiel
+p Es soll ein Vimeo-Video mit der ID '15759511' in einem Blogbeitrag eingebunden werden:
++LiveView("vimeo", "15759511")
+p.text-right: a(href="#", title="data-bind=click:function(){toggle('#vimeo-id')}") Wie finde ich die ID eines Vimeo-Videos?
+#vimeo-id(style="display:none")
+  h6.top20: strong Vimeo-ID manuell ermitteln
+  p.
+    Sobald Sie die Einzelansicht des gewünschten Videos auf der Vimeo-Seite aufgerufen haben, können Sie die benötigte ID
+    des Objekts aus verschiedenen Quellen ermitteln:
+  ol
+    li
+      | Oben aus der angezeigten Browser-URL (die einfachste Methode):
+      .clearfix: img.googledrive(alt="videoload/vimeo-id1.jpg")
+    li
+      | Alternativ klicken Sie auf das Symbol <span class="label">Share</span>:
+      .clearfix: img.googledrive(alt="videoload/vimeo-id2.jpg")
+    li
+      | danach können Sie die ID vom Ende des Links oder aus dem Einbettungsbefehl kopieren (am besten mithilfe einen Texteditors):
+      .clearfix: img.googledrive(alt="videoload/vimeo-id3.jpg")

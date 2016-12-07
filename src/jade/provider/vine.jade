@@ -1,0 +1,32 @@
+//- vine documentation of parameters
+p.
+  <b>Vine</b> ist ein Videoportal zum Austausch sehr kurzer Filmaufnahmen (6 Sekunden). Er verfügt über keine besonderen Parameter.
+h6.top20: strong Beispiel
+p Es soll ein Vine-Video mit der ID 'en37tTq6YZa' in einem Blogbeitrag eingebunden werden:
++LiveView("vine", "en37tTq6YZa")
+p.
+  Vine-Videoclips weisen meist die gleiche Höhe wie Breite auf, daher ist es ratsam, den Parameter <span class="code">ratio-1</span>
+  zu ergänzen, um das korrekte Aspektverhältnis einzustellen.
++LiveView("vine <b>ratio-1</b>", "en37tTq6YZa")
+p.text-right: a(href="#", title="data-bind=click:function(){toggle('#vine-id')}") Wie finde ich die ID eines Vine-Videos?
+#vine-id(style="display:none")
+  h6.top20: strong Vine-ID manuell ermitteln
+  p.
+    Sobald Sie in der Einzelansicht des gewünschten Videos auf der Vine-Seite sind, können Sie die benötigte ID
+    des Objekts aus verschiedenen Quellen ermitteln:
+  ol
+    li
+      | Oben aus der angezeigten Browser-URL (die einfachste Methode):
+      .clearfix: img.googledrive(alt="videoload/vine-id3.jpg")
+    li
+      | Alternativ finden Sie die ID unten im Einbettungscode:
+      .clearfix: img.googledrive(alt="videoload/vine-id4.jpg")
+  p.
+    In einer Vine-Channel-Sicht (fortlaufende Liste von Videoclips) gelangen Sie folgendermaßen in die Einzelansicht eines Videos:
+  ol
+    li
+      | Klicken Sie auf die Share-Schaltfläche:
+      .clearfix: img.googledrive(alt="videoload/vine-id1.jpg")
+    li
+      | Klicken Sie anschließend auf die Embed-Schaltfläche, um die Video-Einzelansicht aufzurufen:
+      .clearfix: img.googledrive(alt="videoload/vine-id2.jpg")
