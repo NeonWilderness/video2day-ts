@@ -23,6 +23,7 @@ import extend = require('extend-shallow');
 import loadscript = require('load-script');
 
 const flex: string = 'flex-video';
+const useVideoJsRelease = '5.12.6';
 
 export interface IGeneratorDefaults {
     addFlexVideoClass?: boolean;
@@ -55,7 +56,7 @@ export interface IProviders {
 }
 
 export class Framedispatcher {
-    version: string = '2.0';
+    version: string = '2.0.1';
     defaults: IGeneratorDefaults = {
         addFlexVideoClass: false,
         contentClass: 'storyContent',
@@ -145,21 +146,14 @@ export class Framedispatcher {
 
     private getInstanceOptions(instance: HTMLElement) : IInstanceOptions {
         let options: IInstanceOptions = {};
-        let option: string, value: string;
         let classList = new ClassListPolyfill(
                         instance.hasOwnProperty('classList') ?
                         instance.classList :
                         instance.className
                         ).classList;
         for (let item of classList) {
-            let i = item.indexOf('-');
-            if (i>=0){
-                option = item.substr(0,i);
-                value = item.substr(++i);
-            } else {
-                option = item;
-                value = '';
-            }
+            let [option, value] = item.split('-');
+            value = value || '';
             switch (option) {
                 case 'alt':
                 case 'artwork':
@@ -248,6 +242,7 @@ export class Framedispatcher {
 
     run(useroptions: IGeneratorDefaults){
         this.options = extend({}, this.defaults, useroptions || {});
+        this.log(`Video2day version ${this.version}`);
         this.log(this.options);
 
         if (this.options.debug) this.listProviders();
@@ -273,14 +268,14 @@ export class Framedispatcher {
         if (html5Videoplayer && this.options.useVideoJS) {
             if (typeof <any>window['videojs']==='undefined') {
                 let self = this;
-                loadscript('//vjs.zencdn.net/5.11.9/video.min.js', function (err) {
+                loadscript(`//vjs.zencdn.net/${useVideoJsRelease}/video.min.js`, function (err) {
                     if (err) {
                         console.log('>>>Error: videojs could not be loaded.');
                     }
                     else {
                         let styleSheet = document.createElement('link');
                         styleSheet.rel = 'stylesheet';
-                        styleSheet.href = '//vjs.zencdn.net/5.11.9/video-js.min.css';
+                        styleSheet.href = `//vjs.zencdn.net/${useVideoJsRelease}/video-js.min.css`;
                         document.getElementsByTagName('head')[0].appendChild(styleSheet);
                         self.setPosterSize();
                         self.log('Videojs/css successfully loaded.');
