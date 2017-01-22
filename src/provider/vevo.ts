@@ -6,7 +6,7 @@ import { frameTemplate, IInstanceOptions, Provider } from './generic';
 
 export class Vevo extends Provider {
 
-    source: string = 'http://cache.vevo.com/assets/html/embed.html?video={_id}&autoplay=0';
+    source: string = '//scache.vevo.com/assets/html/embed.html?video={_id}&autoplay=0';
 
     /**
      * Initialize the plugin ID

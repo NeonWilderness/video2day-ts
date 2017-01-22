@@ -6,7 +6,7 @@ import { frameTemplate, IInstanceOptions, Provider } from './generic';
 
 export class Funnyordie extends Provider {
 
-    source: string = 'http://www.funnyordie.com/embed/{_id}';
+    source: string = '//www.funnyordie.com/embed/{_id}';
 
     /**
      * Initialize the plugin ID

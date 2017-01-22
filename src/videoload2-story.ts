@@ -52,9 +52,10 @@ class Videoload2StoryViewmodel {
         let xml: string = 'https://dl.dropboxusercontent.com/u/16775880/js/videoload2/'; // fixme: move to rawgit!
         let link: string = this.shortLink().replace('vevo.ly', 'prod.vevo.ly');
         let query: string = encodeURIComponent(`use "${xml}posturl.xml" as htmlpost;select * from htmlpost where url="http://urlex.org" and postdata="s=${link}" and xpath="//td/a"`);
+        let queryStr: string = `https://query.yahooapis.com/v1/public/yql?q=${query}`;
         $.ajax({
             type: 'GET',
-            url: `http://query.yahooapis.com/v1/public/yql?q=${query}`,
+            url: queryStr,
             dataType: 'xml',
             context: this,
             success: function(response) {
