@@ -49,7 +49,7 @@ class Videoload2StoryViewmodel {
     }
 
     getVevoID(): void {
-        let xml: string = 'https://dl.dropboxusercontent.com/u/16775880/js/videoload2/'; // fixme: move to rawgit!
+        let xml: string = 'https://cdn.rawgit.com/NeonWilderness/video2day-ts/master/dist/'; // rawgit github reference
         let link: string = this.shortLink().replace('vevo.ly', 'prod.vevo.ly');
         let query: string = encodeURIComponent(`use "${xml}posturl.xml" as htmlpost;select * from htmlpost where url="http://urlex.org" and postdata="s=${link}" and xpath="//td/a"`);
         let queryStr: string = `https://query.yahooapis.com/v1/public/yql?q=${query}`;
@@ -82,7 +82,7 @@ class Videoload2StoryViewmodel {
     }
 
     providerImgUrl(provider: string): string {
-        return `https://dl.dropboxusercontent.com/u/16775880/images/videoload/${provider}.png`;
+        return `http://www.s522667522.online.de/public/images/videoload/${provider}.png`;
     }
 
     resetForm(): void {
