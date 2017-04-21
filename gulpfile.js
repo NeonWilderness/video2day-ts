@@ -3,6 +3,7 @@ var cheerio = require('cheerio');
 var del = require('del');
 var fs = require('fs');
 var gulp = require('gulp');
+var jade = require('gulp-jade');
 var gutil = require('gulp-util');
 var htmlmin = require('gulp-htmlmin');
 var modifyFile = require('gulp-modify-file');
@@ -14,6 +15,16 @@ var webpackConfig = require('./webpack.config.js');
 var production = gutil.env.production || gutil.env.p || false;
 
 gulp.task( 'default', ['webpack', 'htmlmin', 'deploy'], function(){
+});
+
+gulp.task('templates', function() {
+  var locals = {};
+  return gulp.src(['./src/jade/test*.jade', './src/jade/video*.jade', './test/testpage.jade'])
+    .pipe(jade({
+      locals: locals,
+      pretty: true
+    }))
+    .pipe(gulp.dest('./dist/'))
 });
 
 gulp.task('webpack', function(callback) {
@@ -37,7 +48,7 @@ gulp.task('webpack', function(callback) {
     });
 });
 
-gulp.task( 'htmlmin', function(){
+gulp.task( 'htmlmin', ['templates'], function(){
     return gulp.src(['./dist/teststory.html', './dist/testtool.html'])
         .pipe(bytediff.start())
         .pipe(htmlmin({collapseWhitespace: true, decodeEntities: false}))
@@ -84,7 +95,7 @@ gulp.task( 'deploy', ['webpack', 'htmlmin'], function(){
     for (var i=0, len=keys.length; i<len; i++) {
         var name = './dist/' + keys[i];
         entries.push( name + '.js');
-        if (!production) entries.push( name + '.js.map');
+        if (!production) entries.push( name + '.js.map', './dist/test*.html');
     }
 
     return gulp.src( entries ).pipe(gulp.dest(targetDir));

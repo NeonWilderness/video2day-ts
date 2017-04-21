@@ -2,7 +2,7 @@
  * Videoload-Version2-Tool: analyze and transpile a provider's iframe command to the appropriate videoload2 html
  */
 
-require('./videoload2-tool.less');
+import './videoload2-tool.less';
 import { IInstanceOptions } from './provider/generic';
 import { IProviders } from './video2day';
 import {} from 'jquery';
@@ -14,6 +14,7 @@ import { ToolDctptv } from './provider/tool/dctptv';
 import { ToolGiphy } from './provider/tool/giphy';
 import { ToolJsFiddle } from './provider/tool/jsfiddle';
 import { ToolLiveleak } from './provider/tool/liveleak';
+import { ToolSlides } from './provider/tool/slides';
 import { ToolSlideshare } from './provider/tool/slideshare';
 import { ToolSpeakerdeck } from './provider/tool/speakerdeck';
 import { ToolSoundcloud } from './provider/tool/soundcloud';
@@ -52,6 +53,7 @@ enum TemplateTypes {
     TmplGiphy,
     TmplFiddle,
     TmplSlide,
+    TmplSlides,
     TmplSoundcloud,
     TmplOther
 }
@@ -159,6 +161,12 @@ class Videoload2ToolViewmodel {
                 id: 'metacafe.com',
                 vmatch: '\\/embed\\/([0-9]*)'
             },
+            slides: {
+                name: 'Slides',
+                template: TemplateTypes.TmplSlides,
+                id: 'slides.com',
+                vmatch: 'com\\/(.*?)\\/embed'
+            },
             slideshare: {
                 name: 'Slideshare',
                 template: TemplateTypes.TmplSlide,
@@ -221,7 +229,7 @@ class Videoload2ToolViewmodel {
         this.optProvider.subscribe( this.injectProviderTemplate, this );
         this.providerTemplate = ko.observable(TemplateTypes[this.providers[initProvider].template]);
         this.providerImgUrl = ko.computed( () => {
-            return `https://dl.dropboxusercontent.com/u/16775880/images/videoload/${this.optProvider()}.png`;
+            return `http://www.s522667522.online.de/public/images/videoload/${this.optProvider()}.png`;
         });
         this.labelProvider = ko.observable(`${this.providers[this.optProvider()].name}-ID:`);
         this.selWidth = ko.observable('full');
@@ -436,6 +444,7 @@ class Videoload2ToolViewmodel {
                 case 'giphy':       this.providerHandler = new ToolGiphy(this); break;
                 case 'jsfiddle':    this.providerHandler = new ToolJsFiddle(this); break;
                 case 'liveleak':    this.providerHandler = new ToolLiveleak(this); break;
+                case 'slides':      this.providerHandler = new ToolSlides(this); break;
                 case 'slideshare':  this.providerHandler = new ToolSlideshare(this); break;
                 case 'speakerdeck': this.providerHandler = new ToolSpeakerdeck(this); break;
                 case 'soundcloud':  this.providerHandler = new ToolSoundcloud(this); break;

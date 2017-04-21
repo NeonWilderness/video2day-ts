@@ -1,6 +1,6 @@
 'use strict';
 
-require('./videoload2.less');
+import './videoload2.less';
 import * as Video2Day from './video2day';
 
 (function() {

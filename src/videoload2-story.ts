@@ -1,7 +1,7 @@
 /**
  * Videoload-Version2-Story: support script for the Videoload2 documentation story
  */
-require('./videoload2-story.less');
+import './videoload2-story.less';
 import {IProviders} from './video2day';
 import {} from 'jquery';
 import {} from 'knockout';
@@ -26,6 +26,7 @@ class Videoload2StoryViewmodel {
             jsfiddle: 'https://jsfiddle.net/',
             liveleak: 'http://www.liveleak.com/',
             metacafe: 'http://www.metacafe.com/',
+            slides: 'http://slides.com/',
             slideshare: 'http://de.slideshare.net/',
             soundcloud: 'https://soundcloud.com/',
             speakerdeck: 'https://speakerdeck.com/',

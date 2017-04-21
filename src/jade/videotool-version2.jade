@@ -77,7 +77,7 @@ fieldset#fldOptions(style="display:none")
       input.bottom0#chkAsImage(type="checkbox", title="data-bind=checked:chkAsImage")
       label(for="chkAsImage", style="margin-right:0") als Bild einbinden
     .small-9.columns: input#txtAlt(type="text", title="data-bind=textInput:txtAlt, visible:chkAsImage | data-!placeholder=Bildtext für alt-Parameter")
-  .row(title="data-bind=if:providerTemplate()==='TmplSlide'")
+  .row(title="data-bind=if:(providerTemplate()==='TmplSlide' || providerTemplate()==='TmplSlides')")
     .small-3.columns.pad6: label(for="txtSlide") Startseite:
     .small-3.columns.end: input.bottom0#txtSlide(type="text", title="data-bind=textInput:txtSlide")
   .row(title="data-bind=if:providerTemplate()==='TmplSoundcloud'")
@@ -102,7 +102,7 @@ fieldset#fldOptions(style="display:none")
         .small-3.columns
           input#chkResult(type="checkbox", title="data-bind=checked:chkResult")
           label(for="chkResult") result
-  .row(title="data-bind=if:providerTemplate()==='TmplFiddle'")
+  .row(title="data-bind=if:(providerTemplate()==='TmplFiddle' || providerTemplate()==='TmplSlides')")
     .small-3.columns.pad6: label(for="optColor") Farbschema:
     .small-3.columns.end
       select#optColor(name="optColor", title="data-bind=options:colorOptions, optionsText:'colorText', optionsValue:'colorValue', value:optColor")

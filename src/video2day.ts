@@ -9,6 +9,7 @@ import { Giphy } from './provider/giphy';
 import { Jsfiddle } from './provider/jsfiddle';
 import { Liveleak } from './provider/liveleak';
 import { Metacafe } from './provider/metacafe';
+import { Slides } from './provider/slides';
 import { Slideshare } from './provider/slideshare';
 import { Soundcloud } from './provider/soundcloud';
 import { Speakerdeck } from './provider/speakerdeck';
@@ -23,7 +24,7 @@ import extend = require('extend-shallow');
 import loadscript = require('load-script');
 
 const flex: string = 'flex-video';
-const useVideoJsRelease = '5.12.6';
+const useVideoJsRelease = '5.19.1';
 
 export interface IGeneratorDefaults {
     addFlexVideoClass?: boolean;
@@ -45,6 +46,7 @@ export interface IProviders {
     jsfiddle: any;
     liveleak: any;
     metacafe: any;
+    slides: any;
     slideshare: any;
     soundcloud: any;
     speakerdeck: any;
@@ -56,7 +58,7 @@ export interface IProviders {
 }
 
 export class Framedispatcher {
-    version: string = '2.0.2';
+    version: string = '2.1.0';
     defaults: IGeneratorDefaults = {
         addFlexVideoClass: false,
         contentClass: 'storyContent',
@@ -77,6 +79,7 @@ export class Framedispatcher {
         jsfiddle: new Jsfiddle,
         liveleak: new Liveleak,
         metacafe: new Metacafe,
+        slides: new Slides,
         slideshare: new Slideshare,
         soundcloud: new Soundcloud,
         speakerdeck: new Speakerdeck,

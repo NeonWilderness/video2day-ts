@@ -1,10 +1,9 @@
 //- Twoday Blog story to document videoload's version 2
-- var Stand = 'Januar 2017'
-- var Anbieter = '16'
+- var Stand = 'April 2017'
+- var Anbieter = '17'
 - var Domain = 'neonwilderness'
-//- var CDNUrl = 'https://dl.dropboxusercontent.com/u/16775880/js/videoload2'
-- var CDNUrl = 'https://static.twoday.net/cdn/files'
-//- var CDNUrl = '.'
+//- var CDNUrl = 'https://static.twoday.net/cdn/files'
+- var CDNUrl = '.'
 - var StoryUrl = 'https://' + Domain + '.twoday.net/stories/'
 - var VideoToolUrl = StoryUrl + 'videotool2'
 mixin SimpleCopy(id)
@@ -101,7 +100,7 @@ p.
 p.text-center: span.sublabel Klick auf Icon öffnet die jeweilige Anbieterseite
 p.
   Videoload bietet nicht nur Zugriff auf die wichtigsten Videoanbieter, sondern stellt auch Audioinhalte (z.B. via Bandcamp, Soundcloud),
-  Präsentationen (z.B. via Slideshare, Speakerdeck), GIFs (via Giphy) oder Code-Snippets (via Jsfiddle) bereit.
+  Präsentationen (z.B. via Slides, Slideshare, Speakerdeck), GIFs (via Giphy) oder Code-Snippets (via Jsfiddle) bereit.
 .accComponent.accDark.accChevron
   h2.accHeadline: a(href="#") Erstmalige Installation
   .accElement: .accContent
@@ -210,6 +209,7 @@ p.
       #tab-jsfiddle: include ./provider/jsfiddle.jade
       #tab-liveleak: include ./provider/liveleak.jade
       #tab-metacafe: include ./provider/metacafe.jade
+      #tab-slides: include ./provider/slides.jade
       #tab-slideshare: include ./provider/slideshare.jade
       #tab-soundcloud: include ./provider/soundcloud.jade
       #tab-speakerdeck: include ./provider/speakerdeck.jade

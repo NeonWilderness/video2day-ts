@@ -1,6 +1,6 @@
 {
   "name": "video2day",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "Video/iframe generator for the Twoday blogging platform",
   "main": "video2day.js",
   "repository": {
@@ -19,30 +19,34 @@
   "author": "NeonWilderness",
   "license": "MIT",
   "dependencies": {
-    "knockout": "^3.4.0"
+    "@types/jquery": "^2.0.41",
+    "@types/knockout": "^3.4.40",
+    "knockout": "^3.4.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "cheerio": "^0.22.0",
-    "css-loader": "^0.23.1",
+    "css-loader": "^0.28.0",
     "del": "^2.2.1",
     "extend-shallow": "^2.0.1",
     "gulp": "^3.9.1",
     "gulp-bytediff": "^1.0.0",
     "gulp-htmlmin": "^3.0.0",
+    "gulp-jade": "^1.1.0",
     "gulp-modify-file": "^0.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-util": "^3.0.7",
     "jshint": "^2.9.2",
-    "jshint-loader": "^0.8.3",
+    "jshint-loader": "^0.8.4",
     "less": "^2.7.1",
-    "less-loader": "^2.2.3",
+    "less-loader": "^4.0.3",
     "load-script": "^1.0.0",
+    "local-web-server": "^1.2.7",
     "mocha": "^3.0.2",
-    "smoothscroll": "^0.2.2",
-    "style-loader": "^0.13.1",
-    "ts-loader": "^0.8.2",
-    "typescript": "^1.8.10",
-    "webpack": "^1.13.1"
+    "smoothscroll": "^0.3.0",
+    "style-loader": "^0.16.1",
+    "ts-loader": "^2.0.3",
+    "typescript": "^2.2.2",
+    "webpack": "^2.4.1"
   }
 }

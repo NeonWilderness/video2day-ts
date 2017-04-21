@@ -15,19 +15,41 @@ module.exports = {
     ],
     devtool: 'source-map',
     resolve: {
-        extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
+        extensions: ['.css', '.less', '.js', '.json', '.ts']
     },
     plugins: [
-        /* new webpack.optimize.UglifyJsPlugin() */
+        /* new UglifyJsPlugin({
+            sourceMap: false,
+            compress: { warnings: false }
+         }) */
     ],
     module: {
-        preloaders: [
-            {test: /\.js$/, loader: 'jshint', exclude: '/node_modules'}
-        ],
-        loaders: [
-            {test: /\.less$/, loader: 'style-loader!css-loader!less-loader?compress'},
-            {test: /\.css$/, loader: 'style-loader!css-loader'},
-            {test: /\.ts$/, loader: 'ts-loader'}
+        rules: [
+            {
+                test: /\.js$/,
+                enforce: 'pre',
+                loader: 'jshint-loader',
+                exclude: '/node_modules'
+            },
+            {
+                test: /\.less$/, 
+                use: [
+                    { loader: 'style-loader' }, 
+                    { loader: 'css-loader' }, 
+                    { loader: 'less-loader', options: {compress: true} }
+                ]
+            },
+            {
+                test: /\.css$/, 
+                use: [
+                    { loader: 'style-loader' }, 
+                    { loader: 'css-loader' }
+                ]
+            },
+            {
+                test: /\.ts$/, 
+                loader: 'ts-loader'
+            },
         ]
     }
 };

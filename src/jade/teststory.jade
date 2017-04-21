@@ -1,4 +1,5 @@
-- var jsFolder = "https://dl.dropboxusercontent.com/u/16775880/js/"
+- var jsFolder = "./"
+- var staticURL = "https://static.twoday.net/cdn/files/"
 doctype html
 html(lang="de")
   head
@@ -7,14 +8,14 @@ html(lang="de")
     meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     script(type="text/javascript", src="http://static.twoday.net/sys.files/js/jquery/jquery.min.js")
-    script(type="text/javascript", src="http://static.twoday.net/cdn/files/fastclick-min-js.js")
+    script(type="text/javascript", src="#{staticURL}fastclick-min-js.js")
     link(rel="stylesheet", href="http://neonwilderness.twoday.net/main.css")
     link(rel="stylesheet", href="http://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css")
-    link(rel="stylesheet", href="http://static.twoday.net/cdn/files/foundation55-min-css.css")
-    link(rel="stylesheet", href="http://static.twoday.net/cdn/files/awesomeeditorcore-min-css.css")
-    link(rel="stylesheet", href="https://dl.dropboxusercontent.com/u/16775880/css/rainy.min.css")
-    link(rel="stylesheet", href="http://static.twoday.net/cdn/files/snippet-min-css.css")
-    link(rel="stylesheet", href="http://static.twoday.net/cdn/files/accordiontabs-min-css.css")
+    link(rel="stylesheet", href="#{staticURL}foundation55-min-css.css")
+    link(rel="stylesheet", href="#{staticURL}awesomeeditorcore-min-css.css")
+    link(rel="stylesheet", href="#{staticURL}rainy-min-css.css")
+    link(rel="stylesheet", href="#{staticURL}snippet-min-css.css")
+    link(rel="stylesheet", href="#{staticURL}accordiontabs-min-css.css")
   body
     .inner-wrap
       #foundation5.container
@@ -23,16 +24,16 @@ html(lang="de")
             h3.storyTitle Videos reloaded - Die Videoload-Version 2
             .storyContent: include ./videoload-version2.jade
           #sidebar.large-3
-    script(src="http://static.twoday.net/cdn/files/gdimages-min-js.js")
+    script(src="#{staticURL}gdimages-min-js.js")
     script.
       $('.googledrive').gdimages().init({
-        gdDomain: 'https://dl.dropboxusercontent.com',
-        gdRootFolder: '/u/16775880',
+        gdDomain: 'http://www.s522667522.online.de',
+        gdRootFolder: '/public',
         gdSubFolder: 'images',
         addClass: 'neonimg th',
         titleContent: 'keep'
         });
-    script(src="http://static.twoday.net/cdn/files/foundation55-min-js.js")
+    script(src="#{staticURL}foundation55-min-js.js")
     script.
       $('[title^=data-]').foundation2day().init({
         validateDataAttribs: true,
@@ -56,13 +57,13 @@ html(lang="de")
           }
         }
       });
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js")
-    script(src="http://static.twoday.net/cdn/files/storyscript-min-js.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js")
+    script(src="#{staticURL}storyscript-min-js.js")
     script $('.storyScript').storyScript().init();
-    script(src="http://static.twoday.net/cdn/files/snippet-min-js.js")
+    script(src="#{staticURL}snippet-min-js.js")
     script.
-      var sParam = {style: 'golden', showNum: false, clipboard: 'http://static.twoday.net/cdn/files/ZeroClipboard.swf'};
+      var sParam = {style: 'golden', showNum: false, clipboard: '#{staticURL}ZeroClipboard.swf'};
       $('pre.html').snippet('html', sParam); $('pre.js').snippet('javascript', sParam);
-    script(src="http://static.twoday.net/cdn/files/accordiontabs-min-js.js")
-    script(src!="#{jsFolder}videoload2/videoload2.js")
+    script(src="#{staticURL}accordiontabs-min-js.js")
+    script(src!="#{jsFolder}videoload2.js")
     script(type="text/javascript") video2day.run({debug: true});
