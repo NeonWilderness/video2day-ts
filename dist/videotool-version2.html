@@ -95,12 +95,26 @@
       <input id="txtAlt" type="text" title="data-bind=textInput:txtAlt, visible:chkAsImage | data-!placeholder=Bildtext für alt-Parameter"/>
     </div>
   </div>
-  <div title="data-bind=if:(providerTemplate()==='TmplSlide' || providerTemplate()==='TmplSlides')" class="row">
+  <div title="data-bind=if:providerTemplate()==='TmplSlide'" class="row">
     <div class="small-3 columns pad6">
       <label for="txtSlide">Startseite:</label>
     </div>
     <div class="small-3 columns end">
       <input id="txtSlide" type="text" title="data-bind=textInput:txtSlide" class="bottom0"/>
+    </div>
+  </div>
+  <div title="data-bind=if:providerTemplate()==='TmplSlides'" class="row">
+    <div class="small-3 columns pad6">
+      <label for="txtSlide">Startseite:</label>
+    </div>
+    <div class="small-3 columns">
+      <input id="txtSlide" type="text" title="data-bind=textInput:txtSlide" class="bottom0"/>
+    </div>
+    <div class="small-3 columns pad6">
+      <label for="optColor">Farbschema:</label>
+    </div>
+    <div class="small-3 columns">
+      <select id="optColor" name="optColor" title="data-bind=options:colorOptions, optionsText:'colorText', optionsValue:'colorValue', value:optColor"></select>
     </div>
   </div>
   <div title="data-bind=if:providerTemplate()==='TmplSoundcloud'" class="row">
@@ -147,7 +161,7 @@
       </div>
     </div>
   </div>
-  <div title="data-bind=if:(providerTemplate()==='TmplFiddle' || providerTemplate()==='TmplSlides')" class="row">
+  <div title="data-bind=if:providerTemplate()==='TmplFiddle'" class="row">
     <div class="small-3 columns pad6">
       <label for="optColor">Farbschema:</label>
     </div>

@@ -24,10 +24,12 @@
     "knockout": "^3.4.2"
   },
   "devDependencies": {
+    "@types/request-promise": "^4.1.33",
     "chai": "^3.5.0",
     "cheerio": "^0.22.0",
     "css-loader": "^0.28.0",
     "del": "^2.2.1",
+    "dotenv-safe": "^4.0.3",
     "extend-shallow": "^2.0.1",
     "gulp": "^3.9.1",
     "gulp-bytediff": "^1.0.0",
@@ -43,6 +45,8 @@
     "load-script": "^1.0.0",
     "local-web-server": "^1.2.7",
     "mocha": "^3.0.2",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0",
     "smoothscroll": "^0.3.0",
     "style-loader": "^0.16.1",
     "ts-loader": "^2.0.3",

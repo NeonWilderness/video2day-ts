@@ -11,7 +11,7 @@ var rename = require('gulp-rename');
 var webpack = require('webpack');
 var webpackConfig = require('./webpack.config.js');
 
-//- gulp parameter --production or -p initiates webpack's production version (no source maps, minified JS)
+//- gulp --production | -p initiates webpack's production version (no source maps, minified JS)
 var production = gutil.env.production || gutil.env.p || false;
 
 gulp.task( 'default', ['webpack', 'htmlmin', 'deploy'], function(){

@@ -1,7 +1,9 @@
+.env
 .idea
 .vscode/*.json
 dist/test*.html
 dist/*.map
 node_modules
 src/provider/addprovider.md
+test/list*.js
 typings
