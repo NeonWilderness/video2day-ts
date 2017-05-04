@@ -19,11 +19,13 @@
   "author": "NeonWilderness",
   "license": "MIT",
   "dependencies": {
-    "@types/jquery": "^2.0.41",
-    "@types/knockout": "^3.4.40",
     "knockout": "^3.4.2"
   },
   "devDependencies": {
+    "@types/chai": "^3.5.2",
+    "@types/jquery": "^2.0.41",
+    "@types/knockout": "^3.4.40",
+    "@types/mocha": "^2.2.41",
     "@types/request-promise": "^4.1.33",
     "chai": "^3.5.0",
     "cheerio": "^0.22.0",

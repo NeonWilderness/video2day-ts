@@ -155,8 +155,7 @@ export class Framedispatcher {
                         instance.className
                         ).classList;
         for (let item of classList) {
-            let [option, value] = item.split('-');
-            value = value || '';
+            let [option, value = ''] = item.split('-');
             switch (option) {
                 case 'alt':
                 case 'artwork':

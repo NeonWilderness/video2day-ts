@@ -17,16 +17,6 @@ var production = gutil.env.production || gutil.env.p || false;
 gulp.task( 'default', ['webpack', 'htmlmin', 'deploy'], function(){
 });
 
-gulp.task('templates', function() {
-  var locals = {};
-  return gulp.src(['./src/jade/test*.jade', './src/jade/video*.jade', './test/testpage.jade'])
-    .pipe(jade({
-      locals: locals,
-      pretty: true
-    }))
-    .pipe(gulp.dest('./dist/'))
-});
-
 gulp.task('webpack', function(callback) {
 
     if (production){
@@ -46,6 +36,16 @@ gulp.task('webpack', function(callback) {
         gutil.log('[webpack]', stats.toString({}));
         callback();
     });
+});
+
+gulp.task('templates', function(){
+  var locals = {};
+  return gulp.src(['./src/jade/test*.jade', './src/jade/video*.jade', './test/testpage.jade'])
+    .pipe(jade({
+      locals: locals,
+      pretty: true
+    }))
+    .pipe(gulp.dest('./dist/'))
 });
 
 gulp.task( 'htmlmin', ['templates'], function(){

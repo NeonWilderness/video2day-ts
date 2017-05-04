@@ -26,7 +26,7 @@ class Videoload2StoryViewmodel {
             jsfiddle: 'https://jsfiddle.net/',
             liveleak: 'http://www.liveleak.com/',
             metacafe: 'http://www.metacafe.com/',
-            slides: 'http://slides.com/',
+            slides: 'https://slides.com/',
             slideshare: 'http://de.slideshare.net/',
             soundcloud: 'https://soundcloud.com/',
             speakerdeck: 'https://speakerdeck.com/',
