@@ -15,21 +15,19 @@ p.text-right: a(href="#", title="data-bind=click:function(){toggle('#vevo-id')}"
       | Oben aus der angezeigten Browser-URL (die einfachste Methode):
       .clearfix: img.googledrive(alt="videoload/vevo-id1.jpg")
     li
-      p.
-        Leider bietet Vevo keinen direkten Embed-Code mehr an. Mit Hilfe eines kleinen Dekodierungstools lässt sich die
-        gesuchte ID jedoch aus der Vevo-Short-URL extrahieren. Falls Sie also nur eine Vevo-Short-URL haben, können Sie
-        diese in das Eingabefeld unten hineinkopieren. Das Tool wird Ihnen dann die gesuchte ID anzeigen.
-      p.
-        Die Vevo-Short-URL beginnt stets mit <b>http://vevo.ly/</b>. Sie erhalten Sie z.B. auch, wenn Sie unter dem
-        Video auf <span class="label">Teilen</span> klicken:
+      | Alternativ klicken Sie auf das Symbol <span class="label">Teilen</span> und anschließend auf <span class="label">#{lt}/#{gt} Embed Code</span> :
       .clearfix: img.googledrive(alt="videoload/vevo-id2.jpg")
-      p danach auf <span class="label">Share Link</span>:
+    li
+      | Im folgenden Bildschirm deaktivieren Sie Autoplay und den ergänzenden Text durch zweimaligen Klick auf "Nein",
+      | danach kopieren Sie den iframe-Befehl über die unten angezeigte Schaltfläche:
       .clearfix: img.googledrive(alt="videoload/vevo-id3.jpg")
-      p um dann die angezeigte Vevo-Short-URL zu kopieren:
-      .clearfix: img.googledrive(alt="videoload/vevo-id4.jpg")
+    li.
+      Mit Hilfe eines kleinen Dekodierungstools können Sie auch eine Vevo-Short-Url (vevo.ly/&hellip;)
+      entschlüsseln und die gesuchte ID extrahieren. Geben Sie die Vevo-Short-URL in das Eingabefeld 
+      unten ein. Das Tool wird Ihnen dann die gesuchte ID anzeigen.
   h6.top20: strong Tool: Video-ID einer Vevo-Short-URL dekodieren
   p(style="font-size:0.9em").
-    Bitte kopieren Sie eine Vevo-Short-URL in das nachstehende Eingabefeld. Ist die Kurz-URL gültig, wird die nebenstehende
+    Falls Sie eine Vevo-Short-URL haben, kopieren Sie diese in das nachstehende Eingabefeld. Ist die Kurz-URL gültig, wird die nebenstehende
     Schaltfläche aktiviert. Nach einem Klick darauf wird die gesuchte ID des Videos angezeigt.
   .row
     .small-12.medium-6.columns

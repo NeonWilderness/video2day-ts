@@ -60,7 +60,7 @@ export interface IProviders {
 }
 
 export class Framedispatcher {
-    version: string = '2.1.0';
+    version: string = '2.2.0';
     defaults: IGeneratorDefaults = {
         addFlexVideoClass: false,
         contentClass: 'storyContent',

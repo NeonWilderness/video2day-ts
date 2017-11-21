@@ -195,7 +195,7 @@ class Videoload2ToolViewmodel {
                 name: 'Vevo',
                 template: TemplateTypes.NoTemplate,
                 id: 'vevo.com',
-                vmatch: '\\?video=(.*)\\&'
+                vmatch: 'isrc=([0-9a-zA-Z]*)'
             },
             vimeo: {
                 name: 'Vimeo',
