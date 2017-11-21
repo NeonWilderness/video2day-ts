@@ -131,6 +131,12 @@ class Videoload2ToolViewmodel {
                 id: 'dctp.tv',
                 vmatch: '\\/filme\\/(.*)\\/embed'
             },
+            filmstarts: {
+                name: 'Filmstarts',
+                template: TemplateTypes.NoTemplate,
+                id: 'filmstarts.de',
+                vmatch: 'cmedia=([0-9]*)'
+            },
             funnyordie: {
                 name: 'FunnyOrDie',
                 template: TemplateTypes.NoTemplate,
@@ -578,7 +584,7 @@ class Videoload2ToolViewmodel {
         ko.applyBindings( vm );
 
         // load colorpicker helper script
-        loadscript('//cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.min.js', function (err) {
+        loadscript('//cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.min.js', {}, function (err) {
             if (err) console.log('>>>Error: jscolor could not be loaded.');
         });
 

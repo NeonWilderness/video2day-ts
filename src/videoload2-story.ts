@@ -21,6 +21,7 @@ class Videoload2StoryViewmodel {
             bandcamp: 'http://bandcamp.com/',
             dailymotion: 'http://www.dailymotion.com/',
             dctptv: 'http://www.dctp.tv/',
+            filmstarts: 'http://www.filmstarts.de/',
             funnyordie: 'http://www.funnyordie.com/',
             giphy: 'http://giphy.com/',
             jsfiddle: 'https://jsfiddle.net/',
@@ -121,7 +122,7 @@ class Videoload2StoryViewmodel {
         // on each click of a tab button
         $('ul.tabs>li').click( function() {
             // scroll to the beginning of the tab element
-            vm.scrollTo(`#${this.parentNode.id}`);
+            vm.scrollTo('#providerTabs');
             // and close all open "how to find ID"-sections
             let providers = vm.providerNames();
             for(let i=0, len=providers.length; i<len; i++){

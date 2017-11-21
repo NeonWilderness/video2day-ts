@@ -1,0 +1,24 @@
+//- filmstarts documentation of parameters
+p.
+  <b>FILMSTARTS.de</b> ist ein führendes deutsches Online-Magazine rund um das Medium Film. 
+  Bei der Einbindung von Film-Trailern gibt es außer der Film-ID keine besonderen Parameter.
+h6.top20: strong Beispiel
+p Es soll ein Filmstarts-Trailer mit der ID '19235661' in einem Blogbeitrag eingebunden werden:
++LiveView("filmstarts", "19235661")
+p.text-right: a(href="#", title="data-bind=click:function(){toggle('#filmstarts-id')}") Wie finde ich die ID eines filmstarts-Videos?
+#filmstarts-id(style="display:none")
+  h6.top20: strong Filmstarts-ID manuell ermitteln
+  p.
+    Sobald Sie die Einzelansicht des gewünschten Videos auf der filmstarts-Seite aufgerufen haben, können Sie die benötigte ID
+    des Objekts aus verschiedenen Quellen ermitteln:
+  ol
+    li
+      | Oben aus der angezeigten Browser-URL (die einfachste Methode):
+      .clearfix: img.googledrive(alt="videoload/filmstarts-id1.jpg")
+    li
+      | Alternativ klicken Sie auf das Symbol <span class="label">TEILEN</span> und danach auf <span class="label">#{lt}/#{gt} EMBED</span>:
+      .clearfix: img.googledrive(alt="videoload/filmstarts-id2.jpg")
+    li
+      | Der Einbettungsbefehl ist damit in die Zwischenablage kopiert und kann in einen Texteditor eingefügt werden.
+      | Der markierte Text entspricht der ID.
+      .clearfix: img.googledrive(alt="videoload/filmstarts-id3.jpg")

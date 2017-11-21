@@ -27,10 +27,17 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
+                exclude: /node_modules/,
                 enforce: 'pre',
-                loader: 'jshint-loader',
-                exclude: '/node_modules'
+                use: {
+                    loader: 'jshint-loader',
+                    options: { asi: true, esversion: 6, sub: true }
+                  }
             },
+			{
+				test: /\.json$/,
+				use: 'json-loader'
+			},
             {
                 test: /\.less$/, 
                 use: [
@@ -47,9 +54,10 @@ module.exports = {
                 ]
             },
             {
-                test: /\.ts$/, 
+                test: /\.ts$/,
+                exclude: /node_modules/, 
                 loader: 'ts-loader'
-            },
+            }
         ]
     }
 };

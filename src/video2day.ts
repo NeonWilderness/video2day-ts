@@ -4,6 +4,7 @@ import { IInstanceOptions, FixedHeightAttribute, FixedWidthAttribute, FixedRatio
 import { Bandcamp } from './provider/bandcamp';
 import { Dailymotion } from './provider/dailymotion';
 import { Dctptv } from './provider/dctptv';
+import { Filmstarts } from './provider/filmstarts';
 import { Funnyordie } from './provider/funnyordie';
 import { Giphy } from './provider/giphy';
 import { Jsfiddle } from './provider/jsfiddle';
@@ -41,6 +42,7 @@ export interface IProviders {
     bandcamp: any;
     dailymotion: any;
     dctptv: any;
+    filmstarts: any;
     funnyordie: any;
     giphy: any;
     jsfiddle: any;
@@ -74,6 +76,7 @@ export class Framedispatcher {
         bandcamp: new Bandcamp,
         dailymotion: new Dailymotion,
         dctptv: new Dctptv,
+        filmstarts: new Filmstarts,
         funnyordie: new Funnyordie,
         giphy: new Giphy,
         jsfiddle: new Jsfiddle,
@@ -270,7 +273,7 @@ export class Framedispatcher {
         if (html5Videoplayer && this.options.useVideoJS) {
             if (typeof <any>window['videojs']==='undefined') {
                 let self = this;
-                loadscript(`//vjs.zencdn.net/${useVideoJsRelease}/video.min.js`, function (err) {
+                loadscript(`//vjs.zencdn.net/${useVideoJsRelease}/video.min.js`, {}, function (err) {
                     if (err) {
                         console.log('>>>Error: videojs could not be loaded.');
                     }

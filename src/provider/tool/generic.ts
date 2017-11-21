@@ -77,7 +77,7 @@ export class ToolProvider {
     generateDiv() : string {
         // build width param
         if (this.vm.selWidth()==='pixel') {
-            let pixel = this.vm.txtPixel();
+            let pixel: string = this.vm.txtPixel();
             if (!$.isNumeric(pixel)) {
                 this.vm.errIframe('Bitte geben Sie eine gültige (numerische) Breite in Pixel sein!')
             } else {
@@ -97,7 +97,7 @@ export class ToolProvider {
         }
         // build ratio param
         if (this.vm.selRatio()!==n169.toString()) {
-            let ratio = this.vm.txtRatio().replace(/,/g,'.');
+            let ratio: string = this.vm.txtRatio().replace(/,/g,'.');
             if (!$.isNumeric(ratio)) {
                 this.vm.errIframe('Bitte machen Sie eine gültige Angabe für das gewünschte Aspektverhältnis!')
             } else {
