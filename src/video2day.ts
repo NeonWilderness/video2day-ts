@@ -60,7 +60,7 @@ export interface IProviders {
 }
 
 export class Framedispatcher {
-    version: string = '2.2.0';
+    version: string = '2.2.1';
     defaults: IGeneratorDefaults = {
         addFlexVideoClass: false,
         contentClass: 'storyContent',
@@ -125,7 +125,12 @@ export class Framedispatcher {
             this.errorMessage('Bitte die ID bzw. -URL des Anzeigeobjekts im Parameter "id" ergänzen!', element);
             return;
         }
-        let result:string = this.providers[instanceOptions.provider].generate(instanceOptions);
+        let provider = this.providers[instanceOptions.provider];
+        if (provider.hasHttpSourceinSecureMode()) {
+            this.errorMessage(`Im aktuellen https-Browsermodus kann kein ${instanceOptions.provider}-Element angezeigt werden, da dieser Anbieter keinen https-Zugriff anbietet.`, element);
+            return;
+        }
+        let result: string = provider.generate(instanceOptions);
         this.log(result);
         let html = (result.substr(0, 1) === '<' ? result : this.errorMessage(result, element));
         if (this.options.position === 'bottom') {

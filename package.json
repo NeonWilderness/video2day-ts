@@ -1,6 +1,6 @@
 {
   "name": "video2day",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Video/iframe generator for the Twoday blogging platform",
   "main": "video2day.js",
   "repository": {
@@ -34,7 +34,7 @@
     "css-loader": "^0.28.7",
     "del": "^3.0.0",
     "dotenv-safe": "^4.0.3",
-    "extend-shallow": "^3.0.0",
+    "extend-shallow": "^3.0.1",
     "gulp": "^3.9.1",
     "gulp-bytediff": "^1.0.0",
     "gulp-htmlmin": "^3.0.0",

@@ -41,6 +41,7 @@ export class Provider {
     _width: string;
     _height: string;
     badParam: string;
+    source: string;
 
     constructor(public pluginID: string) {
     }
@@ -55,6 +56,10 @@ export class Provider {
 
     getID() : string {
         return this.pluginID;
+    }
+
+    hasHttpSourceinSecureMode() : boolean {
+        return (location.protocol==='https:' && this.source.substr(0,7)==='http://');
     }
 
     fillParams(template: string) : string {
