@@ -6,7 +6,7 @@ import { frameTemplate, IInstanceOptions, Provider } from './generic';
 
 export class Liveleak extends Provider {
 
-    source: string = 'http://www.liveleak.com/ll_embed?f={_id}&start={_starttime}';
+    source: string = 'https://www.liveleak.com/ll_embed?f={_id}&start={_starttime}';
     _starttime: string;
 
     /**
