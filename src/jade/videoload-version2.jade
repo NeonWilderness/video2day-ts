@@ -1,9 +1,7 @@
 //- Twoday Blog story to document videoload's version 2
 - var Stand = 'November 2017'
-- var Anbieter = '18'
+- var Anbieter = '19'
 - var Domain = 'neonwilderness'
-- var CDNUrl = 'https://static.twoday.net/cdn/files'
-//- var CDNUrl = '.'
 - var StoryUrl = 'https://' + Domain + '.twoday.net/stories/'
 - var VideoToolUrl = StoryUrl + 'videotool2'
 - var static = '&lt;% staticURL %&gt;'
@@ -217,6 +215,7 @@ p.
       #tab-slideshare: include ./provider/slideshare.jade
       #tab-soundcloud: include ./provider/soundcloud.jade
       #tab-speakerdeck: include ./provider/speakerdeck.jade
+      #tab-ted: include ./provider/ted.jade
       #tab-vevo: include ./provider/vevo.jade
       #tab-vimeo: include ./provider/vimeo.jade
       #tab-vine: include ./provider/vine.jade
@@ -368,4 +367,4 @@ p.
             Player-Lösung nicht bräuchte. Wer sich also nur auf den Browser als Abspielsoftware verlassen will, kann über die Einstellung
             <span class="code">{ useVideoJS: false }</span> das Nachladen eines universellen Players unterbinden und so noch ein paar
             Millisekunden Ladezeit einsparen.
-a.storyScript(href="#{CDNUrl}/videoload2-story.js")
+a.storyScript(href="#{jsFolder}videoload2-story.js")

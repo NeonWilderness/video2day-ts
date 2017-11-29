@@ -1,7 +1,6 @@
 /*
  Slides Plugin Class for the videotool
  */
-import {} from 'jquery';
 import { ToolProvider } from './generic';
 
 export class ToolSlides extends ToolProvider {

@@ -1,16 +1,16 @@
-- var jsFolder = "./"
+//- var jsFolder (dynamically set in gulp script: DEV='./' PROD=same as staticURL)
 - var staticURL = "https://static.twoday.net/cdn/files/"
 doctype html
 html(lang="de")
   head
     meta(charset="UTF-8")
-    title Testseite Twoday-Story
+    title Testseite Twoday-Tool, v#{pkgVersion}
     meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    script(type="text/javascript", src="http://static.twoday.net/sys.files/js/jquery/jquery.min.js")
+    script(type="text/javascript", src="https://static.twoday.net/sys.files/js/jquery/jquery.min.js")
     script(type="text/javascript", src="#{staticURL}fastclick-min-js.js")
-    link(rel="stylesheet", href="http://neonwilderness.twoday.net/main.css")
-    link(rel="stylesheet", href="http://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css")
+    link(rel="stylesheet", href="https://neonwilderness.twoday.net/main.css")
+    link(rel="stylesheet", href="https://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css")
     link(rel="stylesheet", href="­#{staticURL}foundation55-min-css.css")
     link(rel="stylesheet", href="#{staticURL}awesomeeditorcore-min-css.css")
     link(rel="stylesheet", href="#{staticURL}rainy-min-css.css")

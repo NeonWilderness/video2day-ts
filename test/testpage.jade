@@ -1,10 +1,9 @@
-//- var jsFolder = "http://www.s522667522.online.de/public/js/videoload2/"
-- var jsFolder = "./"
+//- var jsFolder (dynamically set in gulp script: DEV='./' PROD=same as staticURL)
 doctype html
 html(lang="de")
   head
     meta(charset="UTF-8")
-    title Testseite für den video2day-Generator
+    title Testseite für den video2day-Generator, v#{pkgVersion}
     meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/mocha/4.0.1/mocha.min.css")
@@ -76,6 +75,10 @@ html(lang="de")
         .html5video.speakerdeck(id="4ab3c53d71fd4434a87934b8600888fb")
         h3 Provider Speakerdeck (start from slide 15)
         .html5video.speakerdeck.slide-15(id="4ab3c53d71fd4434a87934b8600888fb")
+        h3 Provider TED Talks (English, no subtitles)
+        .html5video.ted(id="wanis_kabbaj_what_a_driverless_world_could_look_like")
+        h3 Provider TED Talks (German subtitles)
+        .html5video.ted.lang(id="wanis_kabbaj_what_a_driverless_world_could_look_like")
         h3 Provider Other (MP4 video, poster of type gif)
         .html5video.other.poster.image-gif(id="http://www.s522667522.online.de/public/movies/nodejs.mp4")
     #mocha: p: a(href=".") Index

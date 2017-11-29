@@ -1,0 +1,29 @@
+//- TED talks documentation of parameters
+p <b>TED</b> ist eine Plattform mit Videos von kurzen, thematisch gebundenen Reden/Präsentationen. Folgende Parameter sind möglich:
+h6.top20 <span class="label">slide</span> &mdash; Video mit deutschen Untertiteln abspielen
+p.
+  Falls das TED-Video über deutsche Untertitel verfügt, können Sie diese mit dem <span class="code">lang</span>-Parameter
+  aktivieren: 
+p.text-center: span.code #{lt}div class="html5video ted <b>lang</b>" id="{eine-ted-id}"#{gt}#{lt}/div#{gt}
+p zeigt während des Videos deutsche Untertitel an.
+p.
+  Wenn Sie den <span class="code">lang</span>-Parameter aktivieren, muss sichergestellt sein, dass dieses
+  TED-Video auch über deutsche Untertitel verfügt &mdash; ansonsten wird ein Fehler angezeigt. Entfernen
+  Sie im Fehlerfall die Ergänzung <span class="code">lang</span>.
+h6.top20: strong Prüfen auf deutsche Untertitel
+p.
+  Um zu prüfen, ob für ein TED-Video deutsche Untertitel zur Verfügung stehen, gehen Sie in der Einzelansicht
+  des Videos auf das "Subtitle"-Icon (1) und klicken dann auf "More languages" (2). Wenn in der Auflistung
+  auch ein Eintrag für die deutsche Sprache angezeigt wird, können Sie den <span class="code">lang</span>-Parameter
+  verwenden:
+.clearfix: img.googledrive(alt="videoload/ted-lang.jpg")
+h6.top20: strong Beispiele
+p Es soll eine TED-Rede mit der ID 'wanis_kabbaj_what_a_driverless_world_could_look_like' in einem Blogbeitrag eingebunden werden:
++LiveView("ted", "wanis_kabbaj_what_a_driverless_world_could_look_like")
+p Soll das Video mit deutschen Untertiteln abgespielt werden, lautet der Videoload-Befehl:
++LiveView("ted <b>lang</b>", "wanis_kabbaj_what_a_driverless_world_could_look_like")
+p.text-right: a(href="#", title="data-bind=click:function(){toggle('#ted-id')}") Wie finde ich die ID eines TED-Videos?
+#ted-id(style="display:none")
+  h6.top20: strong TED-ID manuell ermitteln
+  p Sobald Sie sich in der Einzelansicht des gewünschten TED-Videos befinden, können Sie oben aus der Browser-URL die gesuchte ID ermitteln:
+  .clearfix: img.googledrive(alt="videoload/ted-id1.jpg")

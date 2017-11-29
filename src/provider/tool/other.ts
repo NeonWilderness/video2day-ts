@@ -1,7 +1,6 @@
 /*
  Other (MP4-file) Plugin Class for the videotool
  */
-import {} from 'jquery';
 import { ToolProvider } from './generic';
 
 export class ToolOther extends ToolProvider {

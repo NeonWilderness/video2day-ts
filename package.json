@@ -1,6 +1,6 @@
 {
   "name": "video2day",
-  "version": "2.2.2",
+  "version": "2.2.4",
   "description": "Video/iframe generator for the Twoday blogging platform",
   "main": "video2day.js",
   "repository": {
@@ -11,7 +11,9 @@
     "build": "gulp --production",
     "dev": "gulp",
     "pretest": "gulp",
-    "test": "mocha"
+    "testpage": "node ./node_modules/local-web-server/bin/cli --spa ./dist/testpage.html",
+    "teststory": "node ./node_modules/local-web-server/bin/cli --spa ./dist/teststory.html",
+    "testtool": "node ./node_modules/local-web-server/bin/cli --spa ./dist/testtool.html"
   },
   "keywords": [
     "video generator",
@@ -24,7 +26,7 @@
     "knockout": "^3.4.2"
   },
   "devDependencies": {
-    "@types/chai": "^4.0.5",
+    "@types/chai": "^4.0.6",
     "@types/jquery": "^3.2.16",
     "@types/knockout": "^3.4.47",
     "@types/mocha": "^2.2.44",
@@ -54,7 +56,7 @@
     "smoothscroll": "^0.4.0",
     "style-loader": "^0.19.0",
     "ts-loader": "^3.1.1",
-    "typescript": "^2.6.1",
+    "typescript": "^2.6.2",
     "webpack": "^3.8.1"
   }
 }

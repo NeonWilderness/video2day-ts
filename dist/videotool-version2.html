@@ -95,6 +95,15 @@
       <input id="txtAlt" type="text" title="data-bind=textInput:txtAlt, visible:chkAsImage | data-!placeholder=Bildtext für alt-Parameter"/>
     </div>
   </div>
+  <div title="data-bind=if:providerTemplate()==='TmplTed'" class="row">
+    <div class="small-3 columns pad6">
+      <input id="chkLang" type="checkbox" title="data-bind=checked:chkLang" class="bottom0"/>
+      <label for="chkLang" style="margin-right:0">mit deutschen Untertiteln</label>
+    </div>
+    <div class="small-9 columns">
+      <input id="txtAlt" type="text" title="data-bind=textInput:txtAlt, visible:chkAsImage | data-!placeholder=Bildtext für alt-Parameter"/>
+    </div>
+  </div>
   <div title="data-bind=if:providerTemplate()==='TmplSlide'" class="row">
     <div class="small-3 columns pad6">
       <label for="txtSlide">Startseite:</label>

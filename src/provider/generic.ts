@@ -58,7 +58,7 @@ export class Provider {
         return this.pluginID;
     }
 
-    hasHttpSourceinSecureMode() : boolean {
+    hasHttpSourceInSecureMode() : boolean {
         return (location.protocol==='https:' && this.source.substr(0,7)==='http://');
     }
 

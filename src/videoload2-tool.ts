@@ -18,6 +18,7 @@ import { ToolSlides } from './provider/tool/slides';
 import { ToolSlideshare } from './provider/tool/slideshare';
 import { ToolSpeakerdeck } from './provider/tool/speakerdeck';
 import { ToolSoundcloud } from './provider/tool/soundcloud';
+import { ToolTed } from './provider/tool/ted';
 import { ToolYoutube } from './provider/tool/youtube';
 import { ToolOther } from './provider/tool/other';
 
@@ -55,6 +56,7 @@ enum TemplateTypes {
     TmplSlide,
     TmplSlides,
     TmplSoundcloud,
+    TmplTed,
     TmplOther
 }
 
@@ -102,6 +104,7 @@ class Videoload2ToolViewmodel {
     txtTracks: KnockoutObservable<string>;      // number of tracks to show in the tracklist
     chkPoster: KnockoutObservable<boolean>;     // true=display a poster image before MP4 video starts
     selPoster: KnockoutObservable<string>;      // selected filetype extension of poster image
+    chkLang: KnockoutObservable<boolean>;       // true=inject subtitle language German for TED Talks
     $fldIframe: JQuery;                         // fieldset #fldIframe
     $fldOptions: JQuery;                        // fieldset #fldOptions
     optionsVisible: KnockoutObservable<boolean>; // true=$fldOptions are visible
@@ -191,6 +194,12 @@ class Videoload2ToolViewmodel {
                 id: 'speakerdeck.com',
                 vmatch: 'data-id="([0-9a-z]*)'
             },
+            ted: {
+                name: 'Ted',
+                template: TemplateTypes.TmplTed,
+                id: 'ted.com',
+                vmatch: '(\/talks\/lang\/[a-z]{2}\/|\/talks\/)([a-z0-9_]*)'
+            },
             vevo: {
                 name: 'Vevo',
                 template: TemplateTypes.NoTemplate,
@@ -274,7 +283,8 @@ class Videoload2ToolViewmodel {
         this.txtTracks = ko.observable('');
         this.chkPoster = ko.observable(false);
         this.selPoster = ko.observable('jpg');
-
+        this.chkLang = ko.observable(false);
+        
         /* ----- source fields ----- */
         this.$fldOptions = $('#fldOptions');
         this.$fldIframe = $('#fldIframe');
@@ -346,6 +356,9 @@ class Videoload2ToolViewmodel {
                                 break;
                             case 'image':
                                 this.selPoster(value);
+                                break;
+                            case 'lang':
+                                this.chkLang(true);
                                 break;
                             case 'layout':
                                 this.optLayout(value);
@@ -428,7 +441,7 @@ class Videoload2ToolViewmodel {
                 // and find the provider element's ID
                 let matchID = src.match(new RegExp(provider.vmatch, '')) || [];
                 // remember element ID if found
-                if (matchID.length > 1) this.txtElementID(matchID[1]);
+                if (matchID.length > 1) this.txtElementID(matchID[matchID.length-1]);
                 // stop loop once found
                 return false;
             }
@@ -454,6 +467,7 @@ class Videoload2ToolViewmodel {
                 case 'slideshare':  this.providerHandler = new ToolSlideshare(this); break;
                 case 'speakerdeck': this.providerHandler = new ToolSpeakerdeck(this); break;
                 case 'soundcloud':  this.providerHandler = new ToolSoundcloud(this); break;
+                case 'ted':         this.providerHandler = new ToolTed(this); break;
                 case 'youtube':     this.providerHandler = new ToolYoutube(this); break;
                 case 'other':       this.providerHandler = new ToolOther(this); break;
                 default:            this.providerHandler = new ToolProvider(this); break;
@@ -527,6 +541,7 @@ class Videoload2ToolViewmodel {
         this.txtTracks('');
         this.chkPoster(false);
         this.selPoster('jpg');
+        this.chkLang(false);
         this.$fldElementCode.empty();
         this.$fldElementDisplay.empty();
     }

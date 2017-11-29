@@ -14,6 +14,7 @@ import { Slides } from './provider/slides';
 import { Slideshare } from './provider/slideshare';
 import { Soundcloud } from './provider/soundcloud';
 import { Speakerdeck } from './provider/speakerdeck';
+import { Ted } from './provider/ted';
 import { Vevo } from './provider/vevo';
 import { Vimeo } from './provider/vimeo';
 import { Vine } from './provider/vine';
@@ -52,6 +53,7 @@ export interface IProviders {
     slideshare: any;
     soundcloud: any;
     speakerdeck: any;
+    ted: any;
     vevo: any;
     vimeo: any;
     vine: any;
@@ -60,7 +62,7 @@ export interface IProviders {
 }
 
 export class Framedispatcher {
-    version: string = '2.2.2';
+    version: string = '2.2.4';
     defaults: IGeneratorDefaults = {
         addFlexVideoClass: false,
         contentClass: 'storyContent',
@@ -86,6 +88,7 @@ export class Framedispatcher {
         slideshare: new Slideshare,
         soundcloud: new Soundcloud,
         speakerdeck: new Speakerdeck,
+        ted: new Ted,
         vevo: new Vevo,
         vimeo: new Vimeo,
         vine: new Vine,
@@ -126,7 +129,7 @@ export class Framedispatcher {
             return;
         }
         let provider = this.providers[instanceOptions.provider];
-        if (provider.hasHttpSourceinSecureMode()) {
+        if (instanceOptions.provider !== 'other' && provider.hasHttpSourceInSecureMode()) {
             this.errorMessage(`Im aktuellen https-Browsermodus kann kein ${instanceOptions.provider}-Element angezeigt werden, da dieser Anbieter keinen https-Zugriff anbietet.`, element);
             return;
         }
@@ -178,6 +181,7 @@ export class Framedispatcher {
                     options[option] = value;
                     break;
                 case 'asimage':
+                case 'lang':
                 case 'poster':
                 case 'stripe':
                     options[option] = true;

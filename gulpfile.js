@@ -7,6 +7,7 @@ var gutil = require('gulp-util');
 var htmlmin = require('gulp-htmlmin');
 var jade = require('gulp-jade');
 var modifyFile = require('gulp-modify-file');
+var pkg = require('./package.json');
 var rename = require('gulp-rename');
 var webpack = require('webpack');
 var webpackConfig = require('./webpack.config.js');
@@ -39,10 +40,11 @@ gulp.task('webpack', function(callback) {
 });
 
 gulp.task('templates', function(){
-  var locals = {};
+  var jsFolder = (production ? 'https://static.twoday.net/cdn/files/' : './');
+  var pkgVersion = pkg.version;
   return gulp.src(['./src/jade/test*.jade', './src/jade/video*.jade', './test/testpage.jade'])
     .pipe(jade({
-      locals: locals,
+      locals: { jsFolder, pkgVersion },
       pretty: true
     }))
     .pipe(gulp.dest('./dist/'))

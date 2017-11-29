@@ -77,6 +77,11 @@ fieldset#fldOptions(style="display:none")
       input.bottom0#chkAsImage(type="checkbox", title="data-bind=checked:chkAsImage")
       label(for="chkAsImage", style="margin-right:0") als Bild einbinden
     .small-9.columns: input#txtAlt(type="text", title="data-bind=textInput:txtAlt, visible:chkAsImage | data-!placeholder=Bildtext für alt-Parameter")
+  .row(title="data-bind=if:providerTemplate()==='TmplTed'")
+    .small-3.columns.pad6
+      input.bottom0#chkLang(type="checkbox", title="data-bind=checked:chkLang")
+      label(for="chkLang", style="margin-right:0") mit deutschen Untertiteln
+    .small-9.columns: input#txtAlt(type="text", title="data-bind=textInput:txtAlt, visible:chkAsImage | data-!placeholder=Bildtext für alt-Parameter")
   .row(title="data-bind=if:providerTemplate()==='TmplSlide'")
     .small-3.columns.pad6: label(for="txtSlide") Startseite:
     .small-3.columns.end: input.bottom0#txtSlide(type="text", title="data-bind=textInput:txtSlide")

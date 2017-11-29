@@ -1,7 +1,6 @@
 /*
  Liveleak Plugin Class for the videotool
  */
-import {} from 'jquery';
 import { ToolProvider } from './generic';
 
 export class ToolLiveleak extends ToolProvider {

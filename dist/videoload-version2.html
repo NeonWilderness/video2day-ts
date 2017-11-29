@@ -56,7 +56,7 @@
 <p>
   Videoload führt einen Ausgleich zwischen Twodays berechtigtem Sicherheitsinteresse und den Content-Wünschen der Nutzer herbei, indem es
   valide und überprüfbare iframe-Aufrufe für einen definierten Kreis von sicheren Anbietern erzeugt. Derzeit (Stand: November 2017) generiert
-  Videoload Verbindungen zu 18 verschiedenen Plattformen und bindet den gewünschten Inhalt (z.B. ein YouTube-Video) auf einfache Weise in den
+  Videoload Verbindungen zu 19 verschiedenen Plattformen und bindet den gewünschten Inhalt (z.B. ein YouTube-Video) auf einfache Weise in den
   jeweiligen Blogbeitrag ein. Folgende Provider stehen zur Verfügung:
 </p>
 <div class="providerbox">
@@ -166,7 +166,7 @@
         Twoday-DIV-Befehl gebrauchsfertig zusammenstellt. Damit entfällt die manchmal etwas umständliche Suche nach der richtigen ID.
       </p>
       <p>
-        Die passende Kennung für einen der 18 möglichen Anbieter finden Sie unten als Beschriftung in den blauen Tabulatoren. Um also ein
+        Die passende Kennung für einen der 19 möglichen Anbieter finden Sie unten als Beschriftung in den blauen Tabulatoren. Um also ein
         Vimeo-Video einzufügen, heißt der entsprechende DIV-Befehl
       </p>
       <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video vimeo&quot; id=&quot;{eine-vimeo-id}&quot;&amp;gt;&amp;lt;/div&amp;gt;</span>
@@ -874,6 +874,42 @@
             </ol>
           </div>
         </div>
+        <div id="tab-ted">
+          <p><b>TED</b> ist eine Plattform mit Videos von kurzen, thematisch gebundenen Reden/Präsentationen. Folgende Parameter sind möglich:</p>
+          <h6 class="top20"><span class="label">slide</span> &mdash; Video mit deutschen Untertiteln abspielen</h6>
+          <p>
+            Falls das TED-Video über deutsche Untertitel verfügt, können Sie diese mit dem <span class="code">lang</span>-Parameter
+            aktivieren: 
+          </p>
+          <p class="text-center"><span class="code">&amp;lt;div class="html5video ted <b>lang</b>" id="{eine-ted-id}"&amp;gt;&amp;lt;/div&amp;gt;</span></p>
+          <p>zeigt während des Videos deutsche Untertitel an.</p>
+          <p>
+            Wenn Sie den <span class="code">lang</span>-Parameter aktivieren, muss sichergestellt sein, dass dieses
+            TED-Video auch über deutsche Untertitel verfügt &mdash; ansonsten wird ein Fehler angezeigt. Entfernen
+            Sie im Fehlerfall die Ergänzung <span class="code">lang</span>.
+          </p>
+          <h6 class="top20"><strong>Prüfen auf deutsche Untertitel</strong></h6>
+          <p>
+            Um zu prüfen, ob für ein TED-Video deutsche Untertitel zur Verfügung stehen, gehen Sie in der Einzelansicht
+            des Videos auf das "Subtitle"-Icon (1) und klicken dann auf "More languages" (2). Wenn in der Auflistung
+            auch ein Eintrag für die deutsche Sprache angezeigt wird, können Sie den <span class="code">lang</span>-Parameter
+            verwenden:
+          </p>
+          <div class="clearfix"><img alt="videoload/ted-lang.jpg" class="googledrive"/></div>
+          <h6 class="top20"><strong>Beispiele</strong></h6>
+          <p>Es soll eine TED-Rede mit der ID 'wanis_kabbaj_what_a_driverless_world_could_look_like' in einem Blogbeitrag eingebunden werden:</p>
+          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video ted&quot; id=&quot;wanis_kabbaj_what_a_driverless_world_could_look_like&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=ted&id=wanis_kabbaj_what_a_driverless_world_could_look_like"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          </p>
+          <p>Soll das Video mit deutschen Untertiteln abgespielt werden, lautet der Videoload-Befehl:</p>
+          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video ted &lt;b&gt;lang&lt;/b&gt;&quot; id=&quot;wanis_kabbaj_what_a_driverless_world_could_look_like&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=ted%20lang&id=wanis_kabbaj_what_a_driverless_world_could_look_like"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          </p>
+          <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#ted-id')}">Wie finde ich die ID eines TED-Videos?</a></p>
+          <div id="ted-id" style="display:none">
+            <h6 class="top20"><strong>TED-ID manuell ermitteln</strong></h6>
+            <p>Sobald Sie sich in der Einzelansicht des gewünschten TED-Videos befinden, können Sie oben aus der Browser-URL die gesuchte ID ermitteln:</p>
+            <div class="clearfix"><img alt="videoload/ted-id1.jpg" class="googledrive"/></div>
+          </div>
+        </div>
         <div id="tab-vevo">
           <p><b>Vevo</b> ist ein Anbieter von Musikvideos. Er verfügt über keine besonderen Parameter.</p>
           <h6 class="top20"><strong>Beispiel</strong></h6>
@@ -1037,7 +1073,7 @@
             Sie können auch beliebige MP4-Videodateien in einem Videoplayer abspielen. Diese müssen eine öffentlich erreichbare URL besitzen,
             also z.B. bei einem Cloudspeicheranbieter wie Dropbox, Photobucket, Flickr oder auf eigenem Webspace liegen. Für die Anzeige wird der
             bewährte Open Source HTML5 Videoplayer <a target="_blank" href="http://www.videojs.com/">VideoJS</a> verwendet. Die Adresse/URL des Videos
-            wird im Parameter <span class="code">id</span> übergeben. Der Befehl für die Einbindung eines MP4-Videos aus einem öffentlichen Dropbox-Ordner
+            wird im Parameter <span class="code">id</span> übergeben. Der Befehl für die Einbindung eines MP4-Videos aus einem öffentlichen Ordner
             hat dann z.B. folgendes Format:
           </p>
           <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video other ratio-2.4&quot; id=&quot;http://www.s522667522.online.de/public/movies/oceans-clip.mp4&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=other%20ratio-2.4&id=http%3A%2F%2Fwww.s522667522.online.de%2Fpublic%2Fmovies%2Foceans-clip.mp4"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
@@ -1091,7 +1127,7 @@
     <div class="accContent">
       <h3>Twoday-Videoload-Code automatisch generieren</h3>
       <p>
-        Es ist evtl. etwas mühsam, die oben beschriebenen Parameter für jeden der 18 Anbieter im Kopf zu behalten oder erst wieder
+        Es ist evtl. etwas mühsam, die oben beschriebenen Parameter für jeden der 19 Anbieter im Kopf zu behalten oder erst wieder
         nachzuschlagen, wenn man sie benötigt. Aus diesem Grund habe ich zusätzlich ein kleines Online-Tool erstellt, das den Twoday-Code
         automatisch für Sie zusammenstellt.
       </p>
@@ -1141,7 +1177,7 @@
       <p>Navigieren Sie nun zu Ihrem Beitrag und fügen Sie den kopierten Code an der gewünschten Stelle in den Text ein:</p>
       <p class="clearfix"><img alt="videoload/videoload7.jpg" class="googledrive"/></p>
       <p class="top20">
-        Dieser Ablauf funktioniert für jeden der 18 Anbieter identisch. Wollen Sie also ein YouTube-Video in Ihren
+        Dieser Ablauf funktioniert für jeden der 19 Anbieter identisch. Wollen Sie also ein YouTube-Video in Ihren
         Beitrag einfügen, kopieren Sie den entsprechenden iframe-Code des Videos und das Tool zeigt Ihnen das passende DIV-Kommando
         für die Einbettung im Twoday-Beitrag.
       </p>
