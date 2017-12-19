@@ -10,84 +10,21 @@ html(lang="de")
     style.
       body { background: #f5f5f5; color: #444; padding: 10px 20px; font-family: Tahoma, sans-serif; }
       #wrapper { width: 800px; margin: 0 auto; background: #fff; }
+      #iframeBtns { display: flex; flex-wrap: wrap; }
+      .btn { background: #2ea2cc; padding: 8px 10px; color: #fff; margin: 0 5px 5px 0; font-size: 13px; text-decoration: none; }
+      .btn:hover { text-decoration: underline; }
       .storyContent { width: 600px; margin: 0 auto; padding: 10px; border: 1px solid #ccc; }
   body
     #wrapper
+      #iframeBtns
       .storyContent
-        h3 Provider YouTube
-        .html5video.youtube(id="DyfM7oLIlp0")
-        h3 Provider Vimeo
-        .html5video.vimeo(id="14848816")
-        h3 Provider Vevo
-        .html5video.vevo(id="GBUV71300569")
-        h3 Provider Dailymotion
-        .html5video.dailymotion(id="x1zb68h")
-        h3 Provider JSFiddle
-        .html5video.jsfiddle(id="u93d2du8")
-        h3 Provider Soundcloud (groß)
-        .html5video.soundcloud(id="20636707")
-        h3 Provider Soundcloud (schmal)
-        .html5video.soundcloud.stripe(id="249959694")
-        h3 Provider Giphy (als Frame)
-        .html5video.giphy(id="JtwMddKpsF9Hq")
-        h3 Provider Giphy (als Image)
-        .html5video.giphy.asimage.alt-Dancing_Michael_Myers(id="JtwMddKpsF9Hq")
-        h3 Provider Filmstarts
-        .html5video.filmstarts(id="19235661")
-        h3 Provider FunnyOrDie
-        .html5video.funnyordie(id="000a37c115", class="ratio-1.6")
-        h3 Provider Liveleak
-        .html5video.liveleak(id="cf677a022bd3")
-        h3 Provider Vine
-        .html5video.vine.ratio-1(id="OTtQVYI2JY2")
-        h3 Provider Metacafe
-        .html5video.metacafe(id="11142486")
-        h3 Provider Bandcamp
-        .html5video.bandcamp(id="2172528119")
-        h3 Provider Bandcamp (slim/no artwork)
-        .html5video.bandcamp.layout-slim.artwork-none(id="2172528119")
-        h3 Provider Bandcamp (slim/show artwork)
-        .html5video.bandcamp.layout-slim.artwork-show(id="2172528119")
-        h3 Provider Bandcamp (artwork only)
-        .html5video.bandcamp.layout-artworkonly(id="2172528119")
-        h3 Provider Bandcamp (standard/no artwork/no tracklist)
-        .html5video.bandcamp.layout-standard.artwork-none(id="2172528119")
-        h3 Provider Bandcamp (standard/big artwork/no tracklist)
-        .html5video.bandcamp.layout-standard.artwork-big(id="2172528119")
-        h3 Provider Bandcamp (standard/big artwork/with tracklist)
-        .html5video.bandcamp.layout-standard.artwork-big.tracklist(id="2172528119")
-        h3 Provider Bandcamp (standard/small artwork/no tracklist)
-        .html5video.bandcamp.layout-standard.artwork-small(id="2172528119")
-        h3 Provider Bandcamp (standard/small artwork/with tracklist)
-        .html5video.bandcamp.layout-standard.artwork-small.tracklist(id="2172528119")
-        h3 Provider Bandcamp (standard/small artwork/with tracklist/dark theme)
-        .html5video.bandcamp.layout-standard.artwork-small.tracklist.bgcol-333333.linkcol-0f91ff(id="1020001840")
-        h3 Provider Slideshare
-        .html5video.slideshare(id="8G4n1snse7WKmQ", class="ratio-1.2268")
-        h3 Provider Slides (dark)
-        .html5video.slides(id="news/custom-fonts", class="ratio-1.3714")
-        h3 Provider Slides (light, slide 5)
-        .html5video.slides(id="news/custom-fonts", class="ratio-1.3714 color-light slide-5")
-        h3 Provider Giphy (image with ratio, appended at bottom)
-        .html5video.giphy.asimage(id="ZJ6IOBmCaj5f2", class="ratio-2.3696")
-          p This is a leading text within this DIV that should remain untouched.
-        h3 Provider Speakerdeck (start at first slide)
-        .html5video.speakerdeck(id="4ab3c53d71fd4434a87934b8600888fb")
-        h3 Provider Speakerdeck (start from slide 15)
-        .html5video.speakerdeck.slide-15(id="4ab3c53d71fd4434a87934b8600888fb")
-        h3 Provider TED Talks (English, no subtitles)
-        .html5video.ted(id="wanis_kabbaj_what_a_driverless_world_could_look_like")
-        h3 Provider TED Talks (German subtitles)
-        .html5video.ted.lang(id="wanis_kabbaj_what_a_driverless_world_could_look_like")
-        h3 Provider Other (MP4 video, poster of type gif)
-        .html5video.other.poster.image-gif(id="http://www.s522667522.online.de/public/movies/nodejs.mp4")
+        #testDIV
     #mocha: p: a(href=".") Index
     #messages
     #fixtures
     script(src="https://cdnjs.cloudflare.com/ajax/libs/mocha/4.0.1/mocha.min.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.1.2/chai.min.js")
     script(src!="#{jsFolder}videoload2.js")
-    script(type="text/javascript") video2day.run({debug: true, maxWidth: 400});
     script(type="text/javascript") mocha.setup('bdd');
     script(src="#{jsFolder}videoload2-spec.js")
     script(type="text/javascript") mocha.run();

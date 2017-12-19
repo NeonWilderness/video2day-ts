@@ -131,10 +131,25 @@
       <input id="chkStripe" type="checkbox" title="data-bind=checked:chkStripe" class="bottom0"/>
       <label for="chkStripe">schmales Anzeigeformat (stripe)</label>
     </div>
-    <div title="data-bind=visible:chkStripe" class="small-3 columns pad6">
+    <div class="small-3 columns pad6">
       <label for="txtColor">Farbe Playbutton:</label>
     </div>
-    <div title="data-bind=visible:chkStripe" class="small-3 columns">
+    <div class="small-3 columns">
+      <div class="row collapse">
+        <div class="small-9 columns">
+          <input id="txtColor" type="text" title="data-bind=textInput:txtColor"/>
+        </div>
+        <div class="small-3 columns">
+          <button class="postfix jscolor {valueElement:'txtColor',required:false,uppercase:false}"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div title="data-bind=if:providerTemplate()==='TmplVimeo'" class="row">
+    <div class="small-3 columns pad6">
+      <label for="txtColor">Linkfarbe:</label>
+    </div>
+    <div class="small-3 columns end">
       <div class="row collapse">
         <div class="small-9 columns">
           <input id="txtColor" type="text" title="data-bind=textInput:txtColor"/>

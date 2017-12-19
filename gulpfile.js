@@ -2,6 +2,7 @@ var bytediff = require('gulp-bytediff');
 var cheerio = require('cheerio');
 var del = require('del');
 var fs = require('fs');
+var genversion = require('genversion');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var htmlmin = require('gulp-htmlmin');
@@ -19,6 +20,14 @@ gulp.task( 'default', ['webpack', 'htmlmin', 'deploy'], function(){
 });
 
 gulp.task('webpack', function(callback) {
+
+    // copy version number from package.json to code
+    genversion.generate('src/version.ts', (err, version) => {
+        if (err) 
+            throw(err);
+        else
+            console.log(`Synced package.json version: ${version}`);
+    });
 
     if (production){
         // minimize js

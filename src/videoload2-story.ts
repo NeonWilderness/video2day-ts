@@ -31,6 +31,7 @@ class Videoload2StoryViewmodel {
             slideshare: 'http://de.slideshare.net/',
             soundcloud: 'https://soundcloud.com/',
             speakerdeck: 'https://speakerdeck.com/',
+            strawpoll: 'http://www.strawpoll.me/',
             ted: 'https://www.ted.com/',
             vevo: 'http://www.vevo.com/',
             vimeo: 'https://vimeo.com/',

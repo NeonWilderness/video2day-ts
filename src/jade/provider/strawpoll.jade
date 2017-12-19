@@ -1,0 +1,36 @@
+//- Strawpoll documentation of parameters
+p.
+  <b>Strawpoll.me</b> ist ein Anbieter für selbsterstellte Umfragen. Er verfügt über keine besonderen Parameter.
+h6.top20: strong Eine Umfrage anlegen
+p.
+  Bevor Sie eine Umfrage in einen Twoday-Beitrag einbetten können, müssen Sie diese zunächst unter
+  <a target="_blank" href="http://www.strawpoll.me">strawpoll.me</a> anlegen.
+ol
+  li 
+    | Tippen Sie Ihre Frage und die zugehörigen Antwortoptionen in das gelbe Formular der Strawpoll-Seite ein.
+    | Sie können hierzu beliebig viele Optionen eingeben.
+    .clearfix: img.googledrive(alt="videoload/strawpoll-empty.jpg")
+  li 
+    | Nachdem Sie Ihre Umfrage erstellt haben, klicken Sie auf <span class="label red">Create Poll</span>.
+    | Um Bots bei der Abstimmung auszuschließen, empfiehlt sich die vorherige Aktivierung der Captcha-Checkbox
+    | <span class="code">Improve spam prevention</span>.
+    .clearfix: img.googledrive(alt="videoload/strawpoll-create.jpg")
+  li 
+    | Die Umfrage wird angelegt und auf der Folgeseite angezeigt. Oben in der Browser-Url-Zeile können Sie
+    | die erforderliche ID (eindeutige Nummer) der Umfrage ablesen/kopieren.
+    .clearfix: img.googledrive(alt="videoload/strawpoll-id1.jpg")
+  li 
+    | Alternativ können Sie über den SHARE-Button auch den iframe-Code der Umfrage in die Zwischenablage kopieren.
+    .clearfix: img.googledrive(alt="videoload/strawpoll-id2.jpg")
+  li 
+    | Diesen können Sie dann in das <a target="_blank" href="//neonwilderness.twoday.net/stories/videotool2">Videotool</a>
+    | einfügen, um den korrekten Ladebefehl für Twoday zu erzeugen.
+    .clearfix: img.googledrive(alt="videoload/strawpoll-id3.jpg")
+h6.top20: strong Beispiel
+p Es soll eine Strawpoll-Umfrage mit der ID '14618465' in einem Blogbeitrag eingebunden werden:
++LiveView("strawpoll", "14618465")
+p.text-right: a(href="#", title="data-bind=click:function(){toggle('#strawpoll-id')}") Wie finde ich die ID einer Strawpoll-Umfrage?
+#strawpoll-id(style="display:none")
+  h6.top20: strong Strawpoll-ID manuell ermitteln
+  p Sobald Sie in der Einzelansicht der Umfrage sind, können Sie die benötigte ID aus der Browser-Url-Zeile kopieren
+  .clearfix: img.googledrive(alt="videoload/strawpoll-id1.jpg")

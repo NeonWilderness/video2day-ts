@@ -2,12 +2,13 @@
  Vimeo-Plugin
  */
 
-import { frameTemplate, IInstanceOptions, Provider } from './generic';
+import { IInstanceOptions, Provider } from './generic';
 
 export class Vimeo extends Provider {
 
-    source: string = '//player.vimeo.com/video/{_id}';
-
+    source: string = `https://player.vimeo.com/video/{_id}{_linkcol}`;
+    _linkcol: string;
+    
     /**
      * Initialize the plugin ID
      */
@@ -17,11 +18,7 @@ export class Vimeo extends Provider {
 
     init(options: IInstanceOptions){
         super.init(options);
-    }
-
-    generate(options: IInstanceOptions) : string {
-        this.init(options);
-        return this.fillParams(frameTemplate.replace('_src', this.source));
+        this._linkcol = (options.hasOwnProperty('linkcol') ? `?color=${options.linkcol}` : '');
     }
 
 }

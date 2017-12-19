@@ -2,7 +2,7 @@
  Jsfiddle-Plugin
  */
 
-import { frameTemplate, IInstanceOptions, Provider } from './generic';
+import { IInstanceOptions, Provider } from './generic';
 
 enum ColorValues {
     light,
@@ -11,7 +11,7 @@ enum ColorValues {
 
 export class Jsfiddle extends Provider {
 
-    source: string = '//jsfiddle.net/{_id}/embedded/{_scope}/{_color}/';
+    source: string = 'https://jsfiddle.net/{_id}/embedded/{_scope}/{_color}/';
     _scope: string;
     _color: string;
 
@@ -29,11 +29,6 @@ export class Jsfiddle extends Provider {
         if (typeof ColorValues[ColorValues[this._color]]==='undefined')
             this.badParam = `Ungültiger Wert "${this._color}" für Parameter color. Erlaubt sind: light, dark.`;
 
-    }
-
-    generate(options: IInstanceOptions) : string {
-        this.init(options);
-        return (this.badParam.length ? this.badParam : this.fillParams(frameTemplate.replace('_src', this.source)));
     }
 
 }

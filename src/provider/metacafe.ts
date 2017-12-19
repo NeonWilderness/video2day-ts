@@ -2,7 +2,7 @@
  Metacafe-Plugin
  */
 
-import { frameTemplate, IInstanceOptions, Provider } from './generic';
+import { IInstanceOptions, Provider } from './generic';
 
 export class Metacafe extends Provider {
 
@@ -13,15 +13,6 @@ export class Metacafe extends Provider {
      */
     constructor(){
         super('metacafe');
-    }
-
-    init(options: IInstanceOptions){
-        super.init(options);
-    }
-
-    generate(options: IInstanceOptions) : string {
-        this.init(options);
-        return this.fillParams(frameTemplate.replace('_src', this.source));
     }
 
 }

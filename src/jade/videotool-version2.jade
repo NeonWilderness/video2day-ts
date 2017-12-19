@@ -95,8 +95,11 @@ fieldset#fldOptions(style="display:none")
     .small-6.columns.pad6
         input.bottom0#chkStripe(type="checkbox", title="data-bind=checked:chkStripe")
         label(for="chkStripe") schmales Anzeigeformat (stripe)
-    .small-3.columns.pad6(title="data-bind=visible:chkStripe"): label(for="txtColor") Farbe Playbutton:
-    .small-3.columns(title="data-bind=visible:chkStripe"): +ColorPickerInput('txtColor')
+    .small-3.columns.pad6: label(for="txtColor") Farbe Playbutton:
+    .small-3.columns: +ColorPickerInput('txtColor')
+  .row(title="data-bind=if:providerTemplate()==='TmplVimeo'")
+    .small-3.columns.pad6: label(for="txtColor") Linkfarbe:
+    .small-3.columns.end: +ColorPickerInput('txtColor')
   .row(title="data-bind=if:providerTemplate()==='TmplFiddle'")
     .small-3.columns.pad6: label Umfang:
     .small-9.columns.pad6

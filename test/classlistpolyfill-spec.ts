@@ -15,8 +15,9 @@ export function testCases() {
             });
 
             it('should manage a classList-property as constructor input', () => {
-                let el = document.getElementById('1020001840'); // bandcamp element
-                let cl = el.classList;
+                let div = document.getElementById('testDIV');
+                div.innerHTML = '<div class="html5video bandcamp layout-standard artwork-small tracklist bgcol-333333 linkcol-0f91ff"></div>';
+                let cl = (<any>div.firstChild).classList;
                 assert.equal(cl.length, 7);
                 let classlist = new ClassListPolyfill.ClassListPolyfill(cl);
                 assert.equal(classlist.classList.length, cl.length);

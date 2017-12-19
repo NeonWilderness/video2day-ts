@@ -2,11 +2,11 @@
  YouTube-Plugin
  */
 
-import { frameTemplate, IInstanceOptions, Provider } from './generic';
+import { IInstanceOptions, Provider } from './generic';
 
 export class Youtube extends Provider {
 
-    source: string = '//www.youtube.com/embed/{_id}?start={_starttime}&end={_endtime}';
+    source: string = 'https://www.youtube.com/embed/{_id}?start={_starttime}&end={_endtime}';
     _starttime: string;
     _endtime: string;
 
@@ -21,11 +21,6 @@ export class Youtube extends Provider {
         super.init(options);
         this._starttime = (options.hasOwnProperty('start') ? parseInt(options.start).toString() : '');
         this._endtime = (options.hasOwnProperty('endat') ? parseInt(options.endat).toString() : '');
-    }
-
-    generate(options: IInstanceOptions) : string {
-        this.init(options);
-        return this.fillParams(frameTemplate.replace('_src', this.source));
     }
 
 }

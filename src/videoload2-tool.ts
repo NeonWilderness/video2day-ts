@@ -16,9 +16,10 @@ import { ToolJsFiddle } from './provider/tool/jsfiddle';
 import { ToolLiveleak } from './provider/tool/liveleak';
 import { ToolSlides } from './provider/tool/slides';
 import { ToolSlideshare } from './provider/tool/slideshare';
-import { ToolSpeakerdeck } from './provider/tool/speakerdeck';
 import { ToolSoundcloud } from './provider/tool/soundcloud';
+import { ToolSpeakerdeck } from './provider/tool/speakerdeck';
 import { ToolTed } from './provider/tool/ted';
+import { ToolVimeo } from './provider/tool/vimeo';
 import { ToolYoutube } from './provider/tool/youtube';
 import { ToolOther } from './provider/tool/other';
 
@@ -57,6 +58,7 @@ enum TemplateTypes {
     TmplSlides,
     TmplSoundcloud,
     TmplTed,
+    TmplVimeo,
     TmplOther
 }
 
@@ -119,114 +121,140 @@ class Videoload2ToolViewmodel {
             bandcamp: {
                 name: 'Bandcamp',
                 template: TemplateTypes.TmplBandcamp,
+                aspect: false,
                 id: 'bandcamp.com',
                 vmatch: '\\/album=([0-9]*)'
             },
             dailymotion: {
                 name: 'DailyMotion',
                 template: TemplateTypes.TmplVideoStart,
+                aspect: true,
                 id: 'dailymotion.com',
                 vmatch: '\\/video\\/([0-9a-z]*)'
             },
             dctptv: {
                 name: 'DCTPtv',
                 template: TemplateTypes.TmplVideoStart,
+                aspect: true,
                 id: 'dctp.tv',
                 vmatch: '\\/filme\\/(.*)\\/embed'
             },
             filmstarts: {
                 name: 'Filmstarts',
                 template: TemplateTypes.NoTemplate,
+                aspect: true,
                 id: 'filmstarts.de',
                 vmatch: 'cmedia=([0-9]*)'
             },
             funnyordie: {
                 name: 'FunnyOrDie',
                 template: TemplateTypes.NoTemplate,
+                aspect: true,
                 id: 'funnyordie.com',
                 vmatch: '\\/embed\\/([0-9a-z]*)'
             },
             giphy: {
                 name: 'Giphy',
                 template: TemplateTypes.TmplGiphy,
+                aspect: true,
                 id: 'giphy.com',
                 vmatch: '\\/embed\\/(.*)'
             },
             jsfiddle: {
                 name: 'JsFiddle',
                 template: TemplateTypes.TmplFiddle,
+                aspect: true,
                 id: 'jsfiddle.net',
                 vmatch: '.net\\/(.*)\\/embedded'
             },
             liveleak: {
                 name: 'Liveleak',
                 template: TemplateTypes.TmplVideoStart,
+                aspect: true,
                 id: 'liveleak.com',
                 vmatch: 'f=(.*)'
             },
             metacafe: {
                 name: 'Metacafe',
                 template: TemplateTypes.NoTemplate,
+                aspect: true,
                 id: 'metacafe.com',
                 vmatch: '\\/embed\\/([0-9]*)'
             },
             slides: {
                 name: 'Slides',
                 template: TemplateTypes.TmplSlides,
+                aspect: true,
                 id: 'slides.com',
                 vmatch: 'com\\/(.*?)\\/embed'
             },
             slideshare: {
                 name: 'Slideshare',
                 template: TemplateTypes.TmplSlide,
+                aspect: true,
                 id: 'slideshare.net',
                 vmatch: '\\/embed_code\\/key\\/([0-9a-zA-Z]*)'
             },
             soundcloud: {
                 name: 'Soundcloud',
                 template: TemplateTypes.TmplSoundcloud,
+                aspect: false,
                 id: 'soundcloud.com',
                 vmatch: 'com\\/tracks\\/(.*?)&'
             },
             speakerdeck: {
                 name: 'Speakerdeck',
                 template: TemplateTypes.TmplSlide,
+                aspect: true,
                 id: 'speakerdeck.com',
                 vmatch: 'data-id="([0-9a-z]*)'
+            },
+            strawpoll: {
+                name: 'Strawpoll',
+                template: TemplateTypes.NoTemplate,
+                aspect: false,
+                id: 'strawpoll.me',
+                vmatch: 'embed_1\/([0-9]*)'
             },
             ted: {
                 name: 'Ted',
                 template: TemplateTypes.TmplTed,
+                aspect: true,
                 id: 'ted.com',
                 vmatch: '(\/talks\/lang\/[a-z]{2}\/|\/talks\/)([a-z0-9_]*)'
             },
             vevo: {
                 name: 'Vevo',
                 template: TemplateTypes.NoTemplate,
+                aspect: true,
                 id: 'vevo.com',
                 vmatch: 'isrc=([0-9a-zA-Z]*)'
             },
             vimeo: {
                 name: 'Vimeo',
-                template: TemplateTypes.NoTemplate,
+                template: TemplateTypes.TmplVimeo,
+                aspect: true,
                 id: 'vimeo.com',
-                vmatch: '\\/video\\/(.*)'
+                vmatch: '\\/video\\/([0-9]*)'
             },
             vine: {
                 name: 'Vine',
                 template: TemplateTypes.NoTemplate,
+                aspect: true,
                 id: 'vine.co',
                 vmatch: '\\/v\\/(.*)\\/embed'
             },
             youtube: {
                 name: 'Youtube',
                 template: TemplateTypes.TmplVideoStartEndat,
+                aspect: true,
                 id: 'youtube.com',
                 vmatch: '\\/embed\\/(.*)'
             },
             other: {
                 name: 'Other (MP4-Datei)',
                 template: TemplateTypes.TmplOther,
+                aspect: true,
                 id: '',
                 vmatch: ''
             }
@@ -314,12 +342,12 @@ class Videoload2ToolViewmodel {
     }
 
     subscribeExtender(newValue): void {
-        console.log('subscribeExtender:', 'newValue=', newValue);
+        console.log(`subscribeExtender: newValue=${newValue}`);
         this.generateHtml();
     }
 
     changeOfLayout(newLayout: string): void {
-        console.log('changeOfLayout: newLayout=', newLayout, 'options=', artworkOptionValues[newLayout]);
+        console.log(`changeOfLayout: newLayout=${newLayout}, options=${artworkOptionValues[newLayout]}`);
         this.artworkOptions(artworkOptionValues[newLayout]);
         this.optArtwork(this.artworkOptions()[0]);
     }
@@ -365,7 +393,7 @@ class Videoload2ToolViewmodel {
                                 this.artworkOptions(artworkOptionValues[value]);
                                 break;
                             case 'linkcol':
-                                if (classes[0]==='soundcloud')
+                                if (classes[0] !== 'bandcamp')
                                     this.txtColor(value);
                                 else
                                     this.txtLinks(value);
@@ -468,6 +496,7 @@ class Videoload2ToolViewmodel {
                 case 'speakerdeck': this.providerHandler = new ToolSpeakerdeck(this); break;
                 case 'soundcloud':  this.providerHandler = new ToolSoundcloud(this); break;
                 case 'ted':         this.providerHandler = new ToolTed(this); break;
+                case 'vimeo':       this.providerHandler = new ToolVimeo(this); break;
                 case 'youtube':     this.providerHandler = new ToolYoutube(this); break;
                 case 'other':       this.providerHandler = new ToolOther(this); break;
                 default:            this.providerHandler = new ToolProvider(this); break;
@@ -495,10 +524,10 @@ class Videoload2ToolViewmodel {
     }
 
     injectProviderTemplate(newProvider: string): void {
-        this.showAspectRow(!(newProvider==='bandcamp' || newProvider==='soundcloud'));
+        this.showAspectRow(this.providers[newProvider].aspect);
         this.providerTemplate(TemplateTypes[this.providers[newProvider].template]);
         this.labelProvider(newProvider==='other' ? 'MP4-Datei-URL:' : `${this.providers[newProvider].name}-ID:`);
-        console.log('injectProviderTemplate: newProvider=', newProvider);
+        console.log(`injectProviderTemplate: newProvider=${newProvider}`);
         this.generateHtml();
         this.triggerColorPickerInputs();
     }
@@ -576,18 +605,20 @@ class Videoload2ToolViewmodel {
 
         // display all existing twoday tipps in the top sidebar item
         let $item: JQuery = $(".sidebarItem:first");
-        $.get("/topics/Sch%C3%B6ner+Bloggen/", function(data){
-            let html: string = '';
-            let wrapTipp: string = '<div class="sideHistoryItem clearfix"><div class="sideHistoryTitle">{tip}</div></div>';
-            $(data).find('.storyTitle').each( function(){
-                html += wrapTipp.replace('{tip}', $(this).html().replace('Twoday-',''));
+        if ($item.length) {
+            $.get("/topics/Sch%C3%B6ner+Bloggen/", function(data){
+                let html: string = '';
+                let wrapTipp: string = '<div class="sideHistoryItem clearfix"><div class="sideHistoryTitle">{tip}</div></div>';
+                $(data).find('.storyTitle').each( function(){
+                    html += wrapTipp.replace('{tip}', $(this).html().replace('Twoday-',''));
+                });
+                if (html.length>0){
+                    $item.find('h4').text('Twoday-Tipps');
+                    $item.find('.sidebarItemBody').html(html);
+                    $('.sidebarItem:gt(0)').hide(0);
+                }
             });
-            if (html.length>0){
-                $item.find('h4').text('Twoday-Tipps');
-                $item.find('.sidebarItemBody').html(html);
-                $('.sidebarItem:gt(0)').hide(0);
-            }
-        });
+        }
 
         // prepend the backlink to the videos tip to the top right of the story
         let $prep: JQuery = $('#prependStory');

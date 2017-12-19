@@ -2,7 +2,7 @@
  dctptv-Plugin
  */
 
-import { frameTemplate, IInstanceOptions, Provider } from './generic';
+import { IInstanceOptions, Provider } from './generic';
 
 export class Dctptv extends Provider {
 
@@ -23,11 +23,6 @@ export class Dctptv extends Provider {
 
     formatTime(seconds: number): string {
         return `${Math.floor(seconds/60)}m${seconds%60}s`;
-    }
-
-    generate(options: IInstanceOptions) : string {
-        this.init(options);
-        return this.fillParams(frameTemplate.replace('_src', this.source));
     }
 
 }

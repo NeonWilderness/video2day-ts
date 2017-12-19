@@ -2,7 +2,7 @@
  Bandcamp-Plugin
  */
 
-import { frameTemplate, FixedWidthAttribute, FixedRatioAttribute, IInstanceOptions, Provider } from './generic';
+import { FixedWidthAttribute, FixedRatioAttribute, IInstanceOptions, Provider } from './generic';
 
 export enum ArtworkValues {
     none,
@@ -92,11 +92,6 @@ export class Bandcamp extends Provider {
             default:
                 this.badParam = `Ungültiger Wert "${options.layout}" für Parameter layout. Erlaubt sind: slim, artworkonly, standard.`;
         }
-    }
-
-    generate(options: IInstanceOptions) : string {
-        this.init(options);
-        return (this.badParam.length ? this.badParam : this.fillParams(frameTemplate.replace('_src', this.source)));
     }
 
 }

@@ -1,6 +1,11 @@
 'use strict';
 
-import { IInstanceOptions, FixedHeightAttribute, FixedWidthAttribute, FixedRatioAttribute, Provider } from './provider/generic';
+import { IInstanceOptions, 
+         ErrorMessage,
+         FixedHeightAttribute, 
+         FixedWidthAttribute, 
+         FixedRatioAttribute, 
+         Provider } from './provider/generic';
 import { Bandcamp } from './provider/bandcamp';
 import { Dailymotion } from './provider/dailymotion';
 import { Dctptv } from './provider/dctptv';
@@ -14,6 +19,7 @@ import { Slides } from './provider/slides';
 import { Slideshare } from './provider/slideshare';
 import { Soundcloud } from './provider/soundcloud';
 import { Speakerdeck } from './provider/speakerdeck';
+import { Strawpoll } from './provider/strawpoll';
 import { Ted } from './provider/ted';
 import { Vevo } from './provider/vevo';
 import { Vimeo } from './provider/vimeo';
@@ -24,6 +30,7 @@ import { Other } from './provider/other';
 import { ClassListPolyfill } from './classlistpolyfill';
 import extend = require('extend-shallow');
 import loadscript = require('load-script');
+const toolVersion = require('./version');
 
 const flex: string = 'flex-video';
 const useVideoJsRelease = '5.19.1';
@@ -53,6 +60,7 @@ export interface IProviders {
     slideshare: any;
     soundcloud: any;
     speakerdeck: any;
+    strawpoll: any;
     ted: any;
     vevo: any;
     vimeo: any;
@@ -62,7 +70,7 @@ export interface IProviders {
 }
 
 export class Framedispatcher {
-    version: string = '2.2.4';
+    version: string = toolVersion;
     defaults: IGeneratorDefaults = {
         addFlexVideoClass: false,
         contentClass: 'storyContent',
@@ -88,6 +96,7 @@ export class Framedispatcher {
         slideshare: new Slideshare,
         soundcloud: new Soundcloud,
         speakerdeck: new Speakerdeck,
+        strawpoll: () => new Strawpoll, // async return function instead of fixed instance
         ted: new Ted,
         vevo: new Vevo,
         vimeo: new Vimeo,
@@ -102,10 +111,6 @@ export class Framedispatcher {
         this.providerNames = Object.keys(this.providers);
     }
 
-    private errorMessage(text: string, element: any) : void {
-        element.innerHTML = `<p class="message">${text}</p>`;
-    }
-
     private log(item: any) : void {
         if (this.options.debug) console.log(item);
     }
@@ -114,33 +119,28 @@ export class Framedispatcher {
         console.log(`Available Providers(#${this.providerNames.length}):`);
         this.providerNames.forEach(providerName => {
             let provider = <Provider>this.providers[providerName];
-            provider.log();
+            if (typeof provider === 'function') provider().log(); else provider.log();
         });
     }
 
     private dispatch(instanceOptions: IInstanceOptions) : void {
         let element = instanceOptions.instance;
         if (!instanceOptions.hasOwnProperty('provider')) {
-            this.errorMessage(`Bitte einen gültigen Typ (${this.providerNames.join(", ")}) im class-Parameter ergänzen!`, element);
+            ErrorMessage(`Bitte einen gültigen Typ (${this.providerNames.join(", ")}) im class-Parameter ergänzen!`, element);
             return;
         }
         if (!instanceOptions.hasOwnProperty('id')) {
-            this.errorMessage('Bitte die ID bzw. -URL des Anzeigeobjekts im Parameter "id" ergänzen!', element);
+            ErrorMessage('Bitte die ID bzw. -URL des Anzeigeobjekts im Parameter "id" ergänzen!', element);
             return;
         }
         let provider = this.providers[instanceOptions.provider];
+        if (typeof provider === 'function') provider = provider();
         if (instanceOptions.provider !== 'other' && provider.hasHttpSourceInSecureMode()) {
-            this.errorMessage(`Im aktuellen https-Browsermodus kann kein ${instanceOptions.provider}-Element angezeigt werden, da dieser Anbieter keinen https-Zugriff anbietet.`, element);
+            ErrorMessage(`Im aktuellen https-Browsermodus kann kein ${instanceOptions.provider}-Element angezeigt werden, da dieser Anbieter keinen https-Zugriff anbietet.`, element);
             return;
         }
-        let result: string = provider.generate(instanceOptions);
-        this.log(result);
-        let html = (result.substr(0, 1) === '<' ? result : this.errorMessage(result, element));
-        if (this.options.position === 'bottom') {
-            element.innerHTML += html;
-        } else {
-            element.innerHTML = html + element.innerHTML;
-        }
+        provider.generate(instanceOptions, this.options.position);
+        
         if (this.options.addFlexVideoClass) {
             this.resizeElement(element);
         }
@@ -257,7 +257,7 @@ export class Framedispatcher {
     run(useroptions: IGeneratorDefaults){
         this.options = extend({}, this.defaults, useroptions || {});
         this.log(`Video2day version ${this.version}`);
-        this.log(this.options);
+        this.log(JSON.stringify(this.options, null, 2));
 
         if (this.options.debug) this.listProviders();
 

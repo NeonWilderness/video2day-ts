@@ -48,15 +48,15 @@
 </cite>
 <h3>Warum Videoload und wozu dient es?</h3>
 <p>
-  Seit die meisten Videoplattformen und Content-Anbieter den alten <span class="code">&amp;lt;embed&amp;gt;</span>-Befehl zugunsten des mo&shy;derneren
-  <span class="code">&amp;lt;iframe&amp;gt;</span>-Formats aufgegeben haben, ist eine Einbindung solcher Quellen mit Standardmitteln bei Twoday
+  Seit die meisten Videoplattformen und Content-Anbieter den alten <span class="code">&lt;embed&gt;</span>-Befehl zugunsten des mo&shy;derneren
+  <span class="code">&lt;iframe&gt;</span>-Formats aufgegeben haben, ist eine Einbindung solcher Quellen mit Standardmitteln bei Twoday
   nicht mehr möglich. In Twoday-Beiträgen wird jeder mutige Versuch einer direkten iframe-Nutzung beim Speichern des Beitragstextes sofort
   wieder herausgefiltert.
 </p>
 <p>
   Videoload führt einen Ausgleich zwischen Twodays berechtigtem Sicherheitsinteresse und den Content-Wünschen der Nutzer herbei, indem es
-  valide und überprüfbare iframe-Aufrufe für einen definierten Kreis von sicheren Anbietern erzeugt. Derzeit (Stand: November 2017) generiert
-  Videoload Verbindungen zu 19 verschiedenen Plattformen und bindet den gewünschten Inhalt (z.B. ein YouTube-Video) auf einfache Weise in den
+  valide und überprüfbare iframe-Aufrufe für einen definierten Kreis von sicheren Anbietern erzeugt. Derzeit (Stand: Dezember 2017) generiert
+  Videoload Verbindungen zu 20 verschiedenen Plattformen und bindet den gewünschten Inhalt (z.B. ein YouTube-Video) auf einfache Weise in den
   jeweiligen Blogbeitrag ein. Folgende Provider stehen zur Verfügung:
 </p>
 <div class="providerbox">
@@ -69,7 +69,8 @@
 <p class="text-center"><span class="sublabel">Klick auf Icon öffnet die jeweilige Anbieterseite</span></p>
 <p>
   Videoload bietet nicht nur Zugriff auf die wichtigsten Videoanbieter, sondern stellt auch Audioinhalte (z.B. via Bandcamp, Soundcloud),
-  Präsentationen (z.B. via Slides, Slideshare, Speakerdeck), GIFs (via Giphy) oder Code-Snippets (via Jsfiddle) bereit.
+  Präsentationen (z.B. via Slides, Slideshare, Speakerdeck), GIFs (via Giphy), Code-Snippets (via Jsfiddle) oder eigene Umfragen (via Strawpoll)
+  bereit.
 </p>
 <div class="accComponent accDark accChevron">
   <h2 class="accHeadline"><a href="#">Erstmalige Installation</a></h2>
@@ -86,9 +87,9 @@
           Klicken Sie auf die Überschrift <span class="label blue">Hauptseite (Site.page)</span>, danach in das Feld mit dem Scrollbalken
           und wandern Sie ganz an das untere Ende der Anzeige.
         </li>
-        <li>Kopieren Sie dort <strong>vor</strong> das abschließende <span class="code">&amp;lt;/body&amp;gt;</span>-Element folgende Zeilen hinein:
-          <pre class="html">&amp;lt;script type="text/javascript" src="&amp;lt;% staticURL %&amp;gt;cdn/files/videoload2-min-js.js"&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;script type="text/javascript"&amp;gt;video2day.run();&amp;lt;/script&amp;gt;</pre>
+        <li>Kopieren Sie dort <strong>vor</strong> das abschließende <span class="code">&lt;/body&gt;</span>-Element folgende Zeilen hinein:
+          <pre class="html">&lt;script type="text/javascript" src="&lt;% staticURL %&gt;cdn/files/videoload2-min-js.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;video2day.run();&lt;/script&gt;</pre>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#installcopy')}">Wie kopiere ich das?</a></p>
           <cite id="installcopy" style="display:none">
             <p><i style="color:#888" class="fa fa-tag fa-lg">&ensp;Kopieren einfach gemacht<a title="data-bind=click:function(){toggle('#'+'installcopy')}" class="closecite"><i class="fa fa-close"></i></a></i></p>
@@ -98,13 +99,13 @@
               ihn in die Zwischen&shy;ablage. Falls bei Ihnen der Link <span class="label blue">copy</span> angezeigt wird
               (Rechner mit Adobe Flash-Installation), können Sie darauf klicken, um den Text ohne Pop-Up-Fenster sofort in
               die Zwischen&shy;ablage zu kopieren. Gehen Sie nun in Ihren Skin Site.page und kopieren dort aus der
-              Zwischenablage an die richtige Stelle vor <span class="code">&amp;lt;/body&amp;gt;</span>.
+              Zwischenablage an die richtige Stelle vor <span class="code">&lt;/body&gt;</span>.
             </p>
           </cite>
           <p>Ihr Skin <em>Site.page</em> sollte nun in etwa so aussehen:</p>
           <p><img alt="videoload/install.jpg" class="googledrive"/></p>
           <p class="text-center"><span class="sublabel">
-              &amp;lt;% staticURL %&amp;gt; ist ein Twoday-Makro und steht für "https://static.twoday.net/", dem abgesicherten Blogspeicher
+              &lt;% staticURL %&gt; ist ein Twoday-Makro und steht für "https://static.twoday.net/", dem abgesicherten Blogspeicher
               für Twoday-Bilder oder -Dateien.</span></p>
         </li>
         <li>
@@ -122,11 +123,11 @@
         Falls Sie bereits die Erstversion des Videoload-Scripts nutzen, sollten Sie auf die neue Version 2 umstellen. Hierzu ist der Aufruf
         von Videoload im Skin <em>Site.page</em> anzupassen bzw. zu ergänzen.
       </p>
-      <p>Bisher steht dort am Ende des Skins, vor dem abschließenden <span class="code">&amp;lt;/body&amp;gt;</span>-Befehl, folgender Eintrag:</p>
-      <p class="text-center"><span class="code">&amp;lt;script type="text/javascript" src="&amp;lt;% staticURL %&amp;gt;cdn/files/videoload-min-js.js"&amp;gt;&amp;lt;/script&amp;gt;</span></p>
+      <p>Bisher steht dort am Ende des Skins, vor dem abschließenden <span class="code">&lt;/body&gt;</span>-Befehl, folgender Eintrag:</p>
+      <p class="text-center"><span class="code">&lt;script type="text/javascript" src="&lt;% staticURL %&gt;cdn/files/videoload-min-js.js"&gt;&lt;/script&gt;</span></p>
       <p>Bitte ändern/erweitern Sie den Aufruf wie folgt:</p>
-      <pre class="html">&amp;lt;script type="text/javascript" src="&amp;lt;% staticURL %&amp;gt;cdn/files/videoload2-min-js.js"&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;script type="text/javascript"&amp;gt;video2day.run();&amp;lt;/script&amp;gt;</pre>
+      <pre class="html">&lt;script type="text/javascript" src="&lt;% staticURL %&gt;cdn/files/videoload2-min-js.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;video2day.run();&lt;/script&gt;</pre>
       <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#upgradecopy')}">Wie kopiere ich das?</a></p>
       <p>d.h. also in Zeile 1 den Scriptnamen <b>videoload</b> in <b>videoload2</b> ändern und die zweite Zeile darunter ergänzen.</p>
       <cite>
@@ -141,7 +142,7 @@
           ihn in die Zwischen&shy;ablage. Falls bei Ihnen der Link <span class="label blue">copy</span> angezeigt wird
           (Rechner mit Adobe Flash-Installation), können Sie darauf klicken, um den Text ohne Pop-Up-Fenster sofort in
           die Zwischen&shy;ablage zu kopieren. Gehen Sie nun in Ihren Skin Site.page und kopieren dort aus der
-          Zwischenablage an die richtige Stelle vor <span class="code">&amp;lt;/body&amp;gt;</span>.
+          Zwischenablage an die richtige Stelle vor <span class="code">&lt;/body&gt;</span>.
         </p>
       </cite>
     </div>
@@ -150,7 +151,7 @@
   <div class="accElement">
     <div class="accContent">
       <p>Um ein Video in einem Beitrag anzuzeigen, verwenden Sie einen einfachen DIV-Befehl, der z.B. für ein YouTube-Video so aussieht:</p>
-      <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video youtube&quot; id=&quot;DyfM7oLIlp0&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=youtube&id=DyfM7oLIlp0"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+      <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video youtube" id="DyfM7oLIlp0"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=youtube&id=DyfM7oLIlp0"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
       </p>
       <p>
         An der feststehenden Zeichenkette <span class="code">html5video</span> erkennt das Videoload-Script, dass es innerhalb dieses
@@ -159,20 +160,20 @@
         legen Sie fest, welches Youtube-Video angezeigt wird (jedes Anbieterelement hat eine eindeutige Identifikation).
       </p>
       <p>
-        Die betreffende ID findet sich meist recht einfach im Einbettungs&shy;code des Videoanbieters (dem &amp;lt;iframe&amp;gt;-Befehl) und besteht i.d.R. aus
+        Die betreffende ID findet sich meist recht einfach im Einbettungs&shy;code des Videoanbieters (dem &lt;iframe&gt;-Befehl) und besteht i.d.R. aus
         einer kurzen Kombination von Zahlen und Buchstaben. In der Tabelle "Individuelle Parameter je Anbieter" weiter unten finden Sie eine genaue
         Information, wie Sie die benötigte ID bei jedem Anbieter manuell ermitteln. Außerdem stelle ich im Folgekapitel ein <strong>Tool</strong>
         vor, das die notwendigen Daten voll&shy;automatisch aus dem kopierten iframe-Einbettungs&shy;code ermittelt und für Sie den korrekten
         Twoday-DIV-Befehl gebrauchsfertig zusammenstellt. Damit entfällt die manchmal etwas umständliche Suche nach der richtigen ID.
       </p>
       <p>
-        Die passende Kennung für einen der 19 möglichen Anbieter finden Sie unten als Beschriftung in den blauen Tabulatoren. Um also ein
+        Die passende Kennung für einen der 20 möglichen Anbieter finden Sie unten als Beschriftung in den blauen Tabulatoren. Um also ein
         Vimeo-Video einzufügen, heißt der entsprechende DIV-Befehl
       </p>
-      <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video vimeo&quot; id=&quot;{eine-vimeo-id}&quot;&amp;gt;&amp;lt;/div&amp;gt;</span>
+      <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video vimeo" id="{eine-vimeo-id}"&gt;&lt;/div&gt;</span>
       </p>
       <p>Für die Anzeige eines GIFs von <em>giphy.com</em> wäre das DIV-Element folgendermaßen zu schreiben:</p>
-      <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video giphy&quot; id=&quot;{eine-giphy-id}&quot;&amp;gt;&amp;lt;/div&amp;gt;</span>
+      <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video giphy" id="{eine-giphy-id}"&gt;&lt;/div&gt;</span>
       </p>
       <p>
         Minimal benötigt eine Einbettung also stets drei Informationen: den feststehenden Bezeichner <span class="code">html5video</span>, die
@@ -194,7 +195,7 @@
         Twoday-Beitragsspalte horizontal vollkommen aus. Falls Sie das Video kleiner darstellen wollen, können Sie zusätzlich eine
         Breitenangabe mithilfe des <span class="code">width</span>-Parameters machen. Für eine Breite von z.B. 350 Pixeln lautet der Befehl:
       </p>
-      <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video youtube &lt;b&gt;width-350&lt;/b&gt;&quot; id=&quot;DyfM7oLIlp0&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=youtube%20width-350&id=DyfM7oLIlp0"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+      <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video youtube <b>width-350</b>" id="DyfM7oLIlp0"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=youtube%20width-350&id=DyfM7oLIlp0"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
       </p>
       <h6 class="top20"><span class="label">ratio</span> &mdash; Seitenverhältnis einstellen/korrigieren</h6>
       <p>
@@ -204,7 +205,7 @@
         dargestellt wird, können Sie ein eigenes Seitenverhältnis einstellen. Der Befehl für ein Vine-Video mit einem Seitenverhältnis von 1,0
         und einer Breite von 400 Pixeln lautet dann:
       </p>
-      <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video vine &lt;b&gt;ratio-1&lt;/b&gt; width-400&quot; id=&quot;OTtQVYI2JY2&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=vine%20ratio-1%20width-400&id=OTtQVYI2JY2"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+      <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video vine <b>ratio-1</b> width-400" id="OTtQVYI2JY2"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=vine%20ratio-1%20width-400&id=OTtQVYI2JY2"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
       </p>
       <p>Dies bewirkt in diesem Fall, dass das Video die gleiche Höhe wie Breite erhält, d.h. 400 Pixel breit und hoch ist.</p>
       <p>
@@ -315,13 +316,13 @@
             Es soll ein Bandcamp-Album im Standardlayout, mit großem Albumcover, dunklem Hintergrund, weißen Links und einer Standard-Tracklist
             (2 Tracks) ausgegeben werden. Der zugehörige Videoload-Befehl hieße dann:
           </p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video bandcamp layout-standard artwork-big bgcol-333333 linkcol-ffffff tracklist&quot; id=&quot;2172528119&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=bandcamp%20layout-standard%20artwork-big%20bgcol-333333%20linkcol-ffffff%20tracklist&id=2172528119"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video bandcamp layout-standard artwork-big bgcol-333333 linkcol-ffffff tracklist" id="2172528119"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=bandcamp%20layout-standard%20artwork-big%20bgcol-333333%20linkcol-ffffff%20tracklist&id=2172528119"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p>Zusätzlich soll die Tracklist 8 Songs anzeigen und die Breite soll 500 Pixel betragen:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video bandcamp layout-standard artwork-big bgcol-333333 linkcol-ffffff tracklist-8 width-500&quot; id=&quot;2172528119&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=bandcamp%20layout-standard%20artwork-big%20bgcol-333333%20linkcol-ffffff%20tracklist-8%20width-500&id=2172528119"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video bandcamp layout-standard artwork-big bgcol-333333 linkcol-ffffff tracklist-8 width-500" id="2172528119"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=bandcamp%20layout-standard%20artwork-big%20bgcol-333333%20linkcol-ffffff%20tracklist-8%20width-500&id=2172528119"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p>Es soll ein schmales Bandcamp-Element mit Albumcover ohne Tracklist generiert werden, das exakt 400 Pixel breit ist:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video bandcamp layout-slim artwork-show width-400&quot; id=&quot;2172528119&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=bandcamp%20layout-slim%20artwork-show%20width-400&id=2172528119"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video bandcamp layout-slim artwork-show width-400" id="2172528119"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=bandcamp%20layout-slim%20artwork-show%20width-400&id=2172528119"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#bandcamp-id')}">Wie finde ich die ID eines Bandcamp-Elements?</a></p>
           <div id="bandcamp-id" style="display:none">
@@ -338,7 +339,7 @@
                 <div class="clearfix"><img alt="videoload/bandcamp-id3.jpg" class="googledrive"/></div>
               </li>
               <li>
-                Klicken Sie in das Feld <span class="label blue">Embed</span>, welches den <span class="code">&amp;lt;iframe&amp;gt;</span>-Code enthält und
+                Klicken Sie in das Feld <span class="label blue">Embed</span>, welches den <span class="code">&lt;iframe&gt;</span>-Code enthält und
                 kopieren Sie diesen mit <span class="code">Strg-C</span> (Windows) oder <span class="code">Cmd-C</span> (Mac) in die Zwischenablage.
                 <div class="clearfix"><img alt="videoload/bandcamp-id4.jpg" class="googledrive"/></div>
               </li>
@@ -358,7 +359,7 @@
             Zeitangabe in Sekunden um (im Beispiel 02:15 = 2*60+15 = 135) und fügen das Ergebnis als Parameterwert an die Kennung
             <span class="code">start</span>. Das vollständige Kommando lautet dann folgendermaßen:
           </p>
-          <p class="text-center"><span class="code">&amp;lt;div class="html5video dailymotion <b>start-135</b>" id="{eine-dailymotion-ID}"&amp;gt;&amp;lt;/div&amp;gt;</span></p>
+          <p class="text-center"><span class="code">&lt;div class="html5video dailymotion <b>start-135</b>" id="{eine-dailymotion-ID}"&gt;&lt;/div&gt;</span></p>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#dailymotion-id')}">Wie finde ich die ID eines Dailymotion-Videos?</a></p>
           <div id="dailymotion-id" style="display:none">
             <h6 class="top20"><strong>Dailymotion-ID manuell ermitteln</strong></h6>
@@ -387,7 +388,7 @@
             Zeitangabe in Sekunden um (im Beispiel 02:15 = 2*60+15 = 135) und fügen das Ergebnis als Parameterwert an die Kennung
             <span class="code">start</span>. Das vollständige Kommando lautet dann folgendermaßen:
           </p>
-          <p class="text-center"><span class="code">&amp;lt;div class="html5video dctptv <b>start-135</b>" id="{eine-dctptv-ID}"&amp;gt;&amp;lt;/div&amp;gt;</span></p>
+          <p class="text-center"><span class="code">&lt;div class="html5video dctptv <b>start-135</b>" id="{eine-dctptv-ID}"&gt;&lt;/div&gt;</span></p>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#dctptv-id')}">Wie finde ich die ID eines DCTPtv-Filmbeitrags?</a></p>
           <div id="dctptv-id" style="display:none">
             <h6 class="top20"><strong>DCTP-ID manuell ermitteln</strong></h6>
@@ -421,7 +422,7 @@
           </p>
           <h6 class="top20"><strong>Beispiel</strong></h6>
           <p>Es soll ein Filmstarts-Trailer mit der ID '19235661' in einem Blogbeitrag eingebunden werden:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video filmstarts&quot; id=&quot;19235661&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=filmstarts&id=19235661"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video filmstarts" id="19235661"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=filmstarts&id=19235661"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#filmstarts-id')}">Wie finde ich die ID eines filmstarts-Videos?</a></p>
           <div id="filmstarts-id" style="display:none">
@@ -434,7 +435,7 @@
               <li>Oben aus der angezeigten Browser-URL (die einfachste Methode):
                 <div class="clearfix"><img alt="videoload/filmstarts-id1.jpg" class="googledrive"/></div>
               </li>
-              <li>Alternativ klicken Sie auf das Symbol <span class="label">TEILEN</span> und danach auf <span class="label">&amp;lt;/&amp;gt; EMBED</span>:
+              <li>Alternativ klicken Sie auf das Symbol <span class="label">TEILEN</span> und danach auf <span class="label">&lt;/&gt; EMBED</span>:
                 <div class="clearfix"><img alt="videoload/filmstarts-id2.jpg" class="googledrive"/></div>
               </li>
               <li>
@@ -449,7 +450,7 @@
           <p><b>FunnyOrDie</b> ist ein Videoanbieter. Er verfügt über keine besonderen Parameter.</p>
           <h6 class="top20"><strong>Beispiel</strong></h6>
           <p>Es soll ein FunnyOrDie-Video mit der ID '000a37c115' in einem Blogbeitrag eingebunden werden:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video funnyordie&quot; id=&quot;000a37c115&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=funnyordie&id=000a37c115"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video funnyordie" id="000a37c115"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=funnyordie&id=000a37c115"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#funnyordie-id')}">Wie finde ich die ID eines FunnyOrDie-Videos?</a></p>
           <div id="funnyordie-id" style="display:none">
@@ -465,7 +466,7 @@
               <li>Alternativ klicken Sie auf das Symbol <span class="label">MORE</span>:
                 <div class="clearfix"><img alt="videoload/funnyordie-id2.jpg" class="googledrive"/></div>
               </li>
-              <li>danach auf <span class="label">&amp;lt;/&amp;gt; EMBED</span>:
+              <li>danach auf <span class="label">&lt;/&gt; EMBED</span>:
                 <div class="clearfix"><img alt="videoload/funnyordie-id3.jpg" class="googledrive"/></div>
               </li>
               <li>Kopieren Sie nun den Einbettungsbefehl (am besten mithilfe einen Texteditors). Der markierte Text entspricht der ID.
@@ -477,18 +478,18 @@
         <div id="tab-giphy">
           <p>
             <b>Giphy</b> ist ein Anbieter von GIFs und Animationen. Eine Besonderheit bei Giphy ist, dass Videoload ein Objekt
-            sowohl als <span class="code">&amp;lt;iframe&amp;gt;</span> als auch als einfaches <span class="code">&amp;lt;img&amp;gt;</span>
+            sowohl als <span class="code">&lt;iframe&gt;</span> als auch als einfaches <span class="code">&lt;img&gt;</span>
             einbinden kann. Zur Veranschaulichung sehen Sie nachstehend ein Beispiel mit beiden Einbindungstypen:
           </p>
           <div class="row">
             <div class="small-12 medium-6 columns">
               <div id="GBdMUGeTSseM8" style="margin-right:15px" class="html5video giphy">
-                <p class="text-center">als <span class="code">&amp;lt;iframe&amp;gt;</span></p>
+                <p class="text-center">als <span class="code">&lt;iframe&gt;</span></p>
               </div>
             </div>
             <div class="small-12 medium-6 columns">
               <div id="GBdMUGeTSseM8" class="html5video giphy asimage">
-                <p class="text-center">als <span class="code">&amp;lt;img&amp;gt;</span></p>
+                <p class="text-center">als <span class="code">&lt;img&gt;</span></p>
               </div>
             </div>
           </div>
@@ -498,7 +499,7 @@
             Um ein Giphy-Element als einfaches Bild einzubinden, ergänzen Sie in der DIV-Klasse den Parameter
             <span class="code">asimage</span>.
           </p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video giphy &lt;b&gt;asimage&lt;/b&gt;&quot; id=&quot;GBdMUGeTSseM8&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=giphy%20asimage&id=GBdMUGeTSseM8"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video giphy <b>asimage</b>" id="GBdMUGeTSseM8"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=giphy%20asimage&id=GBdMUGeTSseM8"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <h6 class="top20"><span class="label">alt</span> &mdash; Das <span class="code">alt</span>-Attribut bei einem Giphy-Bild setzen</h6>
           <p>
@@ -507,7 +508,7 @@
             <span class="code">alt</span>-Parameter und geben Sie im Parameterwert den gewünschten Text an. Da der Parameterwert
             keine Leerzeichen enthalten darf, können Sie Leerstellen als '_' (Unterstrich) schreiben:
           </p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video giphy asimage &lt;b&gt;alt-Woman_on_red_roses&lt;/b&gt;&quot; id=&quot;GBdMUGeTSseM8&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=giphy%20asimage%20alt-Woman_on_red_roses&id=GBdMUGeTSseM8"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video giphy asimage <b>alt-Woman_on_red_roses</b>" id="GBdMUGeTSseM8"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=giphy%20asimage%20alt-Woman_on_red_roses&id=GBdMUGeTSseM8"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p>Fehlt der <span class="code">alt</span>-Parameter, füllt Videoload diesen standardmäßig mit 'Giphy-' und der Bild-ID.</p>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#giphy-id')}">Wie finde ich die ID eines Giphy-Elements?</a></p>
@@ -592,10 +593,10 @@
             Aus einem jsfiddle soll das CSS und das HTML zusammen mit dem Ergebnis angezeigt werden (helles Farbschema).
             Der zugehörige Videoload-Befehl hieße dann:
           </p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video jsfiddle color-light scope-css,html,result&quot; id=&quot;tx2w4s19&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=jsfiddle%20color-light%20scope-css%2Chtml%2Cresult&id=tx2w4s19"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video jsfiddle color-light scope-css,html,result" id="tx2w4s19"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=jsfiddle%20color-light%20scope-css%2Chtml%2Cresult&id=tx2w4s19"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p>In einem dunklem JSFiddle soll ein Stück JavaScript-Code dargestellt werden:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video jsfiddle color-dark scope-js&quot; id=&quot;tx2w4s19&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=jsfiddle%20color-dark%20scope-js&id=tx2w4s19"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video jsfiddle color-dark scope-js" id="tx2w4s19"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=jsfiddle%20color-dark%20scope-js&id=tx2w4s19"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <cite>Da <span class="code">color-dark</span> die Standardeinstellung ist, könnte der Parameter auch weggelassen werden.</cite>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#jsfiddle-id')}">Wie finde ich die ID eines JSFiddle-Elements?</a></p>
@@ -611,7 +612,7 @@
               </li>
               <li>
                 Klicken Sie auf <em>Prefer iframe?</em> und dann in das Feld <em>Embed Code</em>,
-                welches den <span class="code">&amp;lt;iframe&amp;gt;</span>-Code enthält und kopieren Sie diesen mit <span class="code">Strg-C</span>
+                welches den <span class="code">&lt;iframe&gt;</span>-Code enthält und kopieren Sie diesen mit <span class="code">Strg-C</span>
                 (Windows) oder <span class="code">Cmd-C</span> (Mac) in die Zwischenablage.
                 <div class="clearfix"><img alt="videoload/jsfiddle-id3.jpg" class="googledrive"/></div>
               </li>
@@ -631,7 +632,7 @@
             Zeitangabe in Sekunden um (im Beispiel 02:15 = 2*60+15 = 135) und fügen das Ergebnis als Parameterwert an die Kennung
             <span class="code">start</span>. Das vollständige Kommando lautet dann folgendermaßen:
           </p>
-          <p class="text-center"><span class="code">&amp;lt;div class="html5video liveleak <b>start-135</b>" id="{eine-liveleak-ID}"&amp;gt;&amp;lt;/div&amp;gt;</span></p>
+          <p class="text-center"><span class="code">&lt;div class="html5video liveleak <b>start-135</b>" id="{eine-liveleak-ID}"&gt;&lt;/div&gt;</span></p>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#liveleak-id')}">Wie finde ich die ID eines Liveleak-Videos?</a></p>
           <div id="liveleak-id" style="display:none">
             <h6 class="top20"><strong>Liveleak-ID manuell ermitteln</strong></h6>
@@ -653,7 +654,7 @@
           <p><b>Metacafe</b> ist ein Videoanbieter. Er verfügt über keine besonderen Parameter.</p>
           <h6 class="top20"><strong>Beispiel</strong></h6>
           <p>Es soll ein Metacafe-Video mit der ID '11419703' in einem Blogbeitrag eingebunden werden:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video metacafe&quot; id=&quot;11419703&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=metacafe&id=11419703"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video metacafe" id="11419703"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=metacafe&id=11419703"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#metacafe-id')}">Wie finde ich die ID eines Metacafe-Videos?</a></p>
           <div id="metacafe-id" style="display:none">
@@ -690,7 +691,7 @@
             können Sie dies mit dem <span class="code">slide</span>-Parameter einstellen. Im Parameterwert wird die gewünschte Startseite
             spezifiziert. Das Videoload-Beispiel
           </p>
-          <p class="text-center"><span class="code">&amp;lt;div class="html5video slides <b>slide-3</b>" id="{eine-slides-id}"&amp;gt;&amp;lt;/div&amp;gt;</span></p>
+          <p class="text-center"><span class="code">&lt;div class="html5video slides <b>slide-3</b>" id="{eine-slides-id}"&gt;&lt;/div&gt;</span></p>
           <p>startet die Präsentation auf der dritten Seite.</p>
           <h6 class="top20"><span class="label">color</span> &mdash; Farbschema festlegen</h6>
           <p>Slides.com bietet zwei Farbschemata an:</p>
@@ -718,10 +719,10 @@
           </p>
           <h6 class="top20"><strong>Beispiele</strong></h6>
           <p>Es soll eine Slides-Präsentation mit der ID 'bahmutov/working-software' und hellem Farbschema in einem Blogbeitrag eingebunden werden:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video slides &lt;b&gt;color-light&lt;/b&gt;&quot; id=&quot;bahmutov/working-software&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=slides%20color-light&id=bahmutov%2Fworking-software"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video slides <b>color-light</b>" id="bahmutov/working-software"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=slides%20color-light&id=bahmutov%2Fworking-software"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p>Soll die Präsentation ab Seite 6 starten, lautet der Videoload-Befehl:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video slides &lt;b&gt;slide-6&lt;/b&gt;&quot; id=&quot;bahmutov/working-software&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=slides%20slide-6&id=bahmutov%2Fworking-software"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video slides <b>slide-6</b>" id="bahmutov/working-software"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=slides%20slide-6&id=bahmutov%2Fworking-software"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#slides-id')}">Wie finde ich die ID einer Slides-Präsentation?</a></p>
           <div id="slides-id" style="display:none">
@@ -750,14 +751,14 @@
             können Sie dies mit dem <span class="code">slide</span>-Parameter einstellen. Im Parameterwert wird die gewünschte Startseite
             spezifiziert. Das Videoload-Beispiel
           </p>
-          <p class="text-center"><span class="code">&amp;lt;div class="html5video slideshare <b>slide-3</b>" id="{eine-slideshare-id}"&amp;gt;&amp;lt;/div&amp;gt;</span></p>
+          <p class="text-center"><span class="code">&lt;div class="html5video slideshare <b>slide-3</b>" id="{eine-slideshare-id}"&gt;&lt;/div&gt;</span></p>
           <p>startet die Präsentation auf der dritten Seite.</p>
           <h6 class="top20"><strong>Beispiele</strong></h6>
           <p>Es soll eine Slideshare-Präsentation mit der ID 'v2pxR8RN6Bl5Ve' in einem Blogbeitrag eingebunden werden:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video slideshare&quot; id=&quot;v2pxR8RN6Bl5Ve&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=slideshare&id=v2pxR8RN6Bl5Ve"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video slideshare" id="v2pxR8RN6Bl5Ve"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=slideshare&id=v2pxR8RN6Bl5Ve"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p>Soll die Präsentation ab Seite 2 starten, lautet der Videoload-Befehl:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video slideshare &lt;b&gt;slide-2&lt;/b&gt;&quot; id=&quot;v2pxR8RN6Bl5Ve&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=slideshare%20slide-2&id=v2pxR8RN6Bl5Ve"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video slideshare <b>slide-2</b>" id="v2pxR8RN6Bl5Ve"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=slideshare%20slide-2&id=v2pxR8RN6Bl5Ve"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#slideshare-id')}">Wie finde ich die ID einer Slideshare-Präsentation?</a></p>
           <div id="slideshare-id" style="display:none">
@@ -791,7 +792,7 @@
             können Sie in der DIV-Klasse den Parameter <span class="code">stripe</span> ergänzen. Dies bewirkt, dass das Audiostück auf
             ein Drittel der Standardhöhe (=150 Pixel) verkleinert wird.
           </p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video soundcloud &lt;b&gt;stripe&lt;/b&gt;&quot; id=&quot;{eine-soundcloud-id}&quot;&amp;gt;&amp;lt;/div&amp;gt;</span>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video soundcloud <b>stripe</b>" id="{eine-soundcloud-id}"&gt;&lt;/div&gt;</span>
           </p>
           <h6 class="top20"><span class="label">linkcol</span> &mdash; Farbe des Soundcloud-Playbuttons festlegen</h6>
           <p>
@@ -799,17 +800,17 @@
             <span style="background-color:#ff5500;color:#fff;padding:0 5px">orange</span> angezeigt. Mithilfe des <span class="code">linkcol</span>
             Parameters können Sie jede gewünschte Farbe als 6-stelligen Hexwert definieren.
           </p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video soundcloud stripe &lt;b&gt;linkcol-00aabb&lt;/b&gt;&quot; id=&quot;{eine-soundcloud-id}&quot;&amp;gt;&amp;lt;/div&amp;gt;</span>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video soundcloud stripe <b>linkcol-00aabb</b>" id="{eine-soundcloud-id}"&gt;&lt;/div&gt;</span>
           </p>
           <h6 class="top20"><strong>Beispiele</strong></h6>
           <p>Das Stück <em>Warm Blood</em> der Gruppe <em>The Beths</em> soll als Soundcloud-Element in einem Blogbeitrag eingebunden werden:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video soundcloud&quot; id=&quot;249959683&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=soundcloud&id=249959683"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video soundcloud" id="249959683"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=soundcloud&id=249959683"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p>In der schmaleren Variante lautet der Videoload-Befehl:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video soundcloud stripe&quot; id=&quot;249959683&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=soundcloud%20stripe&id=249959683"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video soundcloud stripe" id="249959683"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=soundcloud%20stripe&id=249959683"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p>Zusätzlich soll der Playbutton in der Farbe <span style="background-color:#6e24cc;color:#fff;padding:0 5px">#6e24cc</span> angezeigt werden:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video soundcloud stripe linkcol-6e24cc&quot; id=&quot;249959683&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=soundcloud%20stripe%20linkcol-6e24cc&id=249959683"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video soundcloud stripe linkcol-6e24cc" id="249959683"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=soundcloud%20stripe%20linkcol-6e24cc&id=249959683"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#soundcloud-id')}">Wie finde ich die ID eines Soundcloud-Audioelements?</a></p>
           <div id="soundcloud-id" style="display:none">
@@ -843,22 +844,22 @@
             können Sie dies mit dem <span class="code">slide</span>-Parameter einstellen. Im Parameterwert wird die gewünschte Startseite
             spezifiziert. Das Videoload-Beispiel
           </p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video speakerdeck &lt;b&gt;slide-3&lt;/b&gt;&quot; id=&quot;{eine-speakerdeck-id}&quot;&amp;gt;&amp;lt;/div&amp;gt;</span>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video speakerdeck <b>slide-3</b>" id="{eine-speakerdeck-id}"&gt;&lt;/div&gt;</span>
           </p>
           <p>startet die Präsentation auf der dritten Seite.</p>
           <h6 class="top20"><strong>Beispiele</strong></h6>
           <p>Es soll eine Speakerdeck-Präsentation mit der ID '23e87b703e9c0132341052932d7daf42' in einem Blogbeitrag eingebunden werden:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video speakerdeck&quot; id=&quot;23e87b703e9c0132341052932d7daf42&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=speakerdeck&id=23e87b703e9c0132341052932d7daf42"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video speakerdeck" id="23e87b703e9c0132341052932d7daf42"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=speakerdeck&id=23e87b703e9c0132341052932d7daf42"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p>Soll die Präsentation ab Seite 2 starten, lautet der Videoload-Befehl:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video speakerdeck slide-2&quot; id=&quot;23e87b703e9c0132341052932d7daf42&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=speakerdeck%20slide-2&id=23e87b703e9c0132341052932d7daf42"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video speakerdeck slide-2" id="23e87b703e9c0132341052932d7daf42"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=speakerdeck%20slide-2&id=23e87b703e9c0132341052932d7daf42"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#speakerdeck-id')}">Wie finde ich die ID einer Speakerdeck-Präsentation?</a></p>
           <div id="speakerdeck-id" style="display:none">
             <h6 class="top20"><strong>Speakerdeck-ID manuell ermitteln</strong></h6>
             <p>Sobald Sie in der Einzelansicht der Speakerdeck-Präsentation sind, können Sie mit folgenden Schritten die ID ermitteln:</p>
             <ol>
-              <li>Klicken Sie im Bereich Share auf <span class="label">&amp;lt; /&amp;gt;Embed</span>:
+              <li>Klicken Sie im Bereich Share auf <span class="label">&lt; /&gt;Embed</span>:
                 <div class="clearfix"><img alt="videoload/speakerdeck-id1.jpg" class="googledrive"/></div>
               </li>
               <li>
@@ -874,14 +875,67 @@
             </ol>
           </div>
         </div>
+        <div id="tab-strawpoll">
+          <p><b>Strawpoll.me</b> ist ein Anbieter für selbsterstellte Umfragen. Er verfügt über keine besonderen Parameter.</p>
+          <h6 class="top20"><strong>Eine Umfrage anlegen</strong></h6>
+          <p>
+            Bevor Sie eine Umfrage in einen Twoday-Beitrag einbetten können, müssen Sie diese zunächst unter
+            <a target="_blank" href="http://www.strawpoll.me">strawpoll.me</a> anlegen.
+          </p>
+          <ol>
+            <li>
+               
+              Tippen Sie Ihre Frage und die zugehörigen Antwortoptionen in das gelbe Formular der Strawpoll-Seite ein.
+              Sie können hierzu beliebig viele Optionen eingeben.
+              <div class="clearfix"><img alt="videoload/strawpoll-empty.jpg" class="googledrive"/></div>
+            </li>
+            <li>
+               
+              Nachdem Sie Ihre Umfrage erstellt haben, klicken Sie auf <span class="label red">Create Poll</span>.
+              Um Bots bei der Abstimmung auszuschließen, empfiehlt sich die vorherige Aktivierung der Captcha-Checkbox
+              <span class="code">Improve spam prevention</span>.
+              <div class="clearfix"><img alt="videoload/strawpoll-create.jpg" class="googledrive"/></div>
+            </li>
+            <li>
+               
+              Die Umfrage wird angelegt und auf der Folgeseite angezeigt. Oben in der Browser-Url-Zeile können Sie
+              die erforderliche ID (eindeutige Nummer) der Umfrage ablesen/kopieren.
+              <div class="clearfix"><img alt="videoload/strawpoll-id1.jpg" class="googledrive"/></div>
+            </li>
+            <li>
+               
+              Alternativ können Sie über den SHARE-Button auch den iframe-Code der Umfrage in die Zwischenablage kopieren.
+              <div class="clearfix"><img alt="videoload/strawpoll-id2.jpg" class="googledrive"/></div>
+            </li>
+            <li>
+               
+              Diesen können Sie dann in das <a target="_blank" href="//neonwilderness.twoday.net/stories/videotool2">Videotool</a>
+              einfügen, um den korrekten Ladebefehl für Twoday zu erzeugen.
+              <div class="clearfix"><img alt="videoload/strawpoll-id3.jpg" class="googledrive"/></div>
+            </li>
+          </ol>
+          <h6 class="top20"><strong>Beispiel</strong></h6>
+          <p>Es soll eine Strawpoll-Umfrage mit der ID '14618465' in einem Blogbeitrag eingebunden werden:</p>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video strawpoll" id="14618465"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=strawpoll&id=14618465"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          </p>
+          <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#strawpoll-id')}">Wie finde ich die ID einer Strawpoll-Umfrage?</a></p>
+          <div id="strawpoll-id" style="display:none">
+            <h6 class="top20"><strong>Strawpoll-ID manuell ermitteln</strong></h6>
+            <p>Sobald Sie in der Einzelansicht der Umfrage sind, können Sie die benötigte ID aus der Browser-Url-Zeile kopieren</p>
+            <div class="clearfix"><img alt="videoload/strawpoll-id1.jpg" class="googledrive"/></div>
+          </div>
+        </div>
         <div id="tab-ted">
-          <p><b>TED</b> ist eine Plattform mit Videos von kurzen, thematisch gebundenen Reden/Präsentationen. Folgende Parameter sind möglich:</p>
-          <h6 class="top20"><span class="label">slide</span> &mdash; Video mit deutschen Untertiteln abspielen</h6>
+          <p>
+            <b>TED</b> ist eine Plattform mit Videos von kurzen, thematisch gebundenen Reden/Präsentationen.
+            Folgende zusätzlicher Parameter ist möglich:
+          </p>
+          <h6 class="top20"><span class="label">lang</span> &mdash; Video mit deutschen Untertiteln abspielen</h6>
           <p>
             Falls das TED-Video über deutsche Untertitel verfügt, können Sie diese mit dem <span class="code">lang</span>-Parameter
             aktivieren: 
           </p>
-          <p class="text-center"><span class="code">&amp;lt;div class="html5video ted <b>lang</b>" id="{eine-ted-id}"&amp;gt;&amp;lt;/div&amp;gt;</span></p>
+          <p class="text-center"><span class="code">&lt;div class="html5video ted <b>lang</b>" id="{eine-ted-id}"&gt;&lt;/div&gt;</span></p>
           <p>zeigt während des Videos deutsche Untertitel an.</p>
           <p>
             Wenn Sie den <span class="code">lang</span>-Parameter aktivieren, muss sichergestellt sein, dass dieses
@@ -891,22 +945,25 @@
           <h6 class="top20"><strong>Prüfen auf deutsche Untertitel</strong></h6>
           <p>
             Um zu prüfen, ob für ein TED-Video deutsche Untertitel zur Verfügung stehen, gehen Sie in der Einzelansicht
-            des Videos auf das "Subtitle"-Icon (1) und klicken dann auf "More languages" (2). Wenn in der Auflistung
-            auch ein Eintrag für die deutsche Sprache angezeigt wird, können Sie den <span class="code">lang</span>-Parameter
-            verwenden:
+            des Videos auf das "Subtitle"-Icon <span class="redNumber">1</span> und klicken dann auf "More languages"
+            <span class="redNumber">2</span>. Wenn in der Auflistung auch ein Eintrag für die deutsche Sprache
+            angezeigt wird, können Sie den <span class="code">lang</span>-Parameter verwenden:
           </p>
           <div class="clearfix"><img alt="videoload/ted-lang.jpg" class="googledrive"/></div>
           <h6 class="top20"><strong>Beispiele</strong></h6>
           <p>Es soll eine TED-Rede mit der ID 'wanis_kabbaj_what_a_driverless_world_could_look_like' in einem Blogbeitrag eingebunden werden:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video ted&quot; id=&quot;wanis_kabbaj_what_a_driverless_world_could_look_like&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=ted&id=wanis_kabbaj_what_a_driverless_world_could_look_like"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video ted" id="wanis_kabbaj_what_a_driverless_world_could_look_like"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=ted&id=wanis_kabbaj_what_a_driverless_world_could_look_like"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p>Soll das Video mit deutschen Untertiteln abgespielt werden, lautet der Videoload-Befehl:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video ted &lt;b&gt;lang&lt;/b&gt;&quot; id=&quot;wanis_kabbaj_what_a_driverless_world_could_look_like&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=ted%20lang&id=wanis_kabbaj_what_a_driverless_world_could_look_like"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video ted <b>lang</b>" id="wanis_kabbaj_what_a_driverless_world_could_look_like"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=ted%20lang&id=wanis_kabbaj_what_a_driverless_world_could_look_like"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#ted-id')}">Wie finde ich die ID eines TED-Videos?</a></p>
           <div id="ted-id" style="display:none">
             <h6 class="top20"><strong>TED-ID manuell ermitteln</strong></h6>
-            <p>Sobald Sie sich in der Einzelansicht des gewünschten TED-Videos befinden, können Sie oben aus der Browser-URL die gesuchte ID ermitteln:</p>
+            <p>
+              Sobald Sie sich in der Einzelansicht des gewünschten TED-Videos befinden, können Sie oben aus der
+              Browser-URL die gesuchte ID ermitteln (die Zeichenkette hinter <span class="code">/talks/</span>):
+            </p>
             <div class="clearfix"><img alt="videoload/ted-id1.jpg" class="googledrive"/></div>
           </div>
         </div>
@@ -914,7 +971,7 @@
           <p><b>Vevo</b> ist ein Anbieter von Musikvideos. Er verfügt über keine besonderen Parameter.</p>
           <h6 class="top20"><strong>Beispiel</strong></h6>
           <p>Es soll ein Vevo-Video mit der ID 'GBUV71300569' in einem Blogbeitrag eingebunden werden:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video vevo&quot; id=&quot;GBUV71300569&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=vevo&id=GBUV71300569"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video vevo" id="GBUV71300569"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=vevo&id=GBUV71300569"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#vevo-id')}">Wie finde ich die ID eines Vevo-Videos?</a></p>
           <div id="vevo-id" style="display:none">
@@ -927,7 +984,7 @@
               <li>Oben aus der angezeigten Browser-URL (die einfachste Methode):
                 <div class="clearfix"><img alt="videoload/vevo-id1.jpg" class="googledrive"/></div>
               </li>
-              <li>Alternativ klicken Sie auf das Symbol <span class="label">Teilen</span> und anschließend auf <span class="label">&amp;lt;/&amp;gt; Embed Code</span> :
+              <li>Alternativ klicken Sie auf das Symbol <span class="label">Teilen</span> und anschließend auf <span class="label">&lt;/&gt; Embed Code</span> :
                 <div class="clearfix"><img alt="videoload/vevo-id2.jpg" class="googledrive"/></div>
               </li>
               <li>
@@ -966,10 +1023,24 @@
           </div>
         </div>
         <div id="tab-vimeo">
-          <p><b>Vimeo</b> ist ein Videoanbieter. Er verfügt über keine besonderen Parameter.</p>
-          <h6 class="top20"><strong>Beispiel</strong></h6>
-          <p>Es soll ein Vimeo-Video mit der ID '15759511' in einem Blogbeitrag eingebunden werden:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video vimeo&quot; id=&quot;15759511&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=vimeo&id=15759511"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p><b>Vimeo</b> ist ein Videoanbieter. Folgender zusätzlicher Parameter ist möglich:</p>
+          <h6 class="top20"><span class="label">linkcol</span> &mdash; Farbe für Links festlegen</h6>
+          <p>
+            Sie können die Farbe der Vimeo-Links auf dem Video einstellen. Dies empfiehlt sich z.B., wenn durch den
+            Hintergrund des Videos die Links nur schlecht sichtbar sind. Wählen Sie dann eine passende Farbe aus
+            und ergänzen diese im Parameter <span class="code">linkcol-<b>ffffff</b></span>. Fehlt der Parameter, wird
+            standardmäßig die <span style="color:#00adef">Linkfarbe '00adef' verwendet</span>.
+          </p>
+          <p>
+            Farbcodes werden als 6-stellige Hexadezimalzahl kodiert. Welche Farbe welchen Hexcode besitzt, können Sie z.B. auf
+            <a target="_blank" href="http://htmlcolorcodes.com/color-picker/">dieser Webseite</a> herausfinden.
+          </p>
+          <h6 class="top20"><strong>Beispiele</strong></h6>
+          <p>Es soll ein Vimeo-Video mit der ID '125947740' in Superbreitbild in einem Blogbeitrag eingebunden werden:</p>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video vimeo <b>ratio-2.37037</b>" id="125947740"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=vimeo%20ratio-2.37037&id=125947740"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          </p>
+          <p>Das Vimeo-Video soll zusätzlich mit der Linkfarbe 'c9ff23' angezeigt werden:</p>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video vimeo <b>linkcol-c9ff23</b> ratio-2.37037" id="125947740"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=vimeo%20linkcol-c9ff23%20ratio-2.37037&id=125947740"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#vimeo-id')}">Wie finde ich die ID eines Vimeo-Videos?</a></p>
           <div id="vimeo-id" style="display:none">
@@ -995,13 +1066,13 @@
           <p><b>Vine</b> ist ein Videoportal zum Austausch sehr kurzer Filmaufnahmen (6 Sekunden). Er verfügt über keine besonderen Parameter.</p>
           <h6 class="top20"><strong>Beispiel</strong></h6>
           <p>Es soll ein Vine-Video mit der ID 'en37tTq6YZa' in einem Blogbeitrag eingebunden werden:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video vine&quot; id=&quot;en37tTq6YZa&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=vine&id=en37tTq6YZa"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video vine" id="en37tTq6YZa"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=vine&id=en37tTq6YZa"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p>
             Vine-Videoclips weisen meist die gleiche Höhe wie Breite auf, daher ist es ratsam, den Parameter <span class="code">ratio-1</span>
             zu ergänzen, um das korrekte Aspektverhältnis einzustellen.
           </p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video vine &lt;b&gt;ratio-1&lt;/b&gt;&quot; id=&quot;en37tTq6YZa&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=vine%20ratio-1&id=en37tTq6YZa"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video vine <b>ratio-1</b>" id="en37tTq6YZa"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=vine%20ratio-1&id=en37tTq6YZa"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#vine-id')}">Wie finde ich die ID eines Vine-Videos?</a></p>
           <div id="vine-id" style="display:none">
@@ -1037,7 +1108,7 @@
             Zeitangabe in Sekunden um (im Beispiel 02:15 = 2*60+15 = 135) und fügen das Ergebnis als Parameterwert an die Kennung
             <span class="code">start</span>. Das vollständige Kommando lautet dann folgendermaßen:
           </p>
-          <p class="text-center"><span class="code">&amp;lt;div class="html5video youtube <b>start-135</b>" id="{eine-youtube-ID}"&amp;gt;&amp;lt;/div&amp;gt;</span></p>
+          <p class="text-center"><span class="code">&lt;div class="html5video youtube <b>start-135</b>" id="{eine-youtube-ID}"&gt;&lt;/div&gt;</span></p>
           <h6 class="top20"><span class="label">endat</span> &mdash; Video an einer bestimmten Stelle beenden</h6>
           <p>
             Das Gegenstück zum <span class="code">start</span>-Parameter ist die <span class="code">endat</span>-Anweisung. Hiermit lässt sich
@@ -1045,7 +1116,7 @@
             rechnen Sie die Zeitangabe in Sekunden um (im Beispiel 05:20 = 5*60+20 = 320) und fügen das Ergebnis als Parameterwert an die Kennung
             <span class="code">endat</span>. Das vollständige Kommando lautet dann folgendermaßen:
           </p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video youtube &lt;b&gt;endat-320&lt;/b&gt;&quot; id=&quot;{eine-youtube-ID}&quot;&amp;gt;&amp;lt;/div&amp;gt;</span>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video youtube <b>endat-320</b>" id="{eine-youtube-ID}"&gt;&lt;/div&gt;</span>
           </p>
           <cite>Die <span class="code">endat</span>-Anweisung kann alleine oder in Kombination mit dem <span class="code">start</span>-Parameter verwendet werden.</cite>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#youtube-id')}">Wie finde ich die ID eines Youtube-Videos?</a></p>
@@ -1076,7 +1147,7 @@
             wird im Parameter <span class="code">id</span> übergeben. Der Befehl für die Einbindung eines MP4-Videos aus einem öffentlichen Ordner
             hat dann z.B. folgendes Format:
           </p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video other ratio-2.4&quot; id=&quot;http://www.s522667522.online.de/public/movies/oceans-clip.mp4&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=other%20ratio-2.4&id=http%3A%2F%2Fwww.s522667522.online.de%2Fpublic%2Fmovies%2Foceans-clip.mp4"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video other ratio-2.4" id="http://www.s522667522.online.de/public/movies/oceans-clip.mp4"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=other%20ratio-2.4&id=http%3A%2F%2Fwww.s522667522.online.de%2Fpublic%2Fmovies%2Foceans-clip.mp4"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <h6 class="top20"><span class="label">poster</span> &mdash; Posterbild für MP4-Videodatei festlegen</h6>
           <p>
@@ -1089,7 +1160,7 @@
             jpg-Standbild die Adresse <span class="code">http://www.meinewebadresse.de/videos/meinvideo.jpg</span> besitzen. Für die Anzeige eines
             Standbilds ergänzen Sie einfach <span class="code">poster</span> als zusätzlichen Parameterwert.
           </p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video other ratio-2.4 &lt;b&gt;poster&lt;/b&gt;&quot; id=&quot;http://www.s522667522.online.de/public/movies/oceans-clip.mp4&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=other%20ratio-2.4%20poster&id=http%3A%2F%2Fwww.s522667522.online.de%2Fpublic%2Fmovies%2Foceans-clip.mp4"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video other ratio-2.4 <b>poster</b>" id="http://www.s522667522.online.de/public/movies/oceans-clip.mp4"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=other%20ratio-2.4%20poster&id=http%3A%2F%2Fwww.s522667522.online.de%2Fpublic%2Fmovies%2Foceans-clip.mp4"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <h6 class="top20"><span class="label">image</span> &mdash; Dateityp des Posterbilds festlegen</h6>
           <p>
@@ -1097,7 +1168,7 @@
             <span class="code">image-gif</span> oder <span class="code">image-bmp</span>.
           </p>
           <p><em>Beispiel</em>: Für ein MP4-Video in 500 Pixel Breite und einem gif-Standbild lautete der DIV-Befehl dann so:</p>
-          <p class="text-center"><span style="white-space:normal" class="code">&amp;lt;div class=&quot;html5video other width-500 poster &lt;b&gt;image-gif&lt;/b&gt;&quot; id=&quot;http://www.s522667522.online.de/public/movies/nodejs.mp4&quot;&amp;gt;&amp;lt;/div&amp;gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=other%20width-500%20poster%20image-gif&id=http%3A%2F%2Fwww.s522667522.online.de%2Fpublic%2Fmovies%2Fnodejs.mp4"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
+          <p class="text-center"><span style="white-space:normal" class="code">&lt;div class="html5video other width-500 poster <b>image-gif</b>" id="http://www.s522667522.online.de/public/movies/nodejs.mp4"&gt;&lt;/div&gt;</span><a target="_blank" href="https://neonwilderness.twoday.net/stories/videotool2?provider=other%20width-500%20poster%20image-gif&id=http%3A%2F%2Fwww.s522667522.online.de%2Fpublic%2Fmovies%2Fnodejs.mp4"><i title="Ergebnis live im Videotool ansehen" class="fa fa-eye liveview">&nbsp;&hellip;</i></a>
           </p>
           <p class="text-right"><a href="#" title="data-bind=click:function(){toggle('#other-id')}">Wie finde ich die ID eines MP4-Videos?</a></p>
           <div id="other-id" style="display:none">
@@ -1127,7 +1198,7 @@
     <div class="accContent">
       <h3>Twoday-Videoload-Code automatisch generieren</h3>
       <p>
-        Es ist evtl. etwas mühsam, die oben beschriebenen Parameter für jeden der 19 Anbieter im Kopf zu behalten oder erst wieder
+        Es ist evtl. etwas mühsam, die oben beschriebenen Parameter für jeden der 20 Anbieter im Kopf zu behalten oder erst wieder
         nachzuschlagen, wenn man sie benötigt. Aus diesem Grund habe ich zusätzlich ein kleines Online-Tool erstellt, das den Twoday-Code
         automatisch für Sie zusammenstellt.
       </p>
@@ -1177,7 +1248,7 @@
       <p>Navigieren Sie nun zu Ihrem Beitrag und fügen Sie den kopierten Code an der gewünschten Stelle in den Text ein:</p>
       <p class="clearfix"><img alt="videoload/videoload7.jpg" class="googledrive"/></p>
       <p class="top20">
-        Dieser Ablauf funktioniert für jeden der 19 Anbieter identisch. Wollen Sie also ein YouTube-Video in Ihren
+        Dieser Ablauf funktioniert für jeden der 20 Anbieter identisch. Wollen Sie also ein YouTube-Video in Ihren
         Beitrag einfügen, kopieren Sie den entsprechenden iframe-Code des Videos und das Tool zeigt Ihnen das passende DIV-Kommando
         für die Einbettung im Twoday-Beitrag.
       </p>

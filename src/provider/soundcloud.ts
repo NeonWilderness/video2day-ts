@@ -2,17 +2,18 @@
  Soundcloud-Plugin
  */
 
-import { frameTemplate, IInstanceOptions, Provider } from './generic';
+import { IInstanceOptions, Provider } from './generic';
 
 export const
     bigArtwork: number = 450,   // Pixel height for big artwork
-    smallArtwork: number = 166; // Pixel height for smaller artwork (stripe)
+    smallArtwork: number = 166, // Pixel height for smaller artwork (stripe)
+    standardPlaybuttonColor: string = 'ff5500';
 
 export class Soundcloud extends Provider {
 
     source: string = 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{_id}&amp;'+
-                     'color={_linkcol}&amp;auto_play=false&amp;hide_related=true&amp;show_comments=true&amp;'+
-                     'show_user=true&amp;show_reposts=false&amp;visual={_visual}';
+                     'color=%23{_linkcol}&amp;auto_play=false&amp;hide_related=true&amp;show_comments=true&amp;'+
+                     'show_user=true&amp;show_reposts=false&amp;show_teaser=false&amp;visual={_visual}';
     _visual: boolean;
     _linkcol: string;
 
@@ -26,13 +27,8 @@ export class Soundcloud extends Provider {
     init(options: IInstanceOptions){
         super.init(options);
         this._visual = !options.hasOwnProperty('stripe');
-        this._linkcol = (options.hasOwnProperty('linkcol') ? options.linkcol : 'ff5500');
+        this._linkcol = (options.hasOwnProperty('linkcol') ? options.linkcol : standardPlaybuttonColor);
         this.setFixedHeight(options, smallArtwork + Number(this._visual)*(bigArtwork-smallArtwork));
-    }
-
-    generate(options: IInstanceOptions) : string {
-        this.init(options);
-        return this.fillParams(frameTemplate.replace('_src', this.source));
     }
 
 }

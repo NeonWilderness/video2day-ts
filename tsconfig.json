@@ -3,12 +3,18 @@
     "target": "es5",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "lib": [
+      "dom",
+      "es2015", 
+      "dom.iterable", 
+      "scripthost"
+    ],    
     "module": "commonjs",
     "removeComments": true,
     "preserveConstEnums": true,
-	"pretty": true,
-    "sourceMap": true
-  },
+    "pretty": true,
+      "sourceMap": true
+    },
     "files": [
       "src/videoload2.ts",
       "src/videoload2-story.ts",

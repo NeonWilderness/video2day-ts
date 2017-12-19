@@ -13,6 +13,7 @@ export interface IInstanceOptions {
     id?: string;
     image?: string;
     instance?: any;
+    lang?: boolean;
     layout?: string;
     linkcol?: string;
     poster?: boolean;
@@ -35,31 +36,21 @@ export const FixedHeightAttribute = 'height';
 export const FixedWidthAttribute  = 'width';
 export const FixedRatioAttribute  = 'ratio';
 
+export function ErrorMessage(text: string, element: any) : void {
+    element.innerHTML = `<p class="message">${text}</p>`;
+}
+
 export class Provider {
 
     _id: string;
     _width: string;
     _height: string;
+    _ratio: string;
     badParam: string;
+    element: any;
     source: string;
 
     constructor(public pluginID: string) {
-    }
-
-    init(options: IInstanceOptions){
-        this._id = options.id;
-        this._height = options.height.toString();
-        this.setData(options.instance, FixedWidthAttribute, options.width.toString());
-        this.setData(options.instance, FixedRatioAttribute, (1 / options.ratio).toString());
-        this.badParam = '';
-    }
-
-    getID() : string {
-        return this.pluginID;
-    }
-
-    hasHttpSourceInSecureMode() : boolean {
-        return (location.protocol==='https:' && this.source.substr(0,7)==='http://');
     }
 
     fillParams(template: string) : string {
@@ -70,8 +61,43 @@ export class Provider {
         return html;
     }
 
+    generate(options: IInstanceOptions, position: string) : void {
+        this.init(options);
+        this.render(this.fillParams(frameTemplate.replace('_src', this.source)), position);
+    }
+
+    getID() : string {
+        return this.pluginID;
+    }
+
+    hasHttpSourceInSecureMode() : boolean {
+        return (location.protocol==='https:' && this.source.substr(0,7)==='http://');
+    }
+
+    init(options: IInstanceOptions) : void {
+        this._id = options.id;
+        this._height = options.height.toString();
+        this.setData(options.instance, FixedWidthAttribute, options.width.toString());
+        this.setData(options.instance, FixedRatioAttribute, (1 / options.ratio).toString());
+        this.badParam = '';
+        this.element = options.instance;
+    }
+
     log(): void {
         console.log( `${this.getID()} plugin registered.` );
+    }
+
+    render(code: string, position?: string) : void {
+        console.log(code);
+        if (code[0] !== '<') {
+            ErrorMessage(code, this.element)
+        } else {    
+            if (position === 'bottom') {
+                this.element.innerHTML += code;
+            } else {
+                this.element.innerHTML = code + this.element.innerHTML;
+            }
+        }
     }
 
     setData(instance: HTMLElement, property: string, value: string): void {

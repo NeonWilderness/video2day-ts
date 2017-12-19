@@ -2,7 +2,7 @@
  Vevo-Plugin
  */
 
-import { frameTemplate, IInstanceOptions, Provider } from './generic';
+import { IInstanceOptions, Provider } from './generic';
 
 export class Vevo extends Provider {
 
@@ -13,15 +13,6 @@ export class Vevo extends Provider {
      */
     constructor(){
         super('vevo');
-    }
-
-    init(options: IInstanceOptions){
-        super.init(options);
-    }
-
-    generate(options: IInstanceOptions) : string {
-        this.init(options);
-        return this.fillParams(frameTemplate.replace('_src', this.source));
     }
 
 }

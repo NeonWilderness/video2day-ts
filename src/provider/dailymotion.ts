@@ -2,11 +2,11 @@
  Dailymotion-Plugin
  */
 
-import { frameTemplate, IInstanceOptions, Provider } from './generic';
+import { IInstanceOptions, Provider } from './generic';
 
 export class Dailymotion extends Provider {
 
-    source: string = '//www.dailymotion.com/embed/video/{_id}?start={_starttime}';
+    source: string = 'https://www.dailymotion.com/embed/video/{_id}?start={_starttime}';
     _starttime: string;
 
     /**
@@ -20,11 +20,5 @@ export class Dailymotion extends Provider {
         super.init(options);
         this._starttime = (options.hasOwnProperty('start') ? parseInt(options.start).toString() : '');
     }
-
-    generate(options: IInstanceOptions) : string {
-        this.init(options);
-        return this.fillParams(frameTemplate.replace('_src', this.source));
-    }
-
 
 }

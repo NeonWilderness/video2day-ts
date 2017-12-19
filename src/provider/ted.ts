@@ -2,7 +2,7 @@
  TED-Plugin
  */
 
-import { frameTemplate, IInstanceOptions, Provider } from './generic';
+import { IInstanceOptions, Provider } from './generic';
 
 export class Ted extends Provider {
 
@@ -13,17 +13,12 @@ export class Ted extends Provider {
      * Initialize the plugin ID
      */
     constructor(){
-        super('slideshare');
+        super('ted');
     }
 
     init(options: IInstanceOptions){
         super.init(options);
         this._lang = (options.hasOwnProperty('lang') ? 'lang/de/' : '');
-    }
-
-    generate(options: IInstanceOptions) : string {
-        this.init(options);
-        return this.fillParams(frameTemplate.replace('_src', this.source));
     }
 
 }

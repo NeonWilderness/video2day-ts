@@ -2,7 +2,7 @@
  Liveleak-Plugin
  */
 
-import { frameTemplate, IInstanceOptions, Provider } from './generic';
+import { IInstanceOptions, Provider } from './generic';
 
 export class Liveleak extends Provider {
 
@@ -19,11 +19,6 @@ export class Liveleak extends Provider {
     init(options: IInstanceOptions){
         super.init(options);
         this._starttime = (options.hasOwnProperty('start') ? parseInt(options.start).toString() : '');
-    }
-
-    generate(options: IInstanceOptions) : string {
-        this.init(options);
-        return this.fillParams(frameTemplate.replace('_src', this.source));
     }
 
 }

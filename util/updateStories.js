@@ -10,8 +10,6 @@ var cheerio = require('cheerio');
 var fs = require('fs');
 var request = require('request-promise');
 
-var cheerio = require('cheerio');
-var request = require('request-promise');
 //request.debug = true; // uncomment to activate debugging
 require('dotenv-safe').load();
 
