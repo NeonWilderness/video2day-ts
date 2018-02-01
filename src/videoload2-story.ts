@@ -119,7 +119,7 @@ class Videoload2StoryViewmodel {
         let vm = new Videoload2StoryViewmodel();
 
         // and link to knockout bindings
-        ko.applyBindings( vm );
+        ko.applyBindings( vm, document.getElementById('videoload2') );
 
         // on each click of a tab button
         $('ul.tabs>li').click( function() {

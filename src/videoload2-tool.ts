@@ -627,7 +627,7 @@ class Videoload2ToolViewmodel {
         // create viewmodel from class
         let vm: Videoload2ToolViewmodel = new Videoload2ToolViewmodel();
         // and link to knockout bindings
-        ko.applyBindings( vm );
+        ko.applyBindings( vm, document.getElementById('videotool2') );
 
         // load colorpicker helper script
         loadscript('//cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.min.js', {}, function (err) {
