@@ -605,7 +605,7 @@ class Videoload2ToolViewmodel {
 
         // display all existing twoday tipps in the top sidebar item
         let $item: JQuery = $(".sidebarItem:first");
-        if ($item.length) {
+        if ($item.length && location.host.split('.')[0]==='neonwilderness') {
             $.get("/topics/Sch%C3%B6ner+Bloggen/", function(data){
                 let html: string = '';
                 let wrapTipp: string = '<div class="sideHistoryItem clearfix"><div class="sideHistoryTitle">{tip}</div></div>';

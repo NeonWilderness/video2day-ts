@@ -119,7 +119,8 @@ export class Framedispatcher {
         console.log(`Available Providers(#${this.providerNames.length}):`);
         this.providerNames.forEach(providerName => {
             let provider = <Provider>this.providers[providerName];
-            if (typeof provider === 'function') provider().log(); else provider.log();
+            if (typeof provider === 'function') provider = provider();
+            provider.log();
         });
     }
 
