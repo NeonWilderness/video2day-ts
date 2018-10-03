@@ -126,8 +126,14 @@ function dropbox() {
 
 };
 
+function copy() {
+  const targetDir = 'D:/Dokumente/GitHub/blog/static/js';
+  return gulp.src(['./dist/videoload2.js']).pipe(gulp.dest(targetDir));
+}
+
 const generate = gulp.parallel(gulp.series(templates, minify), js);
 const deploy = gulp.series(generate, dropbox);
 
 gulp.task('default', generate);
 gulp.task('deploy', deploy);
+gulp.task('copy', copy);

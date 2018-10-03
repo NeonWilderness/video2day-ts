@@ -14,6 +14,7 @@
     "build": "gulp --production",
     "dev": "gulp",
     "deploy": "gulp deploy --production",
+    "deploy:blog": "gulp copy",
     "pretest": "gulp",
     "testpage": "node ./node_modules/local-web-server/bin/cli --spa ./dist/testpage.html",
     "teststory": "node ./node_modules/local-web-server/bin/cli --spa ./dist/teststory.html",
