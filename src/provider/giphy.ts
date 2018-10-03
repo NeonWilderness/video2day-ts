@@ -24,14 +24,14 @@ export class Giphy extends Provider {
         this._asimage = options.hasOwnProperty('asimage');
     }
 
-    generate(options: IInstanceOptions, position: string) : void {
+    generate(options: IInstanceOptions, position: string, exportRun: boolean) : void {
         this.init(options);
         let template: string = (
             this._asimage ?
             imageTemplate.replace('_src', this.sourceimg) :
             frameTemplate.replace('_src', this.source)
         );
-        this.render(this.fillParams(template), position);
+        this.render(this.fillParams(template), exportRun, position);
     }
 
 }

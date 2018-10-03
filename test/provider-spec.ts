@@ -1,4 +1,4 @@
-import { IEmbedCode, embedCodes } from './provider-embed-codes';
+import { embedCodes } from './provider-embed-codes';
 import { assert } from 'chai';
 declare var video2day: any;
 

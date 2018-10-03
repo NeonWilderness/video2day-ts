@@ -109,8 +109,8 @@ export const embedCodes: IEmbedCode[] = [
     //------ Liveleak
     {
         id: 'Liveleak',
-        code: '<iframe width="640" height="360" src="https://www.liveleak.com/ll_embed?f=4e002aa1bd81&start=" frameborder="0" allowfullscreen></iframe>',
-        expect: { vid: '4e002aa1bd81', param: 'html5video liveleak'}
+        code: '<iframe width="640" height="360" src="https://www.liveleak.com/e/kxA2P_1538160107&start=" frameborder="0" allowfullscreen></iframe>',
+        expect: { vid: 'kxA2P_1538160107', param: 'html5video liveleak'}
     },
     //------ Metacafe
     {
@@ -203,7 +203,12 @@ export const embedCodes: IEmbedCode[] = [
     //------ YouTube
     {
         id: 'YouTube',
-        code: '<iframe width="560" height="315" src="https://www.youtube.com/embed/DyfM7oLIlp0?start=&end=" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>',
+        code: '<iframe width="560" height="315" src="https://www.youtube.com/embed/DyfM7oLIlp0?start=&end=" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',
         expect: { vid: 'DyfM7oLIlp0', param: 'html5video youtube'}
+    },
+    {
+        id: 'YouTube/start',
+        code: '<iframe width="560" height="315" src="https://www.youtube.com/embed/DyfM7oLIlp0?start=10&end=" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',
+        expect: { vid: 'DyfM7oLIlp0', param: 'html5video youtube start-10'}
     }
     ];

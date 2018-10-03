@@ -38,8 +38,11 @@ Array.from(classes).forEach(function(el) {
         // re-parse index
         let i = parseInt(this.attributes['href'].nodeValue);
         // generate appropriate videoload command
-        div.innerHTML = `<div class="${embedCodes[i].expect.param}" id="${embedCodes[i].expect.vid}"></div>`
+        let embed: IEmbedCode = embedCodes[i];
+        div.innerHTML = `<div class="${embed.expect.param}" id="${embed.expect.vid}"></div>`
         // run videoload
-        video2day.run({debug: true});
+        video2day.run({
+            debug: true
+        });
     });
   });

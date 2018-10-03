@@ -1,5 +1,5 @@
 
-<div id="prependStory" style="display:none" class="videotool2">
+<div class="videotool2" id="prependStory" style="display:none">
   <div style="position:relative"><a href="https://neonwilderness.twoday.net/stories/videoload2" style="position:absolute;right:0;font-size:12px;z-index:1">Videoload2-Script installiert?</a></div>
 </div>
 <div class="row">
@@ -10,14 +10,14 @@
     <p class="hint bottom0">Den resultierenden <em>HTML-Code</em> kopieren Sie anschließend in Ihren Beitragstext (Videoload2-Script muss installiert sein!).</p>
   </div>
   <div class="small-3 columns">
-    <button title="data-bind=click:resetOptions" style="margin-bottom:10px" class="tiny radius">Formulardaten zurücksetzen</button>
-    <button title="data-bind=click:function(){toggle('#fldIframe,#fldOptions')}" class="tiny radius success">Parameter ändern / manuell setzen...</button>
+    <button class="tiny radius" title="data-bind=click:resetOptions" style="margin-bottom:10px">Formulardaten zurücksetzen</button>
+    <button class="tiny radius success" title="data-bind=click:function(){toggle('#fldIframe,#fldOptions')}">Parameter ändern / manuell setzen...</button>
   </div>
 </div>
 <fieldset id="fldIframe">
   <legend><i class="fa fa-film"></i><span>iframe-Code</span></legend>
   <input id="txtIframe" title="data-bind=textInput:txtIframe | data-!placeholder=Kopieren Sie den iframe-Einbettungscode Ihres Anbieters hier hinein"/>
-</fieldset><span id="errMsg" style="display:none;border-radius:3px" title="data-bind=text:errIframe, visible:(hasError()&amp;&amp;optionsVisible())" class="error"></span>
+</fieldset><span class="error" id="errMsg" style="display:none;border-radius:3px" title="data-bind=text:errIframe, visible:(hasError()&amp;&amp;optionsVisible())"></span>
 <fieldset id="fldOptions" style="display:none">
   <legend><i class="fa fa-youtube-play"></i><span>Anzeigeoptionen</span></legend>
   <div class="row">
@@ -25,7 +25,7 @@
       <label for="optProvider">Anbieter:</label>
     </div>
     <div class="small-9 columns">
-      <select id="optProvider" name="optProvider" title="data-bind=options:providerOptions, optionsValue:'code', optionsText:'option', value:optProvider"></select><img title="data-bind=attr:{src:providerImgUrl}" class="imgProvider"/>
+      <select id="optProvider" name="optProvider" title="data-bind=options:providerOptions, optionsValue:'code', optionsText:'option', value:optProvider"></select><img class="imgProvider" title="data-bind=attr:{src:providerImgUrl}"/>
     </div>
   </div>
   <div class="row">
@@ -41,7 +41,7 @@
       </label>
     </div>
   </div>
-  <div title="data-bind=if:showAspectRow()" class="row">
+  <div class="row" title="data-bind=if:showAspectRow()">
     <div class="small-3 columns pad6">
       <label>Aspektverhältnis:</label>
     </div>
@@ -64,60 +64,60 @@
       <input id="txtElement" type="text" title="data-bind=textInput:txtElementID"/>
     </div>
   </div>
-  <div title="data-bind=if:providerTemplate()==='TmplVideoStart'" class="row">
+  <div class="row" title="data-bind=if:providerTemplate()==='TmplVideoStart'">
     <div class="small-3 columns pad6">
       <label for="txtStart">Start (ab Sekunde):</label>
     </div>
     <div class="small-3 columns end">
-      <input id="txtStart" type="text" title="data-bind=textInput:txtStart" class="bottom0"/>
+      <input class="bottom0" id="txtStart" type="text" title="data-bind=textInput:txtStart"/>
     </div>
   </div>
-  <div title="data-bind=if:providerTemplate()==='TmplVideoStartEndat'" class="row">
+  <div class="row" title="data-bind=if:providerTemplate()==='TmplVideoStartEndat'">
     <div class="small-3 columns pad6">
       <label for="txtStart">Start (ab Sekunde):</label>
     </div>
     <div class="small-3 columns">
-      <input id="txtStart" type="text" title="data-bind=textInput:txtStart" class="bottom0"/>
+      <input class="bottom0" id="txtStart" type="text" title="data-bind=textInput:txtStart"/>
     </div>
     <div class="small-3 columns pad6">
       <label for="txtEndat">Ende (bei Sekunde):</label>
     </div>
     <div class="small-3 columns">
-      <input id="txtEndat" type="text" title="data-bind=textInput:txtEndat" class="bottom0"/>
+      <input class="bottom0" id="txtEndat" type="text" title="data-bind=textInput:txtEndat"/>
     </div>
   </div>
-  <div title="data-bind=if:providerTemplate()==='TmplGiphy'" class="row">
+  <div class="row" title="data-bind=if:providerTemplate()==='TmplGiphy'">
     <div class="small-3 columns pad6">
-      <input id="chkAsImage" type="checkbox" title="data-bind=checked:chkAsImage" class="bottom0"/>
+      <input class="bottom0" id="chkAsImage" type="checkbox" title="data-bind=checked:chkAsImage"/>
       <label for="chkAsImage" style="margin-right:0">als Bild einbinden</label>
     </div>
     <div class="small-9 columns">
       <input id="txtAlt" type="text" title="data-bind=textInput:txtAlt, visible:chkAsImage | data-!placeholder=Bildtext für alt-Parameter"/>
     </div>
   </div>
-  <div title="data-bind=if:providerTemplate()==='TmplTed'" class="row">
+  <div class="row" title="data-bind=if:providerTemplate()==='TmplTed'">
     <div class="small-3 columns pad6">
-      <input id="chkLang" type="checkbox" title="data-bind=checked:chkLang" class="bottom0"/>
+      <input class="bottom0" id="chkLang" type="checkbox" title="data-bind=checked:chkLang"/>
       <label for="chkLang" style="margin-right:0">mit deutschen Untertiteln</label>
     </div>
     <div class="small-9 columns">
       <input id="txtAlt" type="text" title="data-bind=textInput:txtAlt, visible:chkAsImage | data-!placeholder=Bildtext für alt-Parameter"/>
     </div>
   </div>
-  <div title="data-bind=if:providerTemplate()==='TmplSlide'" class="row">
+  <div class="row" title="data-bind=if:providerTemplate()==='TmplSlide'">
     <div class="small-3 columns pad6">
       <label for="txtSlide">Startseite:</label>
     </div>
     <div class="small-3 columns end">
-      <input id="txtSlide" type="text" title="data-bind=textInput:txtSlide" class="bottom0"/>
+      <input class="bottom0" id="txtSlide" type="text" title="data-bind=textInput:txtSlide"/>
     </div>
   </div>
-  <div title="data-bind=if:providerTemplate()==='TmplSlides'" class="row">
+  <div class="row" title="data-bind=if:providerTemplate()==='TmplSlides'">
     <div class="small-3 columns pad6">
       <label for="txtSlide">Startseite:</label>
     </div>
     <div class="small-3 columns">
-      <input id="txtSlide" type="text" title="data-bind=textInput:txtSlide" class="bottom0"/>
+      <input class="bottom0" id="txtSlide" type="text" title="data-bind=textInput:txtSlide"/>
     </div>
     <div class="small-3 columns pad6">
       <label for="optColor">Farbschema:</label>
@@ -126,9 +126,9 @@
       <select id="optColor" name="optColor" title="data-bind=options:colorOptions, optionsText:'colorText', optionsValue:'colorValue', value:optColor"></select>
     </div>
   </div>
-  <div title="data-bind=if:providerTemplate()==='TmplSoundcloud'" class="row">
+  <div class="row" title="data-bind=if:providerTemplate()==='TmplSoundcloud'">
     <div class="small-6 columns pad6">
-      <input id="chkStripe" type="checkbox" title="data-bind=checked:chkStripe" class="bottom0"/>
+      <input class="bottom0" id="chkStripe" type="checkbox" title="data-bind=checked:chkStripe"/>
       <label for="chkStripe">schmales Anzeigeformat (stripe)</label>
     </div>
     <div class="small-3 columns pad6">
@@ -137,30 +137,30 @@
     <div class="small-3 columns">
       <div class="row collapse">
         <div class="small-9 columns">
-          <input id="txtColor" type="text" title="data-bind=textInput:txtColor"/>
+          <input id="#{id}" type="text" title="data-bind=textInput:#{id}"/>
         </div>
         <div class="small-3 columns">
-          <button class="postfix jscolor {valueElement:'txtColor',required:false,uppercase:false}"></button>
+          <button class="postfix jscolor {valueElement:'#{id}',required:false,uppercase:false}"></button>
         </div>
       </div>
     </div>
   </div>
-  <div title="data-bind=if:providerTemplate()==='TmplVimeo'" class="row">
+  <div class="row" title="data-bind=if:providerTemplate()==='TmplVimeo'">
     <div class="small-3 columns pad6">
       <label for="txtColor">Linkfarbe:</label>
     </div>
     <div class="small-3 columns end">
       <div class="row collapse">
         <div class="small-9 columns">
-          <input id="txtColor" type="text" title="data-bind=textInput:txtColor"/>
+          <input id="#{id}" type="text" title="data-bind=textInput:#{id}"/>
         </div>
         <div class="small-3 columns">
-          <button class="postfix jscolor {valueElement:'txtColor',required:false,uppercase:false}"></button>
+          <button class="postfix jscolor {valueElement:'#{id}',required:false,uppercase:false}"></button>
         </div>
       </div>
     </div>
   </div>
-  <div title="data-bind=if:providerTemplate()==='TmplFiddle'" class="row">
+  <div class="row" title="data-bind=if:providerTemplate()==='TmplFiddle'">
     <div class="small-3 columns pad6">
       <label>Umfang:</label>
     </div>
@@ -185,7 +185,7 @@
       </div>
     </div>
   </div>
-  <div title="data-bind=if:providerTemplate()==='TmplFiddle'" class="row">
+  <div class="row" title="data-bind=if:providerTemplate()==='TmplFiddle'">
     <div class="small-3 columns pad6">
       <label for="optColor">Farbschema:</label>
     </div>
@@ -193,7 +193,7 @@
       <select id="optColor" name="optColor" title="data-bind=options:colorOptions, optionsText:'colorText', optionsValue:'colorValue', value:optColor"></select>
     </div>
   </div>
-  <div title="data-bind=if:providerTemplate()==='TmplBandcamp'" class="row">
+  <div class="row" title="data-bind=if:providerTemplate()==='TmplBandcamp'">
     <div class="small-3 columns pad6">
       <label>Layout:</label>
     </div>
@@ -207,7 +207,7 @@
       <select id="optArtwork" name="optArtwork" title="data-bind=options:artworkOptions, value:optArtwork"></select>
     </div>
   </div>
-  <div title="data-bind=if:providerTemplate()==='TmplBandcamp'" class="row">
+  <div class="row" title="data-bind=if:providerTemplate()==='TmplBandcamp'">
     <div class="small-3 columns pad6">
       <label for="txtBgColor">Hintergrundfarbe:</label>
     </div>
@@ -220,15 +220,15 @@
     <div class="small-3 columns">
       <div class="row collapse">
         <div class="small-9 columns">
-          <input id="txtLinks" type="text" title="data-bind=textInput:txtLinks"/>
+          <input id="#{id}" type="text" title="data-bind=textInput:#{id}"/>
         </div>
         <div class="small-3 columns">
-          <button class="postfix jscolor {valueElement:'txtLinks',required:false,uppercase:false}"></button>
+          <button class="postfix jscolor {valueElement:'#{id}',required:false,uppercase:false}"></button>
         </div>
       </div>
     </div>
   </div>
-  <div title="data-bind=if:(providerTemplate()==='TmplBandcamp' &amp;&amp; optLayout()==='standard')" class="row">
+  <div class="row" title="data-bind=if:(providerTemplate()==='TmplBandcamp' &amp;&amp; optLayout()==='standard')">
     <div class="small-6 columns pad6">
       <input id="chkTracklist" type="checkbox" title="data-bind=checked:chkTracklist"/>
       <label for="chkTracklist">Tracklist anzeigen</label>
@@ -240,7 +240,7 @@
       <input id="txtTracks" type="text" title="data-bind=textInput:txtTracks, visible:chkTracklist | data-!placeholder=Standard=2"/>
     </div>
   </div>
-  <div title="data-bind=if:providerTemplate()==='TmplOther'" class="row">
+  <div class="row" title="data-bind=if:providerTemplate()==='TmplOther'">
     <div class="small-3 columns">
       <label>Poster:</label>
     </div>
@@ -249,7 +249,7 @@
       <label for="chkPoster">Standbild anzeigen</label>
     </div>
   </div>
-  <div title="data-bind=if:providerTemplate()==='TmplOther', visible:chkPoster" class="row">
+  <div class="row" title="data-bind=if:providerTemplate()==='TmplOther', visible:chkPoster">
     <div class="small-3 columns pad6">
       <label>Dateityp:</label>
     </div>

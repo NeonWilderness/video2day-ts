@@ -1,28 +1,21 @@
 var path = require('path');
-var webpack = require('webpack');
 module.exports = {
     entry: {
         'videoload2':       './src/videoload2.ts',
         'videoload2-story': './src/videoload2-story.ts',
         'videoload2-tool':  './src/videoload2-tool.ts',
-        'videoload2-spec':  './test/videoload2-spec.ts'
+        'videoload2-spec':  './test/videoload2-spec.ts',
+        'videoload2-lazy':  './test/videoload2-lazy.ts'
     },
     output: {
-        path: path.join(__dirname, "dist"),
+        path: path.join(__dirname, 'dist'),
         filename: '[name].js'
     },
     externals: [
     ],
-    devtool: 'source-map',
     resolve: {
         extensions: ['.css', '.less', '.js', '.json', '.ts']
     },
-    plugins: [
-        /* new UglifyJsPlugin({
-            sourceMap: false,
-            compress: { warnings: false }
-         }) */
-    ],
     module: {
         rules: [
             {

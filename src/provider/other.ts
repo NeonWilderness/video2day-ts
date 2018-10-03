@@ -22,9 +22,9 @@ export class Other extends Provider {
         this._poster = (options.hasOwnProperty('poster') ? this._id.substr(0,this._id.lastIndexOf('.')+1) + this._image : '');
     }
 
-    generate(options: IInstanceOptions, position: string) : void {
+    generate(options: IInstanceOptions, position: string, exportRun: boolean) : void {
         this.init(options);
-        this.render(this.fillParams(playerTemplate), position);
+        this.render(this.fillParams(playerTemplate), exportRun, position);
     }
 
 }

@@ -1,9 +1,9 @@
 doctype xml
-table(xmlns="http://query.yahooapis.com/v1/schema/table.xsd")
+table(xmlns="https://query.yahooapis.com/v1/schema/table.xsd")
   meta
     author NeonWilderness
-    description HTML page that needs post data
-    sampleQuery <![CDATA[select * from {table} where url='http://urlex.org' and postdata="s={vevourl}" and xpath="//td/a"]]>
+    description Expand VEVO short url via urlex.org
+    sampleQuery <![CDATA[select * from {table} where url='https://urlex.org' and postdata="s={vevourl}" and xpath="//td/a"]]>
     documentationURL
   bindings
     select(itemPath="", produces="XML")

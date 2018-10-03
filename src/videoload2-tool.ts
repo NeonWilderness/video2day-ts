@@ -172,7 +172,7 @@ class Videoload2ToolViewmodel {
                 template: TemplateTypes.TmplVideoStart,
                 aspect: true,
                 id: 'liveleak.com',
-                vmatch: 'f=(.*)'
+                vmatch: '\\/e\\/(.*)'
             },
             metacafe: {
                 name: 'Metacafe',
@@ -249,7 +249,7 @@ class Videoload2ToolViewmodel {
                 template: TemplateTypes.TmplVideoStartEndat,
                 aspect: true,
                 id: 'youtube.com',
-                vmatch: '\\/embed\\/(.*)'
+                vmatch: '\\/embed\\/(\\w*)'
             },
             other: {
                 name: 'Other (MP4-Datei)',

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd">
+<table xmlns="https://query.yahooapis.com/v1/schema/table.xsd">
   <meta>
     <author>NeonWilderness</author>
-    <description>HTML page that needs post data</description>
-    <sampleQuery><![CDATA[select * from {table} where url='http://urlex.org' and postdata="s={vevourl}" and xpath="//td/a"]]></sampleQuery>
+    <description>Expand VEVO short url via urlex.org</description>
+    <sampleQuery><![CDATA[select * from {table} where url='https://urlex.org' and postdata="s={vevourl}" and xpath="//td/a"]]></sampleQuery>
     <documentationURL></documentationURL>
   </meta>
   <bindings>

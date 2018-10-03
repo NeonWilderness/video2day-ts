@@ -49,29 +49,29 @@ export class Strawpoll extends Provider {
         });
     }
 
-    setHeightBeforeRender(options: IInstanceOptions, position: string, poll: IPollData): void {
+    setHeightBeforeRender(options: IInstanceOptions, position: string, exportRun: boolean, poll: IPollData): void {
         let dim = pollDimensions[ (options.width<680 ? 'small' : 'large') ];
         let { count, captcha } = poll;
         if (captcha) options.width = Math.max(options.width, 318); 
         let height: number = dim.header + dim.option*count + dim.footer + Number(captcha)*dim.captcha
                            + dim.powered + dim.padding + dim.margin;
         this.setFixedHeight(options, height);
-        this.render(this.fillParams(frameTemplate.replace('_src', this.source)), position);
+        this.render(this.fillParams(frameTemplate.replace('_src', this.source)), exportRun, position);
     }
 
-    async generate(options: IInstanceOptions, position: string) {
+    async generate(options: IInstanceOptions, position: string, exportRun: boolean) {
         this.init(options);
         let pollInfo = localStorage.getItem(`${this.getID()}-${options.id}`);
         if (pollInfo) {
-            this.setHeightBeforeRender(options, position, JSON.parse(pollInfo));
+            this.setHeightBeforeRender(options, position, exportRun, JSON.parse(pollInfo));
         } else {
             try {
                 let pollData = <IPollData>await this.getPollData(options.id);
                 localStorage.setItem(`${this.getID()}-${options.id}`, JSON.stringify(pollData));
-                this.setHeightBeforeRender(options, position, pollData);
+                this.setHeightBeforeRender(options, position, exportRun, pollData);
             }
             catch (err) {
-                this.render(err);
+                this.render(err, exportRun);
             }
         }
     }
