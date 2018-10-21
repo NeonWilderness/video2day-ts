@@ -76,7 +76,7 @@ function minify() {
       keepClosingSlash: true
     }))
     .pipe(modifyFile(function (content, path, file) {
-      const $ = cheerio.load(content, { decodeEntities: false });
+      const $ = cheerio.load(content, { xmlMode: true, decodeEntities: false });
       const providerDocumentation = $('#providerDocumentation').html();
       if (providerDocumentation) {
         const len = providerDocumentation.length;

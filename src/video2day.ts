@@ -214,8 +214,11 @@ export class Framedispatcher {
     if (!options.hasOwnProperty('ratio')) options.ratio = 16 / 9;
     if (!options.hasOwnProperty('width')) {
       let storyWidth = this.getContentWidth(instance);
+      this.log(`storyWidth: ${storyWidth}`);
       let containerWidth = this.getWidth(instance);
+      this.log(`containerWidth: ${containerWidth}`);
       options.width = (storyWidth !== 0 && storyWidth < containerWidth ? storyWidth : containerWidth);
+      this.log(`options.width: ${options.width}`);
     }
     if (this.options.maxWidth > 0 && options.width > this.options.maxWidth) options.width = this.options.maxWidth;
     options.height = Math.round(options.width / options.ratio);
