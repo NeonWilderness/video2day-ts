@@ -15,7 +15,7 @@ export class Youtube extends Provider {
      */
     constructor(){
         super('youtube');
-        this._addAttr = ' allow="autoplay; encrypted-media"';
+        this._addAttr = ' allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"';
     }
 
     init(options: IInstanceOptions){

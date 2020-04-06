@@ -66,22 +66,22 @@ class Videoload2ToolViewmodel {
 
     $tag: JQuery = null;                        // iframe or script tag if pasted into input text field
     providers: IProviders;                      // all valid provider names
-    providerOptions: KnockoutComputed<IProviderSelectOption[]>; // select code/option sets for all providers
+    providerOptions: KnockoutSubscribable<IProviderSelectOption[]>; // select code/option sets for all providers
     providerHandler: ToolProvider;              // object class to handle provider specific processing
     providerTemplate: KnockoutObservable<string>; // provider template enum: serves additional html based on selected provider
     txtIframe: KnockoutObservable<string>;      // pasted iFrame embed code of a desired provider element
     errIframe: KnockoutObservable<string>;      // error message
-    hasError: KnockoutComputed<boolean>;        // true=data is not yet valid
+    hasError: KnockoutSubscribable<boolean>;    // true=data is not yet valid
     optProvider: KnockoutObservable<string>;    // selected provider name
     prevProvider: string = '';                  // remember last provider (on change)
-    providerImgUrl: KnockoutComputed<string>;   // icon img url of the selected provider
+    providerImgUrl: KnockoutSubscribable<string>;   // icon img url of the selected provider
     labelProvider: KnockoutObservable<string>;  // label (name) of the selected provider
     selWidth: KnockoutObservable<string>;       // selected width id: full or pixel
     txtPixel: KnockoutObservable<string>;       // pixel number if selWidth is pixel
-    txtPixelEnabled: KnockoutComputed<boolean>; // true=pixel edit enabled
+    txtPixelEnabled: KnockoutSubscribable<boolean>; // true=pixel edit enabled
     selRatio: KnockoutObservable<string>;       // selected ratio id: 1.77778 or 1.33333 or custom
     txtRatio: KnockoutObservable<string>;       // ratio value if selRatio is custom
-    txtRatioEnabled: KnockoutComputed<boolean>; // true=ratio edit enabled
+    txtRatioEnabled: KnockoutSubscribable<boolean>; // true=ratio edit enabled
     txtElementID: KnockoutObservable<string>;   // provider's element id
     txtStart: KnockoutObservable<string>;       // start position in number of seconds
     txtEndat: KnockoutObservable<string>;       // stop position in number of seconds
@@ -508,7 +508,7 @@ class Videoload2ToolViewmodel {
         let code = this.providerHandler.generateDiv();
         console.log(`generateDIVresult: ${code}`);
         // inject code into element view and re-run video2day script if there was no data validation error
-        if (this.hasError()) {
+        if (this.hasError) {
             this.$fldElementCode.empty();
             this.$fldElementDisplay.empty();
             this.scrollToFirstVisible(this.$errMsg);
