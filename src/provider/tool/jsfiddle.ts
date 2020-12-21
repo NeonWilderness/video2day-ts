@@ -13,10 +13,10 @@ export class ToolJsFiddle extends ToolProvider {
         if (!vm.$tag) return;
 
         // extract url params
-        let params = this.src.match(/embedded\/(.*)\//);
+        const params = this.src.match(/embedded\/(.*)\//);
         if (params) {
-            let param = params[1].split('/');
-            let scope = param[0].split(',');
+            const param = params[1].split('/');
+            const scope = param[0].split(',');
             this.vm.chkHtml(scope.indexOf('html')>=0);
             this.vm.chkCss(scope.indexOf('css')>=0);
             this.vm.chkJs(scope.indexOf('js')>=0);
@@ -35,7 +35,7 @@ export class ToolJsFiddle extends ToolProvider {
     generateDiv() : string {
         // build scope param
         if (!(this.vm.chkHtml() && this.vm.chkCss() && this.vm.chkJs() && this.vm.chkResult())) {
-            let scope: string[] = [];
+            const scope: string[] = [];
             if (this.vm.chkHtml()) scope.push('html');
             if (this.vm.chkCss()) scope.push('css');
             if (this.vm.chkJs()) scope.push('js');
@@ -47,7 +47,7 @@ export class ToolJsFiddle extends ToolProvider {
             }
         }
         // build color param
-        let color = this.vm.optColor();
+        const color = this.vm.optColor();
         if (color!=='333333') this.params += ` color-light`;
         // build html tag
         return super.generateDiv();

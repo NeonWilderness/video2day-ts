@@ -1,7 +1,6 @@
 //- Jsfiddle documentation of parameters
 p.
-  <b>JsFiddle</b> ist eine Online-Entwicklungsumgebung, in der man Code-Schnipsel, bestehend aus HTML, CSS und JavaScript
-  testen bzw. Code-Beispiele als Anschauungsobjekt für andere hinterlegen kann. Folgende Parameter sind möglich:
+  <b>JsFiddle</b> ist eine Online-Entwicklungsumgebung, in der man Code-Schnipsel, bestehend aus HTML, CSS und JavaScript testen bzw. Code-Beispiele als Anschauungsobjekt für andere hinterlegen kann. Folgende Parameter sind möglich:
 h6.top20 <span class="label">color</span> &mdash; Farbschema festlegen
 p JsFiddle bietet zwei Farbschemata an:
 table
@@ -16,11 +15,7 @@ table
 p Fehlt der Parameter, wird <span class="code">color-dark</span> als Standard verwendet.
 h6.top20 <span class="label">scope</span> &mdash; Umfang der Darstellung einstellen
 p.
-  Mithilfe des Parameters <span class="code">scope</span> lässt sich festlegen, welche der jsfiddle-Bereiche im Rahmen
-  der Einbettung angezeigt werden. Der Parameterwert besteht aus einer frei wählbaren Kombination der Kennungen
-  <span class="code">js</span> (für JavaScript-Code), <span class="code">html</span> (für HTML-Code),
-  <span class="code">css</span> (für CSS-Code) und <span class="code">result</span> (für die Anzeige des jeweiligen Ergebnisses),
-  jeweils getrennt durch ein Komma, jedoch ohne Leerzeichen. Die Reihenfolge ist beliebig. Einige Beispiele:
+  Mithilfe des Parameters <span class="code">scope</span> lässt sich festlegen, welche der jsfiddle-Bereiche im Rahmen der Einbettung angezeigt werden. Der Parameterwert besteht aus einer frei wählbaren Kombination der Kennungen <span class="code">js</span> (für JavaScript-Code), <span class="code">html</span> (für HTML-Code), <span class="code">css</span> (für CSS-Code) und <span class="code">result</span> (für die Anzeige des jeweiligen Ergebnisses), jeweils getrennt durch ein Komma, jedoch ohne Leerzeichen. Die Reihenfolge ist beliebig. Einige Beispiele:
 table
   +ParamHead
   tbody
@@ -38,12 +33,11 @@ table
       td Es soll nur der HTML-Code gezeigt werden.
 h6.top20: strong Beispiele
 p.
-  Aus einem jsfiddle soll das CSS und das HTML zusammen mit dem Ergebnis angezeigt werden (helles Farbschema).
-  Der zugehörige Videoload-Befehl hieße dann:
-+LiveView("jsfiddle color-light scope-css,html,result", "tx2w4s19")
+  Aus einem jsfiddle soll das CSS und das HTML zusammen mit dem Ergebnis angezeigt werden (helles Farbschema). Der zugehörige Videoload-Befehl hieße dann:
++LiveView("jsfiddle color-light scope-css,html,result", "NeonWilderness/m3u0ogx6/9")
 p.
   In einem dunklem JSFiddle soll ein Stück JavaScript-Code dargestellt werden:
-+LiveView("jsfiddle color-dark scope-js", "tx2w4s19")
++LiveView("jsfiddle color-dark scope-js", "NeonWilderness/m3u0ogx6/9")
 cite Da <span class="code">color-dark</span> die Standardeinstellung ist, könnte der Parameter auch weggelassen werden.
 p.text-right: a(href="#", title="data-bind=click:function(){toggle('#jsfiddle-id')}") Wie finde ich die ID eines JSFiddle-Elements?
 #jsfiddle-id(style="display:none")
@@ -58,7 +52,7 @@ p.text-right: a(href="#", title="data-bind=click:function(){toggle('#jsfiddle-id
       .clearfix: img.googledrive(alt="videoload/jsfiddle-id2.jpg")
     li
       | Klicken Sie auf <em>Prefer iframe?</em> und dann in das Feld <em>Embed Code</em>,
-      | welches den <span class="code">#{lt}iframe#{gt}</span>-Code enthält und kopieren Sie diesen mit <span class="code">Strg-C</span>
+      | welches den <span class="code">!{lt}iframe!{gt}</span>-Code enthält und kopieren Sie diesen mit <span class="code">Strg-C</span>
       | (Windows) oder <span class="code">Cmd-C</span> (Mac) in die Zwischenablage.
       .clearfix: img.googledrive(alt="videoload/jsfiddle-id3.jpg")
     li

@@ -16,8 +16,11 @@ export class ToolOther extends ToolProvider {
         if (this.vm.chkPoster()) {
             this.params = ' poster';
             // build image param if type is not equal 'jpg'
-            let imagetype: string = this.vm.selPoster();
+            const imagetype: string = this.vm.selPoster();
             if (imagetype!=='jpg') this.params += ` image-${imagetype}`;
+        }
+        if (this.vm.chkAutoplay()) {
+            this.params += ' autoplay';
         }
         // build html tag
         return super.generateDiv();

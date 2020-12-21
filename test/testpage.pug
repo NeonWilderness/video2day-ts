@@ -1,10 +1,9 @@
-//- var jsFolder (dynamically set in gulp script: DEV='./' PROD=same as staticURL)
 doctype html
 html(lang="de")
   head
     meta(charset="UTF-8")
     title Testseite für den video2day-Generator, v#{pkgVersion}
-    meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.2.0/mocha.min.css")
     style.
@@ -14,7 +13,7 @@ html(lang="de")
       .btn { background: #2ea2cc; padding: 8px 10px; color: #fff; margin: 0 5px 5px 0; font-size: 13px; text-decoration: none; }
       .btn:hover { text-decoration: underline; }
       .storyContent { width: 600px; margin: 0 auto; padding: 10px; border: 1px solid #ccc; }
-  body
+  body.debug
     #wrapper
       #iframeBtns
       .storyContent
@@ -22,9 +21,10 @@ html(lang="de")
     #mocha: p: a(href=".") Index
     #messages
     #fixtures
+    script(src="https://static.twoday.net/sys.files/js/jquery/jquery.min.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.2.0/mocha.min.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.2.0/chai.min.js")
-    script(src!=jsFolder + "videoload2.js")
+    script(src="./videoload2.js")
     script(type="text/javascript") mocha.setup('bdd');
-    script(src!=jsFolder + "videoload2-spec.js")
+    script(src="./videoload2-spec.js")
     script(type="text/javascript") mocha.run();

@@ -2,10 +2,8 @@
 p <b>Speakerdeck</b> ist eine Plattform für Präsentationen. Folgende Parameter sind möglich:
 h6.top20 <span class="label">slide</span> &mdash; Präsentation ab einer bestimmten Seite starten
 p.
-  Falls Sie die Speakerdeck-Präsentation nicht von Anfang an, sondern ab einer bestimmten Seite ("Slide") starten wollen,
-  können Sie dies mit dem <span class="code">slide</span>-Parameter einstellen. Im Parameterwert wird die gewünschte Startseite
-  spezifiziert. Das Videoload-Beispiel
-+LiveView("speakerdeck <b>slide-3</b>", "{eine-speakerdeck-id}")
+  Falls Sie die Speakerdeck-Präsentation nicht von Anfang an, sondern ab einer bestimmten Seite ("Slide") starten wollen, können Sie dies mit dem <span class="code">slide</span>-Parameter einstellen. Im Parameterwert wird die gewünschte Startseite spezifiziert. Das Videoload-Beispiel
++LiveView("speakerdeck <b>slide-3</b>", "23e87b703e9c0132341052932d7daf42")
 p startet die Präsentation auf der dritten Seite.
 h6.top20: strong Beispiele
 p Es soll eine Speakerdeck-Präsentation mit der ID '23e87b703e9c0132341052932d7daf42' in einem Blogbeitrag eingebunden werden:
@@ -18,7 +16,7 @@ p.text-right: a(href="#", title="data-bind=click:function(){toggle('#speakerdeck
   p Sobald Sie in der Einzelansicht der Speakerdeck-Präsentation sind, können Sie mit folgenden Schritten die ID ermitteln:
   ol
     li
-      | Klicken Sie im Bereich Share auf <span class="label">#{lt} /#{gt}Embed</span>:
+      | Klicken Sie im Bereich Share auf <span class="label">!{lt} /!{gt}Embed</span>:
       .clearfix: img.googledrive(alt="videoload/speakerdeck-id1.jpg")
     li
       | Klicken Sie im angezeigten Popup-Fenster oben auf <em>Embed</em> und kopieren Sie dann den Embed-Code mit <span class="code">Strg-C</span>

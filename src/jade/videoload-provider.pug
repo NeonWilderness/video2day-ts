@@ -1,0 +1,56 @@
+//- Provider Documentation
+- var Stand = 'Dezember 2020'
+- var Anbieter = '19'
+- var Domain = 'neonwilderness'
+- var StoryUrl = 'https://' + Domain + '.twoday.net/stories/'
+- var VideoToolUrl = StoryUrl + 'videotool2'
+- var static = '&lt;% staticURL %&gt;'
+- var lt = '&lt;'
+- var gt = '&gt;'
+mixin ParamHead()
+  thead: tr
+    th Parameter
+    th Bedeutung/Wirkung
+mixin LiveView(classes, id, orientation)
+  - var noDummyId = id.substr(0,1)!=='{'
+  - var orientation = orientation || 'text-center'
+  p(class=orientation)
+    - var code = '&lt;div class="html5video ' + classes + '" id="' + id + '"&gt;&lt;/div&gt;'
+    span.code(style="white-space:normal") !{code}
+    if noDummyId
+      - var lifeviewUrl = VideoToolUrl + '?provider=' + encodeURIComponent(classes.replace(/(<b>|<\/b>)/g,'')) + '&id=' + encodeURIComponent(id)
+      a(target="_blank", href!=lifeviewUrl)
+        <i class="fa fa-eye liveview" title="Ergebnis live im Videotool ansehen">&nbsp;&hellip;</i>
+mixin parameter-start(provider)
+  h6.top20 <span class="label">start</span> &mdash; Video an einer bestimmten Stelle starten
+  p.
+    Um ein #{provider}-Video an einer gewünschten Stelle zu starten, z.B. bei 02:15 (Minuten:Sekunden), rechnen Sie die
+    Zeitangabe in Sekunden um (im Beispiel 02:15 = 2*60+15 = 135) und fügen das Ergebnis als Parameterwert an die Kennung
+    <span class="code">start</span>. Das vollständige Kommando lautet dann folgendermaßen:
+  p.text-center: span.code !{lt}div class="html5video #{provider} <b>start-135</b>" id="{eine-#{provider}-ID}"!{gt}!{lt}/div!{gt}
+ul#providerTabs.tabs.tabBlue(title="data-bind=foreach:providerNames()")
+  li: a(href="#", title="data-bind=attr:{name:'tab-'+$data}, text:$data")
+.tabcontent
+  #tab-bandcamp: include ./provider/bandcamp.pug
+  #tab-dailymotion: include ./provider/dailymotion.pug
+  #tab-dctptv: include ./provider/dctptv.pug
+  #tab-filmstarts: include ./provider/filmstarts.pug
+  #tab-funnyordie: include ./provider/funnyordie.pug
+  #tab-giphy: include ./provider/giphy.pug
+  #tab-jsfiddle: include ./provider/jsfiddle.pug
+  #tab-liveleak: include ./provider/liveleak.pug
+  #tab-metacafe: include ./provider/metacafe.pug
+  #tab-slides: include ./provider/slides.pug
+  #tab-slideshare: include ./provider/slideshare.pug
+  #tab-soundcloud: include ./provider/soundcloud.pug
+  #tab-speakerdeck: include ./provider/speakerdeck.pug
+  #tab-strawpoll: include ./provider/strawpoll.pug
+  #tab-ted: include ./provider/ted.pug
+  #tab-vimeo: include ./provider/vimeo.pug
+  #tab-vine: include ./provider/vine.pug
+  #tab-youtube: include ./provider/youtube.pug
+  #tab-other: include ./provider/other.pug
+  p.text-right
+    a(href="#", title="data-bind=click:function(){scrollTo('#providerTabs')} | data-!title=Zum Anfang der Anbietertabelle")
+      i.fa.fa-chevron-up.fa-lg(style="color:#888") &nbsp;
+      em zum Tabellenanfang

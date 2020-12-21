@@ -6,7 +6,7 @@ import { IInstanceOptions, Provider } from './generic';
 
 export class Ted extends Provider {
 
-    source: string = 'https://embed.ted.com/talks/{_lang}{_id}';
+    source = 'https://embed.ted.com/talks/{_lang}{_id}';
     _lang: string;
 
     /**
@@ -16,7 +16,7 @@ export class Ted extends Provider {
         super('ted');
     }
 
-    init(options: IInstanceOptions){
+    init(options: IInstanceOptions): void {
         super.init(options);
         this._lang = (options.hasOwnProperty('lang') ? 'lang/de/' : '');
     }

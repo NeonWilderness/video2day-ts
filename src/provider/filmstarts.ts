@@ -2,16 +2,16 @@
  Filmstarts-Plugin
  */
 
-import { IInstanceOptions, Provider } from './generic';
+import { Provider } from './generic';
 
 export class Filmstarts extends Provider {
 
-    source: string = 'http://www.filmstarts.de/_video/iblogvision.aspx?cmedia={_id}';
+    source = 'http://player.filmstarts.de/{_id}.html';
 
     /**
      * Initialize the plugin ID
      */
-    constructor(){
+    constructor() {
         super('filmstarts');
     }
 

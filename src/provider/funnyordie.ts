@@ -2,16 +2,16 @@
  Funnyordie-Plugin
  */
 
-import { IInstanceOptions, Provider } from './generic';
+import { Provider } from './generic';
 
 export class Funnyordie extends Provider {
 
-    source: string = 'https://www.funnyordie.com/embed/{_id}';
+    source = 'https://www.funnyordie.com/embed/{_id}';
 
     /**
      * Initialize the plugin ID
      */
-    constructor(){
+    constructor() {
         super('funnyordie');
     }
 

@@ -2,11 +2,11 @@
  Metacafe-Plugin
  */
 
-import { IInstanceOptions, Provider } from './generic';
+import { Provider } from './generic';
 
 export class Metacafe extends Provider {
 
-    source: string = 'http://www.metacafe.com/embed/{_id}/';
+    source = 'https://www.metacafe.com/embed/{_id}/';
 
     /**
      * Initialize the plugin ID

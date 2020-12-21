@@ -2,137 +2,86 @@
  * Videoload-Version2-Story: support script for the Videoload2 documentation story
  */
 import './videoload2-story.less';
-import {IProviders} from './video2day';
-import {} from 'jquery';
-import {} from 'knockout';
+import { IProviders } from './video2day';
 
 class Videoload2StoryViewmodel {
 
-    providers: IProviders;
-    // Fields for decoding a short-url (e.g. Vevo)
-    shortLink: KnockoutObservable<string>;
-    userHasPasted: KnockoutObservable<boolean>;
-    isValidLink: KnockoutObservable<boolean>;
-    userMessage: KnockoutObservable<string>;
-    hasMessage: KnockoutObservable<boolean>;
+  providers: IProviders;
+  userMessage: KnockoutObservable<string>;
+  hasMessage: KnockoutComputed<boolean>;
 
-    constructor(){
-        this.providers = {
-            bandcamp: 'http://bandcamp.com/',
-            dailymotion: 'http://www.dailymotion.com/',
-            dctptv: 'http://www.dctp.tv/',
-            filmstarts: 'http://www.filmstarts.de/',
-            funnyordie: 'http://www.funnyordie.com/',
-            giphy: 'http://giphy.com/',
-            jsfiddle: 'https://jsfiddle.net/',
-            liveleak: 'http://www.liveleak.com/',
-            metacafe: 'http://www.metacafe.com/',
-            slides: 'https://slides.com/',
-            slideshare: 'http://de.slideshare.net/',
-            soundcloud: 'https://soundcloud.com/',
-            speakerdeck: 'https://speakerdeck.com/',
-            strawpoll: 'http://www.strawpoll.me/',
-            ted: 'https://www.ted.com/',
-            vevo: 'http://www.vevo.com/',
-            vimeo: 'https://vimeo.com/',
-            vine: 'https://vine.co/',
-            youtube: 'https://www.youtube.com/',
-            other: 'http://videojs.com/'
-        };
-        this.shortLink = ko.observable('');
-        this.userMessage = ko.observable('');
-        this.userHasPasted = ko.computed(function() {
-    	    return (this.shortLink().length>0);
-        }, this);
-        this.isValidLink = ko.computed(function() {
-    	    return (this.userHasPasted() && this.shortLink().substr(0,15)==='http://vevo.ly/');
-        }, this);
-        this.hasMessage = ko.computed(function() {
-    	    return (this.userMessage().length>0);
-        }, this);
-    }
+  constructor() {
+    this.providers = {
+      bandcamp: 'https://bandcamp.com/',
+      dailymotion: 'https://www.dailymotion.com/',
+      dctptv: 'https://www.dctp.tv/',
+      filmstarts: 'http://www.filmstarts.de/',
+      funnyordie: 'https://www.funnyordie.com/',
+      giphy: 'https://giphy.com/',
+      jsfiddle: 'https://jsfiddle.net/',
+      liveleak: 'https://www.liveleak.com/',
+      metacafe: 'https://www.metacafe.com/',
+      slides: 'https://slides.com/',
+      slideshare: 'https://de.slideshare.net/',
+      soundcloud: 'https://soundcloud.com/',
+      speakerdeck: 'https://speakerdeck.com/',
+      strawpoll: 'https://strawpoll.me/',
+      ted: 'https://ted.com/',
+      vimeo: 'https://vimeo.com/',
+      vine: 'https://vine.co/',
+      youtube: 'https://youtube.com/',
+      other: 'https://videojs.com/'
+    };
+    this.userMessage = ko.observable('');
+    this.hasMessage = ko.pureComputed(() => !!this.userMessage().length);
+  }
 
-    getVevoID(): void {
-        let xml: string = 'https://cdn.rawgit.com/NeonWilderness/video2day-ts/master/dist/'; // rawgit github reference
-        let link: string = this.shortLink().replace('vevo.ly', 'prod.vevo.ly');
-        let query: string = encodeURIComponent(`use "${xml}posturl.xml" as htmlpost;select * from htmlpost where url="http://urlex.org" and postdata="s=${link}" and xpath="//td/a"`);
-        let queryStr: string = `https://query.yahooapis.com/v1/public/yql?q=${query}`;
-        $.ajax({
-            type: 'GET',
-            url: queryStr,
-            dataType: 'xml',
-            context: this,
-            success: function(response) {
-                let vevoLink = $(response).find("a[href*='www.vevo.com']");
-                if (vevoLink.length > 0) {
-                    this.userMessage(`Die gesuchte ID ist:&emsp;<b>${vevoLink.eq(0).attr('href').split('?')[0].split('/').pop()}</b>`);
-                } else {
-                    this.userMessage('Fehler: Die Short-URL konnte leider nicht dekodiert werden.');
-                }
-            }
-        });
-    }
+  isError = (): string => this.userMessage().substr(0, 1) === 'F' ? 'alert' : '';
 
-    isError(): string {
-        return (this.userMessage().substr(0,1)==='F' ? 'alert' : '');
-    }
+  providerNames = (): string[] => Object.keys(this.providers);
 
-    providerNames(): string[] {
-        return Object.keys(this.providers);
-    }
+  providerUrl = (provider: string): string => this.providers[provider];
 
-    providerUrl(provider: string): string {
-        return this.providers[provider];
-    }
+  providerImgUrl = (provider: string): string => `https://neonwilderness.de/public/images/videoload/${provider}.png`;
 
-    providerImgUrl(provider: string): string {
-        return `http://www.s522667522.online.de/public/images/videoload/${provider}.png`;
-    }
+  private scrollToFirst(jqElements: any, duration = 600, offset = 50) {
+    $('html,body').animate({ scrollTop: (jqElements.eq(0).offset().top - offset) }, duration);
+  }
 
-    resetForm(): void {
-        this.shortLink('');
-        this.userMessage('');
-        $('#shortLink').focus();
-    }
+  scrollTo = (selector: string, duration = 600, offset = 50) => {
+    const $el = $(selector);
+    this.scrollToFirst($el, duration, offset);
+  }
 
-    private scrollToFirst(jqElements: any, duration: number = 600, offset: number = 50) {
-        $('html,body').animate({ scrollTop: (jqElements.eq(0).offset().top - offset)}, duration);
-    }
-
-    scrollTo(selector: string, duration: number = 600, offset: number = 50) {
-        let $el = $(selector);
-        this.scrollToFirst($el, duration, offset);
-    }
-
-    toggle(selector: string, duration: number = 600, offset: number = 50) {
-        let $el = $(selector);
-        $el.toggle(duration);
-        this.scrollToFirst($el, duration, offset);
-    }
+  toggle = (selector: string, duration = 600, offset = 50) => {
+    const $el = $(selector);
+    $el.toggle(duration);
+    this.scrollToFirst($el, duration, offset);
+  }
 }
 
-(function($){
+(function ($) {
 
-    $(function() {
+  $(function () {
 
-        // create viewmodel from class
-        let vm = new Videoload2StoryViewmodel();
+    // create viewmodel from class
+    const vm = new Videoload2StoryViewmodel();
 
-        // and link to knockout bindings
-        ko.applyBindings( vm, document.getElementById('videoload2') );
+    // and link to knockout bindings
+    ko.applyBindings(vm, document.getElementById('videoload2'));
 
-        // on each click of a tab button
-        $('ul.tabs>li').click( function() {
-            // scroll to the beginning of the tab element
-            vm.scrollTo('#providerTabs');
-            // and close all open "how to find ID"-sections
-            let providers = vm.providerNames();
-            for(let i=0, len=providers.length; i<len; i++){
-                let el = document.getElementById(`${providers[i]}-id`);
-                if (el) el.style.display = 'none';
-            }
-        });
-
+    // on each click of a tab button
+    $('ul.tabs>li').on('click', function () {
+      // scroll to the beginning of the tab element
+      vm.scrollTo('#providerTabs');
+      // and close all open "how to find ID"-sections
+      const providers = vm.providerNames();
+      for (let i = 0, len = providers.length; i < len; i++) {
+        const el = document.getElementById(`${providers[i]}-id`);
+        if (el) el.style.display = 'none';
+      }
     });
+
+  });
 
 })(jQuery);

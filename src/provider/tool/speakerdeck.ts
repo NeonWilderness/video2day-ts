@@ -13,11 +13,11 @@ export class ToolSpeakerdeck extends ToolProvider {
         if (!vm.$tag) return;
 
         // look for 'id' param
-        let id: string = vm.$tag.attr('data-id') || '';
+        const id: string = vm.$tag.attr('data-id') || '';
         this.vm.txtElementID(id);
 
         // look for 'slide' param
-        let slide: string = vm.$tag.attr('data-slide') || '';
+        const slide: string = vm.$tag.attr('data-slide') || '';
         this.vm.txtSlide(slide);
 
     }

@@ -1,26 +1,21 @@
 //- Soundcloud documentation of parameters
 p.
-  <b>Soundcloud</b> ist eine Musikplattform, deren Audiosamples in Webseiten eingebettet und abgespielt werden können.
-  Folgende Parameter sind möglich:
+  <b>Soundcloud</b> ist eine Musikplattform, deren Audiosamples in Webseiten eingebettet und abgespielt werden können. Folgende Parameter sind möglich:
 h6.top20 <span class="label">stripe</span> &mdash; Audioelement im schmalen Layout anzeigen
 p.
-  Im Standard werden Soundcloud-Elemente mit einer Höhe von 450 Pixel formatiert. Wenn Sie eine schmalere Anzeige vorziehen,
-  können Sie in der DIV-Klasse den Parameter <span class="code">stripe</span> ergänzen. Dies bewirkt, dass das Audiostück auf
-  ein Drittel der Standardhöhe (=150 Pixel) verkleinert wird.
+  Im Standard werden Soundcloud-Elemente mit einer Höhe von 450 Pixel formatiert. Wenn Sie eine schmalere Anzeige vorziehen, können Sie in der DIV-Klasse den Parameter <span class="code">stripe</span> ergänzen. Dies bewirkt, dass das Audiostück auf ein Drittel der Standardhöhe (=150 Pixel) verkleinert wird.
 +LiveView("soundcloud <b>stripe</b>", "{eine-soundcloud-id}")
 h6.top20 <span class="label">linkcol</span> &mdash; Farbe des Soundcloud-Playbuttons festlegen
 p.
-  Im Modus <b>stripe</b> können Sie zusätzlich eine individuelle Farbe des Playbuttons festlegen. Standardmäßig wird dieser
-  <span style="background-color:#ff5500;color:#fff;padding:0 5px">orange</span> angezeigt. Mithilfe des <span class="code">linkcol</span>
-  Parameters können Sie jede gewünschte Farbe als 6-stelligen Hexwert definieren.
+  Im Modus <b>stripe</b> können Sie zusätzlich eine individuelle Farbe des Playbuttons festlegen. Standardmäßig wird dieser <span style="background-color:#ff5500;color:#fff;padding:0 5px">orange</span> angezeigt. Mithilfe des <span class="code">linkcol</span> Parameters können Sie jede gewünschte Farbe als 6-stelligen Hexwert definieren.
 +LiveView("soundcloud stripe <b>linkcol-00aabb</b>", "{eine-soundcloud-id}")
 h6.top20: strong Beispiele
 p Das Stück <em>Warm Blood</em> der Gruppe <em>The Beths</em> soll als Soundcloud-Element in einem Blogbeitrag eingebunden werden:
-+LiveView("soundcloud", "249959683")
++LiveView("soundcloud", "420191188")
 p In der schmaleren Variante lautet der Videoload-Befehl:
-+LiveView("soundcloud stripe", "249959683")
++LiveView("soundcloud stripe", "420191188")
 p Zusätzlich soll der Playbutton in der Farbe <span style="background-color:#6e24cc;color:#fff;padding:0 5px">#6e24cc</span> angezeigt werden:
-+LiveView("soundcloud stripe linkcol-6e24cc", "249959683")
++LiveView("soundcloud stripe linkcol-6e24cc", "420191188")
 p.text-right: a(href="#", title="data-bind=click:function(){toggle('#soundcloud-id')}") Wie finde ich die ID eines Soundcloud-Audioelements?
 #soundcloud-id(style="display:none")
   h6.top20: strong Soundcloud-ID manuell ermitteln

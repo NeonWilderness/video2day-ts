@@ -1,8 +1,4 @@
 //- Twoday Blog story for the videotool
-mixin ColorPickerInput(id)
-  .row.collapse
-    .small-9.columns: input(id="#{id}", type="text", title="data-bind=textInput:#{id}")
-    .small-3.columns: button.postfix.jscolor(class="{valueElement:'#{id}',required:false,uppercase:false}")
 #prependStory.videotool2(style="display:none")
   div(style="position:relative")
     a(
@@ -13,8 +9,7 @@ mixin ColorPickerInput(id)
   .small-9.columns
     p.hint
       strong Anleitung:&ensp;
-      | Kopieren Sie den Einbettungscode der Quellplattform in das Feld <em>iframe-Code</em>, um den entsprechenden Videoload2-Befehl zu
-      | erhalten. Ergänzend können Sie die Breite anpassen oder auch alle Parameter ändern bzw. vollständig selbst einstellen.
+      | Kopieren Sie den Einbettungscode der Quellplattform in das Feld <em>iframe-Code</em>, um den entsprechenden Videoload2-Befehl zu erhalten. Ergänzend können Sie die Breite anpassen oder auch alle Parameter ändern bzw. vollständig selbst einstellen.
     p.hint.bottom0
       | Den resultierenden <em>HTML-Code</em> kopieren Sie anschließend in Ihren Beitragstext (Videoload2-Script muss installiert sein!).
   .small-3.columns
@@ -27,7 +22,7 @@ fieldset#fldIframe
   input#txtIframe(
     title="data-bind=textInput:txtIframe | data-!placeholder=Kopieren Sie den iframe-Einbettungscode Ihres Anbieters hier hinein"
   )
-span#errMsg.error(style="display:none;border-radius:3px", title="data-bind=text:errIframe, visible:(hasError()&&optionsVisible())")
+span#errMsg.error(style="display:none;border-radius:3px", title!="data-bind=text:errIframe, visible:(hasError() && optionsVisible())")
 fieldset#fldOptions(style="display:none")
   legend
     i.fa.fa-youtube-play
@@ -96,10 +91,16 @@ fieldset#fldOptions(style="display:none")
         input.bottom0#chkStripe(type="checkbox", title="data-bind=checked:chkStripe")
         label(for="chkStripe") schmales Anzeigeformat (stripe)
     .small-3.columns.pad6: label(for="txtColor") Farbe Playbutton:
-    .small-3.columns: +ColorPickerInput('txtColor')
+    .small-3.columns
+      .row.collapse
+        .small-9.columns: input(id="txtColor", type="text", title="data-bind=textInput:txtColor")
+        .small-3.columns: button.postfix.jscolor(class="{valueElement:'txtColor',required:false,uppercase:false}", data-jscolor="{preset:'small dark',position:'right'}")
   .row(title="data-bind=if:providerTemplate()==='TmplVimeo'")
     .small-3.columns.pad6: label(for="txtColor") Linkfarbe:
-    .small-3.columns.end: +ColorPickerInput('txtColor')
+    .small-3.columns.end
+      .row.collapse
+        .small-9.columns: input(id="txtColor", type="text", title="data-bind=textInput:txtColor")
+        .small-3.columns: button.postfix.jscolor(class="{valueElement:'txtColor',required:false,uppercase:false}", data-jscolor="{preset:'small dark',position:'right'}")
   .row(title="data-bind=if:providerTemplate()==='TmplFiddle'")
     .small-3.columns.pad6: label Umfang:
     .small-9.columns.pad6
@@ -129,8 +130,11 @@ fieldset#fldOptions(style="display:none")
     .small-3.columns.pad6: label(for="txtBgColor") Hintergrundfarbe:
     .small-3.columns: select#txtBgColor(title="data-bind=options:colorOptions, optionsText:'colorText', optionsValue:'colorValue', value:txtBgColor")
     .small-3.columns.pad6: label(for="txtLinks") Linkfarbe:
-    .small-3.columns: +ColorPickerInput('txtLinks')
-  .row(title="data-bind=if:(providerTemplate()==='TmplBandcamp' && optLayout()==='standard')")
+    .small-3.columns
+      .row.collapse
+        .small-9.columns: input(id="txtLinks", type="text", title="data-bind=textInput:txtLinks")
+        .small-3.columns: button.postfix.jscolor(class="{valueElement:'txtLinks',required:false,uppercase:false}", data-jscolor="{preset:'small dark',position:'right'}")
+  .row(title!="data-bind=if:(providerTemplate()==='TmplBandcamp' && optLayout()==='standard')")
     .small-6.columns.pad6
       input#chkTracklist(type="checkbox", title="data-bind=checked:chkTracklist")
       label(for="chkTracklist") Tracklist anzeigen
@@ -138,9 +142,13 @@ fieldset#fldOptions(style="display:none")
     .small-3.columns: input#txtTracks(type="text", title="data-bind=textInput:txtTracks, visible:chkTracklist | data-!placeholder=Standard=2")
   .row(title="data-bind=if:providerTemplate()==='TmplOther'")
     .small-3.columns: label Poster:
-    .small-9.columns
-      input#chkPoster(type="checkbox", title="data-bind=checked:chkPoster")
-      label(for="chkPoster") Standbild anzeigen
+    .small-9.columns(style="display:flex")
+      div(style="flex:0 50%")
+        input#chkPoster(type="checkbox", title="data-bind=checked:chkPoster")
+        label(for="chkPoster") Standbild anzeigen
+      div(style="flex:0 50%")
+        input#chkAutoplay(type="checkbox", title="data-bind=checked:chkAutoplay")
+        label(for="chkAutoplay") Autoplay Video
   .row(title="data-bind=if:providerTemplate()==='TmplOther', visible:chkPoster")
     .small-3.columns.pad6: label Dateityp:
     .small-9.columns.pad6
@@ -152,6 +160,7 @@ fieldset#fldOptions(style="display:none")
       label(for="radPng") png
       input#radBmp(type="radio", name="selPoster", value="bmp", title="data-bind=checked:selPoster")
       label(for="radBmp") bmp
+a(name="codedemo")
 fieldset
   legend
     i.fa.fa-code

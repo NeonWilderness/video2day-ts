@@ -6,7 +6,7 @@ import { IInstanceOptions, Provider } from './generic';
 
 export class Vimeo extends Provider {
 
-    source: string = `https://player.vimeo.com/video/{_id}{_linkcol}`;
+    source = `https://player.vimeo.com/video/{_id}{_linkcol}`;
     _linkcol: string;
     
     /**

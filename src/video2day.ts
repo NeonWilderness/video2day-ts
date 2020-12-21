@@ -23,20 +23,18 @@ import { Soundcloud } from './provider/soundcloud';
 import { Speakerdeck } from './provider/speakerdeck';
 import { Strawpoll } from './provider/strawpoll';
 import { Ted } from './provider/ted';
-import { Vevo } from './provider/vevo';
 import { Vimeo } from './provider/vimeo';
 import { Vine } from './provider/vine';
 import { Youtube } from './provider/youtube';
 import { Other } from './provider/other';
 
 import { ClassListPolyfill } from './classlistpolyfill';
-import extend = require('extend-shallow');
-import loadscript = require('load-script');
+import loadscript = require('load-script2');
 import lozad = require('lozad');
-const toolVersion = require('./version');
+import toolVersion from './version';
 
-const flex: string = 'flex-video';
-const useVideoJsRelease = '7.2.3'; // '5.19.1';
+const flex = 'flex-video';
+const useVideoJsRelease = '7.11.0'; // 7.2.3
 
 export interface IGeneratorDefaults {
   addFlexVideoClass?: boolean;
@@ -69,7 +67,6 @@ export interface IProviders {
   speakerdeck: any;
   strawpoll: any;
   ted: any;
-  vevo: any;
   vimeo: any;
   vine: any;
   youtube: any;
@@ -109,7 +106,6 @@ export class Framedispatcher {
     speakerdeck: new Speakerdeck,
     strawpoll: new Strawpoll,
     ted: new Ted,
-    vevo: new Vevo,
     vimeo: new Vimeo,
     vine: new Vine,
     youtube: new Youtube,
@@ -129,13 +125,13 @@ export class Framedispatcher {
   private listProviders() {
     console.log(`Available Providers(#${this.providerNames.length}):`);
     this.providerNames.forEach(providerName => {
-      let provider = <Provider>this.providers[providerName];
+      const provider = <Provider>this.providers[providerName];
       provider.log();
     });
   }
 
   private dispatch(instanceOptions: IInstanceOptions): void {
-    let element = instanceOptions.instance;
+    const element = instanceOptions.instance;
     if (!instanceOptions.hasOwnProperty('provider')) {
       ErrorMessage(`Bitte einen gültigen Typ (${this.providerNames.join(", ")}) im class-Parameter ergänzen!`, element);
       return;
@@ -144,8 +140,7 @@ export class Framedispatcher {
       ErrorMessage('Bitte die ID bzw. -URL des Anzeigeobjekts im Parameter "id" ergänzen!', element);
       return;
     }
-    let provider = this.providers[instanceOptions.provider];
-    //if (typeof provider === 'function') provider = provider();
+    const provider = this.providers[instanceOptions.provider];
     if (instanceOptions.provider !== 'other' && provider.hasHttpSourceInSecureMode()) {
       ErrorMessage(`Im aktuellen https-Browsermodus kann kein ${instanceOptions.provider}-Element angezeigt werden, da dieser Anbieter keinen https-Zugriff anbietet.`, element);
       return;
@@ -164,20 +159,20 @@ export class Framedispatcher {
 
   private getContentWidth(element: any): number {
     let parent = element.parentNode;
-    let classList = (parent.hasOwnProperty('classList') ? parent.classList : new ClassListPolyfill(parent.className));
+    const classList = (parent.hasOwnProperty('classList') ? parent.classList : new ClassListPolyfill(parent.className));
     while (!(classList.contains(this.options.contentClass) || parent.nodeName === "BODY")) parent = parent.parentNode;
     return (parent.nodeName === "BODY" ? 0 : this.getWidth(parent));
   }
 
-  private getInstanceOptions(instance: HTMLElement): IInstanceOptions {
-    let options: IInstanceOptions = {};
-    let classList = new ClassListPolyfill(
+  private parseInstanceOptions(instance: HTMLElement): IInstanceOptions {
+    const options: IInstanceOptions = {};
+    const classList = new ClassListPolyfill(
       instance.hasOwnProperty('classList') ?
         instance.classList :
         instance.className
     ).classList;
-    for (let item of classList) {
-      let [option, value = ''] = item.split('-');
+    for (const item of classList) {
+      const [option, value = ''] = item.split('-');
       switch (option) {
         case 'alt':
         case 'artwork':
@@ -192,6 +187,7 @@ export class Framedispatcher {
           options[option] = value;
           break;
         case 'asimage':
+        case 'autoplay':
         case 'lang':
         case 'poster':
         case 'stripe':
@@ -213,12 +209,9 @@ export class Framedispatcher {
     }
     if (!options.hasOwnProperty('ratio')) options.ratio = 16 / 9;
     if (!options.hasOwnProperty('width')) {
-      let storyWidth = this.getContentWidth(instance);
-      this.log(`storyWidth: ${storyWidth}`);
-      let containerWidth = this.getWidth(instance);
-      this.log(`containerWidth: ${containerWidth}`);
+      const storyWidth = this.getContentWidth(instance);
+      const containerWidth = this.getWidth(instance);
       options.width = (storyWidth !== 0 && storyWidth < containerWidth ? storyWidth : containerWidth);
-      this.log(`options.width: ${options.width}`);
     }
     if (this.options.maxWidth > 0 && options.width > this.options.maxWidth) options.width = this.options.maxWidth;
     options.height = Math.round(options.width / options.ratio);
@@ -228,23 +221,23 @@ export class Framedispatcher {
   }
 
   private setPosterSize(): void {
-    for (let el of <Node[]><any>document.querySelectorAll('.vjs-poster')) {
+    for (const el of <Node[]><any>document.querySelectorAll('.vjs-poster')) {
       (<HTMLElement>el).style.backgroundSize = this.options.posterSize;
     }
   }
 
   private getAttribute(el: HTMLElement, attr: string): number {
-    let value: string = el.getAttribute(`data-${attr}`) || '0';
+    const value: string = el.getAttribute(`data-${attr}`) || '0';
     return (attr === 'ratio' ? parseFloat(value) : parseInt(value));
   }
 
   private resizeElement(el: HTMLElement): void {
     // size of surrounding container
-    let containerWidth = el.clientWidth;
+    const containerWidth = el.clientWidth;
     // size of element (as defined by user)
-    let elementWidth: number = this.getAttribute(el, FixedWidthAttribute);
+    const elementWidth: number = this.getAttribute(el, FixedWidthAttribute);
     // fixed height in case of special providers, e.g. bandcamp, soundcloud (elements with a fixed height)
-    let fixheight: number = this.getAttribute(el, FixedHeightAttribute);
+    const fixheight: number = this.getAttribute(el, FixedHeightAttribute);
     // smaller or exactly fitting element?
     if (elementWidth <= containerWidth) {
       // yes, then flex class and padding-bottom percentage is unnecessary
@@ -253,7 +246,7 @@ export class Framedispatcher {
     } else {
       // no, then make element responsive by adding flex class and a padding-bottom percentage
       if (el.className.indexOf(flex) < 0) el.className += ` ${flex}`;
-      let ratio: number = (fixheight
+      const ratio: number = (fixheight
         ? Math.round(fixheight / containerWidth * 100000) / 100000
         : this.getAttribute(el, FixedRatioAttribute));
       if (ratio !== 9 / 16) el.style.paddingBottom = (ratio * 100) + '%';
@@ -263,13 +256,24 @@ export class Framedispatcher {
   }
 
   private specialResize(): void {
-    for (let el of this.instances) {
+    for (const el of this.instances) {
       this.resizeElement(el);
     }
   }
 
-  run(useroptions: IGeneratorDefaults) {
-    this.options = extend({}, this.defaults, useroptions || {});
+  private forceAutoplay(): void {
+    setTimeout(() => {
+      for (const el of <Node[]><any>document.querySelectorAll('.autoplay>video')) {
+        const vid = window['videojs'](el, null);
+        vid.autoplay('muted');
+        vid.loop(true);
+        vid.play();
+      }
+    }, 500);
+  }
+
+  run(useroptions: IGeneratorDefaults): void {
+    this.options = Object.assign({}, this.defaults, useroptions || {});
     this.log(`Video2day version ${this.version}`);
     this.log(JSON.stringify(this.options, null, 2));
 
@@ -286,13 +290,11 @@ export class Framedispatcher {
     }
 
     this.options.lazyLoad = this.options.lazyLoad && !!window['IntersectionObserver'];
-    if (this.options.lazyLoad) {
-      this.log('LazyLoad is active.');
-    }
+    if (this.options.lazyLoad) this.log('LazyLoad is active.');
 
-    let html5Videoplayer: boolean = false;
-    for (let instance of this.instances) {
-      let instanceOptions = this.getInstanceOptions(instance);
+    let html5Videoplayer = false;
+    for (const instance of this.instances) {
+      const instanceOptions = this.parseInstanceOptions(instance);
       this.dispatch(instanceOptions);
       this.log(instanceOptions);
       html5Videoplayer = html5Videoplayer || (instanceOptions.provider === 'other');
@@ -308,26 +310,27 @@ export class Framedispatcher {
 
     if (html5Videoplayer && this.options.useVideoJS) {
       if (typeof <any>window['videojs'] === 'undefined') {
-        let self = this;
-        loadscript(`https://vjs.zencdn.net/${useVideoJsRelease}/video.min.js`, {}, function (err) {
-          if (err) {
-            console.log('>>>Error: videojs could not be loaded.');
-          }
-          else {
-            let styleSheet = document.createElement('link');
+        // load videojs script & css if not yet loaded
+        loadscript(`https://vjs.zencdn.net/${useVideoJsRelease}/video.min.js`)
+          .then(() => {
+            const styleSheet = document.createElement('link');
             styleSheet.rel = 'stylesheet';
             styleSheet.href = `https://vjs.zencdn.net/${useVideoJsRelease}/video-js.min.css`;
             document.getElementsByTagName('head')[0].appendChild(styleSheet);
-            self.setPosterSize();
-            self.log('Videojs/css successfully loaded.');
-          }
-        });
+            this.setPosterSize();
+            this.log('Videojs/css successfully loaded.');
+            this.forceAutoplay();
+          })
+          .catch(err => {
+            console.log(`>>>Error: Videojs could not be loaded [${err}].`);
+          });
       } else {
         // re-generate all videojs instances
-        for (let el of <Node[]><any>document.querySelectorAll('.video-js')) {
+        for (const el of <Node[]><any>document.querySelectorAll('.video-js')) {
           window['videojs'](el, {});
         }
         this.setPosterSize();
+        this.forceAutoplay();
       }
     }
   }

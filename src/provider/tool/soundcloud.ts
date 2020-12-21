@@ -1,7 +1,6 @@
 /*
  Soundcloud Plugin Class for the videotool
  */
-import {} from 'jquery';
 import { ToolProvider } from './generic';
 import { bigArtwork, standardPlaybuttonColor } from '../soundcloud';
 
@@ -15,11 +14,11 @@ export class ToolSoundcloud extends ToolProvider {
         if (!vm.$tag) return;
 
         // look for 'stripe' param
-        let height = parseInt(vm.$tag.attr('height') || '450');
+        const height = parseInt(vm.$tag.attr('height') || '450');
         this.vm.chkStripe(height < bigArtwork);
 
         // look for 'color' param (%23 = #)
-        let color = this.src.match(/color=%23([0-9a-f]*)/);
+        const color = this.src.match(/color=%23([0-9a-f]*)/);
         if (color) this.vm.txtColor(color[1]); else this.vm.txtColor(standardPlaybuttonColor);
 
     }

@@ -6,13 +6,14 @@ export interface IInstanceOptions {
   alt?: string;
   artwork?: string;
   asimage?: boolean;
+  autoplay?: boolean;
   bgcol?: string;
   color?: string;
   endat?: string;
   height?: number;
   id?: string;
   image?: string;
-  instance?: any;
+  instance?: HTMLElement;
   lang?: boolean;
   layout?: string;
   lazyload?: boolean;
@@ -28,16 +29,15 @@ export interface IInstanceOptions {
   width?: number;
 }
 
-export const frameTemplate: string = '<iframe class="generated{_llClass}" width="{_width}" height="{_height}" {_llPrefix}src="_src"{_addAttr} frameborder="0" allowfullscreen></iframe>';
-export const imageTemplate: string = '<img class="generated{_llClass}" alt="{_alt}" width="{_width}" height="{_height}" {_llPrefix}src="_src" />';
-export const playerTemplate: string = '<video class="video-js vjs-fluid vjs-default-skin" controls preload="auto" width="{_width}" height="{_height}" ' +
-  'data-setup="{}" poster="{_poster}"><source src="{_id}" type="video/mp4"></video>';
+export const frameTemplate = '<iframe class="generated{_llClass}" width="{_width}" height="{_height}" {_llPrefix}src="_src"{_addAttr} frameborder="0" allowfullscreen></iframe>';
+export const imageTemplate = '<img class="generated{_llClass}" alt="{_alt}" width="{_width}" height="{_height}" {_llPrefix}src="_src" />';
+export const playerTemplate = '<video class="video-js vjs-fluid vjs-default-skin{_autoplay}" controls preload="auto" width="{_width}" height="{_height}" data-setup="{}" poster="{_poster}"><source src="{_id}" type="video/mp4"></video>';
 
 export const FixedHeightAttribute = 'height';
 export const FixedWidthAttribute = 'width';
 export const FixedRatioAttribute = 'ratio';
 
-export function ErrorMessage(text: string, element: any): void {
+export function ErrorMessage(text: string, element: HTMLElement): void {
   element.innerHTML = `<p class="message">${text}</p>`;
 }
 
@@ -92,6 +92,7 @@ export class Provider {
     this.setData(options.instance, FixedWidthAttribute, options.width.toString());
     this.setData(options.instance, FixedRatioAttribute, (1 / options.ratio).toString());
     this.element = options.instance;
+    if (options.provider === 'other') this.element.style.width = `${this._width}px`;
   }
 
   log(): void {
@@ -100,7 +101,7 @@ export class Provider {
 
   render(code: string, exportRun: boolean, position?: string): void {
     console.log(code);
-    let content: string = '';
+    let content = '';
     if (code[0] !== '<') {
       ErrorMessage(code, this.element)
     } else {

@@ -1,27 +1,28 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "downlevelIteration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": [
       "dom",
-      "es2015", 
-      "dom.iterable", 
+      "dom.iterable",
+      "es6",
       "scripthost"
-    ],    
+    ],
     "module": "commonjs",
     "removeComments": true,
     "preserveConstEnums": true,
     "pretty": true,
-      "sourceMap": true
-    },
-    "files": [
-      "src/videoload2.ts",
-      "src/videoload2-story.ts",
-      "src/videoload2-tool.ts",
-      "test/videoload2-spec.ts",
-      "typings/index.d.ts"
- ],
+    "sourceMap": false
+  },
+  "files": [
+    "src/videoload2.ts",
+    "src/videoload2-story.ts",
+    "src/videoload2-tool.ts",
+    "test/videoload2-spec.ts",
+    "typings/index.d.ts"
+  ],
   "exclude": [
     "dist",
     "node_modules"

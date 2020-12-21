@@ -1,10 +1,9 @@
 /*
  Vimeo Plugin Class for the videotool
  */
-import {} from 'jquery';
 import { ToolProvider } from './generic';
 
-const standardPlaybuttonColor: string = '00adef';
+const standardPlaybuttonColor = '00adef';
 
 export class ToolVimeo extends ToolProvider {
 
@@ -16,7 +15,7 @@ export class ToolVimeo extends ToolProvider {
         if (!vm.$tag) return;
 
         // look for 'color' param
-        let color = this.src.match(/color=([0-9a-f]*)/);
+        const color = this.src.match(/color=([0-9a-f]*)/);
         if (color) this.vm.txtColor(color[1]); else this.vm.txtColor(standardPlaybuttonColor);
 
     }

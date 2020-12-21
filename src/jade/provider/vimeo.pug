@@ -3,13 +3,9 @@ p.
   <b>Vimeo</b> ist ein Videoanbieter. Folgender zusätzlicher Parameter ist möglich:
 h6.top20 <span class="label">linkcol</span> &mdash; Farbe für Links festlegen
 p.
-  Sie können die Farbe der Vimeo-Links auf dem Video einstellen. Dies empfiehlt sich z.B., wenn durch den
-  Hintergrund des Videos die Links nur schlecht sichtbar sind. Wählen Sie dann eine passende Farbe aus
-  und ergänzen diese im Parameter <span class="code">linkcol-<b>ffffff</b></span>. Fehlt der Parameter, wird
-  standardmäßig die <span style="color:#00adef">Linkfarbe '00adef' verwendet</span>.
+  Sie können die Farbe der Vimeo-Links auf dem Video einstellen. Dies empfiehlt sich z.B., wenn durch den Hintergrund des Videos die Links nur schlecht sichtbar sind. Wählen Sie dann eine passende Farbe aus und ergänzen diese im Parameter <span class="code">linkcol-<b>ffffff</b></span>. Fehlt der Parameter, wird standardmäßig die <span style="color:#00adef">Linkfarbe '00adef' verwendet</span>.
 p.
-  Farbcodes werden als 6-stellige Hexadezimalzahl kodiert. Welche Farbe welchen Hexcode besitzt, können Sie z.B. auf
-  <a target="_blank" href="http://htmlcolorcodes.com/color-picker/">dieser Webseite</a> herausfinden.
+  Farbcodes werden als 6-stellige Hexadezimalzahl kodiert. Welche Farbe welchen Hexcode besitzt, können Sie z.B. auf <a target="_blank" href="https://htmlcolorcodes.com/color-picker/">dieser Webseite</a> herausfinden.
 h6.top20: strong Beispiele
 p Es soll ein Vimeo-Video mit der ID '125947740' in Superbreitbild in einem Blogbeitrag eingebunden werden:
 +LiveView("vimeo <b>ratio-2.37037</b>", "125947740")
@@ -19,8 +15,7 @@ p.text-right: a(href="#", title="data-bind=click:function(){toggle('#vimeo-id')}
 #vimeo-id(style="display:none")
   h6.top20: strong Vimeo-ID manuell ermitteln
   p.
-    Sobald Sie die Einzelansicht des gewünschten Videos auf der Vimeo-Seite aufgerufen haben, können Sie die benötigte ID
-    des Objekts aus verschiedenen Quellen ermitteln:
+    Sobald Sie die Einzelansicht des gewünschten Videos auf der Vimeo-Seite aufgerufen haben, können Sie die benötigte ID des Objekts aus verschiedenen Quellen ermitteln:
   ol
     li
       | Oben aus der angezeigten Browser-URL (die einfachste Methode):

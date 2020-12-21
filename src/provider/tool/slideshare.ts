@@ -13,7 +13,7 @@ export class ToolSlideshare extends ToolProvider {
         if (!vm.$tag) return;
 
         // look for 'slide' param
-        let slide = this.src.match(/startSlide=([0-9]*)/);
+        const slide = this.src.match(/startSlide=([0-9]*)/);
         if (slide) this.vm.txtSlide(slide[1]); else this.vm.txtSlide('');
 
     }

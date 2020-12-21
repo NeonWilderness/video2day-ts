@@ -1,4 +1,4 @@
-var path = require('path');
+const path = require('path');
 module.exports = {
     entry: {
         'videoload2':       './src/videoload2.ts',
@@ -11,39 +11,20 @@ module.exports = {
         path: path.join(__dirname, 'dist'),
         filename: '[name].js'
     },
-    externals: [
-    ],
+    externals: {
+        jquery: 'jQuery'
+    },
     resolve: {
-        extensions: ['.css', '.less', '.js', '.json', '.ts']
+        extensions: ['.less', '.js', '.ts']
     },
     module: {
         rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                enforce: 'pre',
-                use: {
-                    loader: 'jshint-loader',
-                    options: { asi: true, esversion: 6, sub: true }
-                  }
-            },
-			{
-				test: /\.json$/,
-				use: 'json-loader'
-			},
             {
                 test: /\.less$/, 
                 use: [
                     { loader: 'style-loader' }, 
                     { loader: 'css-loader' }, 
                     { loader: 'less-loader' }
-                ]
-            },
-            {
-                test: /\.css$/, 
-                use: [
-                    { loader: 'style-loader' }, 
-                    { loader: 'css-loader' }
                 ]
             },
             {

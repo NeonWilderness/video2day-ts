@@ -2,10 +2,8 @@
 p <b>Slides.com</b> ist eine Plattform für Präsentationen. Folgende Parameter sind möglich:
 h6.top20 <span class="label">slide</span> &mdash; Präsentation ab einer bestimmten Seite starten
 p.
-  Falls Sie die Slides-Präsentation nicht von Anfang an, sondern ab einer bestimmten Seite ("Slide") starten wollen,
-  können Sie dies mit dem <span class="code">slide</span>-Parameter einstellen. Im Parameterwert wird die gewünschte Startseite
-  spezifiziert. Das Videoload-Beispiel
-p.text-center: span.code #{lt}div class="html5video slides <b>slide-3</b>" id="{eine-slides-id}"#{gt}#{lt}/div#{gt}
+  Falls Sie die Slides-Präsentation nicht von Anfang an, sondern ab einer bestimmten Seite ("Slide") starten wollen, können Sie dies mit dem <span class="code">slide</span>-Parameter einstellen. Im Parameterwert wird die gewünschte Startseite spezifiziert. Das Videoload-Beispiel
+p.text-center: span.code !{lt}div class="html5video slides <b>slide-3</b>" id="{eine-slides-id}"!{gt}!{lt}/div!{gt}
 p startet die Präsentation auf der dritten Seite.
 h6.top20 <span class="label">color</span> &mdash; Farbschema festlegen
 p Slides.com bietet zwei Farbschemata an:
@@ -19,8 +17,7 @@ table
       td <span class="code">color-<b>dark</b></span>
       td Dunkles Farbschema: helle Schrift auf dunklem Hintergrund.
 p.
-  Fehlt der Parameter, wird <span class="code">color-dark</span> als Standard verwendet.
-  Die Variante <em>light</em> wird derzeit durch slides.com nur aktiviert, wenn <u>keine</u> Startseite spezifiziert wurde.
+  Fehlt der Parameter, wird <span class="code">color-dark</span> als Standard verwendet. Die Variante <em>light</em> wird derzeit durch slides.com nur aktiviert, wenn <u>keine</u> Startseite spezifiziert wurde.
 h6.top20: strong Beispiele
 p Es soll eine Slides-Präsentation mit der ID 'bahmutov/working-software' und hellem Farbschema in einem Blogbeitrag eingebunden werden:
 +LiveView("slides <b>color-light</b>", "bahmutov/working-software")
@@ -39,5 +36,5 @@ p.text-right: a(href="#", title="data-bind=click:function(){toggle('#slides-id')
       .clearfix: img.googledrive(alt="videoload/slides-id2.jpg")
     li
       | Klicken Sie im angezeigten Fenster in das Feld <em>Presentation Link</em> und kopieren Sie die Linkadresse mit <span class="code">Strg-C</span>
-      | (Windows) oder <span class="code">Cmd-C</span> (Mac) in die Zwischenablage. Der Text hinter 'http://slides.com/' ist die gesuchte ID.
+      | (Windows) oder <span class="code">Cmd-C</span> (Mac) in die Zwischenablage. Der Text hinter 'https://slides.com/' ist die gesuchte ID.
       .clearfix: img.googledrive(alt="videoload/slides-id3.jpg")

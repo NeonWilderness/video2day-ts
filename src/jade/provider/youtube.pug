@@ -4,18 +4,14 @@ p.
 +parameter-start('youtube')
 h6.top20 <span class="label">endat</span> &mdash; Video an einer bestimmten Stelle beenden
 p.
-  Das Gegenstück zum <span class="code">start</span>-Parameter ist die <span class="code">endat</span>-Anweisung. Hiermit lässt sich
-  das gewählte Video an einer bestimmten Stelle vorzeitig beenden. Um die Videoanzeige z.B. bei Stelle 05:20 (Minuten:Sekunden) zu stoppen,
-  rechnen Sie die Zeitangabe in Sekunden um (im Beispiel 05:20 = 5*60+20 = 320) und fügen das Ergebnis als Parameterwert an die Kennung
-  <span class="code">endat</span>. Das vollständige Kommando lautet dann folgendermaßen:
+  Das Gegenstück zum <span class="code">start</span>-Parameter ist die <span class="code">endat</span>-Anweisung. Hiermit lässt sich das gewählte Video an einer bestimmten Stelle vorzeitig beenden. Um die Videoanzeige z.B. bei Stelle 05:20 (Minuten:Sekunden) zu stoppen, rechnen Sie die Zeitangabe in Sekunden um (im Beispiel 05:20 = 5*60+20 = 320) und fügen das Ergebnis als Parameterwert an die Kennung <span class="code">endat</span>. Das vollständige Kommando lautet dann folgendermaßen:
 +LiveView("youtube <b>endat-320</b>", "{eine-youtube-ID}")
 cite Die <span class="code">endat</span>-Anweisung kann alleine oder in Kombination mit dem <span class="code">start</span>-Parameter verwendet werden.
 p.text-right: a(href="#", title="data-bind=click:function(){toggle('#youtube-id')}") Wie finde ich die ID eines Youtube-Videos?
 #youtube-id(style="display:none")
   h6.top20: strong Youtube-ID manuell ermitteln
   p.
-    Sobald Sie die Einzelansicht des gewünschten Videos auf der Youtube-Seite aufgerufen haben, können Sie die benötigte ID
-    des Objekts folgendermaßen ermitteln:
+    Sobald Sie die Einzelansicht des gewünschten Videos auf der Youtube-Seite aufgerufen haben, können Sie die benötigte ID des Objekts folgendermaßen ermitteln:
   ol
     li
       | Oben aus der angezeigten Browser-URL (die einfachste Methode):

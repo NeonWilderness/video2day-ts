@@ -1,4 +1,3 @@
-//- var jsFolder (dynamically set in gulp script: DEV=./ PROD=same as staticURL)
 doctype html
 html(lang="de")
   head
@@ -9,13 +8,10 @@ html(lang="de")
     script(type="text/javascript", src="https://static.twoday.net/sys.files/js/jquery/jquery.min.js")
     script(type="text/javascript", src="https://static.twoday.net/cdn/files/fastclick-min-js.js")
     link(rel="stylesheet", href="https://neonwilderness.twoday.net/main.css")
-    link(rel="stylesheet", href="https://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css")
     link(rel="stylesheet", href="https://static.twoday.net/cdn/files/foundation55-min-css.css")
-    link(rel="stylesheet", href="https://static.twoday.net/cdn/files/awesomeeditorcore-min-css.css")
     link(rel="stylesheet", href="https://static.twoday.net/cdn/files/rainy-min-css.css")
-    link(rel="stylesheet", href="https://static.twoday.net/cdn/files/snippet-min-css.css")
-    link(rel="stylesheet", href="https://static.twoday.net/cdn/files/accordiontabs-min-css.css")
-  body
+    script(type="text/javascript", src="https://static.twoday.net/cdn/files/modernizr-custom-min-js.js")
+  body.videoload2.debug
     .inner-wrap
       #foundation5.container
         .row
@@ -23,46 +19,4 @@ html(lang="de")
             h3.storyTitle Videos reloaded - Die Videoload-Version 2
             .storyContent: include ./videoload-version2.pug
           #sidebar.large-3
-    script(src="https://static.twoday.net/cdn/files/gdimages-min-js.js")
-    script.
-      $('.googledrive').gdimages().init({
-        gdDomain: 'http://www.s522667522.online.de',
-        gdRootFolder: '/public',
-        gdSubFolder: 'images',
-        addClass: 'neonimg th',
-        titleContent: 'keep'
-        });
-    script(src="https://static.twoday.net/cdn/files/foundation55-min-js.js")
-    script.
-      $('[title^=data-]').foundation2day().init({
-        validateDataAttribs: true,
-        initFoundation5: {
-          topbar: {
-            is_hover: true,
-            mobile_show_parent_link: false
-          },
-          reveal: {
-            close_on_background_click: false,
-            close_on_esc: false
-          },
-          orbit: {
-            animation: 'slide',
-            timer_speed: 6000,
-            resume_on_mouseout: true,
-            animation_speed: 500,
-            slide_number: true,
-            slide_number_text: 'von',
-            bullets: false, next_on_click: true
-          }
-        }
-      });
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js")
-    script(src="https://static.twoday.net/cdn/files/storyscript-min-js.js")
-    script $('.storyScript').storyScript().init();
-    script(src="https://static.twoday.net/cdn/files/snippet-min-js.js")
-    script.
-      var sParam = {style: 'golden', showNum: false, clipboard: 'https://static.twoday.net/cdn/files/ZeroClipboard.swf'};
-      $('pre.html').snippet('html', sParam); $('pre.js').snippet('javascript', sParam);
-    script(src="https://static.twoday.net/cdn/files/accordiontabs-min-js.js")
-    script(src!=jsFolder + "videoload2.js")
-    script(type="text/javascript") video2day.run({debug: true});
+    script(src="https://static.twoday.net/cdn/files/loader-min-js.js")

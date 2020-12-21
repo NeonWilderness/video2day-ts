@@ -13,9 +13,9 @@ export enum ArtworkValues {
 
 export class Bandcamp extends Provider {
 
-    source: string = 'https://bandcamp.com/EmbeddedPlayer/album={_id}/'+
-                     'size={_size}/bgcol={_bgcol}/linkcol={_linkcol}/tracklist={_tracklist}'+
-                     '/artwork={_artwork}/minimal={_minimal}/transparent={_transparent}/';
+    source: string = 'https://bandcamp.com/EmbeddedPlayer/album={_id}/' +
+        'size={_size}/bgcol={_bgcol}/linkcol={_linkcol}/tracklist={_tracklist}' +
+        '/artwork={_artwork}/minimal={_minimal}/transparent={_transparent}/';
 
     _size: string;
     _bgcol: string;
@@ -28,28 +28,29 @@ export class Bandcamp extends Provider {
     /**
      * Initialize the plugin ID
      */
-    constructor(){
+    constructor() {
         super('bandcamp');
     }
 
-    sanitizeWidth(minWidth: number, width: number) : number {
+    sanitizeWidth(minWidth: number, width: number): number {
         return Math.max(minWidth, Math.min(700, width));
     }
 
-    tailorSize(options: IInstanceOptions) : void {
+    tailorSize(options: IInstanceOptions): void {
         let height: number;
-        let {width, tracklist} = options;
-        if (options.artwork==='big') {
+        let { width } = options;
+        const { tracklist } = options;
+        if (options.artwork === 'big') {
             if (this._tracklist) {
-                height = Math.max(362, width + 106 + 20*Number(width<300) + tracklist*33);
+                height = Math.max(362, width + 106 + 20 * Number(width < 300) + tracklist * 33);
             } else {
-                height = width + 120 + 25*Number(width<300);
+                height = width + 120 + 25 * Number(width < 300);
             }
         } else {
             width = Math.max(250, width);
             this.setData(options.instance, FixedWidthAttribute, width.toString());
             if (this._tracklist) {
-                height = Math.max(208, 142 + tracklist*33 + 25*Number(width<400));
+                height = Math.max(208, 142 + tracklist * 33 + 25 * Number(width < 400));
             } else {
                 height = 120;
             }
@@ -57,7 +58,7 @@ export class Bandcamp extends Provider {
         this.setFixedHeight(options, height);
     }
 
-    init(options: IInstanceOptions){
+    init(options: IInstanceOptions): void {
         options.width = this.sanitizeWidth(170, options.width);
         super.init(options);
         this._bgcol = (options.hasOwnProperty('bgcol') ? options.bgcol : 'ffffff');
@@ -65,11 +66,11 @@ export class Bandcamp extends Provider {
         this._minimal = false;
         this._transparent = true;
         if (!options.hasOwnProperty('layout')) options.layout = 'standard';
-        switch (options.layout){
+        switch (options.layout) {
             case 'slim':
                 this._size = 'small';
                 this.setFixedHeight(options, 42);
-                this._artwork = (options.hasOwnProperty('artwork') && options.artwork==='none' ? 'none' : 'show');
+                this._artwork = (options.hasOwnProperty('artwork') && options.artwork === 'none' ? 'none' : 'show');
                 this._tracklist = false;
                 break;
             case 'artworkonly':
@@ -86,7 +87,7 @@ export class Bandcamp extends Provider {
                 this._artwork = (options.hasOwnProperty('artwork') ? options.artwork : 'small');
                 this._tracklist = options.hasOwnProperty('tracklist');
                 this.tailorSize(options);
-                if (typeof ArtworkValues[ArtworkValues[this._artwork]]==='undefined')
+                if (typeof ArtworkValues[ArtworkValues[this._artwork]] === 'undefined')
                     this.badParam = `Ungültiger Wert "${this._artwork}" für Parameter artwork. Erlaubt sind: none, show, big, small.`;
                 break;
             default:
