@@ -15,7 +15,7 @@ import { Filmstarts } from './provider/filmstarts';
 import { Funnyordie } from './provider/funnyordie';
 import { Giphy } from './provider/giphy';
 import { Jsfiddle } from './provider/jsfiddle';
-import { Liveleak } from './provider/liveleak';
+import { Itemfix } from './provider/itemfix';
 import { Metacafe } from './provider/metacafe';
 import { Slides } from './provider/slides';
 import { Slideshare } from './provider/slideshare';
@@ -59,7 +59,7 @@ export interface IProviders {
   funnyordie: any;
   giphy: any;
   jsfiddle: any;
-  liveleak: any;
+  itemfix: any;
   metacafe: any;
   slides: any;
   slideshare: any;
@@ -98,7 +98,7 @@ export class Framedispatcher {
     funnyordie: new Funnyordie,
     giphy: new Giphy,
     jsfiddle: new Jsfiddle,
-    liveleak: new Liveleak,
+    itemfix: new Itemfix,
     metacafe: new Metacafe,
     slides: new Slides,
     slideshare: new Slideshare,

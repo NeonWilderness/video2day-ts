@@ -79,7 +79,7 @@ export const embedCodes: IEmbedCode[] = [
   //------ Filmstarts
   {
     id: 'Filmstarts',
-    code: '<div id="blogvision">    <iframe src="http://player.filmstarts.de/19561243.html" style="width:480px; height:270px">    </iframe>    <br />    <a href="http://www.filmstarts.de/kritiken/204833.html" target="_blank" rel="noopener noreferrer">Zwischen zwei Leben - The Mountain Between Us</a>    <br/>    <a href="http://www.filmstarts.de/kritiken/204833/trailer/19561243.html"><strong>Zwischen zwei Leben - The Mountain Between Us</strong> Trailer DF</a>  </div>',
+    code: '<div id="blogvision">    <iframe src="https://player.filmstarts.de/19561243.html" style="width:480px; height:270px">    </iframe>    <br />    <a href="http://www.filmstarts.de/kritiken/204833.html" target="_blank" rel="noopener noreferrer">Zwischen zwei Leben - The Mountain Between Us</a>    <br/>    <a href="http://www.filmstarts.de/kritiken/204833/trailer/19561243.html"><strong>Zwischen zwei Leben - The Mountain Between Us</strong> Trailer DF</a>  </div>',
     expect: { vid: '19561243', param: 'html5video filmstarts' }
   },
   //------ FunnyOrDie
@@ -100,17 +100,17 @@ export const embedCodes: IEmbedCode[] = [
     code: '<iframe src="https://i.giphy.com/5GoVLqeAOo6PK.gif" width="480" height="375" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/excited-screaming-jonah-hill-5GoVLqeAOo6PK">via GIPHY</a></p>',
     expect: { vid: '5GoVLqeAOo6PK', param: 'html5video giphy asimage ratio-1.28' }
   },
+  //------ Itemfix (former Liveleak)
+  {
+    id: 'Itemfix',
+    code: '<iframe width="640" height="360" src="https://www.itemfix.com/e/okhms0" frameborder="0" allowfullscreen></iframe>',
+    expect: { vid: 'okhms0', param: 'html5video itemfix' }
+  },
   //------ JsFiddle
   {
     id: 'JsFiddle',
     code: '<iframe width="100%" height="300" src="https://jsfiddle.net/foreyez/vdk7guob/embedded/js,html,css,result/dark/" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>',
     expect: { vid: 'foreyez/vdk7guob', param: 'html5video jsfiddle' }
-  },
-  //------ Liveleak
-  {
-    id: 'Liveleak',
-    code: '<iframe width="640" height="360" src="https://www.liveleak.com/e/Gkxi_1606746077&start=" frameborder="0" allowfullscreen></iframe>',
-    expect: { vid: 'Gkxi_1606746077', param: 'html5video liveleak' }
   },
   //------ Metacafe
   {

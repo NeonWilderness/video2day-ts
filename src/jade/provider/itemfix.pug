@@ -1,0 +1,16 @@
+//- itemfix documentation of parameters
+p.
+  <b>Itemfix</b> ist ein Videoanbieter und die Nachfolgerplattform von <b>itemfix</b>. Folgender zusätzlicher Parameter ist möglich:
++parameter-start('itemfix')
+p.text-right: a(href="#", title="data-bind=click:function(){toggle('#itemfix-id')}") Wie finde ich die ID eines itemfix-Videos?
+#itemfix-id(style="display:none")
+  h6.top20: strong Itemfix-ID manuell ermitteln
+  p.
+    Sobald Sie die Einzelansicht des gewünschten Videos auf der itemfix-Seite aufgerufen haben, können Sie die benötigte ID des Objekts folgendermaßen ermitteln:
+  ol
+    li
+      | Klicken Sie auf die Schaltfläche <span class="label red">Embed Code</span>:
+      .clearfix: img.googledrive(alt="videoload/itemfix-id1.jpg")
+    li
+      | Kopieren Sie den angezeigten iframe-Einbettungscode am besten in einen Texteditor. Der markierte Text entspricht der ID.
+      .clearfix: img.googledrive(alt="videoload/itemfix-id2.jpg")

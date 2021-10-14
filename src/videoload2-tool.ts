@@ -10,7 +10,6 @@ import { ToolDailymotion } from './provider/tool/dailymotion';
 import { ToolDctptv } from './provider/tool/dctptv';
 import { ToolGiphy } from './provider/tool/giphy';
 import { ToolJsFiddle } from './provider/tool/jsfiddle';
-import { ToolLiveleak } from './provider/tool/liveleak';
 import { ToolSlides } from './provider/tool/slides';
 import { ToolSlideshare } from './provider/tool/slideshare';
 import { ToolSoundcloud } from './provider/tool/soundcloud';
@@ -27,7 +26,7 @@ declare const jscolor: any;
 const c169 = '1.77778';
 const codeAnchor = $('a[name="codedemo"]');
 const initProvider = 'youtube';
-const jscolorVersion = '2.4.0'; // prev. 2.0.4 
+const jscolorVersion = '2.4.5'; // prev. 2.4.0 
 
 interface IProviderSelectOption {
   code: string;
@@ -166,11 +165,11 @@ class Videoload2ToolViewmodel {
         id: 'jsfiddle.net',
         vmatch: '.net\\/(.*)\\/embedded'
       },
-      liveleak: {
-        name: 'Liveleak',
+      itemfix: {
+        name: 'Itemfix',
         template: TemplateTypes.TmplVideoStart,
         aspect: true,
-        id: 'liveleak.com',
+        id: 'itemfix.com',
         vmatch: '\\/e\\/(.*)'
       },
       metacafe: {
@@ -487,7 +486,6 @@ class Videoload2ToolViewmodel {
         case 'dctptv': this.providerHandler = new ToolDctptv(this); break;
         case 'giphy': this.providerHandler = new ToolGiphy(this); break;
         case 'jsfiddle': this.providerHandler = new ToolJsFiddle(this); break;
-        case 'liveleak': this.providerHandler = new ToolLiveleak(this); break;
         case 'slides': this.providerHandler = new ToolSlides(this); break;
         case 'slideshare': this.providerHandler = new ToolSlideshare(this); break;
         case 'speakerdeck': this.providerHandler = new ToolSpeakerdeck(this); break;

@@ -19,7 +19,7 @@ class Videoload2StoryViewmodel {
       funnyordie: 'https://www.funnyordie.com/',
       giphy: 'https://giphy.com/',
       jsfiddle: 'https://jsfiddle.net/',
-      liveleak: 'https://www.liveleak.com/',
+      itemfix: 'https://www.itemfix.com/',
       metacafe: 'https://www.metacafe.com/',
       slides: 'https://slides.com/',
       slideshare: 'https://de.slideshare.net/',
