@@ -144,13 +144,6 @@ class Videoload2ToolViewmodel {
         id: 'filmstarts.de',
         vmatch: '\\/([0-9]*)\\.'
       },
-      funnyordie: {
-        name: 'FunnyOrDie',
-        template: TemplateTypes.NoTemplate,
-        aspect: true,
-        id: 'funnyordie.com',
-        vmatch: '\\/embed\\/([0-9a-z]*)'
-      },
       giphy: {
         name: 'Giphy',
         template: TemplateTypes.TmplGiphy,
@@ -171,13 +164,6 @@ class Videoload2ToolViewmodel {
         aspect: true,
         id: 'itemfix.com',
         vmatch: '\\/e\\/(.*)'
-      },
-      metacafe: {
-        name: 'Metacafe',
-        template: TemplateTypes.NoTemplate,
-        aspect: true,
-        id: 'metacafe.com',
-        vmatch: '\\/embed\\/([0-9]*)'
       },
       slides: {
         name: 'Slides',
@@ -206,13 +192,6 @@ class Videoload2ToolViewmodel {
         aspect: true,
         id: 'speakerdeck.com',
         vmatch: 'data-id="([0-9a-z]*)'
-      },
-      strawpoll: {
-        name: 'Strawpoll',
-        template: TemplateTypes.NoTemplate,
-        aspect: false,
-        id: 'strawpoll.me',
-        vmatch: 'embed_1\\/([0-9]*)'
       },
       ted: {
         name: 'Ted',

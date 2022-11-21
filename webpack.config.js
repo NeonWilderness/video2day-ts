@@ -16,7 +16,8 @@ module.exports = {
     jquery: 'jQuery'
   },
   resolve: {
-    extensions: ['.less', '.js', '.ts']
+    extensions: ['.less', '.js', '.ts'],
+    fallback: { util: false }
   },
   module: {
     rules: [

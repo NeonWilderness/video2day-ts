@@ -82,12 +82,6 @@ export const embedCodes: IEmbedCode[] = [
     code: '<div id="blogvision">    <iframe src="https://player.filmstarts.de/19561243.html" style="width:480px; height:270px">    </iframe>    <br />    <a href="http://www.filmstarts.de/kritiken/204833.html" target="_blank" rel="noopener noreferrer">Zwischen zwei Leben - The Mountain Between Us</a>    <br/>    <a href="http://www.filmstarts.de/kritiken/204833/trailer/19561243.html"><strong>Zwischen zwei Leben - The Mountain Between Us</strong> Trailer DF</a>  </div>',
     expect: { vid: '19561243', param: 'html5video filmstarts' }
   },
-  //------ FunnyOrDie
-  {
-    id: 'FunnyOrDie',
-    code: '<iframe src="https://www.funnyordie.com/embed/000a37c115" width="640" height="400" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>',
-    expect: { vid: '000a37c115', param: 'html5video funnyordie ratio-1.6' }
-  },
   //------ Giphy as iframe
   {
     id: 'Giphy as iframe',
@@ -111,12 +105,6 @@ export const embedCodes: IEmbedCode[] = [
     id: 'JsFiddle',
     code: '<iframe width="100%" height="300" src="https://jsfiddle.net/foreyez/vdk7guob/embedded/js,html,css,result/dark/" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>',
     expect: { vid: 'foreyez/vdk7guob', param: 'html5video jsfiddle' }
-  },
-  //------ Metacafe
-  {
-    id: 'Metacafe',
-    code: '<iframe width="560" height="315" src="https://www.metacafe.com/embed/11603976/" frameborder="0" allowfullscreen></iframe>',
-    expect: { vid: '11603976', param: 'html5video metacafe' }
   },
   //------ Slides/dark
   {
@@ -158,12 +146,6 @@ export const embedCodes: IEmbedCode[] = [
     id: 'Speakerdeck with slide number',
     code: '<iframe width="720" height="405" src="https://speakerdeck.com/player/704d7f2694fa43559e0afc488a0c810c?slide=11" frameborder="0" allowfullscreen=""></iframe>',
     expect: { vid: '704d7f2694fa43559e0afc488a0c810c', param: 'html5video speakerdeck slide-11' }
-  },
-  //------ Strawpoll
-  {
-    id: 'Strawpoll',
-    code: '<iframe src="https://www.strawpoll.me/embed_1/14514733" style="width:680px;height:342px;border:0;">Loading poll...</iframe>',
-    expect: { vid: '14514733', param: 'html5video strawpoll' }
   },
   //------ TED
   {

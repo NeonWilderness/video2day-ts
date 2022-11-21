@@ -12,16 +12,13 @@ import { Bandcamp } from './provider/bandcamp';
 import { Dailymotion } from './provider/dailymotion';
 import { Dctptv } from './provider/dctptv';
 import { Filmstarts } from './provider/filmstarts';
-import { Funnyordie } from './provider/funnyordie';
 import { Giphy } from './provider/giphy';
 import { Jsfiddle } from './provider/jsfiddle';
 import { Itemfix } from './provider/itemfix';
-import { Metacafe } from './provider/metacafe';
 import { Slides } from './provider/slides';
 import { Slideshare } from './provider/slideshare';
 import { Soundcloud } from './provider/soundcloud';
 import { Speakerdeck } from './provider/speakerdeck';
-import { Strawpoll } from './provider/strawpoll';
 import { Ted } from './provider/ted';
 import { Vimeo } from './provider/vimeo';
 import { Vine } from './provider/vine';
@@ -56,16 +53,13 @@ export interface IProviders {
   dailymotion: any;
   dctptv: any;
   filmstarts: any;
-  funnyordie: any;
   giphy: any;
   jsfiddle: any;
   itemfix: any;
-  metacafe: any;
   slides: any;
   slideshare: any;
   soundcloud: any;
   speakerdeck: any;
-  strawpoll: any;
   ted: any;
   vimeo: any;
   vine: any;
@@ -95,16 +89,13 @@ export class Framedispatcher {
     dailymotion: new Dailymotion,
     dctptv: new Dctptv,
     filmstarts: new Filmstarts,
-    funnyordie: new Funnyordie,
     giphy: new Giphy,
     jsfiddle: new Jsfiddle,
     itemfix: new Itemfix,
-    metacafe: new Metacafe,
     slides: new Slides,
     slideshare: new Slideshare,
     soundcloud: new Soundcloud,
     speakerdeck: new Speakerdeck,
-    strawpoll: new Strawpoll,
     ted: new Ted,
     vimeo: new Vimeo,
     vine: new Vine,
