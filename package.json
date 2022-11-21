@@ -5,7 +5,7 @@
   "main": "video2day.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NeonWilderness/video2day-ts.git"
+    "url": "git@github.com:NeonWilderness/video2day-ts.git"
   },
   "resolutions": {
     "natives": "1.1.3"
