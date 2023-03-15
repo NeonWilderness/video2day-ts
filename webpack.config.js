@@ -1,4 +1,5 @@
 const path = require('path');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
   entry: {
@@ -38,5 +39,8 @@ module.exports = {
         extractComments: false
       })
     ]
-  }
+  },
+  plugins: [
+    new ESLintPlugin()
+  ]
 };
