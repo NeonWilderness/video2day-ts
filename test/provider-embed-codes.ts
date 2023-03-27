@@ -127,13 +127,13 @@ export const embedCodes: IEmbedCode[] = [
   //------ Soundcloud as stripe
   {
     id: 'Soundcloud/stripe',
-    code: '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/71697811&color=%23ff5500&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>',
-    expect: { vid: '71697811', param: 'html5video soundcloud stripe' }
+    code: '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1093647757&color=%2327275b&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>',
+    expect: { vid: '1093647757', param: 'html5video soundcloud stripe linkcol-27275b' }
   },
   {
     id: 'Soundcloud/big/color',
-    code: '<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/71697811&color=%23321c94&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe>',
-    expect: { vid: '71697811', param: 'html5video soundcloud linkcol-321c94' }
+    code: '<iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1093647757&color=%2327275b&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe>',
+    expect: { vid: '1093647757', param: 'html5video soundcloud linkcol-27275b' }
   },
   //------ Speakerdeck first slide
   {

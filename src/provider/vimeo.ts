@@ -14,6 +14,7 @@ export class Vimeo extends Provider {
      */
     constructor(){
         super('vimeo');
+        this._addAttr = ' allow="autoplay; fullscreen; picture-in-picture"';
     }
 
     init(options: IInstanceOptions){

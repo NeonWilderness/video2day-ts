@@ -26,7 +26,7 @@ declare const jscolor: any;
 const c169 = '1.77778';
 const codeAnchor = $('a[name="codedemo"]');
 const initProvider = 'youtube';
-const jscolorVersion = '2.4.5'; // prev. 2.4.0 
+const jscolorVersion = '2.5.1'; // prev. 2.4.5 
 
 interface IProviderSelectOption {
   code: string;

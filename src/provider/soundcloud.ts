@@ -22,6 +22,7 @@ export class Soundcloud extends Provider {
      */
     constructor() {
         super('soundcloud');
+        this._addAttr = ' allow="autoplay"';
     }
 
     init(options: IInstanceOptions): void {
