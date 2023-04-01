@@ -1,6 +1,6 @@
 //- Twoday Blog story to document videoload's version 2
-- var Stand = 'Dezember 2020'
-- var Anbieter = '19'
+- var Stand = 'März 2023'
+- var Anbieter = '16'
 - var Domain = 'neonwilderness'
 - var StoryUrl = 'https://' + Domain + '.twoday.net/stories/'
 - var VideoToolUrl = StoryUrl + 'videotool2'
@@ -10,12 +10,12 @@
 mixin SimpleCopy(citeID)
   - var anchor = '#' + citeID
   cite(id=citeID, style="display:none")
-    p.
+    p
       <i class="fa fa-tag fa-lg" style="color:#888"></i>
       | &ensp;Kopieren einfach gemacht
       a.closecite(title="data-bind=click:function(){toggle('"+anchor+"')}"): <i class="fa fa-close"></i>
     p.
-      Fahren Sie mit der Maus über das schwarze Codefeld oben und klicken dort auf <span class="label blue">pop-up</span>. Markieren Sie den Text in dem erscheinenden Pop-Up-Fenster und kopieren Sie ihn in die Zwischen&shy;ablage. Falls bei Ihnen der Link <span class="label blue">copy</span> angezeigt wird (Rechner mit Adobe Flash-Installation), können Sie darauf klicken, um den Text ohne Pop-Up-Fenster sofort in die Zwischen&shy;ablage zu kopieren. Gehen Sie nun in Ihren Skin Site.page und kopieren dort aus der Zwischenablage an die richtige Stelle vor <span class="code">!{lt}/body!{gt}</span>.
+      Fahren Sie mit der Maus über das schwarze Codefeld oben und klicken dort auf <span class="label blue">pop-up</span>. Markieren Sie den Text in dem erscheinenden Pop-Up-Fenster und kopieren Sie ihn in die Zwischen&shy;ablage. Gehen Sie nun in Ihren Skin Site.page und kopieren dort aus der Zwischenablage an die richtige Stelle vor <span class="code">!{lt}/body!{gt}</span>.
 mixin LiveView(classes, id, orientation)
   - var noDummyId = id.substr(0,1)!=='{'
   - var orientation = orientation || 'text-center'

@@ -3,6 +3,7 @@
  */
 import './videoload2-story.less';
 import { IProviders } from './video2day';
+import toolVersion from './version';
 
 class Videoload2StoryViewmodel {
 
@@ -17,8 +18,8 @@ class Videoload2StoryViewmodel {
       dctptv: 'https://www.dctp.tv/',
       filmstarts: 'http://www.filmstarts.de/',
       giphy: 'https://giphy.com/',
-      jsfiddle: 'https://jsfiddle.net/',
       itemfix: 'https://www.itemfix.com/',
+      jsfiddle: 'https://jsfiddle.net/',
       slides: 'https://slides.com/',
       slideshare: 'https://de.slideshare.net/',
       soundcloud: 'https://soundcloud.com/',
@@ -33,7 +34,7 @@ class Videoload2StoryViewmodel {
     this.hasMessage = ko.pureComputed(() => !!this.userMessage().length);
   }
 
-  isError = (): string => this.userMessage().substr(0, 1) === 'F' ? 'alert' : '';
+  isError = (): string => this.userMessage().slice(0, 1) === 'F' ? 'alert' : '';
 
   providerNames = (): string[] => Object.keys(this.providers);
 
@@ -78,6 +79,8 @@ class Videoload2StoryViewmodel {
         if (el) el.style.display = 'none';
       }
     });
+    
+    console.log(`Videoload2 Storyscript v${toolVersion} initialized.`);
 
   });
 

@@ -54,8 +54,8 @@ export interface IProviders {
   dctptv: any;
   filmstarts: any;
   giphy: any;
-  jsfiddle: any;
   itemfix: any;
+  jsfiddle: any;
   slides: any;
   slideshare: any;
   soundcloud: any;
@@ -90,8 +90,8 @@ export class Framedispatcher {
     dctptv: new Dctptv,
     filmstarts: new Filmstarts,
     giphy: new Giphy,
-    jsfiddle: new Jsfiddle,
     itemfix: new Itemfix,
+    jsfiddle: new Jsfiddle,
     slides: new Slides,
     slideshare: new Slideshare,
     soundcloud: new Soundcloud,

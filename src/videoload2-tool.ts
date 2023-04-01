@@ -151,19 +151,19 @@ class Videoload2ToolViewmodel {
         id: 'giphy.com',
         vmatch: '\\/embed\\/(.*)'
       },
+      itemfix: {
+        name: 'Itemfix',
+        template: TemplateTypes.NoTemplate,
+        aspect: true,
+        id: 'itemfix.com',
+        vmatch: '\\/e\\/(.*)'
+      },
       jsfiddle: {
         name: 'JsFiddle',
         template: TemplateTypes.TmplFiddle,
         aspect: true,
         id: 'jsfiddle.net',
         vmatch: '.net\\/(.*)\\/embedded'
-      },
-      itemfix: {
-        name: 'Itemfix',
-        template: TemplateTypes.TmplVideoStart,
-        aspect: true,
-        id: 'itemfix.com',
-        vmatch: '\\/e\\/(.*)'
       },
       slides: {
         name: 'Slides',
@@ -294,7 +294,7 @@ class Videoload2ToolViewmodel {
     this.$fldElementDisplay = $('#fldElementDisplay');
 
     /* ----- analyze url querystring for any given params ----- */
-    const params: string[] = (location.search.length > 0 ? decodeURIComponent(location.search).substr(1).split('&') : []); // ?provider=youtube&videoid=12345678
+    const params: string[] = (location.search.length > 0 ? decodeURIComponent(location.search).slice(1).split('&') : []); // ?provider=youtube&videoid=12345678
     if (params.length > 0) this.initFromQueryString(params);
 
     /* ----- add generic subscribe function to react to user changes ----- */

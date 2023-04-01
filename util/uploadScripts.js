@@ -5,6 +5,7 @@
  * videoload2-tool-min-js (from ./dist/videoload2-tool.js)
  * videoload2-story       (from ./dist/videoload2-story.js)
  */
+const { argv } = require('yargs');
 const path = require('path');
 const Twoday = require('@neonwilderness/twoday');
 require('dotenv-safe').config();
@@ -35,10 +36,11 @@ const uploadFiles = [
 
 (async () => {
   try {
-    const td = new Twoday.Twoday('dev', { delay: 300 });
+    const platform = argv.platform.toLowerCase();
+    const td = new Twoday.Twoday(platform, { delay: 300 });
     await td.login();
     for (const file of uploadFiles) {
-      const fileID = await td.updateFile('neonwilderness', {
+      const fileID = await td.updateFile('cdn', {
         name: file.name,
         path: path.resolve(process.cwd(), 'dist', file.src),
         description: file.desc

@@ -5,6 +5,7 @@
  * /stories/providerdocumentation (from ./dist/videoload-provider.html)
  * /stories/videotool2 (from ./dist/videotool-version2.html)
  */
+const { argv } = require('yargs');
 const fs = require('fs');
 const path = require('path');
 const Twoday = require('@neonwilderness/twoday');
@@ -18,7 +19,8 @@ const uploadFiles = [
 
 (async () => {
   try {
-    const td = new Twoday.Twoday('dev', { delay: 300 });
+    const platform = argv.platform.toLowerCase();
+    const td = new Twoday.Twoday(platform, { delay: 100 });
     await td.login();
     for (const file of uploadFiles) {
       await td.updateStory('neonwilderness', {

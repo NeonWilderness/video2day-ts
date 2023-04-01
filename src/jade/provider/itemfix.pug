@@ -1,7 +1,9 @@
 //- itemfix documentation of parameters
 p.
-  <b>Itemfix</b> ist ein Videoanbieter und die Nachfolgerplattform von <b>itemfix</b>. Folgender zusätzlicher Parameter ist möglich:
-+parameter-start('itemfix')
+  <b>Itemfix</b> ist ein Videoanbieter und die Nachfolgerplattform von <a target="_blank" href="https://de.wikipedia.org/wiki/LiveLeak">Liveleak</a>. Bei der Einbindung von Itemfix-Videos gibt es außer der Video-ID keine besonderen Parameter.
+h6.top20: strong Beispiel
+p Es soll ein Itemfix-Video mit der ID 'oid6bs' in einem Blogbeitrag eingebunden werden:
++LiveView("itemfix", "oid6bs")  
 p.text-right: a(href="#", title="data-bind=click:function(){toggle('#itemfix-id')}") Wie finde ich die ID eines itemfix-Videos?
 #itemfix-id(style="display:none")
   h6.top20: strong Itemfix-ID manuell ermitteln
@@ -9,8 +11,9 @@ p.text-right: a(href="#", title="data-bind=click:function(){toggle('#itemfix-id'
     Sobald Sie die Einzelansicht des gewünschten Videos auf der itemfix-Seite aufgerufen haben, können Sie die benötigte ID des Objekts folgendermaßen ermitteln:
   ol
     li
-      | Klicken Sie auf die Schaltfläche <span class="label red">Embed Code</span>:
+      | Oben aus der angezeigten Browser-URL (die einfachste Methode):
       .clearfix: img.googledrive(alt="videoload/itemfix-id1.jpg")
     li
+      | Klicken Sie auf die Schaltfläche <span class="label red">Share</span>:
       | Kopieren Sie den angezeigten iframe-Einbettungscode am besten in einen Texteditor. Der markierte Text entspricht der ID.
       .clearfix: img.googledrive(alt="videoload/itemfix-id2.jpg")
