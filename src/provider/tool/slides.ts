@@ -12,10 +12,6 @@ export class ToolSlides extends ToolProvider {
         // exit early if no iframe source
         if (!vm.$tag) return;
 
-        // look for 'slide' param
-        const slide = this.src.match(/\/#\/([0-9]*)/);
-        if (slide) this.vm.txtSlide(slide[1]); else this.vm.txtSlide('');
-
         // look for 'style' param
         const style = this.src.match(/\?style=(.*)/);
         if (style) this.vm.optColor(style[1]==='light' ? 'ffffff' : '333333'); else this.vm.optColor('333333');
@@ -23,8 +19,6 @@ export class ToolSlides extends ToolProvider {
     }
 
     generateDiv() : string {
-        // build start param
-        this.validateNumber('txtSlide', 'Startseite', 'slide');
         // build color param
         const color = this.vm.optColor();
         if (color!=='333333') this.params += ` color-light`;
