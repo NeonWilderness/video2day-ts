@@ -25,7 +25,6 @@ import { Vine } from './provider/vine';
 import { Youtube } from './provider/youtube';
 import { Other } from './provider/other';
 
-import { ClassListPolyfill } from './classlistpolyfill';
 import loadscript = require('load-script2');
 import lozad = require('lozad');
 import toolVersion from './version';
@@ -85,22 +84,22 @@ export class Framedispatcher {
   };
   options: IGeneratorDefaults;
   providers: IProviders = {
-    bandcamp: new Bandcamp,
-    dailymotion: new Dailymotion,
-    dctptv: new Dctptv,
-    filmstarts: new Filmstarts,
-    giphy: new Giphy,
-    itemfix: new Itemfix,
-    jsfiddle: new Jsfiddle,
-    slides: new Slides,
-    slideshare: new Slideshare,
-    soundcloud: new Soundcloud,
-    speakerdeck: new Speakerdeck,
-    ted: new Ted,
-    vimeo: new Vimeo,
-    vine: new Vine,
-    youtube: new Youtube,
-    other: new Other
+    bandcamp: new Bandcamp(),
+    dailymotion: new Dailymotion(),
+    dctptv: new Dctptv(),
+    filmstarts: new Filmstarts(),
+    giphy: new Giphy(),
+    itemfix: new Itemfix(),
+    jsfiddle: new Jsfiddle(),
+    slides: new Slides(),
+    slideshare: new Slideshare(),
+    soundcloud: new Soundcloud(),
+    speakerdeck: new Speakerdeck(),
+    ted: new Ted(),
+    vimeo: new Vimeo(),
+    vine: new Vine(),
+    youtube: new Youtube(),
+    other: new Other()
   };
   providerNames: string[];
   instances: any;
@@ -124,7 +123,7 @@ export class Framedispatcher {
   private dispatch(instanceOptions: IInstanceOptions): void {
     const element = instanceOptions.instance;
     if (!instanceOptions.hasOwnProperty('provider')) {
-      ErrorMessage(`Bitte einen gültigen Typ (${this.providerNames.join(", ")}) im class-Parameter ergänzen!`, element);
+      ErrorMessage(`Bitte einen gültigen Typ (${this.providerNames.join(', ')}) im class-Parameter ergänzen!`, element);
       return;
     }
     if (!instanceOptions.hasOwnProperty('id')) {
@@ -133,7 +132,10 @@ export class Framedispatcher {
     }
     const provider = this.providers[instanceOptions.provider];
     if (instanceOptions.provider !== 'other' && provider.hasHttpSourceInSecureMode()) {
-      ErrorMessage(`Im aktuellen https-Browsermodus kann kein ${instanceOptions.provider}-Element angezeigt werden, da dieser Anbieter keinen https-Zugriff anbietet.`, element);
+      ErrorMessage(
+        `Im aktuellen https-Browsermodus kann kein ${instanceOptions.provider}-Element angezeigt werden, da dieser Anbieter keinen https-Zugriff anbietet.`,
+        element
+      );
       return;
     }
     instanceOptions.lazyload = this.options.lazyLoad;
@@ -150,19 +152,14 @@ export class Framedispatcher {
 
   private getContentWidth(element: any): number {
     let parent = element.parentNode;
-    const classList = (parent.hasOwnProperty('classList') ? parent.classList : new ClassListPolyfill(parent.className));
-    while (!(classList.contains(this.options.contentClass) || parent.nodeName === "BODY")) parent = parent.parentNode;
-    return (parent.nodeName === "BODY" ? 0 : this.getWidth(parent));
+    while (!(parent.classList.contains(this.options.contentClass) || parent.nodeName === 'BODY'))
+      parent = parent.parentNode;
+    return parent.nodeName === 'BODY' ? 0 : this.getWidth(parent);
   }
 
   private parseInstanceOptions(instance: HTMLElement): IInstanceOptions {
     const options: IInstanceOptions = {};
-    const classList = new ClassListPolyfill(
-      instance.hasOwnProperty('classList') ?
-        instance.classList :
-        instance.className
-    ).classList;
-    for (const item of classList) {
+    for (const item of instance.classList) {
       const [option, value = ''] = item.split('-');
       switch (option) {
         case 'alt':
@@ -185,7 +182,7 @@ export class Framedispatcher {
           options[option] = true;
           break;
         case 'tracklist':
-          options[option] = (value ? parseInt(value) : 2);
+          options[option] = value ? parseInt(value) : 2;
           break;
         case 'slide':
         case 'width':
@@ -202,7 +199,7 @@ export class Framedispatcher {
     if (!options.hasOwnProperty('width')) {
       const storyWidth = this.getContentWidth(instance);
       const containerWidth = this.getWidth(instance);
-      options.width = (storyWidth !== 0 && storyWidth < containerWidth ? storyWidth : containerWidth);
+      options.width = storyWidth !== 0 && storyWidth < containerWidth ? storyWidth : containerWidth;
     }
     if (this.options.maxWidth > 0 && options.width > this.options.maxWidth) options.width = this.options.maxWidth;
     options.height = Math.round(options.width / options.ratio);
@@ -212,14 +209,14 @@ export class Framedispatcher {
   }
 
   private setPosterSize(): void {
-    for (const el of <Node[]><any>document.querySelectorAll('.vjs-poster')) {
+    for (const el of <Node[]>(<any>document.querySelectorAll('.vjs-poster'))) {
       (<HTMLElement>el).style.backgroundSize = this.options.posterSize;
     }
   }
 
   private getAttribute(el: HTMLElement, attr: string): number {
     const value: string = el.getAttribute(`data-${attr}`) || '0';
-    return (attr === 'ratio' ? parseFloat(value) : parseInt(value));
+    return attr === 'ratio' ? parseFloat(value) : parseInt(value);
   }
 
   private resizeElement(el: HTMLElement): void {
@@ -237,10 +234,10 @@ export class Framedispatcher {
     } else {
       // no, then make element responsive by adding flex class and a padding-bottom percentage
       if (el.className.indexOf(flex) < 0) el.className += ` ${flex}`;
-      const ratio: number = (fixheight
-        ? Math.round(fixheight / containerWidth * 100000) / 100000
-        : this.getAttribute(el, FixedRatioAttribute));
-      if (ratio !== 9 / 16) el.style.paddingBottom = (ratio * 100) + '%';
+      const ratio: number = fixheight
+        ? Math.round((fixheight / containerWidth) * 100000) / 100000
+        : this.getAttribute(el, FixedRatioAttribute);
+      if (ratio !== 9 / 16) el.style.paddingBottom = ratio * 100 + '%';
     }
     this.log(`height: ${fixheight}, width: ${elementWidth}, containerWidth: ${containerWidth}`);
     this.log(`id: ${el.id}, padding-bottom: ${el.style.paddingBottom}`);
@@ -254,7 +251,7 @@ export class Framedispatcher {
 
   private forceAutoplay(): void {
     setTimeout(() => {
-      for (const el of <Node[]><any>document.querySelectorAll('.autoplay>video')) {
+      for (const el of <Node[]>(<any>document.querySelectorAll('.autoplay>video'))) {
         const vid = window['videojs'](el, null);
         vid.autoplay('muted');
         vid.loop(true);
@@ -271,7 +268,7 @@ export class Framedispatcher {
     if (this.options.debug) this.listProviders();
 
     this.instances = document.querySelectorAll(this.options.selector);
-    this.log(`#${this.instances.length} instance${(this.instances.length > 1 ? 's' : '')} found.`);
+    this.log(`#${this.instances.length} instance${this.instances.length > 1 ? 's' : ''} found.`);
 
     if (this.instances.length < 1) return;
 
@@ -288,7 +285,7 @@ export class Framedispatcher {
       const instanceOptions = this.parseInstanceOptions(instance);
       this.dispatch(instanceOptions);
       this.log(instanceOptions);
-      html5Videoplayer = html5Videoplayer || (instanceOptions.provider === 'other');
+      html5Videoplayer = html5Videoplayer || instanceOptions.provider === 'other';
     }
 
     if (this.options.lazyLoad) {
@@ -300,7 +297,7 @@ export class Framedispatcher {
     }
 
     if (html5Videoplayer && this.options.useVideoJS) {
-      if (typeof <any>window['videojs'] === 'undefined') {
+      if (typeof (<any>window['videojs']) === 'undefined') {
         // load videojs script & css if not yet loaded
         loadscript(`https://vjs.zencdn.net/${useVideoJsRelease}/video.min.js`)
           .then(() => {
@@ -317,7 +314,7 @@ export class Framedispatcher {
           });
       } else {
         // re-generate all videojs instances
-        for (const el of <Node[]><any>document.querySelectorAll('.video-js')) {
+        for (const el of <Node[]>(<any>document.querySelectorAll('.video-js'))) {
           window['videojs'](el, {});
         }
         this.setPosterSize();
@@ -325,5 +322,4 @@ export class Framedispatcher {
       }
     }
   }
-
 }
