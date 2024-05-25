@@ -1,6 +1,9 @@
 const path = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const webpack = require('webpack');
+require('dotenv-safe').config();
+
 module.exports = {
   entry: {
     videoload2: './src/videoload2.ts',
@@ -41,6 +44,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new ESLintPlugin()
+    new ESLintPlugin(),
+    new webpack.DefinePlugin({
+      __TENURL__: JSON.stringify(process.env.TENURL)
+    })
   ]
 };

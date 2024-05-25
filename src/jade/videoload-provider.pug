@@ -12,7 +12,7 @@ mixin ParamHead()
     th Parameter
     th Bedeutung/Wirkung
 mixin LiveView(classes, id, orientation)
-  - var noDummyId = id.substr(0,1)!=='{'
+  - var noDummyId = id.slice(0,1)!=='{'
   - var orientation = orientation || 'text-center'
   p(class=orientation)
     - var code = '&lt;div class="html5video ' + classes + '" id="' + id + '"&gt;&lt;/div&gt;'

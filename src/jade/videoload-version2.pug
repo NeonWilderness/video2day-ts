@@ -17,7 +17,7 @@ mixin SimpleCopy(citeID)
     p.
       Fahren Sie mit der Maus über das schwarze Codefeld oben und klicken dort auf <span class="label blue">pop-up</span>. Markieren Sie den Text in dem erscheinenden Pop-Up-Fenster und kopieren Sie ihn in die Zwischen&shy;ablage. Gehen Sie nun in Ihren Skin Site.page und kopieren dort aus der Zwischenablage an die richtige Stelle vor <span class="code">!{lt}/body!{gt}</span>.
 mixin LiveView(classes, id, orientation)
-  - var noDummyId = id.substr(0,1)!=='{'
+  - var noDummyId = id.slice(0,1)!=='{'
   - var orientation = orientation || 'text-center'
   p(class=orientation)
     - var code = '&lt;div class="html5video ' + classes + '" id="' + id + '"&gt;&lt;/div&gt;'

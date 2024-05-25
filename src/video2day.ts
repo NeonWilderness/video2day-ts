@@ -20,6 +20,7 @@ import { Slideshare } from './provider/slideshare';
 import { Soundcloud } from './provider/soundcloud';
 import { Speakerdeck } from './provider/speakerdeck';
 import { Ted } from './provider/ted';
+import { Tenor } from './provider/tenor';
 import { Vimeo } from './provider/vimeo';
 import { Vine } from './provider/vine';
 import { Youtube } from './provider/youtube';
@@ -30,7 +31,7 @@ import lozad = require('lozad');
 import toolVersion from './version';
 
 const flex = 'flex-video';
-const useVideoJsRelease = '7.11.0'; // 7.2.3
+const useVideoJsRelease = '7.21.4'; // 7.11.0
 
 export interface IGeneratorDefaults {
   addFlexVideoClass?: boolean;
@@ -60,6 +61,7 @@ export interface IProviders {
   soundcloud: any;
   speakerdeck: any;
   ted: any;
+  tenor: any;
   vimeo: any;
   vine: any;
   youtube: any;
@@ -96,6 +98,7 @@ export class Framedispatcher {
     soundcloud: new Soundcloud(),
     speakerdeck: new Speakerdeck(),
     ted: new Ted(),
+    tenor: new Tenor(),
     vimeo: new Vimeo(),
     vine: new Vine(),
     youtube: new Youtube(),
@@ -103,9 +106,11 @@ export class Framedispatcher {
   };
   providerNames: string[];
   instances: any;
+  promises: Promise<any>[];
 
   constructor() {
     this.providerNames = Object.keys(this.providers);
+    this.promises = [];
   }
 
   private log(item: any): void {
@@ -130,17 +135,16 @@ export class Framedispatcher {
       ErrorMessage('Bitte die ID bzw. -URL des Anzeigeobjekts im Parameter "id" ergänzen!', element);
       return;
     }
-    const provider = this.providers[instanceOptions.provider];
-    if (instanceOptions.provider !== 'other' && provider.hasHttpSourceInSecureMode()) {
-      ErrorMessage(
-        `Im aktuellen https-Browsermodus kann kein ${instanceOptions.provider}-Element angezeigt werden, da dieser Anbieter keinen https-Zugriff anbietet.`,
-        element
-      );
-      return;
-    }
     instanceOptions.lazyload = this.options.lazyLoad;
-    provider.generate(instanceOptions, this.options.position, this.options.exportRun);
-
+    let provider = this.providers[instanceOptions.provider];
+    const isAsync = /function\*/.test(provider.generate.toString());
+    if (isAsync) {
+      // currently only Tenor is an async function
+      const tenor = new Tenor();
+      this.promises.push(tenor.generate(instanceOptions, this.options.position, this.options.exportRun));
+    } else {
+      provider.generate(instanceOptions, this.options.position, this.options.exportRun);
+    }
     if (this.options.addFlexVideoClass) {
       this.resizeElement(element);
     }
@@ -159,7 +163,7 @@ export class Framedispatcher {
 
   private parseInstanceOptions(instance: HTMLElement): IInstanceOptions {
     const options: IInstanceOptions = {};
-    for (const item of instance.classList) {
+    instance.classList.forEach(item => {
       const [option, value = ''] = item.split('-');
       switch (option) {
         case 'alt':
@@ -194,7 +198,7 @@ export class Framedispatcher {
         default:
           if (this.providerNames.indexOf(option) >= 0) options.provider = option;
       }
-    }
+    });
     if (!options.hasOwnProperty('ratio')) options.ratio = 16 / 9;
     if (!options.hasOwnProperty('width')) {
       const storyWidth = this.getContentWidth(instance);
@@ -289,11 +293,13 @@ export class Framedispatcher {
     }
 
     if (this.options.lazyLoad) {
-      const observer = lozad('.lozad', {
-        rootMargin: this.options.rootMargin,
-        threshold: this.options.treshold
+      Promise.all(this.promises).then(() => {
+        const observer = lozad('.lozad', {
+          rootMargin: this.options.rootMargin,
+          threshold: this.options.treshold
+        });
+        observer.observe();
       });
-      observer.observe();
     }
 
     if (html5Videoplayer && this.options.useVideoJS) {

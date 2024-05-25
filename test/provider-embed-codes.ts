@@ -79,7 +79,7 @@ export const embedCodes: IEmbedCode[] = [
   //------ Filmstarts
   {
     id: 'Filmstarts',
-    code: '<div id="blogvision">    <iframe src="https://player.filmstarts.de/19561243.html" style="width:480px; height:270px">    </iframe>    <br />    <a href="http://www.filmstarts.de/kritiken/204833.html" target="_blank" rel="noopener noreferrer">Zwischen zwei Leben - The Mountain Between Us</a>    <br/>    <a href="http://www.filmstarts.de/kritiken/204833/trailer/19561243.html"><strong>Zwischen zwei Leben - The Mountain Between Us</strong> Trailer DF</a>  </div>',
+    code: '<div id="blogvision">    <iframe src="https://player.filmstarts.de/19561243.html" style="width:480px; height:270px">    </iframe>    <br />    <a href="https://www.filmstarts.de/kritiken/204833.html" target="_blank" rel="noopener noreferrer">Zwischen zwei Leben - The Mountain Between Us</a>    <br/>    <a href="https://www.filmstarts.de/kritiken/204833/trailer/19561243.html"><strong>Zwischen zwei Leben - The Mountain Between Us</strong> Trailer DF</a>  </div>',
     expect: { vid: '19561243', param: 'html5video filmstarts' }
   },
   //------ Giphy as iframe
@@ -158,6 +158,18 @@ export const embedCodes: IEmbedCode[] = [
     id: 'TED with German subtitles',
     code: '<div style="max-width:854px"><div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://embed.ted.com/talks/lang/de/paul_tasner_how_i_became_an_entrepreneur_at_66" width="854" height="480" style="position:absolute;left:0;top:0;width:100%;height:100%" frameborder="0" scrolling="no" allowfullscreen></iframe></div></div>',
     expect: { vid: 'paul_tasner_how_i_became_an_entrepreneur_at_66', param: 'html5video ted lang' }
+  },
+  //------ Tenor/embed
+  {
+    id: 'Tenor (embed code)',
+    code: '<div class="tenor-gif-embed" data-postid="15883008" data-share-method="host" data-aspect-ratio="1.78771" data-width="100%"><a href="https://tenor.com/view/jaw-drop-shocked-surprised-omg-amazed-gif-15883008">Jaw Drop Shocked GIF</a>from <a href="https://tenor.com/search/jaw+drop-gifs">Jaw Drop GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>',
+    expect: { vid: '15883008', param: 'html5video tenor' }
+  },
+  //------ Tenor/link
+  {
+    id: 'Tenor (link url)',
+    code: 'https://tenor.com/de/view/dog-pup-puppy-cute-shocked-gif-16932034',
+    expect: { vid: '16932034', param: 'html5video tenor' }
   },
   //------ Vimeo/Standard
   {

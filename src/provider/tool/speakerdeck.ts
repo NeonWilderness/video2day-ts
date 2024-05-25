@@ -4,29 +4,25 @@
 import { ToolProvider } from './generic';
 
 export class ToolSpeakerdeck extends ToolProvider {
+  constructor(public vm: any) {
+    super(vm);
 
-    constructor(public vm: any) {
+    // exit early if no iframe source
+    if (!vm.$tag) return;
 
-        super(vm);
+    // look for 'id' param
+    const id: string = vm.$tag.attr('data-id') || '';
+    this.vm.txtElementID(id);
 
-        // exit early if no iframe source
-        if (!vm.$tag) return;
+    // look for 'slide' param
+    const slide: string = vm.$tag.attr('data-slide') || '';
+    this.vm.txtSlide(slide);
+  }
 
-        // look for 'id' param
-        const id: string = vm.$tag.attr('data-id') || '';
-        this.vm.txtElementID(id);
-
-        // look for 'slide' param
-        const slide: string = vm.$tag.attr('data-slide') || '';
-        this.vm.txtSlide(slide);
-
-    }
-
-    generateDiv() : string {
-        // build start param
-        this.validateNumber('txtSlide', 'Startseite', 'slide');
-        // build html tag
-        return super.generateDiv();
-    }
-
+  generateDiv(): string {
+    // build start param
+    this.validateNumber('txtSlide', 'Startseite', 'slide');
+    // build html tag
+    return super.generateDiv();
+  }
 }

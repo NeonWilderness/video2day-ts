@@ -200,6 +200,13 @@ class Videoload2ToolViewmodel {
         id: 'ted.com',
         vmatch: '(\\/talks\\/lang\\/[a-z]{2}\\/|\\/talks\\/)([a-z0-9_]*)'
       },
+      tenor: {
+        name: 'Tenor',
+        template: TemplateTypes.NoTemplate,
+        aspect: true,
+        id: 'tenor.com',
+        vmatch: '(\\d+)$'
+      },
       vimeo: {
         name: 'Vimeo',
         template: TemplateTypes.TmplVimeo,
@@ -322,7 +329,7 @@ class Videoload2ToolViewmodel {
   }
 
   initFromQueryString(params: string[]): void {
-    $.each(params, (index, param) => {
+    $.each(params, (_index, param) => {
       const part = param.split('=');
       if (part.length < 2) return true;
       const provClasses: string[] = part[1].split(' ');
@@ -424,9 +431,13 @@ class Videoload2ToolViewmodel {
     // try to find/isolate the iframe part
     let $tag: JQuery = $code.find('iframe').eq(0);
     // not found? then try to find a script tag (e.g. used by e.g. Speakerdeck)
-    if (!$tag.length) $tag = $code.find('script').eq(0);
-    // extract the src attribute from either iframe or script tag
-    const src: string = $tag.attr('src') || '';
+    if (!$tag.length) {
+      if (/tenor/.test(newIframe)) $tag = $code.find('a').eq(0);
+      else $tag = $code.find('script').eq(0);
+    }
+    // extract the src or href attribute from either tag
+    const src: string = $tag.attr('src') || $tag.attr('href') || '';
+    console.log('src:', src);
     // save $tag as a property
     this.$tag = $tag;
     // loop at provider table
@@ -467,8 +478,8 @@ class Videoload2ToolViewmodel {
         case 'jsfiddle': this.providerHandler = new ToolJsFiddle(this); break;
         case 'slides': this.providerHandler = new ToolSlides(this); break;
         case 'slideshare': this.providerHandler = new ToolSlideshare(this); break;
-        case 'speakerdeck': this.providerHandler = new ToolSpeakerdeck(this); break;
         case 'soundcloud': this.providerHandler = new ToolSoundcloud(this); break;
+        case 'speakerdeck': this.providerHandler = new ToolSpeakerdeck(this); break;
         case 'ted': this.providerHandler = new ToolTed(this); break;
         case 'vimeo': this.providerHandler = new ToolVimeo(this); break;
         case 'youtube': this.providerHandler = new ToolYoutube(this); break;

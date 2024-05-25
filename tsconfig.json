@@ -1,19 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext",
+    "module": "commonjs",
     "downlevelIteration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "es6",
-      "scripthost"
-    ],
-    "module": "commonjs",
+    "lib": ["ESNext", "DOM"],
     "removeComments": true,
-    "preserveConstEnums": true,
-    "pretty": true,
     "sourceMap": false
   },
   "files": [
