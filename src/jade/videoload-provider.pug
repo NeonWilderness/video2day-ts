@@ -1,9 +1,7 @@
 //- Provider Documentation
-- var Stand = 'März 2023'
+- var Stand = 'Dezember 2024'
 - var Anbieter = '16'
-- var Domain = 'neonwilderness'
-- var StoryUrl = 'https://' + Domain + '.twoday.net/stories/'
-- var VideoToolUrl = StoryUrl + 'videotool2'
+- var VideoToolUrl = '/stories/videotool2'
 - var static = '&lt;% staticURL %&gt;'
 - var lt = '&lt;'
 - var gt = '&gt;'
@@ -42,9 +40,10 @@ ul#providerTabs.tabs.tabBlue(title="data-bind=foreach:providerNames()")
   #tab-slideshare: include ./provider/slideshare.pug
   #tab-soundcloud: include ./provider/soundcloud.pug
   #tab-speakerdeck: include ./provider/speakerdeck.pug
+  #tab-spotify: include ./provider/spotify.pug
   #tab-ted: include ./provider/ted.pug
+  #tab-tenor: include ./provider/tenor.pug
   #tab-vimeo: include ./provider/vimeo.pug
-  #tab-vine: include ./provider/vine.pug
   #tab-youtube: include ./provider/youtube.pug
   #tab-other: include ./provider/other.pug
   p.text-right

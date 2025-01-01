@@ -80,7 +80,6 @@ export class ToolBandcamp extends ToolProvider {
         this.params += ' tracklist';
       }
     }
-    $('.jscolor').css('background-color', `#${this.vm.txtLinks()}`);
     // build html tag
     return super.generateDiv();
   }

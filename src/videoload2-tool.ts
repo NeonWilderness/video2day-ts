@@ -14,19 +14,20 @@ import { ToolSlides } from './provider/tool/slides';
 import { ToolSlideshare } from './provider/tool/slideshare';
 import { ToolSoundcloud } from './provider/tool/soundcloud';
 import { ToolSpeakerdeck } from './provider/tool/speakerdeck';
+import { ToolSpotify } from './provider/tool/spotify';
 import { ToolTed } from './provider/tool/ted';
 import { ToolVimeo } from './provider/tool/vimeo';
 import { ToolYoutube } from './provider/tool/youtube';
 import { ToolOther } from './provider/tool/other';
 
-import loadscript = require('load-script2');
+import * as loadscript from 'load-script2';
 declare const video2day: any;
 declare const jscolor: any;
 
 const c169 = '1.77778';
 const codeAnchor = $('a[name="codedemo"]');
 const initProvider = 'youtube';
-const jscolorVersion = '2.5.1'; // prev. 2.4.5 
+const jscolorVersion = '2.5.2';
 
 interface IProviderSelectOption {
   code: string;
@@ -54,64 +55,65 @@ enum TemplateTypes {
   TmplSlide,
   TmplSlides,
   TmplSoundcloud,
+  TmplSpotify,
   TmplTed,
   TmplVimeo,
   TmplOther
 }
 
 class Videoload2ToolViewmodel {
-
-  $tag: JQuery = null;                        // iframe or script tag if pasted into input text field
-  providers: IProviders;                      // all valid provider names
+  $tag: JQuery = null; // iframe or script tag if pasted into input text field
+  providers: IProviders; // all valid provider names
   providerOptions: KnockoutSubscribable<IProviderSelectOption[]>; // select code/option sets for all providers
-  providerHandler: ToolProvider;              // object class to handle provider specific processing
+  providerHandler: ToolProvider; // object class to handle provider specific processing
   providerTemplate: KnockoutObservable<string>; // provider template enum: serves additional html based on selected provider
-  txtIframe: KnockoutObservable<string>;      // pasted iFrame embed code of a desired provider element
-  errIframe: KnockoutObservable<string>;      // error message
-  hasError: KnockoutComputed<boolean>;        // true=data is not yet valid
-  optProvider: KnockoutObservable<string>;    // selected provider name
-  prevProvider = '';                          // remember last provider (on change)
-  providerImgUrl: KnockoutComputed<string>;   // icon img url of the selected provider
-  labelProvider: KnockoutObservable<string>;  // label (name) of the selected provider
-  selWidth: KnockoutObservable<string>;       // selected width id: full or pixel
-  txtPixel: KnockoutObservable<string>;       // pixel number if selWidth is pixel
+  txtIframe: KnockoutObservable<string>; // pasted iFrame embed code of a desired provider element
+  errIframe: KnockoutObservable<string>; // error message
+  hasError: KnockoutComputed<boolean>; // true=data is not yet valid
+  optProvider: KnockoutObservable<string>; // selected provider name
+  prevProvider = ''; // remember last provider (on change)
+  providerImgUrl: KnockoutComputed<string>; // icon img url of the selected provider
+  labelProvider: KnockoutObservable<string>; // label (name) of the selected provider
+  selWidth: KnockoutObservable<string>; // selected width id: full or pixel
+  txtPixel: KnockoutObservable<string>; // pixel number if selWidth is pixel
   txtPixelEnabled: KnockoutComputed<boolean>; // true=pixel edit enabled
-  selRatio: KnockoutObservable<string>;       // selected ratio id: 1.77778 or 1.33333 or custom
-  txtRatio: KnockoutObservable<string>;       // ratio value if selRatio is custom
+  selRatio: KnockoutObservable<string>; // selected ratio id: 1.77778 or 1.33333 or custom
+  txtRatio: KnockoutObservable<string>; // ratio value if selRatio is custom
   txtRatioEnabled: KnockoutComputed<boolean>; // true=ratio edit enabled
-  txtElementID: KnockoutObservable<string>;   // provider's element id
-  txtStart: KnockoutObservable<string>;       // start position in number of seconds
-  txtEndat: KnockoutObservable<string>;       // stop position in number of seconds
-  chkAsImage: KnockoutObservable<boolean>;    // true=inject Giphy-Element as <img> tag
-  txtAlt: KnockoutObservable<string>;         // alt-Parameter for Giphy-Element
-  txtSlide: KnockoutObservable<string>;       // start slide of a presentation element
-  chkStripe: KnockoutObservable<boolean>;     // true=inject Soundcloud-Element as smaller stripe
-  txtColor: KnockoutObservable<string>;       // color code of Soundcloud link
-  chkHtml: KnockoutObservable<boolean>;       // true=show html box in fiddle element
-  chkCss: KnockoutObservable<boolean>;        // true=show css box in fiddle element
-  chkJs: KnockoutObservable<boolean>;         // true=show js box in fiddle element
-  chkResult: KnockoutObservable<boolean>;     // true=show result box in fiddle element
-  colorOptions: IColorSelectOption[];         // available color scheme options for jsFiddle/bandcamp
-  optColor: KnockoutObservable<string>;       // selected color scheme name
-  layoutOptions: string[];                    // available layout options for bandcamp
-  optLayout: KnockoutObservable<string>;      // selected layout name
+  txtElementID: KnockoutObservable<string>; // provider's element id
+  txtStart: KnockoutObservable<string>; // start position in number of seconds
+  txtEndat: KnockoutObservable<string>; // stop position in number of seconds
+  chkAsImage: KnockoutObservable<boolean>; // true=inject Giphy-Element as <img> tag
+  txtAlt: KnockoutObservable<string>; // alt-Parameter for Giphy-Element
+  txtSlide: KnockoutObservable<string>; // start slide of a presentation element
+  chkStripe: KnockoutObservable<boolean>; // true=inject Soundcloud-Element as smaller stripe
+  chkDark: KnockoutObservable<boolean>; // true=display Spotify element in dark mode
+  txtColor: KnockoutObservable<string>; // color code of Soundcloud link
+  chkHtml: KnockoutObservable<boolean>; // true=show html box in fiddle element
+  chkCss: KnockoutObservable<boolean>; // true=show css box in fiddle element
+  chkJs: KnockoutObservable<boolean>; // true=show js box in fiddle element
+  chkResult: KnockoutObservable<boolean>; // true=show result box in fiddle element
+  colorOptions: IColorSelectOption[]; // available color scheme options for jsFiddle/bandcamp
+  optColor: KnockoutObservable<string>; // selected color scheme name
+  layoutOptions: string[]; // available layout options for bandcamp
+  optLayout: KnockoutObservable<string>; // selected layout name
   artworkOptions: KnockoutObservableArray<string>; // available artwork options for bandcamp
-  optArtwork: KnockoutObservable<string>;     // selected artwork name
-  txtBgColor: KnockoutObservable<string>;     // hex code of background color
-  txtLinks: KnockoutObservable<string>;       // hex code of links color
-  chkTracklist: KnockoutObservable<boolean>;  // true=display a tracklist
-  txtTracks: KnockoutObservable<string>;      // number of tracks to show in the tracklist
-  chkPoster: KnockoutObservable<boolean>;     // true=display a poster image before mp4 video starts
-  selPoster: KnockoutObservable<string>;      // selected filetype extension of poster image
-  chkAutoplay: KnockoutObservable<boolean>;   // true=immediately start mp4 video
-  chkLang: KnockoutObservable<boolean>;       // true=inject subtitle language German for TED Talks
-  $fldIframe: JQuery;                         // fieldset #fldIframe
-  $fldOptions: JQuery;                        // fieldset #fldOptions
+  optArtwork: KnockoutObservable<string>; // selected artwork name
+  txtBgColor: KnockoutObservable<string>; // hex code of background color
+  txtLinks: KnockoutObservable<string>; // hex code of links color
+  chkTracklist: KnockoutObservable<boolean>; // true=display a tracklist
+  txtTracks: KnockoutObservable<string>; // number of tracks to show in the tracklist
+  chkPoster: KnockoutObservable<boolean>; // true=display a poster image before mp4 video starts
+  selPoster: KnockoutObservable<string>; // selected filetype extension of poster image
+  chkAutoplay: KnockoutObservable<boolean>; // true=immediately start mp4 video
+  chkLang: KnockoutObservable<boolean>; // true=inject subtitle language German for TED Talks
+  $fldIframe: JQuery; // fieldset #fldIframe
+  $fldOptions: JQuery; // fieldset #fldOptions
   optionsVisible: KnockoutObservable<boolean>; // true=$fldOptions are visible
   showAspectRow: KnockoutObservable<boolean>; // true=aspect options are visible
-  $errMsg: JQuery;                            // error message in #errMsg
-  $fldElementCode: JQuery;                    // snippet code in #fldElementCode
-  $fldElementDisplay: JQuery;                 // element's display in #fldElementDisplay
+  $errMsg: JQuery; // error message in #errMsg
+  $fldElementCode: JQuery; // snippet code in #fldElementCode
+  $fldElementDisplay: JQuery; // element's display in #fldElementDisplay
 
   constructor() {
     const koTextEditOptions: any = { rateLimit: { method: 'notifyWhenChangesStop', timeout: 400 } };
@@ -193,6 +195,13 @@ class Videoload2ToolViewmodel {
         id: 'speakerdeck.com',
         vmatch: 'data-id="([0-9a-z]*)'
       },
+      spotify: {
+        name: 'Spotify',
+        template: TemplateTypes.TmplSpotify,
+        aspect: false,
+        id: 'spotify.com',
+        vmatch: 'track\\/(.*)\\?'
+      },
       ted: {
         name: 'Ted',
         template: TemplateTypes.TmplTed,
@@ -213,13 +222,6 @@ class Videoload2ToolViewmodel {
         aspect: true,
         id: 'vimeo.com',
         vmatch: '\\/video\\/([0-9]*)'
-      },
-      vine: {
-        name: 'Vine',
-        template: TemplateTypes.NoTemplate,
-        aspect: true,
-        id: 'vine.co',
-        vmatch: '\\/v\\/(.*)\\/embed'
       },
       youtube: {
         name: 'Youtube',
@@ -244,11 +246,15 @@ class Videoload2ToolViewmodel {
     this.txtIframe = ko.observable('');
     this.txtIframe.subscribe(this.deconstructIframe, this);
     this.errIframe = ko.observable('');
-    this.hasError = ko.pureComputed(function () { return this.errIframe().length > 0 }, this);
+    this.hasError = ko.pureComputed(function () {
+      return this.errIframe().length > 0;
+    }, this);
     this.optProvider = ko.observable(initProvider);
     this.optProvider.subscribe(this.injectProviderTemplate, this);
     this.providerTemplate = ko.observable(TemplateTypes[this.providers[initProvider].template]);
-    this.providerImgUrl = ko.pureComputed(() => `https://neonwilderness.de/public/images/videoload/${this.optProvider()}.png`);
+    this.providerImgUrl = ko.pureComputed(
+      () => `https://neonwilderness.de/public/images/videoload/${this.optProvider()}.png`
+    );
     this.labelProvider = ko.observable(`${this.providers[this.optProvider()].name}-ID:`);
     this.selWidth = ko.observable('full');
     this.txtPixel = ko.observable('').extend(koTextEditOptions);
@@ -264,6 +270,7 @@ class Videoload2ToolViewmodel {
     this.txtAlt = ko.observable('').extend(koTextEditOptions);
     this.txtSlide = ko.observable('').extend(koTextEditOptions);
     this.chkStripe = ko.observable(false);
+    this.chkDark = ko.observable(true);
     this.txtColor = ko.observable('ff5500').extend(koTextEditOptions);
     this.chkHtml = ko.observable(true);
     this.chkCss = ko.observable(true);
@@ -301,20 +308,32 @@ class Videoload2ToolViewmodel {
     this.$fldElementDisplay = $('#fldElementDisplay');
 
     /* ----- analyze url querystring for any given params ----- */
-    const params: string[] = (location.search.length > 0 ? decodeURIComponent(location.search).slice(1).split('&') : []); // ?provider=youtube&videoid=12345678
+    const params: string[] = location.search.length > 0 ? decodeURIComponent(location.search).slice(1).split('&') : []; // ?provider=youtube&videoid=12345678
     if (params.length > 0) this.initFromQueryString(params);
 
     /* ----- add generic subscribe function to react to user changes ----- */
     for (const propName in this) {
       if (!this.hasOwnProperty(propName)) continue;
-      if (['txtIframe', 'errIframe', 'optProvider', 'labelProvider', 'providerTemplate', 'optLayout', 'artworkOptions', 'optionsVisible', 'showAspectRow'].indexOf(propName) >= 0) continue;
+      if (
+        [
+          'txtIframe',
+          'errIframe',
+          'optProvider',
+          'labelProvider',
+          'providerTemplate',
+          'optLayout',
+          'artworkOptions',
+          'optionsVisible',
+          'showAspectRow'
+        ].indexOf(propName) >= 0
+      )
+        continue;
       const observable = this[propName];
       if (ko.isObservable(observable) && !ko.isComputed(observable)) {
         console.log(propName, 'extended.');
         observable.subscribe(this.subscribeExtender, this);
       }
     }
-
   }
 
   subscribeExtender(newValue): void {
@@ -358,6 +377,9 @@ class Videoload2ToolViewmodel {
               case 'color': // value is dark or light
                 this.optColor(value === 'light' ? 'ffffff' : '333333');
                 break;
+              case 'dark':
+                this.chkDark(true);
+                break;
               case 'endat':
                 this.txtEndat(value);
                 break;
@@ -372,10 +394,8 @@ class Videoload2ToolViewmodel {
                 this.artworkOptions(artworkOptionValues[value]);
                 break;
               case 'linkcol':
-                if (provClasses[0] !== 'bandcamp')
-                  this.txtColor(value);
-                else
-                  this.txtLinks(value);
+                if (provClasses[0] !== 'bandcamp') this.txtColor(value);
+                else this.txtLinks(value);
                 break;
               case 'poster':
                 this.chkPoster(true);
@@ -471,20 +491,51 @@ class Videoload2ToolViewmodel {
     console.log('generateHtml: currProv=', currProvider, 'lastProv=', this.prevProvider, 'tag=', this.$tag || 'null');
     if (currProvider !== this.prevProvider) {
       switch (currProvider) {
-        case 'bandcamp': this.providerHandler = new ToolBandcamp(this); break;
-        case 'dailymotion': this.providerHandler = new ToolDailymotion(this); break;
-        case 'dctptv': this.providerHandler = new ToolDctptv(this); break;
-        case 'giphy': this.providerHandler = new ToolGiphy(this); break;
-        case 'jsfiddle': this.providerHandler = new ToolJsFiddle(this); break;
-        case 'slides': this.providerHandler = new ToolSlides(this); break;
-        case 'slideshare': this.providerHandler = new ToolSlideshare(this); break;
-        case 'soundcloud': this.providerHandler = new ToolSoundcloud(this); break;
-        case 'speakerdeck': this.providerHandler = new ToolSpeakerdeck(this); break;
-        case 'ted': this.providerHandler = new ToolTed(this); break;
-        case 'vimeo': this.providerHandler = new ToolVimeo(this); break;
-        case 'youtube': this.providerHandler = new ToolYoutube(this); break;
-        case 'other': this.providerHandler = new ToolOther(this); break;
-        default: this.providerHandler = new ToolProvider(this); break;
+        case 'bandcamp':
+          this.providerHandler = new ToolBandcamp(this);
+          break;
+        case 'dailymotion':
+          this.providerHandler = new ToolDailymotion(this);
+          break;
+        case 'dctptv':
+          this.providerHandler = new ToolDctptv(this);
+          break;
+        case 'giphy':
+          this.providerHandler = new ToolGiphy(this);
+          break;
+        case 'jsfiddle':
+          this.providerHandler = new ToolJsFiddle(this);
+          break;
+        case 'slides':
+          this.providerHandler = new ToolSlides(this);
+          break;
+        case 'slideshare':
+          this.providerHandler = new ToolSlideshare(this);
+          break;
+        case 'soundcloud':
+          this.providerHandler = new ToolSoundcloud(this);
+          break;
+        case 'speakerdeck':
+          this.providerHandler = new ToolSpeakerdeck(this);
+          break;
+        case 'spotify':
+          this.providerHandler = new ToolSpotify(this);
+          break;
+        case 'ted':
+          this.providerHandler = new ToolTed(this);
+          break;
+        case 'vimeo':
+          this.providerHandler = new ToolVimeo(this);
+          break;
+        case 'youtube':
+          this.providerHandler = new ToolYoutube(this);
+          break;
+        case 'other':
+          this.providerHandler = new ToolOther(this);
+          break;
+        default:
+          this.providerHandler = new ToolProvider(this);
+          break;
       }
       this.prevProvider = currProvider;
     }
@@ -499,7 +550,8 @@ class Videoload2ToolViewmodel {
       this.scrollToFirstVisible(this.$errMsg);
     } else {
       // show code in snippet view
-      this.$fldElementCode.html(`<pre class="html">${code}</pre>`)
+      this.$fldElementCode
+        .html(`<pre class="html">${code}</pre>`)
         .find('.html')
         .snippet('html', { style: 'golden', showNum: false });
       // hot loading of actual element to let the user view the chosen design
@@ -519,7 +571,7 @@ class Videoload2ToolViewmodel {
   }
 
   triggerColorPickerInputs(): void {
-    if ($('.jscolor').length > 0 && window['jscolor']) jscolor.init();
+    if (window['jscolor']) jscolor.install();
   }
 
   resetOptions(): void {
@@ -567,14 +619,13 @@ class Videoload2ToolViewmodel {
     if (ratio === 'custom') {
       this.txtRatio('');
       $('#txtRatio').focus();
-    } else
-      this.txtRatio(ratio);
+    } else this.txtRatio(ratio);
     return true;
   }
 
   private scrollToFirstVisible(jqElements: JQuery, duration = 600, offset = 50) {
     const el: JQuery = jqElements.filter(':visible').eq(0);
-    if (el.length) $('html,body').animate({ scrollTop: (el.offset().top - offset) }, duration);
+    if (el.length) $('html,body').animate({ scrollTop: el.offset().top - offset }, duration);
   }
 
   toggle(selector: string, duration = 600, offset = 50) {
@@ -583,22 +634,21 @@ class Videoload2ToolViewmodel {
     $el.toggle(duration);
     this.scrollToFirstVisible($el, duration, offset);
   }
-
 }
 
 (function ($) {
-
   $(function () {
-
     // display all existing twoday tipps in the top sidebar item
-    const $item: JQuery = $(".sidebarItem:first");
+    const $item: JQuery = $('.sidebarItem:first');
     if ($item.length && location.host.split('.')[0] === 'neonwilderness') {
-      $.get("/topics/Sch%C3%B6ner+Bloggen/", function (data) {
+      $.get('/topics/Sch%C3%B6ner+Bloggen/', function (data) {
         let html = '';
         const wrapTipp = '<div class="sideHistoryItem clearfix"><div class="sideHistoryTitle">{tip}</div></div>';
-        $(data).find('.storyTitle').each(function () {
-          html += wrapTipp.replace('{tip}', $(this).html().replace('Twoday-', ''));
-        });
+        $(data)
+          .find('.storyTitle')
+          .each(function () {
+            html += wrapTipp.replace('{tip}', $(this).html().replace('Twoday-', ''));
+          });
         if (html.length > 0) {
           $item.find('h4').text('Twoday-Tipps');
           $item.find('.sidebarItemBody').html(html);
@@ -617,11 +667,8 @@ class Videoload2ToolViewmodel {
     ko.applyBindings(vm, document.getElementById('videotool2'));
 
     // load colorpicker helper script
-    loadscript(`https://cdnjs.cloudflare.com/ajax/libs/jscolor/${jscolorVersion}/jscolor.min.js`)
-      .catch(err => {
-        console.log(`>>>Error: jscolor could not be loaded [${err}].`);
-      });
-
+    loadscript(`https://cdnjs.cloudflare.com/ajax/libs/jscolor/${jscolorVersion}/jscolor.min.js`).catch(err => {
+      console.log(`>>>Error: jscolor could not be loaded [${err}].`);
+    });
   });
-
 })(jQuery);

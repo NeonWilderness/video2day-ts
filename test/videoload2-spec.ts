@@ -1,5 +1,3 @@
-'use strict';
-
 import * as ProviderSpecs from './provider-spec';
 
 import { IEmbedCode, embedCodes } from './provider-embed-codes';

@@ -24,10 +24,10 @@ class Videoload2StoryViewmodel {
       slideshare: 'https://de.slideshare.net/',
       soundcloud: 'https://soundcloud.com/',
       speakerdeck: 'https://speakerdeck.com/',
+      spotify: 'https://spotify.com/',
       ted: 'https://ted.com/',
       tenor: 'https://tenor.com/',
       vimeo: 'https://vimeo.com/',
-      vine: 'https://vine.co/',
       youtube: 'https://youtube.com/',
       other: 'https://videojs.com/'
     };

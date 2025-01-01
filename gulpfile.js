@@ -43,10 +43,11 @@ function js(done) {
  */
 function templates() {
   global.pkgVersion = pkg.version;
+
   return src(['./src/jade/*.pug', './test/testpage*.pug'])
     .pipe(pug({
       doctype: 'html',
-      globals: ['pkgVersion'],
+      globals: ['pkgVersion'], // utilize in pug: #{pkgVersion}
       verbose: true
     }))
     .pipe(dest('./dist/'))

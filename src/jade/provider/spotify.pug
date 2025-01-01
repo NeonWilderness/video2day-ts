@@ -1,0 +1,35 @@
+//- Spotify documentation of parameters
+p.
+  <b>Spotify</b> ist eine Musik-Streamingplattform, deren Audios in Webseiten eingebettet und abgespielt werden können. Folgende Parameter sind möglich:
+h6.top20 <span class="label">stripe</span> &mdash; Audioelement im schmalen Layout anzeigen
+p.
+  Im Standard werden spotify-Elemente mit einer Höhe von 352 Pixel formatiert. Wenn Sie eine schmalere Anzeige vorziehen, können Sie in der DIV-Klasse den Parameter <span class="code">stripe</span> ergänzen. Dies bewirkt, dass das Audiostück auf eine Standardhöhe von 152 Pixel verkleinert wird.
++LiveView("spotify <b>stripe</b>", "{eine-spotify-id}")
+h6.top20 <span class="label">dark</span> &mdash; Theme-Farbe des spotify-Elements festlegen
+p.
+  Standardmäßig wird für die Hintergrundfarbe des spotify-Elements automatisch eine zum Cover passende Farbe gewählt. Mithilfe des <span class="code">dark</span> Parameters können Sie als Hintergrundfarbe ein dunkles Grau festlegen (RGB-Wert: #1F1F1F).
++LiveView("spotify stripe <b>dark</b>", "{eine-spotify-id}")
+h6.top20: strong Beispiele
+p Das Stück <em>Saturday Morning</em> der Gruppe <em>Eels</em> soll als spotify-Element großformatig in einem Blogbeitrag eingebunden werden:
++LiveView("spotify", "5xgc9f81pwMCJ3YO19FZza")
+p In der schmaleren Variante und mit dunklem Hintergrund lautet der Videoload-Befehl:
++LiveView("spotify stripe dark", "5xgc9f81pwMCJ3YO19FZza")
+p.text-right: a(href="#", title="data-bind=click:function(){toggle('#spotify-id')}") Wie finde ich die ID eines spotify-Audioelements?
+#spotify-id(style="display:none")
+  h6.top20: strong Spotify-ID manuell ermitteln
+  p Sobald Sie in der Einzelansicht des spotify-Musikstücks sind, können Sie mit folgenden Schritten die ID ermitteln:
+  ol
+    li
+      | Klicken Sie unter der Audioanzeige auf die drei Punkte:
+      .clearfix: img.googledrive(alt="videoload/spotify-id1.jpg")
+    li
+      | Klicken Sie anschließend im Menü auf <span class="label">Teilen &rarr; Song einbetten</span>:
+      .clearfix: img.googledrive(alt="videoload/spotify-id2.jpg")
+    li
+      | Klicken Sie im angezeigten Fenster auf das <em>Code anzeigen</em>-Feld und kopieren Sie den Einbettungscode mit <span class="code">Strg-C</span>
+      | (Windows) oder <span class="code">Cmd-C</span> (Mac) in die Zwischenablage.
+      .clearfix: img.googledrive(alt="videoload/spotify-id3.jpg")
+    li
+      | Öffnen Sie einen Texteditor (z.B. Notepad in Windows) und fügen Sie den Text aus der Zwischenablage ein (Strg-V in Windows, Cmd-V für Mac).
+      | Der blau markierte Text hinter der Kennung "/track/" entspricht der gesuchten ID.
+      .clearfix: img.googledrive(alt="videoload/spotify-id4.jpg")

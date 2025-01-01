@@ -1,5 +1,3 @@
-'use strict';
-
 import './videoload2.less';
 import * as Video2Day from './video2day';
 

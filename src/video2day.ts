@@ -1,5 +1,3 @@
-'use strict';
-
 import {
   IInstanceOptions,
   ErrorMessage,
@@ -19,19 +17,19 @@ import { Slides } from './provider/slides';
 import { Slideshare } from './provider/slideshare';
 import { Soundcloud } from './provider/soundcloud';
 import { Speakerdeck } from './provider/speakerdeck';
+import { Spotify } from './provider/spotify';
 import { Ted } from './provider/ted';
 import { Tenor } from './provider/tenor';
 import { Vimeo } from './provider/vimeo';
-import { Vine } from './provider/vine';
 import { Youtube } from './provider/youtube';
 import { Other } from './provider/other';
 
-import loadscript = require('load-script2');
-import lozad = require('lozad');
+import * as loadscript from 'load-script2';
+import * as lozad from 'lozad';
 import toolVersion from './version';
 
 const flex = 'flex-video';
-const useVideoJsRelease = '7.21.4'; // 7.11.0
+const useVideoJsRelease = '7.21.4'; // 7.21.4
 
 export interface IGeneratorDefaults {
   addFlexVideoClass?: boolean;
@@ -60,10 +58,10 @@ export interface IProviders {
   slideshare: any;
   soundcloud: any;
   speakerdeck: any;
+  spotify: any;
   ted: any;
   tenor: any;
   vimeo: any;
-  vine: any;
   youtube: any;
   other: any;
 }
@@ -97,20 +95,18 @@ export class Framedispatcher {
     slideshare: new Slideshare(),
     soundcloud: new Soundcloud(),
     speakerdeck: new Speakerdeck(),
+    spotify: new Spotify(),
     ted: new Ted(),
     tenor: new Tenor(),
     vimeo: new Vimeo(),
-    vine: new Vine(),
     youtube: new Youtube(),
     other: new Other()
   };
   providerNames: string[];
   instances: any;
-  promises: Promise<any>[];
 
   constructor() {
     this.providerNames = Object.keys(this.providers);
-    this.promises = [];
   }
 
   private log(item: any): void {
@@ -125,7 +121,7 @@ export class Framedispatcher {
     });
   }
 
-  private dispatch(instanceOptions: IInstanceOptions): void {
+  private async dispatch(instanceOptions: IInstanceOptions): Promise<void> {
     const element = instanceOptions.instance;
     if (!instanceOptions.hasOwnProperty('provider')) {
       ErrorMessage(`Bitte einen gültigen Typ (${this.providerNames.join(', ')}) im class-Parameter ergänzen!`, element);
@@ -136,15 +132,8 @@ export class Framedispatcher {
       return;
     }
     instanceOptions.lazyload = this.options.lazyLoad;
-    let provider = this.providers[instanceOptions.provider];
-    const isAsync = /function\*/.test(provider.generate.toString());
-    if (isAsync) {
-      // currently only Tenor is an async function
-      const tenor = new Tenor();
-      this.promises.push(tenor.generate(instanceOptions, this.options.position, this.options.exportRun));
-    } else {
-      provider.generate(instanceOptions, this.options.position, this.options.exportRun);
-    }
+    const provider = this.providers[instanceOptions.provider];
+    await provider.generate(instanceOptions, this.options.position, this.options.exportRun);
     if (this.options.addFlexVideoClass) {
       this.resizeElement(element);
     }
@@ -180,6 +169,7 @@ export class Framedispatcher {
           break;
         case 'asimage':
         case 'autoplay':
+        case 'dark':
         case 'lang':
         case 'poster':
         case 'stripe':
@@ -264,7 +254,7 @@ export class Framedispatcher {
     }, 500);
   }
 
-  run(useroptions: IGeneratorDefaults): void {
+  async run(useroptions: IGeneratorDefaults): Promise<void> {
     this.options = Object.assign({}, this.defaults, useroptions || {});
     this.log(`Video2day version ${this.version}`);
     this.log(JSON.stringify(this.options, null, 2));
@@ -287,19 +277,17 @@ export class Framedispatcher {
     let html5Videoplayer = false;
     for (const instance of this.instances) {
       const instanceOptions = this.parseInstanceOptions(instance);
-      this.dispatch(instanceOptions);
+      await this.dispatch(instanceOptions);
       this.log(instanceOptions);
       html5Videoplayer = html5Videoplayer || instanceOptions.provider === 'other';
     }
 
     if (this.options.lazyLoad) {
-      Promise.all(this.promises).then(() => {
-        const observer = lozad('.lozad', {
-          rootMargin: this.options.rootMargin,
-          threshold: this.options.treshold
-        });
-        observer.observe();
+      const observer = lozad('.lozad', {
+        rootMargin: this.options.rootMargin,
+        threshold: this.options.treshold
       });
+      observer.observe();
     }
 
     if (html5Videoplayer && this.options.useVideoJS) {

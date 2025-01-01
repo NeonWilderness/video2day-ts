@@ -21,7 +21,6 @@ export class ToolVimeo extends ToolProvider {
   generateDiv(): string {
     // build linkcol param (does only work with stripe-format)
     this.validateColor('txtColor', 'Link', 'linkcol', standardPlaybuttonColor);
-    $('.jscolor').css('background-color', `#${this.vm.txtColor()}`);
     // build html tag
     return super.generateDiv();
   }

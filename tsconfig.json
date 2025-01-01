@@ -7,7 +7,9 @@
     "experimentalDecorators": true,
     "lib": ["ESNext", "DOM"],
     "removeComments": true,
-    "sourceMap": false
+    "sourceMap": false,
+    "esModuleInterop": false,
+    "alwaysStrict": true
   },
   "files": [
     "src/videoload2.ts",

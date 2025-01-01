@@ -127,13 +127,13 @@ export const embedCodes: IEmbedCode[] = [
   //------ Soundcloud as stripe
   {
     id: 'Soundcloud/stripe',
-    code: '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1093647757&color=%2327275b&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>',
-    expect: { vid: '1093647757', param: 'html5video soundcloud stripe linkcol-27275b' }
+    code: '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1964125711&color=%2327275b&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>',
+    expect: { vid: '1964125711', param: 'html5video soundcloud stripe linkcol-27275b' }
   },
   {
     id: 'Soundcloud/big/color',
-    code: '<iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1093647757&color=%2327275b&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe>',
-    expect: { vid: '1093647757', param: 'html5video soundcloud linkcol-27275b' }
+    code: '<iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1964125711&color=%2327275b&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe>',
+    expect: { vid: '1964125711', param: 'html5video soundcloud linkcol-27275b' }
   },
   //------ Speakerdeck first slide
   {
@@ -146,6 +146,18 @@ export const embedCodes: IEmbedCode[] = [
     id: 'Speakerdeck with slide number',
     code: '<iframe width="720" height="405" src="https://speakerdeck.com/player/704d7f2694fa43559e0afc488a0c810c?slide=11" frameborder="0" allowfullscreen=""></iframe>',
     expect: { vid: '704d7f2694fa43559e0afc488a0c810c', param: 'html5video speakerdeck slide-11' }
+  },
+  //------ Spotify 
+  {
+    id: 'Spotify big artwork dark',
+    code: '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6PtZaHjsx2Pnk3x9O92bB2?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>',
+    expect: { vid: '6PtZaHjsx2Pnk3x9O92bB2', param: 'html5video spotify dark' }
+  },
+  //------ Spotify 
+  {
+    id: 'Spotify stripe',
+    code: '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/48vescLyHKDtizrHZhHTb9?utm_source=generator&theme=1" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>',
+    expect: { vid: '48vescLyHKDtizrHZhHTb9', param: 'html5video spotify stripe' }
   },
   //------ TED
   {
@@ -181,12 +193,6 @@ export const embedCodes: IEmbedCode[] = [
     id: 'Vimeo/Color',
     code: '<iframe src="https://player.vimeo.com/video/125947740?color=c9ff23" width="640" height="270" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>',
     expect: { vid: '125947740', param: 'html5video vimeo linkcol-c9ff23 ratio-2.37037' }
-  },
-  //------ Vine
-  {
-    id: 'Vine',
-    code: '<iframe src="https://vine.co/v/5XwKTtq777Q/embed/simple" width="600" height="600" frameborder="0"></iframe><script src="https://platform.vine.co/static/scripts/embed.js"></script>',
-    expect: { vid: '5XwKTtq777Q', param: 'html5video vine ratio-1' }
   },
   //------ YouTube
   {

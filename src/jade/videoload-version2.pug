@@ -1,9 +1,7 @@
 //- Twoday Blog story to document videoload's version 2
-- var Stand = 'März 2023'
+- var Stand = 'Dezember 2024'
 - var Anbieter = '16'
-- var Domain = 'neonwilderness'
-- var StoryUrl = 'https://' + Domain + '.twoday.net/stories/'
-- var VideoToolUrl = StoryUrl + 'videotool2'
+- var VideoToolUrl = '/stories/videotool2'
 - var static = '&lt;% staticURL %&gt;'
 - var lt = '&lt;'
 - var gt = '&gt;'
@@ -28,12 +26,27 @@ mixin LiveView(classes, id, orientation)
         <i class="fa fa-eye liveview" title="Ergebnis live im Videotool ansehen">&nbsp;&hellip;</i>
 .panel.radius.callout
   cite.
-    Dieser Beitrag dokumentiert die nunmehr zweite, vollständig überarbeitete Version des Videoload-Werk&shy;zeugs, mit dem sich in Twoday auf einfache Weise Video-, Audio- und andere Quell&shy;formate einbinden lassen, die ansonsten mangels iframe-Möglich&shy;keit unter Twoday draußen bleiben müssten. Er ersetzt voll&shy;ständig die alte Doku&shy;men&shy;tation in <a target="_blank" href="#{StoryUrl}twoday-tipp-8-videos-anzeigen">diesem Beitrag vom Februar 2015</a>.
+    Dieser Beitrag dokumentiert die nunmehr zweite, vollständig überarbeitete Version des Videoload-Werk&shy;zeugs, mit dem sich in Twoday auf einfache Weise Video-, Audio- und andere Quell&shy;formate einbinden lassen, die ansonsten mangels iframe-Möglich&shy;keit unter Twoday draußen bleiben müssten. Er ersetzt voll&shy;ständig die alte Doku&shy;men&shy;tation in <a target="_blank" href="/stories/twoday-tipp-8-videos-anzeigen">diesem Beitrag vom Februar 2015</a>.
   h5.text-center(style="margin-bottom:20px") Wichtige Infos für bisherige Videoload-Nutzer
   p.
     <span class="redNumber">1</span>&ensp;Um die neue Videoload-Version nutzen zu können, müssen Sie den Aufruf des Scripts im Twoday-Skin <em>Site.page</em> einmalig ändern. Wie das geht, wird weiter unten im Abschnitt <b>Upgrade auf Videoload Version #2</b> beschrieben.
   p.
-    <span class="redNumber">2</span>&ensp;Die alte Tool-Version bleibt zwar weiterhin abrufbar, wird jedoch nicht mehr gepflegt. Die neue Version ist um Größenordnungen schneller, beinhaltet außerdem neue Anbieter wie z.B. <span class="label yellow">Bandcamp</span>, <span class="label yellow">dctp.tv</span>, <span class="label yellow">Slideshare</span> sowie <span class="label yellow">Speakerdeck</span> und ist bereinigt um mittlerweile nicht mehr aktive Anbieter (z.B. myvideo.de). Ich rate wärmstens zum vertrauensvollen Umstieg auf <b>Videoload #2</b>! ;)
+    <span class="redNumber">2</span>&ensp;Die alte Tool-Version bleibt zwar weiterhin abrufbar, wird jedoch nicht mehr gepflegt. Die neue Version ist um Größenordnungen schneller, beinhaltet außerdem neue Anbieter wie z.B. <span class="label yellow">Bandcamp</span>, <span class="label yellow">dctp.tv</span>, <span class="label yellow">Slideshare</span> sowie <span class="label yellow">Speakerdeck</span> und ist bereinigt um mittlerweile nicht mehr aktive Anbieter (z.B. myvideo.de). Ich rate wärmstens zum vertrauensvollen Umstieg auf <b>Videoload #2</b>!
+  <div style="text-align:center;margin-bottom:.5em"><span class="label blue">Changelog</span></div>
+  <table class="vtop fullsize" style="opacity:.8;margin-bottom:0">
+    <thead>
+      <tr>
+          <th>Datum</th>
+          <th>Änderungen / Edits</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>12/2024</td>
+          <td>Vine entfernt, Spotify und Tenor neu aufgenommen (v2.12.0)</td>
+      </tr>
+    </tbody>
+  </table>
 p: img.googledrive(alt="videoload/videoinst.jpg")
 p.dropcaps.
   In der IT ist das so eine Sache mit der Pflege und Wartung von Alt-Software. So schwankt man beim Wiederstudium von älteren eigenen JavaScript-Codeschnipseln zwischen sehr ambivalenten Gefühlen, die sich irgendwo zwischen "Diese in einem magischen Moment entstandene brillante Codestrecke verstehen nur noch Gott, Mark Zuckerberg oder mein früheres Ich!" und "War ich das? Wie schlecht ist das denn bitte programmiert?" bewegen.
@@ -117,9 +130,7 @@ p.
     p Im oben gezeigten Beispiel nimmt das Youtube-Video die volle Breite des umgebenden Containers ein, d.h. es füllt die Twoday-Beitragsspalte horizontal vollkommen aus. Falls Sie das Video kleiner darstellen wollen, können Sie zusätzlich eine Breitenangabe mithilfe des <span class="code">width</span>-Parameters machen. Für eine Breite von z.B. 350 Pixeln lautet der Befehl:
     +LiveView("youtube <b>width-350</b>", "DyfM7oLIlp0")
     h6.top20 <span class="label">ratio</span> &mdash; Seitenverhältnis einstellen/korrigieren
-    p Die meisten Videos haben ein <a target="_blank" href="https://de.wikipedia.org/wiki/Seitenverh%C3%A4ltnis">Seitenverhältnis</a> von 16:9, d.h. ein Verhältnis von Breite zu Höhe von 1,77778. Manche Videos haben noch ein 4:3 Verhältnis (1,33333) und wieder andere eine sehr individuelle Streckung (z.B. bei Breitbildformaten). Das Script verwendet im Standard die 16:9-Anzeige. Wenn das Video verzerrt dargestellt wird, können Sie ein eigenes Seitenverhältnis einstellen. Der Befehl für ein Vine-Video mit einem Seitenverhältnis von 1,0 und einer Breite von 400 Pixeln lautet dann:
-    +LiveView("vine <b>ratio-1</b> width-400", "OTtQVYI2JY2")
-    p Dies bewirkt in diesem Fall, dass das Video die gleiche Höhe wie Breite erhält, d.h. 400 Pixel breit und hoch ist.
+    p Die meisten Videos haben ein <a target="_blank" href="https://de.wikipedia.org/wiki/Seitenverh%C3%A4ltnis">Seitenverhältnis</a> von 16:9, d.h. ein Verhältnis von Breite zu Höhe von 1,77778. Manche Videos haben noch ein 4:3 Verhältnis (1,33333) und wieder andere eine sehr individuelle Streckung (z.B. bei Breitbildformaten). Das Script verwendet im Standard die 16:9-Anzeige. Wenn das Video verzerrt dargestellt wird, können Sie ein eigenes Seitenverhältnis einstellen.
     p Neben diesen beiden grundsätzlich verwendbaren Parametern gibt es je Plattform verschiedene individuelle Parameter, mit denen man bestimmte Funktionen oder Darstellungsweisen des Anbieters aktiviert. Diese sind je Plattform in den nachstehenden Tabs beschrieben.
     h3.top20 Individuelle Parameter je Anbieter
     p.text-center: span.sublabel Klick auf ein Tab öffnet die Dokumentation für diesen Anbieter

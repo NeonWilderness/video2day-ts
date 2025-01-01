@@ -26,7 +26,6 @@ export class ToolSoundcloud extends ToolProvider {
     if (this.vm.chkStripe()) this.params = ' stripe';
     // build linkcol param (does only work with stripe-format)
     this.validateColor('txtColor', 'Playbutton', 'linkcol', standardPlaybuttonColor);
-    $('.jscolor').css('background-color', `#${this.vm.txtColor()}`);
     // build html tag
     return super.generateDiv();
   }
