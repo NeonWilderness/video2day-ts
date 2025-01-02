@@ -270,7 +270,7 @@ class Videoload2ToolViewmodel {
     this.txtAlt = ko.observable('').extend(koTextEditOptions);
     this.txtSlide = ko.observable('').extend(koTextEditOptions);
     this.chkStripe = ko.observable(false);
-    this.chkDark = ko.observable(true);
+    this.chkDark = ko.observable(false);
     this.txtColor = ko.observable('ff5500').extend(koTextEditOptions);
     this.chkHtml = ko.observable(true);
     this.chkCss = ko.observable(true);
