@@ -5,7 +5,7 @@
  * /stories/providerdocumentation (from ./dist/videoload-provider.html)
  * /stories/videotool2 (from ./dist/videotool-version2.html)
  */
-const { argv } = require('yargs');
+const argv = require('minimist')(process.argv.slice(2));
 const fs = require('fs');
 const path = require('path');
 const Twoday = require('@neonwilderness/twoday');

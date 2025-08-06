@@ -1,4 +1,4 @@
-const { argv } = require('yargs');
+const argv = require('minimist')(process.argv.slice(2));
 const chalk = require('chalk');
 const del = require('del');
 const fs = require('fs');
