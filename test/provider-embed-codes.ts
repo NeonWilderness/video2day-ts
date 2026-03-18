@@ -8,7 +8,7 @@ export interface IEmbedCode {
   expect: {
     vid: string;
     param: string;
-  }
+  };
 }
 
 export const embedCodes: IEmbedCode[] = [
@@ -32,7 +32,6 @@ export const embedCodes: IEmbedCode[] = [
     id: 'Bandcamp Standard/no Artwork/no Tracklist',
     code: '<iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=456865727/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=none/minimal=false/transparent=true/" seamless><a href="https://terriblyyours.bandcamp.com/album/a-bloom-beyond">A Bloom Beyond by Terribly Yours</a></iframe>',
     expect: { vid: '456865727', param: 'html5video bandcamp layout-standard artwork-none' }
-
   },
   {
     id: 'Bandcamp Standard/Artwork Big/no Tracklist',
@@ -147,13 +146,13 @@ export const embedCodes: IEmbedCode[] = [
     code: '<iframe width="720" height="405" src="https://speakerdeck.com/player/704d7f2694fa43559e0afc488a0c810c?slide=11" frameborder="0" allowfullscreen=""></iframe>',
     expect: { vid: '704d7f2694fa43559e0afc488a0c810c', param: 'html5video speakerdeck slide-11' }
   },
-  //------ Spotify 
+  //------ Spotify
   {
     id: 'Spotify big artwork dark',
     code: '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6PtZaHjsx2Pnk3x9O92bB2?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>',
     expect: { vid: '6PtZaHjsx2Pnk3x9O92bB2', param: 'html5video spotify dark' }
   },
-  //------ Spotify 
+  //------ Spotify
   {
     id: 'Spotify stripe',
     code: '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/48vescLyHKDtizrHZhHTb9?utm_source=generator&theme=1" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>',

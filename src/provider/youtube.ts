@@ -14,7 +14,8 @@ export class Youtube extends Provider {
    */
   constructor() {
     super('youtube');
-    this._addAttr = ' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"';
+    this._addAttr =
+      ' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"';
   }
 
   init(options: IInstanceOptions): void {

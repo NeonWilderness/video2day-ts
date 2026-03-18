@@ -20,7 +20,7 @@ html +=
 
 // target container for iframes
 const div = document.getElementById('testDIV');
-div!.innerHTML = html;
+div.innerHTML = html;
 
 // run videoload
 video2day.run({

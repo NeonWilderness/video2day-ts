@@ -8,13 +8,14 @@
     "lib": ["ESNext", "DOM"],
     "removeComments": true,
     "sourceMap": false,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "alwaysStrict": true
   },
   "files": [
     "src/videoload2.ts",
     "src/videoload2-story.ts",
     "src/videoload2-tool.ts",
+    "test/videoload2-lazy.ts",
     "test/videoload2-spec.ts",
     "typings/index.d.ts"
   ],

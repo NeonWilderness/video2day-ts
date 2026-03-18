@@ -1,6 +1,6 @@
 {
   "name": "video2day",
-  "version": "2.12.1",
+  "version": "2.12.2",
   "description": "Video/iframe generator for the Twoday blogging platform",
   "main": "video2day.js",
   "repository": {
@@ -8,11 +8,12 @@
     "url": "git@github.com:NeonWilderness/video2day-ts.git"
   },
   "scripts": {
-    "update": "ncu -u -x @types/jquery,chalk,del,eslint,eslint-webpack-plugin && npm i",
+    "update": "ncu -u -x @types/jquery,del,eslint && npm i",
     "build": "gulp --production",
     "dev": "gulp",
     "copy": "gulp copy",
     "lint": "eslint . --quiet --ext .ts",
+    "lint:fix": "eslint . --fix --quiet",
     "list": "node ./util/listcdn",
     "scripts:dev": "node ./util/uploadScripts --platform=dev",
     "scripts:prod": "node ./util/uploadScripts --platform=prod",
@@ -28,33 +29,35 @@
   "license": "MIT",
   "dependencies": {
     "load-script2": "^2.0.6",
-    "lozad": "^1.16.0"
+    "lozad": "^1.16.0",
+    "picocolors": "^1.1.1"
   },
   "devDependencies": {
-    "@neonwilderness/twoday": "^0.5.7",
-    "@types/chai": "^5.2.2",
+    "@neonwilderness/twoday": "^0.6.1",
+    "@types/chai": "^5.2.3",
     "@types/jquery": "^1.10.36",
-    "@types/knockout": "^3.4.77",
+    "@types/knockout": "^3.4.78",
     "@types/lozad": "^1.16.4",
     "@types/mocha": "^10.0.10",
-    "@typescript-eslint/eslint-plugin": "^8.39.0",
-    "@typescript-eslint/parser": "^8.39.0",
-    "chai": "^5.2.1",
-    "chalk": "^4.1.2",
-    "css-loader": "^7.1.2",
+    "chai": "^6.2.2",
+    "css-loader": "^7.1.4",
     "del": "^6.0.0",
     "dotenv-safe": "^9.1.0",
-    "eslint": "^8.57.0",
-    "eslint-webpack-plugin": "^4.2.0",
+    "eslint": "^9.39.3",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-promise": "^7.2.1",
+    "eslint-webpack-plugin": "^5.0.3",
     "gulp": "^5.0.1",
     "gulp-pug": "^5.0.0",
-    "less": "^4.4.0",
-    "less-loader": "^12.3.0",
+    "less": "^4.6.4",
+    "less-loader": "^12.3.2",
     "minimist": "^1.2.8",
     "style-loader": "^4.0.0",
-    "terser-webpack-plugin": "^5.3.14",
-    "ts-loader": "^9.5.2",
-    "typescript": "^5.9.2",
-    "webpack": "^5.101.0"
+    "terser-webpack-plugin": "^5.4.0",
+    "ts-loader": "^9.5.4",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.57.1",
+    "webpack": "^5.105.4"
   }
 }

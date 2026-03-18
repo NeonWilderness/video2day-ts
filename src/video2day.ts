@@ -25,7 +25,7 @@ import { Youtube } from './provider/youtube';
 import { Other } from './provider/other';
 
 import * as loadscript from 'load-script2';
-import * as lozad from 'lozad';
+import lozad from 'lozad';
 import toolVersion from './version';
 
 const flex = 'flex-video';
@@ -302,6 +302,7 @@ export class Framedispatcher {
             this.setPosterSize();
             this.log('Videojs/css successfully loaded.');
             this.forceAutoplay();
+            return true;
           })
           .catch(err => {
             console.log(`>>>Error: Videojs could not be loaded [${err}].`);

@@ -6,7 +6,6 @@ import { IProviders } from './video2day';
 import toolVersion from './version';
 
 class Videoload2StoryViewmodel {
-
   providers: IProviders;
   userMessage: KnockoutObservable<string>;
   hasMessage: KnockoutComputed<boolean>;
@@ -35,7 +34,7 @@ class Videoload2StoryViewmodel {
     this.hasMessage = ko.pureComputed(() => !!this.userMessage().length);
   }
 
-  isError = (): string => this.userMessage().slice(0, 1) === 'F' ? 'alert' : '';
+  isError = (): string => (this.userMessage().slice(0, 1) === 'F' ? 'alert' : '');
 
   providerNames = (): string[] => Object.keys(this.providers);
 
@@ -44,25 +43,23 @@ class Videoload2StoryViewmodel {
   providerImgUrl = (provider: string): string => `https://neonwilderness.de/public/images/videoload/${provider}.png`;
 
   private scrollToFirst(jqElements: any, duration = 600, offset = 50) {
-    $('html,body').animate({ scrollTop: (jqElements.eq(0).offset().top - offset) }, duration);
+    $('html,body').animate({ scrollTop: jqElements.eq(0).offset().top - offset }, duration);
   }
 
   scrollTo = (selector: string, duration = 600, offset = 50) => {
     const $el = $(selector);
     this.scrollToFirst($el, duration, offset);
-  }
+  };
 
   toggle = (selector: string, duration = 600, offset = 50) => {
     const $el = $(selector);
     $el.toggle(duration);
     this.scrollToFirst($el, duration, offset);
-  }
+  };
 }
 
 (function ($) {
-
   $(function () {
-
     // create viewmodel from class
     const vm = new Videoload2StoryViewmodel();
 
@@ -80,9 +77,7 @@ class Videoload2StoryViewmodel {
         if (el) el.style.display = 'none';
       }
     });
-    
+
     console.log(`Videoload2 Storyscript v${toolVersion} initialized.`);
-
   });
-
 })(jQuery);

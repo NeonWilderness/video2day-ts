@@ -1,5 +1,4 @@
 import * as ProviderSpecs from './provider-spec';
-
 import { IEmbedCode, embedCodes } from './provider-embed-codes';
 declare const video2day: any;
 

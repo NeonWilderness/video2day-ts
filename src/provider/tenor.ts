@@ -1,7 +1,7 @@
 /*
  Tenor-Plugin
  */
-declare var __TENURL__: string;
+declare let __TENURL__: string;
 import { imageTemplate, IInstanceOptions, Provider } from './generic';
 
 export class Tenor extends Provider {
@@ -28,7 +28,7 @@ export class Tenor extends Provider {
       const json = await fetch(__TENURL__.replace('{id}', options.id)).then(res => res.json());
       this.source = json.results[0]['media_formats']['gif'].url;
       if (!options.width) {
-        const [ width, height ] = json.results[0]['media_formats']['gif'].dims;
+        const [width, height] = json.results[0]['media_formats']['gif'].dims;
         this._width = width;
         this._height = height;
       }
