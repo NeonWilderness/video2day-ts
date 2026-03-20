@@ -1,6 +1,6 @@
 {
   "name": "video2day",
-  "version": "2.12.2",
+  "version": "2.12.3",
   "description": "Video/iframe generator for the Twoday blogging platform",
   "main": "video2day.js",
   "repository": {

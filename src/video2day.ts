@@ -19,7 +19,6 @@ import { Soundcloud } from './provider/soundcloud';
 import { Speakerdeck } from './provider/speakerdeck';
 import { Spotify } from './provider/spotify';
 import { Ted } from './provider/ted';
-import { Tenor } from './provider/tenor';
 import { Vimeo } from './provider/vimeo';
 import { Youtube } from './provider/youtube';
 import { Other } from './provider/other';
@@ -60,7 +59,6 @@ export interface IProviders {
   speakerdeck: any;
   spotify: any;
   ted: any;
-  tenor: any;
   vimeo: any;
   youtube: any;
   other: any;
@@ -97,7 +95,6 @@ export class Framedispatcher {
     speakerdeck: new Speakerdeck(),
     spotify: new Spotify(),
     ted: new Ted(),
-    tenor: new Tenor(),
     vimeo: new Vimeo(),
     youtube: new Youtube(),
     other: new Other()

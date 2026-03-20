@@ -25,7 +25,6 @@ class Videoload2StoryViewmodel {
       speakerdeck: 'https://speakerdeck.com/',
       spotify: 'https://spotify.com/',
       ted: 'https://ted.com/',
-      tenor: 'https://tenor.com/',
       vimeo: 'https://vimeo.com/',
       youtube: 'https://youtube.com/',
       other: 'https://videojs.com/'

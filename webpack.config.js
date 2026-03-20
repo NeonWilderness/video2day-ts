@@ -44,9 +44,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new ESLintPlugin(),
-    new webpack.DefinePlugin({
-      __TENURL__: JSON.stringify(process.env.TENURL)
-    })
+    new ESLintPlugin()
   ]
 };

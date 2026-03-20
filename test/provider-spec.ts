@@ -13,14 +13,9 @@ export function testCases(): void {
         it(`should generate ${embed.id}`, async () => {
           div.innerHTML = `<div class="${embed.expect.param}" id="${embed.expect.vid}"></div>`;
           await video2day.run({ debug: true });
-          if (embed.id.startsWith('Tenor')) {
-            generatedSrc = (<HTMLImageElement>div.firstChild.firstChild).src;
-            assert.ok(generatedSrc.startsWith('https://media.tenor.com/'));
-          } else {
-            generatedSrc = (<any>div.firstChild.firstChild).src;
-            expectedSrc = embed.code.match(/src\s*=\s*"([^"]+)"/)[1];
-            assert.strictEqual(generatedSrc, expectedSrc, `\n expected: ${expectedSrc}\ngenerated: ${generatedSrc}`);
-          }
+          generatedSrc = (<any>div.firstChild.firstChild).src;
+          expectedSrc = embed.code.match(/src\s*=\s*"([^"]+)"/)[1];
+          assert.strictEqual(generatedSrc, expectedSrc, `\n expected: ${expectedSrc}\ngenerated: ${generatedSrc}`);
         });
       }
     });

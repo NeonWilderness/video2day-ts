@@ -6,12 +6,6 @@ let html = '';
 embedCodes.forEach(embed => {
   html += `<p>${embed.id}</p><div id="${embed.expect.vid}" class="${embed.expect.param}"></div>`;
 });
-html += `<p>Two tenor gifs in a flex div</p>
-<div style="display:flex; justify-content:space-around">
-  <div class="html5video tenor" id="13733885" width="45%"></div>
-  <div class="html5video tenor width-232" id="15140161" width="45%"></div>
-</div>
-`;
 html +=
   '<p>Other/Autoplay/Poster</p>' +
   '<div style="width:320px;height:427px;margin:0 auto">' +

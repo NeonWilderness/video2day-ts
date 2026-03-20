@@ -209,13 +209,6 @@ class Videoload2ToolViewmodel {
         id: 'ted.com',
         vmatch: '(\\/talks\\/lang\\/[a-z]{2}\\/|\\/talks\\/)([a-z0-9_]*)'
       },
-      tenor: {
-        name: 'Tenor',
-        template: TemplateTypes.NoTemplate,
-        aspect: true,
-        id: 'tenor.com',
-        vmatch: '(\\d+)$'
-      },
       vimeo: {
         name: 'Vimeo',
         template: TemplateTypes.TmplVimeo,
@@ -452,8 +445,7 @@ class Videoload2ToolViewmodel {
     let $tag: JQuery = $code.find('iframe').eq(0);
     // not found? then try to find a script tag (e.g. used by e.g. Speakerdeck)
     if (!$tag.length) {
-      if (/tenor/.test(newIframe)) $tag = $code.find('a').eq(0);
-      else $tag = $code.find('script').eq(0);
+      $tag = $code.find('script').eq(0);
     }
     // extract the src or href attribute from either tag
     const src: string = $tag.attr('src') || $tag.attr('href') || '';

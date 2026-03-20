@@ -84,14 +84,14 @@ export const embedCodes: IEmbedCode[] = [
   //------ Giphy as iframe
   {
     id: 'Giphy as iframe',
-    code: '<iframe src="https://giphy.com/embed/5GoVLqeAOo6PK" width="480" height="375" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/excited-screaming-jonah-hill-5GoVLqeAOo6PK">via GIPHY</a></p>',
-    expect: { vid: '5GoVLqeAOo6PK', param: 'html5video giphy ratio-1.28' }
+    code: '<iframe src="https://giphy.com/embed/tXL4FHPSnVJ0A" width="480" height="322" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/excited-screaming-jonah-hill-5GoVLqeAOo6PK">via GIPHY</a></p>',
+    expect: { vid: 'tXL4FHPSnVJ0A', param: 'html5video giphy ratio-1.49' }
   },
   //------ Giphy as image
   {
     id: 'Giphy as image',
-    code: '<iframe src="https://i.giphy.com/5GoVLqeAOo6PK.gif" width="480" height="375" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/excited-screaming-jonah-hill-5GoVLqeAOo6PK">via GIPHY</a></p>',
-    expect: { vid: '5GoVLqeAOo6PK', param: 'html5video giphy asimage ratio-1.28' }
+    code: '<iframe src="https://i.giphy.com/tXL4FHPSnVJ0A.gif" width="480" height="322" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/excited-screaming-jonah-hill-5GoVLqeAOo6PK">via GIPHY</a></p>',
+    expect: { vid: 'tXL4FHPSnVJ0A', param: 'html5video giphy asimage ratio-1.49' }
   },
   //------ Itemfix (former Liveleak)
   {
@@ -169,18 +169,6 @@ export const embedCodes: IEmbedCode[] = [
     id: 'TED with German subtitles',
     code: '<div style="max-width:854px"><div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://embed.ted.com/talks/lang/de/paul_tasner_how_i_became_an_entrepreneur_at_66" width="854" height="480" style="position:absolute;left:0;top:0;width:100%;height:100%" frameborder="0" scrolling="no" allowfullscreen></iframe></div></div>',
     expect: { vid: 'paul_tasner_how_i_became_an_entrepreneur_at_66', param: 'html5video ted lang' }
-  },
-  //------ Tenor/embed
-  {
-    id: 'Tenor (embed code)',
-    code: '<div class="tenor-gif-embed" data-postid="15883008" data-share-method="host" data-aspect-ratio="1.78771" data-width="100%"><a href="https://tenor.com/view/jaw-drop-shocked-surprised-omg-amazed-gif-15883008">Jaw Drop Shocked GIF</a>from <a href="https://tenor.com/search/jaw+drop-gifs">Jaw Drop GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>',
-    expect: { vid: '15883008', param: 'html5video tenor' }
-  },
-  //------ Tenor/link
-  {
-    id: 'Tenor (link url)',
-    code: 'https://tenor.com/de/view/dog-pup-puppy-cute-shocked-gif-16932034',
-    expect: { vid: '16932034', param: 'html5video tenor' }
   },
   //------ Vimeo/Standard
   {
