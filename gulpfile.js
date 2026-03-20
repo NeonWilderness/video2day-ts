@@ -1,9 +1,9 @@
 const argv = require('minimist')(process.argv.slice(2));
 const { cyan, inverse } = require('picocolors');
 const del = require('del');
-const fs = require('fs');
+const fs = require('node:fs');
 const { src, dest, task, series, parallel } = require('gulp');
-const path = require('path');
+const path = require('node:path');
 const pkg = require('./package.json');
 const pug = require('gulp-pug');
 const webpack = require('webpack');

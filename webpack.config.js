@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('node:path');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack');

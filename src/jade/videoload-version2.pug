@@ -91,8 +91,8 @@ p.
       li
         | Kopieren Sie dort <strong>vor</strong> das abschließende <span class="code">!{lt}/body!{gt}</span>-Element folgende Zeilen hinein:
         pre.html.
-          !{lt}script type="text/javascript" src="!{static}cdn/files/videoload2-min-js.js"!{gt}!{lt}/script!{gt}
-          !{lt}script type="text/javascript"!{gt}video2day.run();!{lt}/script!{gt}
+          !{lt}script src="!{static}cdn/files/videoload2-min-js.js"!{gt}!{lt}/script!{gt}
+          !{lt}script!{gt}video2day.run();!{lt}/script!{gt}
         p.text-right: a(href="#", title="data-bind=click:function(){toggle('#installcopy')}") Wie kopiere ich das?
         +SimpleCopy("installcopy")
         p Ihr Skin <em>Site.page</em> sollte nun in etwa so aussehen:
@@ -105,11 +105,11 @@ p.
   .accElement: .accContent
     p Falls Sie bereits die Erstversion des Videoload-Scripts nutzen, sollten Sie auf die neue Version 2 umstellen. Hierzu ist der Aufruf von Videoload im Skin <em>Site.page</em> anzupassen bzw. zu ergänzen.
     p Bisher steht dort am Ende des Skins, vor dem abschließenden <span class="code">!{lt}/body!{gt}</span>-Befehl, folgender Eintrag:
-    p.text-center: span.code !{lt}script type="text/javascript" src="!{lt}% staticURL %!{gt}cdn/files/videoload-min-js.js"!{gt}!{lt}/script!{gt}
+    p.text-center: span.code !{lt}script src="!{lt}% staticURL %!{gt}cdn/files/videoload-min-js.js"!{gt}!{lt}/script!{gt}
     p Bitte ändern/erweitern Sie den Aufruf wie folgt:
     pre.html.
-      !{lt}script type="text/javascript" src="!{static}cdn/files/videoload2-min-js.js"!{gt}!{lt}/script!{gt}
-      !{lt}script type="text/javascript"!{gt}video2day.run();!{lt}/script!{gt}
+      !{lt}script src="!{static}cdn/files/videoload2-min-js.js"!{gt}!{lt}/script!{gt}
+      !{lt}script!{gt}video2day.run();!{lt}/script!{gt}
     p.text-right: a(href="#", title="data-bind=click:function(){toggle('#upgradecopy')}") Wie kopiere ich das?
     p d.h. also in Zeile 1 den Scriptnamen <b>videoload</b> in <b>videoload2</b> ändern und die zweite Zeile darunter ergänzen.
     cite.

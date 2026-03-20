@@ -6,7 +6,7 @@
  * videoload2-story       (from ./dist/videoload2-story.js)
  */
 const argv = require('minimist')(process.argv.slice(2));
-const path = require('path');
+const path = require('node:path');
 const Twoday = require('@neonwilderness/twoday');
 require('dotenv-safe').config();
 

@@ -6,8 +6,8 @@
  * /stories/videotool2 (from ./dist/videotool-version2.html)
  */
 const argv = require('minimist')(process.argv.slice(2));
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 const Twoday = require('@neonwilderness/twoday');
 require('dotenv-safe').config();
 
@@ -25,7 +25,8 @@ const uploadFiles = [
     for (const file of uploadFiles) {
       await td.updateStory('neonwilderness', {
         niceurl: file.name,
-        body: fs.readFileSync(path.resolve(process.cwd(), 'dist', file.src), 'utf8')
+        body: fs.readFileSync(path.resolve(process.cwd(), 'dist', file.src), 'utf8'),
+        action: 'publish'
       });
       console.log(`Update completed for story: ${file.name} (${file.src}).`);
     }
