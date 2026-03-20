@@ -22,9 +22,7 @@ mixin LiveView(classes, id, orientation)
 mixin parameter-start(provider)
   h6.top20 <span class="label">start</span> &mdash; Video an einer bestimmten Stelle starten
   p.
-    Um ein #{provider}-Video an einer gewünschten Stelle zu starten, z.B. bei 02:15 (Minuten:Sekunden), rechnen Sie die
-    Zeitangabe in Sekunden um (im Beispiel 02:15 = 2*60+15 = 135) und fügen das Ergebnis als Parameterwert an die Kennung
-    <span class="code">start</span>. Das vollständige Kommando lautet dann folgendermaßen:
+    Um ein #{provider}-Video an einer gewünschten Stelle zu starten, z.B. bei 02:15 (Minuten:Sekunden), rechnen Sie die Zeitangabe in Sekunden um (im Beispiel 02:15 = 2*60+15 = 135) und fügen das Ergebnis als Parameterwert an die Kennung <span class="code">start</span>. Das vollständige Kommando lautet dann folgendermaßen:
   p.text-center: span.code !{lt}div class="html5video #{provider} <b>start-135</b>" id="{eine-#{provider}-ID}"!{gt}!{lt}/div!{gt}
 ul#providerTabs.tabs.tabBlue(title="data-bind=foreach:providerNames()")
   li: a(href="#", title="data-bind=attr:{name:'tab-'+$data}, text:$data")
