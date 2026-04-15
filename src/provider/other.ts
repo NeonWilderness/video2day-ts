@@ -5,9 +5,9 @@
 import { playerTemplate, IInstanceOptions, Provider } from './generic';
 
 export class Other extends Provider {
-  _autoplay: string;
-  _image: string;
-  _poster: string;
+  _autoplay: string = '';
+  _image: string = '';
+  _poster: string = '';
 
   /**
    * Initialize the plugin ID
@@ -19,7 +19,7 @@ export class Other extends Provider {
   init(options: IInstanceOptions): void {
     super.init(options);
     this._autoplay = options.hasOwnProperty('autoplay') ? ' autoplay' : '';
-    this._image = options.hasOwnProperty('image') ? options.image : 'jpg';
+    this._image = options.hasOwnProperty('image') ? options.image || '' : 'jpg';
     this._poster = options.hasOwnProperty('poster')
       ? this._id.slice(0, this._id.lastIndexOf('.') + 1) + this._image
       : '';

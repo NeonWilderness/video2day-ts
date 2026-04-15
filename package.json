@@ -8,7 +8,7 @@
     "url": "git@github.com:NeonWilderness/video2day-ts.git"
   },
   "scripts": {
-    "update": "ncu -u -x @types/jquery,del,eslint && npm i",
+    "update": "ncu -u -x @types/jquery,del,eslint,typescript && npm i",
     "build": "gulp --production",
     "dev": "gulp",
     "copy": "gulp copy",
@@ -33,21 +33,21 @@
     "picocolors": "^1.1.1"
   },
   "devDependencies": {
-    "@neonwilderness/twoday": "^0.6.1",
+    "@neonwilderness/twoday": "^0.6.3",
     "@types/chai": "^5.2.3",
     "@types/jquery": "^1.10.36",
-    "@types/knockout": "^3.4.78",
+    "@types/knockout": "^3.4.79",
     "@types/lozad": "^1.16.4",
     "@types/mocha": "^10.0.10",
     "chai": "^6.2.2",
     "css-loader": "^7.1.4",
     "del": "^6.0.0",
     "dotenv-safe": "^9.1.0",
-    "eslint": "^9.39.3",
+    "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-promise": "^7.2.1",
-    "eslint-webpack-plugin": "^5.0.3",
+    "eslint-webpack-plugin": "^6.0.0",
     "gulp": "^5.0.1",
     "gulp-pug": "^5.0.0",
     "less": "^4.6.4",
@@ -55,9 +55,9 @@
     "minimist": "^1.2.8",
     "style-loader": "^4.0.0",
     "terser-webpack-plugin": "^5.4.0",
-    "ts-loader": "^9.5.4",
+    "ts-loader": "^9.5.7",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.57.1",
-    "webpack": "^5.105.4"
+    "typescript-eslint": "^8.58.2",
+    "webpack": "^5.106.2"
   }
 }
