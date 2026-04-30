@@ -2,14 +2,15 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "commonjs",
-    "downlevelIteration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": ["ESNext", "DOM"],
     "removeComments": true,
     "sourceMap": false,
     "esModuleInterop": true,
-    "alwaysStrict": true
+    "alwaysStrict": true,
+    "types": ["chai", "jquery", "knockout", "lozad", "mocha"],
+    "noUncheckedSideEffectImports": false
   },
   "files": [
     "src/videoload2.ts",

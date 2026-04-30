@@ -11,20 +11,21 @@ enum ColorValues {
 
 export class Jsfiddle extends Provider {
   source = 'https://jsfiddle.net/{_id}/embedded/{_scope}/{_color}/';
-  _scope: string;
-  _color: string;
+  _scope: string = '';
+  _color: string = '';
 
   /**
    * Initialize the plugin ID
    */
   constructor() {
     super('jsfiddle');
+    this._addAttr = ' loading="lazy" allowtransparency="true"';
   }
 
   init(options: IInstanceOptions): void {
     super.init(options);
-    this._scope = options.hasOwnProperty('scope') ? options.scope : 'js,html,css,result';
-    this._color = options.hasOwnProperty('color') ? options.color : 'dark';
+    this._scope = options.hasOwnProperty('scope') ? options.scope || '' : 'js,html,css,result';
+    this._color = options.hasOwnProperty('color') ? options.color || 'light' : 'dark';
     if (typeof ColorValues[ColorValues[this._color]] === 'undefined')
       this.badParam = `Ungültiger Wert "${this._color}" für Parameter color. Erlaubt sind: light, dark.`;
   }

@@ -62,10 +62,10 @@ enum TemplateTypes {
 }
 
 class Videoload2ToolViewmodel {
-  $tag: JQuery = null; // iframe or script tag if pasted into input text field
+  $tag: JQuery|null = null; // iframe or script tag if pasted into input text field
   providers: IProviders; // all valid provider names
   providerOptions: KnockoutSubscribable<IProviderSelectOption[]>; // select code/option sets for all providers
-  providerHandler: ToolProvider; // object class to handle provider specific processing
+  providerHandler: ToolProvider|null = null; // object class to handle provider specific processing
   providerTemplate: KnockoutObservable<string>; // provider template enum: serves additional html based on selected provider
   txtIframe: KnockoutObservable<string>; // pasted iFrame embed code of a desired provider element
   errIframe: KnockoutObservable<string>; // error message
@@ -221,7 +221,7 @@ class Videoload2ToolViewmodel {
         template: TemplateTypes.TmplVideoStartEndat,
         aspect: true,
         id: 'youtube.com',
-        vmatch: '\\/embed\\/([A-Za-z0-9_\\-]{11})'
+        vmatch: '\\/embed\\/([A-Za-z0-9_\\-]+)'
       },
       other: {
         name: 'Other (MP4-Datei)',
@@ -329,7 +329,7 @@ class Videoload2ToolViewmodel {
     }
   }
 
-  subscribeExtender(newValue): void {
+  subscribeExtender(newValue: any): void {
     console.log(`subscribeExtender: newValue=${newValue}`);
     this.generateHtml();
   }
