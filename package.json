@@ -1,6 +1,6 @@
 {
   "name": "video2day",
-  "version": "2.12.3",
+  "version": "2.12.4",
   "description": "Video/iframe generator for the Twoday blogging platform",
   "main": "video2day.js",
   "repository": {
@@ -33,7 +33,7 @@
     "picocolors": "^1.1.1"
   },
   "devDependencies": {
-    "@neonwilderness/twoday": "^0.8.0",
+    "@neonwilderness/twoday": "^0.9.2",
     "@types/chai": "^5.2.3",
     "@types/jquery": "^1.10.36",
     "@types/knockout": "^3.4.79",
@@ -45,19 +45,19 @@
     "dotenv-safe": "^9.1.0",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-prettier": "^5.5.6",
     "eslint-plugin-promise": "^7.3.0",
     "eslint-webpack-plugin": "^6.0.0",
     "gulp": "^5.0.1",
     "gulp-pug": "^5.0.0",
-    "less": "^4.6.4",
-    "less-loader": "^12.3.2",
+    "less": "^4.8.1",
+    "less-loader": "^13.0.0",
     "minimist": "^1.2.8",
     "style-loader": "^4.0.0",
-    "terser-webpack-plugin": "^5.5.0",
-    "ts-loader": "^9.5.7",
+    "terser-webpack-plugin": "^5.6.1",
+    "ts-loader": "^9.6.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.59.1",
-    "webpack": "^5.106.2"
+    "typescript-eslint": "^8.65.0",
+    "webpack": "^5.109.2"
   }
 }
