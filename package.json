@@ -50,14 +50,14 @@
     "eslint-webpack-plugin": "^6.0.0",
     "gulp": "^5.0.1",
     "gulp-pug": "^5.0.0",
-    "less": "^4.8.1",
+    "less": "^4.9.0",
     "less-loader": "^13.0.0",
     "minimist": "^1.2.8",
     "style-loader": "^4.0.0",
     "terser-webpack-plugin": "^5.6.1",
     "ts-loader": "^9.6.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.65.0",
+    "typescript-eslint": "^8.67.0",
     "webpack": "^5.109.2"
   }
 }
