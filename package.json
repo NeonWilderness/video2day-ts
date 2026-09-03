@@ -8,7 +8,7 @@
     "url": "git@github.com:NeonWilderness/video2day-ts.git"
   },
   "scripts": {
-    "update": "ncu -u -x @types/jquery,del,eslint,typescript && npm i",
+    "update": "ncu -u -p npm -x @types/jquery,del,eslint,typescript && npm i --legacy-peer-deps",
     "build": "gulp --production",
     "dev": "gulp",
     "copy": "gulp copy",
@@ -40,7 +40,7 @@
     "@types/lozad": "^1.16.4",
     "@types/mocha": "^10.0.10",
     "chai": "^6.2.2",
-    "css-loader": "^7.1.4",
+    "css-loader": "^7.1.5",
     "del": "^6.0.0",
     "dotenv-safe": "^9.1.0",
     "eslint": "^9.39.4",
@@ -50,14 +50,14 @@
     "eslint-webpack-plugin": "^6.0.0",
     "gulp": "^5.0.1",
     "gulp-pug": "^5.0.0",
-    "less": "^4.9.0",
+    "less": "^4.9.1",
     "less-loader": "^13.0.0",
     "minimist": "^1.2.8",
     "style-loader": "^4.0.0",
     "terser-webpack-plugin": "^5.6.1",
     "ts-loader": "^9.6.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.67.0",
-    "webpack": "^5.109.2"
+    "typescript-eslint": "^8.69.0",
+    "webpack": "^5.110.3"
   }
 }
