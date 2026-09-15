@@ -1,6 +1,6 @@
 {
   "name": "video2day",
-  "version": "2.12.4",
+  "version": "2.12.5",
   "description": "Video/iframe generator for the Twoday blogging platform",
   "main": "video2day.js",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "git@github.com:NeonWilderness/video2day-ts.git"
   },
   "scripts": {
-    "update": "ncu -u -p npm -x @types/jquery,del,eslint,typescript && npm i --legacy-peer-deps",
+    "update": "ncu -u -x @types/jquery,typescript && npm i --legacy-peer-deps",
     "build": "gulp --production",
     "dev": "gulp",
     "copy": "gulp copy",
@@ -41,13 +41,14 @@
     "@types/mocha": "^10.0.10",
     "chai": "^6.2.2",
     "css-loader": "^7.1.5",
-    "del": "^6.0.0",
+    "dotenv": "^17.4.2",
     "dotenv-safe": "^9.1.0",
-    "eslint": "^9.39.4",
+    "eslint": "^10.10.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.6",
     "eslint-plugin-promise": "^7.3.0",
     "eslint-webpack-plugin": "^6.0.0",
+    "filemanager-webpack-plugin": "^10.0.1",
     "gulp": "^5.0.1",
     "gulp-pug": "^5.0.0",
     "less": "^4.9.1",
@@ -57,7 +58,7 @@
     "terser-webpack-plugin": "^5.6.1",
     "ts-loader": "^9.6.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.69.0",
-    "webpack": "^5.110.3"
+    "typescript-eslint": "^8.70.0",
+    "webpack": "^5.111.0"
   }
 }

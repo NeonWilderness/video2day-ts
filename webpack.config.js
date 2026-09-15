@@ -1,6 +1,7 @@
 const path = require('node:path');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const FileManagerPlugin = require('filemanager-webpack-plugin');
 const webpack = require('webpack');
 require('dotenv-safe').config();
 
@@ -44,6 +45,21 @@ module.exports = {
     ]
   },
   plugins: [
-    new ESLintPlugin()
+    new ESLintPlugin(),
+    new FileManagerPlugin({
+      events: {
+        onStart: {
+          delete: ['./dist/*.*']
+        },
+        onEnd: {
+          copy: [
+            {
+              source: './dist/videoload2.js',
+              destination: 'D:/Dokumente/GitHub/blog/static/js/videoload2.js'
+            }
+          ]
+        }
+      }
+    })
   ]
 };

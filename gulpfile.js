@@ -1,8 +1,7 @@
 const argv = require('minimist')(process.argv.slice(2));
 const { cyan, inverse } = require('picocolors');
-const del = require('del');
 const fs = require('node:fs');
-const { src, dest, task, series, parallel } = require('gulp');
+const { src, dest, task, parallel } = require('gulp');
 const path = require('node:path');
 const pkg = require('./package.json');
 const pug = require('gulp-pug');
@@ -58,7 +57,4 @@ const copy = () => {
   return src(['./dist/videoload2.js']).pipe(dest(targetDir));
 }
 
-task('clean', () => del(['dist']));
-task('copy', copy);
-const generate = parallel(templates, js);
-task('default', series('clean', generate, 'copy'));
+task('default', parallel(templates, js));
