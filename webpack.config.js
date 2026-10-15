@@ -3,7 +3,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 const webpack = require('webpack');
-require('dotenv-safe').config();
+require('node:process').loadEnvFile();
 
 module.exports = {
   entry: {

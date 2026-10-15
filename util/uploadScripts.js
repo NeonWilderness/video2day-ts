@@ -8,7 +8,7 @@
 const argv = require('minimist')(process.argv.slice(2));
 const path = require('node:path');
 const Twoday = require('@neonwilderness/twoday');
-require('dotenv-safe').config();
+require('node:process').loadEnvFile();
 
 /**
  * Script files to be uploaded

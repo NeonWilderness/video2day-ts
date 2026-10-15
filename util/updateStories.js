@@ -9,7 +9,7 @@ const argv = require('minimist')(process.argv.slice(2));
 const fs = require('node:fs');
 const path = require('node:path');
 const Twoday = require('@neonwilderness/twoday');
-require('dotenv-safe').config();
+require('node:process').loadEnvFile();
 
 const uploadFiles = [
   { name: 'videoload2', src: 'videoload-version2.html' },
